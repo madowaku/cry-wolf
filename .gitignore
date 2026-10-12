@@ -1,0 +1,11 @@
+node_modules/
+dist/
+output/
+.playwright-cli/
+*.tsbuildinfo
+BGM/source/*
+!BGM/source/.gitkeep
+BGM/*.mp3
+BGM/*.wav
+BGM/*.ogg
+BGM/*.m4a

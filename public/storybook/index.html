@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#19283f">
+<link rel="stylesheet" href="./cry-wolf-tokens.css">
+<link rel="preload" as="image" href="./assets/bell-flat-expressions.png">
+<link rel="preload" as="image" href="./assets/luna-assertive-expressions.png">
+<script src="./assets/audio/music-pack.js" defer></script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23d5ad69' d='M25 3a13 13 0 1 0 4 23A12 12 0 0 1 25 3'/%3E%3C/svg%3E">
+<title>CRY WOLF! — 絵本のひと夜</title>
+<style>
+:root{--navy:#19283f;--ink:#23334c;--paper:#f4ead9;--light:#fff9ed;--gold:#bd9150;--red:#bc3e57;--muted:#716654;--line:#d9c7a8;--serif:Georgia,"Yu Mincho","Hiragino Mincho ProN",serif;--sans:"Yu Gothic","Hiragino Kaku Gothic ProN",Meiryo,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:#111d30;color:var(--ink);font-family:var(--sans)}button{font:inherit;color:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #c86a32;outline-offset:4px}button:disabled{cursor:wait}#app{min-height:100svh;padding:16px;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 30%,#314359,transparent 75%)}
+.book{position:relative;width:min(100%,520px);min-height:calc(100svh - 32px);display:flex;flex-direction:column;background:var(--paper);border:1px solid #dfcda8;box-shadow:0 18px 80px #0005;isolation:isolate}
+.hud{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 18px;min-height:68px;border-bottom:1px solid var(--line)}.chapter{font:12px/1.5 var(--serif);letter-spacing:2px}.chapter b{display:block;letter-spacing:.1em;font:700 14px var(--sans)}.tools{display:flex;gap:4px;align-items:center}.icon{display:grid;place-items:center;width:44px;height:44px;background:transparent;border:0;font:20px var(--serif);border-radius:50%}.icon:hover{background:#dfcfb6}.icon svg{width:22px;height:22px}.time{font-size:12px;white-space:nowrap;margin-right:4px}.time i{display:inline-block;width:9px;height:9px;border:1px solid #ad864b;border-radius:50%;margin-left:4px}.time i.on{background:#b88744}
+.stage{position:relative;overflow:hidden;background:var(--navy);height:clamp(300px,48svh,560px);flex:1;min-height:270px}.stage>svg{position:absolute;width:100%;height:100%;inset:0}.stage:after{content:"";position:absolute;inset:auto 0 0;height:30%;background:linear-gradient(transparent,#12203988);pointer-events:none}.portrait{position:absolute;bottom:-3%;height:91%;aspect-ratio:0.835;background-image:url('./assets/bell-flat-expressions.png');background-size:200% 200%;background-repeat:no-repeat;z-index:2;filter:drop-shadow(0 10px 12px #060f2244)}.portrait.bell{left:2%}.portrait.luna{right:-4%;height:103%;aspect-ratio:0.667;background-image:url('./assets/luna-assertive-expressions.png')}.expression-0{background-position:0 0}.expression-1{background-position:100% 0}.expression-2{background-position:0 100%}.expression-3{background-position:100% 100%}.duet .bell{height:83%;left:-7%}.duet .luna{height:97%;right:-9%}.bell-alone .bell{left:12%;height:99%}.luna-lead .bell{height:72%;left:-11%;filter:brightness(.86)}.luna-lead .luna{right:-5%;height:100%}.distant .luna{height:60%;right:0;opacity:.8}.stage .scene-label{position:absolute;z-index:4;bottom:16px;left:20px;color:#f8eacf;font:italic 14px var(--serif);letter-spacing:1px;text-shadow:0 1px 5px #000}.title-art .portrait{height:66%;bottom:-3%}.title-art .bell{left:-5%;height:58%}.title-art .luna{right:-7%}.title-wordmark{position:absolute;z-index:3;top:24px;left:24px;margin:0;color:var(--paper);font:700 clamp(48px,13vw,72px)/.87 var(--serif);letter-spacing:-3px}.title-wordmark em{display:block;font:italic 17px/1.6 var(--serif);letter-spacing:.8px;margin-top:12px}.title-wordmark small{display:block;font:11px var(--sans);letter-spacing:3px;margin-bottom:14px}.title-art .scene-label{right:18px;left:auto;top:28px;bottom:auto;writing-mode:vertical-rl;font-size:12px;line-height:2}
+.story{position:relative;padding:22px 24px 18px;background:var(--paper);display:flex;flex-direction:column;gap:16px}.story:before{content:"✦";position:absolute;top:-11px;left:calc(50% - 11px);width:22px;height:22px;line-height:22px;text-align:center;color:#b68a4a;background:var(--paper);z-index:5;transform:rotate(0)}.eyebrow{margin:0;color:var(--muted);font:11px var(--sans);letter-spacing:2px}.heading{margin:0;font:700 24px/1.5 var(--serif);letter-spacing:.03em}.copy{margin:0;font:17px/1.85 var(--serif);white-space:pre-line;overflow-wrap:anywhere}.speaker{display:block;color:var(--red);font:700 12px var(--sans);letter-spacing:1px;margin-bottom:6px}.copy .bell-speaker{color:var(--ink)}.hint{font:13px/1.7 var(--sans);color:#615b51;margin:0}.choices{display:grid;gap:9px;margin-top:2px}.choice{display:flex;align-items:center;gap:12px;min-height:58px;padding:12px 16px;background:var(--light);border:1px solid #baa581;text-align:left;position:relative;transition:background .15s,transform .15s}.choice:hover{background:#fffcf5}.choice:active{transform:translateY(1px)}.choice>svg{width:24px;height:24px;flex-shrink:0}.choice b{font:700 16px/1.5 var(--sans);display:block}.choice small{display:block;color:#6c6355;font:12px/1.5 var(--sans);margin-top:2px}.choice .arrow{margin-left:auto;color:#a2804c;font-size:23px}.choice.primary{background:var(--navy);color:var(--paper);border-color:var(--navy);justify-content:center;min-height:56px}.choice.primary:hover{background:#293e5a}.choice.primary .arrow{color:#d9b978}.choice.cry{border-color:#b16d72}.choice.signal{border-color:#a48348}.choice.secondary{background:transparent;min-height:48px;justify-content:center}.footer{font:10px var(--serif);letter-spacing:2px;color:#887453;display:flex;justify-content:space-between;align-items:center;padding:0 24px 14px}.page-dots{letter-spacing:5px;font-size:10px}.page-dots strong{color:#ad7c38}.choice-page .stage{height:clamp(230px,34svh,400px);min-height:220px}.choice-page .story{gap:10px;padding-top:18px}.choice-page .copy{font-size:16px;line-height:1.7}.choice-page .heading{font-size:22px}.recap-page .stage{height:180px;min-height:180px;flex:none}.recap-page .portrait{height:100%}.recap-page .story{gap:12px}.recap-title{font:700 21px/1.5 var(--serif);margin:0}.stats{display:grid;grid-template-columns:1fr 1fr;border-block:1px solid var(--line);padding-block:14px}.stats div+div{border-left:1px solid var(--line);padding-left:18px}.stats span{font-size:12px;display:block}.stats strong{font:28px var(--serif);display:block;margin-top:4px}.stats p{font:12px/1.6 var(--sans);margin:5px 10px 0 0}.recap-notes{font:13px/1.8 var(--sans);margin:0;padding-left:18px}.scene-legend{position:absolute;left:16px;right:16px;bottom:20px;display:flex;align-items:center;gap:8px;font-size:12px;color:#f6ead1;z-index:4}.scene-legend span{padding:6px 8px;background:#19283fdd;border:1px solid #d4bb8655}.scene-legend .line{flex:1;height:1px;background:#d2b582;position:relative}.scene-legend .line:after{content:"›";position:absolute;right:0;top:-10px;font-size:18px}.signal-light{animation:signal-flash 1.1s ease-out 1}.wave{animation:wave 1.6s ease-out 1}.page-enter{animation:page-enter .2s ease-out}.modal-layer{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:20px;background:#0b172bd9}.modal{width:min(100%,440px);max-height:calc(100dvh - 40px);overflow:auto;background:var(--paper);border:1px solid #d9b982;padding:26px}.modal h2{font:700 25px var(--serif);margin:0 0 20px}.modal p,.modal li{font:16px/1.9 var(--serif)}.modal ul{padding-left:20px}.modal .choice{width:100%;margin-top:18px}.modal .empty{font-style:italic;color:var(--muted)}.book[inert]{filter:brightness(.6)}
+@keyframes page-enter{from{opacity:.5;transform:translateX(7px)}to{opacity:1;transform:none}}@keyframes signal-flash{0%,40%,80%{opacity:.1}20%,60%,100%{opacity:1}}@keyframes wave{from{opacity:.2;transform:translateX(-5px)}to{opacity:1;transform:none}}
+@media(max-width:540px){#app{padding:0}.book{min-height:100svh;min-height:100dvh;border:0;width:100%}.hud{padding:9px 14px;min-height:62px}.story{padding:18px 20px 16px;gap:12px}.stage{height:clamp(300px,49dvh,560px)}.footer{padding:0 20px max(14px,env(safe-area-inset-bottom));letter-spacing:1.3px}.title-art .title-wordmark{font-size:65px}.title-art{min-height:370px}.choice-page .stage{height:clamp(220px,34dvh,460px)}.time{font-size:11px}.tools{gap:0}.chapter{font-size:10px}.chapter b{font-size:12px}.choice{padding:10px 12px}.copy{font-size:17px}.recap-page .stage{height:160px;min-height:160px}.recap-page .story{padding-top:16px}}
+@media(min-width:900px){.book{width:min(1120px,100%);min-height:0;height:min(760px,calc(100dvh - 64px));display:grid;grid-template-columns:55% 45%;grid-template-rows:68px 1fr 44px}.hud{grid-column:1/3;padding-inline:26px}.stage,.choice-page .stage,.recap-page .stage{grid-column:1;grid-row:2/4;height:100%;min-height:0;border-right:1px solid #d9c7a8}.story,.choice-page .story,.recap-page .story{grid-column:2;grid-row:2;justify-content:center;padding:30px 36px;overflow:auto;gap:20px}.story:before{display:none}.footer{grid-column:2;grid-row:3;padding:0 36px 18px}.copy{font-size:19px}.heading{font-size:28px}.title-art .title-wordmark{font-size:100px;top:35px;left:34px}.title-wordmark em{font-size:23px}.title-art .portrait{height:65%}.choice-page .copy{font-size:18px}.recap-page .portrait{height:85%}.duet .bell{left:-4%}.duet .luna{right:-6%}}
+@media(max-height:700px) and (max-width:899px){.stage{min-height:210px;height:35dvh}.title-art{min-height:300px}.choice-page .stage{min-height:190px;height:29dvh}.story{padding:14px 18px;gap:10px}.heading{font-size:21px}.copy{font-size:16px;line-height:1.7}.footer{padding-bottom:10px}.choice{min-height:54px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* Flat Pop v0.1: one shared palette, plain paper, and quiet motion. */
+:root{--navy:var(--cw-night);--ink:var(--cw-ink);--paper:var(--cw-paper);--light:var(--cw-cream);--gold:var(--cw-brass);--red:var(--cw-ribbon);--serif:var(--cw-font-title);--sans:var(--cw-font-ui);--line:color-mix(in srgb,var(--cw-night) 22%,var(--cw-cream));--muted:color-mix(in srgb,var(--cw-night) 72%,var(--cw-cream))}
+body,#app{background:var(--cw-forest)}.book{border-color:var(--cw-night)}.stage:after{display:none}.portrait{filter:none;background-image:url('./assets/bell-flat-expressions.png')}.portrait.luna{background-image:url('./assets/luna-assertive-expressions.png')}.luna-lead .bell{filter:none}.title-art .title-wordmark{color:var(--cw-cream)}.choice,.modal{border:var(--cw-stroke);border-radius:var(--cw-radius-button)}.choice.cry,.choice.signal{border-color:var(--cw-night)}.choice .arrow{color:var(--cw-night)}.choice.primary .arrow{color:var(--cw-cream)}.choice:hover{background:color-mix(in srgb,var(--cw-cream) 92%,var(--cw-night))}.choice.primary:hover{background:var(--cw-forest)}.copy,.modal p,.modal li{font-family:var(--cw-font-ui)}.choice small,.hint{color:var(--muted)}.icon{width:48px;height:48px}.icon:hover{background:color-mix(in srgb,var(--cw-night) 10%,var(--cw-cream))}.story:before{display:none}.stage .scene-label{font-family:var(--cw-font-ui);font-style:normal;font-size:12px;color:var(--cw-cream);text-shadow:none;background:var(--cw-night);padding:6px 8px;border-radius:4px;max-width:calc(100% - 40px)}.scene-legend span{background:var(--cw-night);border:1px solid var(--cw-cream);color:var(--cw-cream)}.scene-legend.ground{top:16px;bottom:auto;justify-content:space-between}.scene-legend.ground span{background:var(--cw-cream);color:var(--cw-night);border-color:var(--cw-night)}.scene-legend.ground .line{display:none}.time i.on{background:var(--cw-night);border-color:var(--cw-night)}.time i{border-color:var(--cw-night)}.footer{color:var(--muted)}.recap-page .copy{font-size:16px;line-height:1.7}
+@media(max-width:400px){.hud{padding-inline:10px}.chapter{letter-spacing:1px}.chapter b{font-size:11px}.time{margin-right:0;font-size:10px}.time i{width:7px;height:7px;margin-left:3px}.tools .icon{width:48px}.choice-page .stage{height:30dvh;min-height:215px}.copy{font-size:16px;line-height:1.75}.story{gap:12px}.title-art .portrait{height:63%}.title-art .bell{height:57%}}
+.duet .bell{height:85%;left:-5%}.duet .luna{height:92%;right:-3%}.luna-lead .bell{height:76%;left:-5%}.luna-lead .luna{height:95%;right:-1%}.title-art .bell{height:57%;left:0}.title-art .luna{height:63%;right:0}.title-art .scene-label{display:none}.bell-alone .bell{height:93%;left:14%}.recap-page .duet .portrait{height:92%}
+.portrait.luna{background-image:url('./assets/luna-assertive-expressions.png');aspect-ratio:.75}
+@media(max-width:899px){.duet:not(.title-art) .bell{height:78%;left:-15%}.duet:not(.title-art) .luna{height:83%;right:-20%}.luna-lead:not(.title-art) .bell{height:80%;left:-15%}.luna-lead:not(.title-art) .luna{height:88%;right:-17%}}
+/* Scene-specific composition keeps the clue, distance and reaction legible. */
+.distance-caption{position:absolute;z-index:4;top:18px;left:18px;font:12px/1.7 var(--sans);color:var(--cw-cream);max-width:calc(100% - 36px)}.distance-caption strong{display:block;font-size:14px}.range-key{position:absolute;z-index:4;left:26%;top:47%;font:11px/1.5 var(--sans);background:var(--cw-cream);padding:3px 6px;color:var(--cw-night);border-radius:3px}.stage.listen .bell{height:47%;left:-2%;bottom:-2%}.stage.duet.distant .luna{height:55%;right:1%;opacity:1;bottom:0}.stage.duet.distant .bell{height:88%;left:0}.stage.duet.farewell .luna{height:72%;right:-5%;bottom:0}.stage.duet.farewell .bell{height:84%;left:-6%}.report-evidence{display:flex;align-items:center;gap:10px;margin:0;font:14px/1.7 var(--sans);border-left:3px solid var(--cw-night);padding:7px 10px;background:color-mix(in srgb,var(--cw-night) 6%,var(--cw-cream))}.report-evidence svg{width:22px;height:22px;flex-shrink:0}.report-page .copy{font-size:15px;line-height:1.65}.report-page .story{gap:10px}.signal-light{animation:signal-flash 1.1s ease-out 1}.night .watchpost{position:absolute;inset:0;pointer-events:none}.report-evidence strong{font-weight:700}
+@media(max-width:899px){.stage.duet.distant .bell{height:86%;left:-7%}.stage.duet.distant .luna{height:52%;right:1%}.stage.duet.farewell .bell{height:81%;left:-13%}.stage.duet.farewell .luna{height:70%;right:-11%}.range-key{left:25%;top:47%}.report-page .stage{height:29dvh;min-height:210px}}
+.range-key{left:35%;top:47%}
+.stage>.distance-art{height:calc(100% - 46px)}.stage.signal .scene-legend,.stage.boundary .scene-legend{bottom:10px}.distance-caption{background:var(--cw-night);padding:4px 7px;border-radius:4px}
+</style>
+<style>
+.book{overflow-x:clip}.footer{gap:10px}.audio-settings{min-height:48px;padding:6px 10px;border:0;background:transparent;font:12px var(--sans);letter-spacing:0;text-decoration:underline;text-underline-offset:4px;white-space:nowrap}.footer-brand{font-size:9px;letter-spacing:1px}.audio-controls{display:grid;gap:20px;margin:20px 0}.audio-controls label{display:grid;gap:10px;font:14px var(--sans)}.audio-controls label span{display:flex;justify-content:space-between}.audio-controls input{width:100%;min-height:44px;accent-color:var(--cw-night);margin:0}.audio-controls input:focus-visible{outline:3px solid var(--cw-brass);outline-offset:3px}.music-credits{list-style:none;padding:0!important;margin:18px 0}.modal .music-credits li{font:12px/1.7 var(--sans);padding:8px 0;border-top:1px solid var(--line)}.music-credits a{color:var(--cw-night);text-underline-offset:3px}.modal .music-state{font:13px/1.7 var(--sans);margin:12px 0}.modal.audio-modal h2{margin-bottom:12px}.modal.audio-modal .choice{margin-top:10px}.music-credit-role{color:var(--muted);display:block}@media(min-width:900px){.book{grid-template-rows:68px 1fr 62px}.footer{padding-bottom:12px}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script id="storybook-model">
+'use strict';
+// Independent deterministic NIGHT 2. This model does not use or change the three-night game.
+const ACTIONS = ['track','listen','signal'];
+const REPORTS = ['cry','silent'];
+const OUTCOMES = {
+  best:{slideId:'R01_BEST',title:'ふたりだけの、正しい約束',trust:0,bond:1,why:'二度の灯りが届き、ルナは境界の外で待っていた。見張り道には入っていないので、「異常なし」は正しい報告。',trustWhy:'見張りの仕事を守り、信用を維持。',bondWhy:'交代のあと、約束どおり二人で話せた。',scene:'duet',bell:2,luna:3,caption:'月明かりの下、待っていた。',lines:[['ルナ','「……遅い！ ずっと待ってたんだから」'],['ベル','「待っててくれたんですね」']]},
+  false:{slideId:'R02_FALSE',title:'まちがえた警報',trust:-2,bond:0,why:'合図を受け取ったルナは境界の外にいた。見張り道にオオカミがいないのに鐘を鳴らしたので、村人を呼ぶ誤報になった。',trustWhy:'道にいないのに警報し、村人を呼んだ。',bondWhy:'今夜は二人で話せなかった。',scene:'duet distant',bell:3,luna:2,caption:'鐘のあとに、静けさが残った。',lines:[['村長','「ベル。今度は確かめてから鳴らそうな」'],['ベル','「……はい」']]},
+  duty:{slideId:'R03_DUTY',title:'正しい鐘の音',trust:1,bond:0,why:'届く合図がなかったため、ルナは見張り道へ入った。道への立ち入りを鐘で正しく知らせ、夜番の仕事を果たした。',trustWhy:'道への立ち入りを正しく知らせた。',bondWhy:'話す時間はなかったけれど、誠実さは伝わった。',scene:'duet farewell',bell:3,luna:2,caption:'森へ帰る、その前に。',lines:[['ルナ','「……ちゃんと見張りしてるベルは、嫌いじゃないわ」'],['ベル','「……また、明日」']]},
+  secret:{slideId:'R04_SECRET',title:'甘くて、苦い秘密',trust:-1,bond:1,why:'ルナが見張り道に入ったのに「異常なし」と報告した。夜は二人で話せたけれど、翌朝の足跡と報告が合わず、見逃しが分かった。',trustWhy:'朝の足跡から、報告との違いが分かった。',bondWhy:'夜に少しだけ、二人で話せた。',scene:'duet',bell:2,luna:3,caption:'秘密の夜。そして、朝。',lines:[['ルナ','「ほんとに？ じゃあ、少しだけね」'],['村長','翌朝。「報告と、合わないね」'],['ベル','「……はい」']]}
+};
+const OBSERVATIONS = {
+  track:['小さなウサギの足跡。大きなオオカミの足跡は、まだ境界の外にある。','新しいオオカミの足跡が、境界の手前まで続いている。'],
+  listen:['長い遠吠えは森の奥から。少しずつこちらへ近づく足音も聞こえる。','遠吠えはすぐそば。ルナは、境界の外の木陰にいる。'],
+  signal:['光が届かなかった。ルナはまだ遠く、森の霧の向こうにいる。','ランタンを二度遮った。すぐ近くで短い返事。ルナは森側で待ってくれた。']
+};
+const SLIDES = {
+  S00_TITLE:{phase:'title',scene:'title-art duet',bell:0,luna:0,caption:'ふたりで見つける、やさしい夜。',eyebrow:'STORYBOOK · NIGHT 2',heading:'来ないって言ったのに',text:'「オオカミだ！」と呼ぶのが仕事。\n呼ばないのは、恋。',hint:'ベルとルナの、ひと夜の物語。約2〜3分。',next:'ひと夜を始める',to:'S01_EVENING_A'},
+  S01_EVENING_A:{phase:'intro',scene:'duet luna-lead',bell:1,luna:0,caption:'夕方、森のはずれ。',eyebrow:'EVENING · 彼女の予告',lines:[['ルナ','「今夜は行かないわよ。\n……なに、寂しいの？」']],next:'つぎへ',to:'S01_EVENING_B'},
+  S01_EVENING_B:{phase:'intro',scene:'duet',bell:2,luna:1,caption:'揺れる尻尾は、知らんぷり。',eyebrow:'EVENING · 二人の約束',lines:[['ベル','「し、仕事の確認をしてるだけです」'],['ルナ','「なら、聞き逃さないことね。\n長い一声は『今夜は行かない』よ」']],next:'つぎへ',to:'S01_RULE'},
+  S01_RULE:{phase:'intro',scene:'rule',caption:'鐘は村へ。灯りは森へ。',eyebrow:'ベルの仕事と、二人の合図',text:'見張り道にオオカミが入ったら、鐘で警報。\n森にいるだけなら、警報はいらない。',hint:'ランタンを二度隠すと「森側で待って」。遠い森には届かない。調査か合図を2回選ぶと、報告の時刻。',next:'夜の見張りへ',to:'S02_NIGHT'},
+  S02_NIGHT:{phase:'night',scene:'bell-alone',bell:1,caption:'月がのぼり、見張りが始まる。',eyebrow:'NIGHT · 遠くからの声',lines:[['','長い遠吠えが、一度。'],['ベル','「『今夜は行かない』の合図……」']],next:'つぎへ',to:'S03_CLUE'},
+  S03_CLUE:{phase:'night',scene:'clue',caption:'土の上に、ちいさな矛盾。',eyebrow:'NIGHT · 最初の1刻',lines:[['ベル','「でも、境界に足跡がある。\nどういうことだろう？」']],hint:'調査も合図も、ひとつ選ぶと1刻。',choices:'actions'},
+  S04_OBSERVATION:{phase:'night',eyebrow:'DISCOVERY · 一つ目の発見',next:'つぎへ',to:'S05_DECISION'},
+  S05_DECISION:{phase:'night',scene:'boundary',caption:'気配が、木陰まで近づいた。',eyebrow:'NIGHT · あと1刻',lines:[['ベル','「さっきより近い。\n今なら、灯りが届きそうだ」']],hint:'あと1回選んだら、村へ報告する時刻。',choices:'actions'},
+  S04_OBSERVATION_2:{phase:'night',eyebrow:'DISCOVERY · 二つ目の発見',next:'報告へ',to:'S06_REPORT'},
+  S06_REPORT:{phase:'report',scene:'report',caption:'交代の時刻。鐘の紐を、握る。',eyebrow:'REPORT · 夜番の判断',heading:'見張り道に、入った？',text:'森にいるだけなら、警報はいらない。\n見張り道に入ったなら、知らせる。',choices:'reports'},
+  S08_RECAP:{phase:'result',scene:'recap duet',caption:'今夜の選択を、振り返る。',eyebrow:'AFTERWORD · 今夜の理由'}
+};
+function initial(){return {phase:'title',slideId:'S00_TITLE',ticks:2,actions:[],signal:'none',heard:false,notes:[],ending:null,score:null,report:null,help:false,modal:null};}
+function withSlide(current,slideId){return {...current,slideId,phase:SLIDES[slideId]?.phase||'result'};}
+function advanceSlide(current){
+  if(current.modal)return current;
+  const next=SLIDES[current.slideId]?.to;
+  if(next)return withSlide(current,next);
+  if(Object.values(OUTCOMES).some(o=>o.slideId===current.slideId))return withSlide(current,'S08_RECAP');
+  return current;
+}
+function applyNightAction(current,action){
+  if(current.modal||!ACTIONS.includes(action)||!['S03_CLUE','S05_DECISION'].includes(current.slideId)||current.ticks<1)return current;
+  const second=current.ticks===1;
+  return withSlide({...current,ticks:current.ticks-1,actions:[...current.actions,action],notes:[...current.notes,OBSERVATIONS[action][second?1:0]],heard:current.heard||action==='listen',signal:action==='signal'?(second?'held':'miss'):current.signal},second?'S04_OBSERVATION_2':'S04_OBSERVATION');
+}
+function resolveReport(current,report){
+  if(current.modal||current.slideId!=='S06_REPORT'||current.ticks!==0||!REPORTS.includes(report)||current.ending)return current;
+  const held=current.signal==='held';
+  const ending=held?(report==='cry'?'false':'best'):(report==='cry'?'duty':'secret');
+  const o=OUTCOMES[ending];
+  return withSlide({...current,ending,report,score:{trust:o.trust,bond:o.bond}},o.slideId);
+}
+</script>
+<script id="storybook-audio">
+const MUSIC_TRACKS={
+  opening:{title:'the fairy tale',author:'のる',role:'オープニング',page:'https://opentracks.com/bgm/detail/19133'},
+  gameplay:{title:'Storyteller',author:'のる',role:'プレイ中',page:'https://opentracks.com/bgm/detail/21959'},
+  ending:{title:'月夜',author:'チョコミント',role:'エンディング',page:'https://opentracks.com/bgm/detail/6987'}
+};
+const musicForPhase=phase=>phase==='title'||phase==='intro'?'opening':phase==='result'?'ending':'gameplay';
+function createMusicController({createAudio,sourceFor,now,raf,caf,onChange=()=>{}}){
+  const nodes=new Map();
+  let target='opening',muted=true,suspended=false,volume=.22,status='muted',frame=0,generation=0,disposed=false;
+  const notify=()=>onChange({target,muted,suspended,volume,status});
+  function stopFade(){if(frame)caf(frame);frame=0;}
+  function pauseAll(){stopFade();for(const audio of nodes.values()){audio.volume=0;audio.pause();}}
+  function synchronize(){
+    if(disposed)return;
+    const token=++generation;
+    stopFade();
+    if(muted||suspended){pauseAll();status=muted?'muted':'paused';notify();return;}
+    let src;
+    try{src=sourceFor(target);}catch{pauseAll();status='error';notify();return;}
+    if(!src){pauseAll();status='missing';notify();return;}
+    let selected=nodes.get(target);
+    if(!selected){try{selected=createAudio(src);selected.loop=true;selected.preload='auto';selected.volume=0;nodes.set(target,selected);}catch{pauseAll();status='error';notify();return;}}
+    status=selected.paused?'loading':'playing';notify();
+    if(selected.paused){
+      try{Promise.resolve(selected.play()).then(()=>{
+        if(disposed||muted||suspended||selected!==nodes.get(target)){selected.pause();return;}
+        if(token===generation){status='playing';notify();}
+      }).catch(error=>{if(!disposed&&token===generation){pauseAll();status=error?.name==='NotAllowedError'?'blocked':'error';notify();}});}
+      catch(error){pauseAll();status=error?.name==='NotAllowedError'?'blocked':'error';notify();return;}
+    }
+    const started=now(),starts=new Map([...nodes].map(([key,audio])=>[key,audio.volume]));
+    function fade(){
+      if(disposed||token!==generation)return;
+      const progress=Math.min(1,(now()-started)/450);
+      for(const [key,audio] of nodes){const end=key===target?volume:0;audio.volume=starts.get(key)+(end-starts.get(key))*progress;}
+      if(progress<1)frame=raf(fade);
+      else{frame=0;for(const [key,audio] of nodes)if(key!==target){audio.pause();audio.currentTime=0;}}
+    }
+    frame=raf(fade);
+  }
+  return {
+    setPhase(phase){const next=musicForPhase(phase);if(next!==target){target=next;synchronize();}},
+    setMuted(value){muted=Boolean(value);synchronize();},
+    setVolume(value){const n=Number(value);if(!Number.isFinite(n))return;volume=Math.max(0,Math.min(1,n));synchronize();},
+    setSuspended(value){suspended=Boolean(value);synchronize();},
+    refresh:synchronize,
+    get(){return {target,muted,suspended,volume,status,loaded:[...nodes.keys()]};},
+    dispose(){disposed=true;generation++;pauseAll();nodes.clear();}
+  };
+}
+</script>
+<script id="storybook-ui">
+const app=document.getElementById('app');
+let state=initial(), muted=true, audio=null, inputLockedUntil=0, focusReturn=null;
+let effectVolume=.7,effectBus=null;
+const musicSources=new Map();
+function musicSource(key){
+  if(musicSources.has(key))return musicSources.get(key);
+  const entry=window.CRYWOLF_MUSIC_PACK?.tracks?.[key];
+  if(!entry)return '';
+  const raw=atob(entry.data),bytes=Uint8Array.from(raw,c=>c.charCodeAt(0)^0x6d);
+  const url=URL.createObjectURL(new Blob([bytes],{type:entry.mime}));musicSources.set(key,url);return url;
+}
+const music=createMusicController({createAudio:src=>new Audio(src),sourceFor:musicSource,now:()=>performance.now(),raf:callback=>requestAnimationFrame(callback),caf:id=>cancelAnimationFrame(id),onChange:()=>updateMusicStatus()});
+function musicStatusText(){const status=music.get().status;return status==='playing'?'再生中':status==='muted'?'音はOFF':status==='paused'?'一時停止':status==='loading'?'読み込み中':status==='missing'?'BGMは追加待ち':status==='blocked'?'音をオンにして再生してください':'BGMを読み込めませんでした';}
+function updateMusicStatus(){const el=document.querySelector('[data-music-status]');if(el)el.textContent=musicStatusText();}
+const icons={
+  next:'<path d="M4 5h7q4 0 4 3v13q-2-3-6-3H4zM26 5h-7q-4 0-4 3v13q2-3 6-3h5z"/>',
+  track:'<ellipse cx="15" cy="20" rx="7" ry="5"/><ellipse cx="6" cy="12" rx="2.5" ry="3"/><ellipse cx="12" cy="6" rx="2.5" ry="3"/><ellipse cx="20" cy="7" rx="2.5" ry="3"/><ellipse cx="25" cy="14" rx="2.5" ry="3"/>',
+  listen:'<path d="M9 12q0-9 8-9t8 8q0 6-6 9l-2 5q-2 4-6 1M13 13q0-6 5-6t4 5l-5 3v4M3 9v10"/>',
+  signal:'<path d="M9 8q0-6 6-6t6 6M7 9h16l-2 18H9zM6 27h18M5 9h20M12 13v10m6-10v10"/>',
+  cry:'<path d="M8 22q3-3 3-12 0-6 5-6t5 6q0 9 3 12zM13 26q3 4 6 0M16 1v3"/>',
+  silent:'<path d="M23 5A12 12 0 1 0 26 23 12 12 0 0 1 23 5z"/>',
+  notes:'<path d="M7 3h18v24H7zM3 7h7M3 14h7M3 21h7M13 9h7m-7 6h7m-7 6h5"/>',
+  sound:'<path d="M5 12h5l7-6v20l-7-6H5zM22 10q5 6 0 12"/>',
+  muted:'<path d="M5 12h5l7-6v20l-7-6H5zM22 12l6 8m0-8-6 8"/>'
+};
+const icon=(key)=>`<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[key]||icons.next}</svg>`;
+const escapeText=text=>String(text).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function tone(freq=540,seconds=.15){
+  if(muted||effectVolume===0||document.hidden)return;
+  try{audio ||= new (window.AudioContext||window.webkitAudioContext)();audio.resume();if(!effectBus){effectBus=audio.createGain();effectBus.connect(audio.destination);}effectBus.gain.setValueAtTime(effectVolume,audio.currentTime);const o=audio.createOscillator(),g=audio.createGain();o.frequency.value=freq;g.gain.setValueAtTime(.035,audio.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audio.currentTime+seconds);o.connect(g);g.connect(effectBus);o.start();o.stop(audio.currentTime+seconds);}catch{/* Sound is optional. */}
+}
+function background(evening=false,morning=false){
+  const title=state.slideId==='S00_TITLE';
+  return `<svg viewBox="0 0 520 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path fill="${evening||morning?'var(--cw-cream)':'var(--cw-night)'}" d="M0 0h520v520H0z"/><circle cx="${title?335:280}" cy="${title?400:173}" r="158" fill="${evening?'var(--cw-brass)':'var(--cw-cream)'}" opacity="${evening?'.22':'1'}"/><path d="M0 425l48-122 48 122 32-76 32 76v95H0zM520 408l-54-151-53 151-30-81-31 81v112h168z" fill="var(--cw-forest)"/><g fill="var(--cw-forest)"><path d="M295 433V324l30-34 30 34v109zM365 433V351l25-30 25 30v82z"/></g><g fill="var(--cw-brass)"><path d="M320 356h9v19h-9zM386 370h8v16h-8z"/></g><path d="M0 470q134-40 263 0t257-10v60H0z" fill="${morning?'var(--cw-silver)':'var(--cw-forest)'}"/>${evening||morning?'':'<path d="M53 112v12m-6-6h12M464 76v12m-6-6h12" stroke="var(--cw-cream)" stroke-width="1.5"/>'}</svg>`;
+}
+function pawn(x,y,scale=1,color='#d9c7a8',rabbit=false){return `<g transform="translate(${x} ${y}) rotate(-18) scale(${scale})" fill="${color}"><ellipse cy="12" rx="10" ry="8"/><ellipse cx="-10" cy="-3" rx="4" ry="${rabbit?11:5}"/><ellipse cx="0" cy="-8" rx="4" ry="${rabbit?10:5}"/>${rabbit?'':`<ellipse cx="10" cy="-3" rx="4" ry="5"/>`}</g>`;}
+function lantern(x=198,y=125,scale=1,flash=false){return `<g transform="translate(${x} ${y}) scale(${scale})"><path d="M36 42v-9a25 25 0 0 1 50 0v9M22 51h78l-9 124H32zM18 179h86M18 47h86" stroke="var(--cw-brass)" stroke-width="6" fill="var(--cw-night)"/><path class="${flash?'signal-light':''}" d="M34 61h53l-6 102H41z" fill="var(--cw-cream)"/><path d="M48 63v99m24-99v99" stroke="var(--cw-brass)" stroke-width="3"/></g>`;}
+function distanceArt(scene){
+  // The observation describes the distance when the action was chosen, not a future tick.
+  const near=scene==='boundary'||state.actions.length===2;
+  const held=scene==='signal'&&state.signal==='held';
+  const cueX=near?310:452;
+  const waves=scene==='listen'?`<g class="wave" fill="none" stroke="var(--cw-cream)" stroke-width="3"><path d="M${cueX-30} 196q-25 27 0 54M${cueX-48} 183q-39 40 0 79"/></g>`:'';
+  const light=scene==='signal'||scene==='boundary'?`<path d="M119 241L350 180v200z" fill="var(--cw-brass)" opacity=".28"/>`:'';
+  return `<svg class="distance-art" data-distance="${near?'near':'far'}" viewBox="0 0 520 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path d="M0 0h520v400H0z" fill="var(--cw-night)"/><circle cx="460" cy="92" r="26" fill="var(--cw-cream)"/><path d="M402 297l34-107 34 107M440 303l29-85 29 85" fill="var(--cw-forest)"/><path d="M0 308h230v92H0z" fill="var(--cw-cream)"/><path d="M230 308h290v92H230z" fill="var(--cw-silver)"/><path d="M230 275v125" stroke="var(--cw-night)" stroke-width="4" stroke-dasharray="9 10"/>${light}${lantern(72,165,.72,scene==='signal')}${pawn(cueX,337,1.1,'var(--cw-night)')}${waves}${held?'<circle cx="310" cy="249" r="8" fill="var(--cw-cream)"/>':''}<path d="M342 169v160" stroke="var(--cw-brass)" stroke-width="2" stroke-dasharray="4 6" opacity=".8"/></svg>`;
+}
+function investigation(scene){
+  if(['signal','boundary','listen'].includes(scene))return distanceArt(scene);
+  const second=state.actions.length===2;
+  const track=scene==='track'||scene==='clue';
+  let drawing=track?`<path d="M0 240h520v280H0z" fill="var(--cw-silver)"/><path d="M0 240h336L223 520H0z" fill="var(--cw-cream)"/><path d="M336 240L223 520" stroke="var(--cw-night)" stroke-width="5" stroke-dasharray="12 12"/>${pawn(126,349,1.2,'var(--cw-night)',true)}${pawn(170,425,1.2,'var(--cw-night)',true)}${pawn(second?319:384,367,1.65,'var(--cw-night)')}${pawn(second?358:426,443,1.65,'var(--cw-night)')}`:scene==='signal'?lantern():scene==='listen'?`<g class="wave" fill="none" stroke="var(--cw-night)" stroke-linecap="round"><path d="M139 289q35-64 70 0t70 0t70 0t70 0" stroke-width="6"/><path d="M140 235q125-61 245 0" stroke-width="2"/></g>`:`<path d="M0 298h520v222H0z" fill="var(--cw-silver)"/><path d="M0 298h320l-88 222H0z" fill="var(--cw-cream)"/><path d="M320 298l-88 222" stroke="var(--cw-night)" stroke-width="5" stroke-dasharray="12 12"/><path d="M73 415h175" stroke="var(--cw-brass)" stroke-width="9"/><circle cx="345" cy="378" r="16" fill="var(--cw-night)"/>`;
+  if(scene==='signal'&&state.signal==='held')drawing+=`<circle class="signal-light" cx="396" cy="213" r="26" fill="var(--cw-brass)"/>`;
+  return `<svg viewBox="${track?'0 260 520 260':scene==='boundary'?'0 270 520 250':'0 75 520 400'}" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${drawing}</svg>`;
+}
+function ruleArt(report=false){return `<svg viewBox="0 75 520 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g transform="translate(${report?'164 125':'60 182'}) scale(${report?'1.6':'1'})" stroke="var(--cw-night)" stroke-width="4" fill="var(--cw-brass)"><path d="M24 139q20-33 20-83 0-41 36-41t36 41q0 50 20 83z"/><path d="M68 150q12 24 24 0M80 0v16" fill="none"/><path d="M80-62v62" stroke="var(--cw-cream)" stroke-width="4"/><path d="M43 113h74" stroke="var(--cw-cream)" stroke-width="3"/></g>${report?'':lantern()}</svg>`;}
+function sceneMarkup(data,enter=false){
+  const scene=data.scene||'boundary', evening=state.phase==='intro', morning=state.ending==='secret'&&state.phase==='result';
+  const backdrop=['signal','boundary','listen'].includes(scene)?'':background(evening,morning);
+  const allowLuna=state.phase==='title'||state.phase==='intro'&&scene!=='rule'||state.phase==='result';
+  const allowBell=['duet','bell-alone','title-art','listen'].some(s=>scene.includes(s));
+  const label=data.caption||({track:'足跡を、ひとつずつ。',listen:'耳を澄ませば、距離がわかる。',signal:state.signal==='held'?'二度の灯りに、短い返事。':'二度の灯りが、霧に消えた。',recap:'今夜の選択を、振り返る。'}[scene]||'森と道、その境界。');
+  const legend=['clue','track','rule','signal','boundary'].includes(scene)&&state.slideId!=='S08_RECAP'?`<div class="scene-legend ${['clue','track'].includes(scene)?'ground':''}"><span>見張り道</span><i class="line"></i><span>${scene==='signal'&&state.signal==='miss'?'遠い森 · 灯りは届かない':['clue','track','rule'].includes(scene)?'境界の外は森':'近い木陰 · 灯りが届く'}</span></div>`:'';
+  const distance=['signal','boundary','listen'].includes(scene)?`<div class="distance-caption"><strong>${scene==='boundary'||state.actions.length===2?'近い木陰の気配':'遠い森の気配'}</strong>${scene==='listen'?'姿は見えない。声の距離を聞き取る。':'灯りが届くのは、境界の向こうの木陰まで。'}</div>${scene==='signal'||scene==='boundary'?'<span class="range-key">灯りの届く範囲</span>':''}`:'';
+  return `<div class="stage ${scene} ${enter?'page-enter':''}" role="img" aria-label="${escapeText(label)}">${backdrop}${['clue','track','listen','signal','boundary'].includes(scene)?investigation(scene):''}${['rule','report'].includes(scene)?ruleArt(scene==='report'):''}${allowBell?`<div class="portrait bell expression-${data.bell??1}" data-character="bell"></div>`:''}${allowLuna?`<div class="portrait luna expression-${data.luna??2}" data-character="luna"></div>`:''}${scene.includes('title-art')?'<h1 class="title-wordmark"><small>A GENTLER NIGHT</small>CRY<br>WOLF!<em>Romantic Variant</em></h1>':''}${distance}${legend||`<span class="scene-label">${escapeText(label)}</span>`}</div>`;
+}
+function slideData(){
+  if(state.slideId==='S08_RECAP')return {...SLIDES.S08_RECAP,bell:OUTCOMES[state.ending].bell,luna:OUTCOMES[state.ending].luna};
+  if(state.ending)return {...OUTCOMES[state.ending],eyebrow:'夜明け · '+OUTCOMES[state.ending].title,next:'この夜の理由を見る'};
+  const data=SLIDES[state.slideId];
+  if(state.slideId.startsWith('S04_')){
+    const action=state.actions.at(-1);
+    return {...data,scene:action,text:state.notes.at(-1),heading:action==='track'?'足跡のむこう':action==='listen'?'森からの声':state.signal==='held'?'灯りが、届いた':'まだ、遠すぎる',hint:state.ticks===0&&state.signal!=='held'?'交代の鐘が近づく。境界を越えた足音が、見張り道の土に残った。':''};
+  }
+  return data;
+}
+function choice(key,label,detail='',kind='') {return `<button class="choice ${kind}" data-act="${key}">${icon(key)}<span><b>${label}</b>${detail?`<small>${detail}</small>`:''}</span><span class="arrow" aria-hidden="true">›</span></button>`;}
+function copyMarkup(data){
+  if(data.lines)return data.lines.map(([speaker,text])=>`<p class="copy">${speaker?`<span class="speaker ${speaker==='ベル'?'bell-speaker':''}">${escapeText(speaker)}</span>`:''}${escapeText(text)}</p>`).join('');
+  return data.text?`<p class="copy">${escapeText(data.text)}</p>`:'';
+}
+function reportEvidenceMarkup(){
+  const held=state.signal==='held';
+  return `<p class="report-evidence" data-evidence="${held?'outside':'inside'}">${icon(held?'signal':'track')}<span>${held?'合図に短い返事。<strong>足音は境界の外で止まった。</strong>':'交代の前に、<strong>見張り道の内側へ続く足跡。</strong>'}</span></p>`;
+}
+function recapMarkup(){
+  const o=OUTCOMES[state.ending],delta=n=>n===0?'±0':n>0?'+'+n:'−'+Math.abs(n);
+  return `<h2 class="recap-title">${o.title}</h2><p class="copy" style="font-size:16px">${o.why}</p><div class="stats"><div><span>村の信用</span><strong>${delta(o.trust)}</strong><p>${o.trustWhy}</p></div><div><span>二人のきずな</span><strong>${delta(o.bond)}</strong><p>${o.bondWhy}</p></div></div><p class="hint">今夜の選択：${state.actions.map(a=>({track:'足跡',listen:'音',signal:'合図'}[a])).join(' → ')} → ${state.report==='cry'?'鐘':'異常なし'}</p><div class="choices">${choice('restart','別の選択で、もう一度','','primary')}${choice('title','タイトルへ戻る','','secondary')}</div>`;
+}
+function modalMarkup(){
+  if(!state.modal)return '';
+  if(state.modal==='audio')return `<div class="modal-layer"><section class="modal audio-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><h2 id="modal-title">月夜の音</h2>${choice('sound',muted?'音をオンにする':'音をオフにする','','secondary')}<p class="music-state" data-music-status role="status">${musicStatusText()}</p><div class="audio-controls"><label for="bgm-volume"><span>BGMの音量<output id="bgm-level" for="bgm-volume">${Math.round(music.get().volume*100)}%</output></span><input id="bgm-volume" data-volume="bgm" type="range" min="0" max="100" value="${Math.round(music.get().volume*100)}"></label><label for="se-volume"><span>効果音の音量<output id="se-level" for="se-volume">${Math.round(effectVolume*100)}%</output></span><input id="se-volume" data-volume="se" type="range" min="0" max="100" value="${Math.round(effectVolume*100)}"></label></div><ul class="music-credits">${Object.values(MUSIC_TRACKS).map(t=>`<li><span class="music-credit-role">${t.role}</span><a href="${t.page}" target="_blank" rel="noopener noreferrer">${t.title}</a> — ${t.author} / OpenTracks</li>`).join('')}</ul>${Object.keys(window.CRYWOLF_MUSIC_PACK?.tracks||{}).length<3?'<p class="music-state">指定の3曲は追加待ちです。効果音は使用できます。</p>':''}${choice('close','物語へ戻る','','primary')}</section></div>`;
+  const notes=state.modal==='notes';
+  return `<div class="modal-layer"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><h2 id="modal-title">${notes?'調査メモ':'見張りの決まり'}</h2>${notes?(state.notes.length?`<ol>${state.notes.map(n=>`<li>${escapeText(n)}</li>`).join('')}</ol>`:'<p class="empty">まだ調べたことはありません。</p>'):'<p>見張り道にオオカミが入ったら、鐘で村へ知らせます。森にいるだけなら、警報はいりません。</p><p>調査か合図をひとつ選ぶと1刻。2刻が終わると、必ず報告します。考える時間に制限はありません。</p><p>ランタンを二度隠すと「森側で待って」。遠い森には届かず、近い木陰には届きます。</p><p>メモ・ページ送り・この説明では、刻は進みません。</p>'}${choice('close','物語へ戻る','','primary')}</section></div>`;
+}
+function render(focusKey,enter=false){
+  const data=slideData(),choicePage=Boolean(data.choices),recap=state.slideId==='S08_RECAP';
+  const showTime=state.phase==='night'||state.phase==='report';
+  const sequence=['S00_TITLE','S01_EVENING_A','S01_EVENING_B','S01_RULE','S02_NIGHT','S03_CLUE','S04_OBSERVATION','S05_DECISION','S04_OBSERVATION_2','S06_REPORT',state.ending?OUTCOMES[state.ending].slideId:null,'S08_RECAP'];
+  const page=sequence.indexOf(state.slideId)+1;
+  app.innerHTML=`<main class="book ${choicePage?'choice-page':''} ${recap?'recap-page':''}" data-phase="${state.phase}" data-slide="${state.slideId}" ${state.modal?'inert':''}><header class="hud"><div class="chapter">CRY WOLF!<b>${showTime ? "NIGHT 2 · 夜番" : "NIGHT 2 · 絵本のひと夜"}</b></div><div class="tools">${showTime?`<span class="time" aria-label="残り${state.ticks}刻">残り${state.ticks}刻<i class="${state.ticks>=1?'on':''}"></i><i class="${state.ticks>=2?'on':''}"></i></span><button class="icon" data-act="notes" aria-label="調査メモを開く">${icon('notes')}</button>`:''}<button class="icon" data-act="help" aria-label="遊び方を表示">?</button><button class="icon" data-act="sound" aria-label="${muted?'音をオンにする':'音をオフにする'}" aria-pressed="${!muted}">${icon(muted?'muted':'sound')}</button></div></header>${sceneMarkup(data,enter)}<section class="story ${enter?'page-enter':''}" aria-live="polite" aria-atomic="true"><p class="eyebrow">${data.eyebrow}</p>${recap?recapMarkup():`${data.heading?`<h2 class="heading">${data.heading}</h2>`:''}${copyMarkup(data)}${state.phase==='report'?reportEvidenceMarkup():''}${data.hint?`<p class="hint">${data.hint}</p>`:''}<div class="choices">${data.choices==='actions'?choice('track','足跡を調べる','土に残った痕跡を見る · 1刻')+choice('listen','耳を澄ます','声の方角と距離を聞く · 1刻')+choice('signal','ランタンで合図する','二度遮って「森側で待って」 · 1刻','signal'):data.choices==='reports'?choice('cry','鐘を鳴らす','見張り道への立ち入りを知らせる','cry')+choice('silent','異常なしと報告','見張り道には入っていない'):choice(state.slideId==='S00_TITLE'?'start':'next',data.next||'つぎへ','','primary')}</div>`}</section><footer class="footer"><span class="footer-brand">BELL & LUNA</span><button class="audio-settings" data-act="audio-settings" aria-label="音量設定を開く">♫ 音量</button><span aria-label="ページ ${page} / 12">${String(page).padStart(2,'0')} / 12</span></footer></main>${modalMarkup()}`;
+  app.querySelector('.book').classList.toggle('report-page',state.phase==='report');
+  if(state.modal){(app.querySelector(`.modal [data-act="${focusKey||'close'}"]`)||app.querySelector('[data-act="close"]')).focus({preventScroll:true});}
+  else if(focusKey){(app.querySelector(`[data-act="${focusKey}"]`)||app.querySelector('.choices button'))?.focus({preventScroll:true});}
+}
+function act(key,{expectedSlide,guard=false}={}){
+  if(expectedSlide&&state.slideId!==expectedSlide)return;
+  if(key==='close'){
+    if(!state.modal)return;
+    state={...state,help:false,modal:null};render(focusReturn);return;
+  }
+  if(key==='sound'&&(!state.modal||state.modal==='audio')){muted=!muted;music.setMuted(muted);if(effectBus)effectBus.gain.setValueAtTime(muted?0:effectVolume,audio.currentTime);render('sound');return;}
+  if(state.modal)return;
+  if(key==='help'||key==='notes'||key==='audio-settings'){
+    focusReturn=key;state={...state,modal:key==='audio-settings'?'audio':key,help:key==='help'};render();return;
+  }
+  if(guard&&performance.now()<inputLockedUntil)return;
+  let updated=state;
+  if(key==='start'&&state.slideId==='S00_TITLE')updated=withSlide(state,'S01_EVENING_A');
+  else if(key==='next')updated=advanceSlide(state);
+  else if(ACTIONS.includes(key))updated=applyNightAction(state,key);
+  else if(REPORTS.includes(key))updated=resolveReport(state,key);
+  else if(key==='restart'&&state.slideId==='S08_RECAP')updated=withSlide(initial(),'S01_EVENING_A');
+  else if(key==='title'&&state.slideId==='S08_RECAP')updated=initial();
+  if(updated===state)return;
+  inputLockedUntil=performance.now()+240;
+  state=updated;
+  music.setPhase(state.phase);
+  if(key==='cry')tone(650,.35);
+  if(key==='listen')tone(370,.2);
+  if(key==='signal'){tone(state.signal==='held'?610:260);if(state.signal==='held')setTimeout(()=>tone(740),150);}
+  render(state.slideId==='S00_TITLE'?'start':'next',true);
+  window.scrollTo({top:0,behavior:'instant'});
+}
+// Delegation plus slide/token validation prevents stale buttons and repeat input applying twice.
+app.addEventListener('click',event=>{
+  const button=event.target.closest('button[data-act]');
+  if(!button||button.closest('[inert]')||event.detail>1)return;
+  act(button.dataset.act,{expectedSlide:state.slideId,guard:true});
+});
+app.addEventListener('input',event=>{
+  const control=event.target;
+  if(!control.matches('input[data-volume]'))return;
+  const value=Number(control.value)/100;
+  if(control.dataset.volume==='bgm')music.setVolume(value);
+  else {effectVolume=value;if(effectBus)effectBus.gain.setValueAtTime(muted?0:effectVolume,audio.currentTime);}
+  app.querySelector(`#${control.dataset.volume==='bgm'?'bgm':'se'}-level`).textContent=Math.round(value*100)+'%';
+});
+window.addEventListener('keydown',event=>{
+  if(event.key==='Escape'&&state.modal){event.preventDefault();act('close');return;}
+  if(state.modal){
+    if(event.key==='Tab'){
+      const nodes=[...app.querySelectorAll('.modal button,.modal input,.modal a[href]')];
+      const edge=event.shiftKey?nodes[0]:nodes[nodes.length-1];
+      if(document.activeElement===edge||!nodes.includes(document.activeElement)){event.preventDefault();nodes[event.shiftKey?nodes.length-1:0]?.focus();}
+    }
+    return;
+  }
+  if(event.key==='Enter'||event.key===' '){
+    if(event.repeat||performance.now()<inputLockedUntil){event.preventDefault();return;}
+    if(event.target.closest('button,a'))return;
+    const next=app.querySelector('[data-act="next"],[data-act="start"]');
+    if(next){event.preventDefault();act(next.dataset.act,{guard:true});}
+  }
+});
+window.addEventListener('crywolf-music-ready',()=>music.refresh());
+document.addEventListener('visibilitychange',()=>{music.setSuspended(document.hidden);if(document.hidden)audio?.suspend();});
+window.addEventListener('pagehide',()=>{music.setSuspended(true);audio?.suspend();});
+window.addEventListener('pageshow',()=>music.setSuspended(document.hidden));
+window.addEventListener('pagehide',event=>{if(event.persisted)return;music.dispose();for(const url of musicSources.values())URL.revokeObjectURL(url);});
+window.CRYWOLF_TEST={get:()=>JSON.parse(JSON.stringify(state)),click:key=>act(key),model:{initial,advanceSlide,applyNightAction,resolveReport},muted:()=>muted,music:()=>music.get()};
+render();
+</script>
+</body>
+</html>
+
+
+
+
+
+

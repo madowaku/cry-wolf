@@ -1,0 +1,39 @@
+async (page) => {
+  const failures=[], errors=[];
+  let checks=0;
+  const check=(condition,label)=>{checks++;if(!condition) failures.push(label);};
+  const onError=error=>errors.push(error.message);
+  const onConsole=message=>{if(message.type()==='error') errors.push(message.text());};
+  page.on('pageerror',onError);page.on('console',onConsole);
+  await page.setViewportSize({width:360,height:800});
+  await page.goto(new URL('/?seed=0&visit2=0&sign2=TRACE', page.url()).href);
+  await page.getByRole('button',{name:/はじめから/}).click();
+  let choices=0, chapters=0;
+  for(let i=0;i<100;i++) {
+    const phase=await page.locator('main').getAttribute('data-phase');
+    const night=await page.locator('main').getAttribute('data-night');
+    if(phase==='DEMO_COMPLETE') break;
+    if(phase==='INTRO') chapters++;
+    if(phase==='CHOICE') {
+      check(await page.locator('.portrait.luna').count()===(night==='1'?1:0),'public N1 and hidden later Luna');
+      if(night==='2') check(await page.locator('.sign-card strong').innerText()==='静か','production ignores forced sign');
+      await page.locator('[data-choice="'+(choices<2?'CRY':'SILENT')+'"]').click();
+      choices++;
+    } else await page.locator('button.next').click();
+  }
+  check(chapters===3,'three intro chapters even when previously read');
+  check(choices===3,'three choices');
+  check(await page.locator('main').getAttribute('data-phase')==='DEMO_COMPLETE','finished demo');
+  const history=await page.locator('.history').innerText();
+  check(history.includes('N2\n「オオカミだ！」と知らせる\nルナは来ていた'),'production ignores forced visit');
+  const resources=await page.evaluate(()=>performance.getEntriesByType('resource').map(entry=>entry.name));
+  check(resources.every(url=>new URL(url).origin===new URL(page.url()).origin),'no external runtime assets');
+  const layout=await page.evaluate(()=>({width:innerWidth,height:innerHeight,scrollWidth:document.documentElement.scrollWidth,scrollHeight:document.documentElement.scrollHeight,footerBottom:document.querySelector('footer').getBoundingClientRect().bottom}));
+  check(layout.scrollWidth===360 && layout.scrollHeight===800 && layout.footerBottom<=800,'production result fits viewport');
+  await page.locator('.story-area').evaluate(el=>Promise.all(el.getAnimations({subtree:true}).map(animation=>animation.finished)));
+  await page.screenshot({path:'output/playwright/hotfix-production-result-360x800.png'});
+  check(errors.length===0,'console errors');
+  page.off('pageerror',onError);page.off('console',onConsole);
+  if(failures.length) throw new Error(failures.join('\n'));
+  return {checks,choices,chapters,history,layout,resources,errors,failures};
+}

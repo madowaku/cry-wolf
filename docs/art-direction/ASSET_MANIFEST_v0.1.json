@@ -1,0 +1,23 @@
+{
+  "version":"0.1",
+  "style":"flat-pop-storybook",
+  "target":"360x800 portrait / responsive",
+  "priority_0": [
+    {"name":"logo_cry_wolf.svg", "kind":"logo", "notes":"Vector wordmark with at most one wolf motif; no baked UI"},
+    {"name":"bg_title_night.webp", "kind":"background", "notes":"Big moon, geometric village and forest; no characters or letters"},
+    {"name":"bg_evening_edge.webp", "kind":"background", "notes":"Simple evening border of village and forest; no characters"},
+    {"name":"bg_forest_boundary.webp", "kind":"background", "notes":"Explicit inside/outside path boundary, no character spoilers"},
+    {"name":"ch_bell_neutral.webp", "kind":"sprite", "transparent":true},
+    {"name":"ch_bell_think.webp", "kind":"sprite", "transparent":true},
+    {"name":"ch_bell_flustered.webp", "kind":"sprite", "transparent":true},
+    {"name":"ch_bell_resolve.webp", "kind":"sprite", "transparent":true},
+    {"name":"ch_luna_tease.webp", "kind":"sprite", "transparent":true},
+    {"name":"ch_luna_tsun.webp", "kind":"sprite", "transparent":true},
+    {"name":"ch_luna_shy.webp", "kind":"sprite", "transparent":true},
+    {"name":"ch_luna_wait.webp", "kind":"sprite", "transparent":true},
+    {"name":"prop_bell.svg", "kind":"icon"},
+    {"name":"prop_lantern.svg", "kind":"icon"},
+    {"name":"prop_footprint.svg", "kind":"icon"}
+  ],
+  "rules": ["No baked-in Japanese text, button, HUD, or status", "Do not reveal Luna in investigation or report slides", "Use same sprite canvas origin and dimensions for expressions", "Art changes must not change v0.5 game mechanics"]
+}

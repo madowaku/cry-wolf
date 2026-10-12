@@ -1,0 +1,36 @@
+async (page) => {
+ const failures=[], errors=[];let checks=0;
+ const check=(ok,n)=>{checks++;if(!ok)failures.push(n)};
+ page.on('pageerror',e=>errors.push(e.message));
+ page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+ const click=async a=>{await page.waitForTimeout(245);await page.locator(`[data-act="${a}"]`).click()};
+ const state=()=>page.evaluate(()=>window.__cwMoon);
+ const next=async()=>{for(let i=0;i<18;i++){if(!['story','observe','result'].includes((await state()).phase))return;await click('next')}};
+ await page.setViewportSize({width:360,height:800});
+ await page.goto('http://127.0.0.1:5199/');
+ await page.getByRole('link',{name:/月あかりの約束を遊ぶ/}).click();
+ check(page.url().endsWith('/moon/index.html'),'built main entry opens new game');
+ await page.evaluate(()=>localStorage.removeItem('crywolf_moon_v08'));await page.reload();
+ await click('new');await next();await click('hide1');await next();
+ await click('signal2');await click('next');await click('signal2');await click('next');await click('silent2');
+ check((await state()).flags.n2==='best','production signal-signal-silent reaches best');
+ await next();for(const a of ['village3','speak3','signal3']){await click(a);await click('next')}
+ await click('proposal3');await click('next');check((await state()).phase==='finish','production complete 3 nights');
+ check((await state()).trust===3&&(await state()).bond===4&&(await state()).insight===2,'production exact final values');
+ check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'production mobile no overflow');
+ await page.reload();await click('resume');check((await state()).phase==='finish'&&(await state()).history.length===3,'finished save resumes without duplicate results');
+ check(await page.evaluate(()=>performance.getEntriesByType('resource').filter(e=>/^https?:/.test(e.name)).every(e=>new URL(e.name).origin===location.origin)),'same-origin runtime resources');
+ await page.goto('file:///C:/Dev/Projects/cry-wolf/public/moon/index.html');
+ await page.evaluate(()=>localStorage.removeItem('crywolf_moon_v08'));await page.reload();await click('new');await next();
+ check((await state()).phase==='choice1','file mode reaches first decision');
+ await page.locator('img').evaluateAll(imgs=>Promise.all(imgs.map(i=>i.decode())));
+ check(await page.evaluate(()=>[...document.images].every(i=>i.complete&&i.naturalWidth>0)),'file mode images load');
+ await page.addStyleTag({content:'.prose,.choice strong{font-size:24px!important}'});
+ check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'24px body and choices have no horizontal overflow');
+ await click('ring1');check((await state()).phase==='result','large text still allows selection');
+ await page.addInitScript(()=>{Object.defineProperty(window,'localStorage',{get(){throw new Error('Storage unavailable')}})});
+ await page.goto('http://127.0.0.1:5199/moon/index.html');await click('new');await next();
+ check((await state()).phase==='choice1'&&!(await state()).storageOK,'storage denied still playable and reported');
+ check(errors.length===0,'no errors');
+ return {checks,passed:checks-failures.length,failures,errors};
+}

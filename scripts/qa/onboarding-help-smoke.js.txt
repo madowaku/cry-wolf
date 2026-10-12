@@ -1,0 +1,35 @@
+async (page) => {
+  const failures=[], errors=[];
+  let checks=0;
+  const check=(condition,label)=>{checks++;if(!condition) failures.push(label);};
+  const onError=error=>errors.push(error.message);
+  const onConsole=message=>{if(message.type()==='error') errors.push(message.text());};
+  page.on('pageerror',onError);page.on('console',onConsole);
+  await page.setViewportSize({width:360,height:800});
+  await page.goto('http://127.0.0.1:5193/?seed=0');
+  await page.getByRole('button',{name:/はじめから/}).click();
+  for(let i=0;i<3;i++) await page.locator('button.next').click();
+  await page.getByRole('button',{name:'ルールヘルプを開く'}).click();
+  const layout=await page.getByRole('dialog').evaluate(el=>({height:innerHeight,top:el.getBoundingClientRect().top,bottom:el.getBoundingClientRect().bottom,scrollHeight:el.scrollHeight,clientHeight:el.clientHeight,buttons:[...el.querySelectorAll('button')].map(b=>({width:b.getBoundingClientRect().width,height:b.getBoundingClientRect().height}))}));
+  check(layout.top>=0 && layout.bottom<=800 && layout.scrollHeight<=layout.clientHeight,'help fits 360x800');
+  check(layout.buttons.every(b=>b.width>=44 && b.height>=44),'help tap targets');
+  await page.screenshot({path:'output/playwright/hotfix-help-360x800.png'});
+  await page.keyboard.press('Shift+Tab');
+  check(await page.evaluate(()=>document.activeElement.textContent.includes('物語とルールを見る')),'native modal traps keyboard focus');
+  await page.keyboard.press('Escape');
+  check(await page.evaluate(()=>document.activeElement.getAttribute('aria-label'))==='ルールヘルプを開く','modal focus restored');
+  // Simulate browsers that deny local storage. This is intro read status, not game saving.
+  await page.addInitScript(()=>Object.defineProperty(window,'localStorage',{get(){throw new DOMException('Storage denied','SecurityError');}}));
+  await page.reload();
+  await page.getByRole('button',{name:/はじめから/}).click();
+  check(await page.getByRole('button',{name:/既読の物語をスキップ/}).count()===0,'storage denial falls back to unread intro');
+  for(let i=0;i<3;i++) await page.locator('button.next').click();
+  check(await page.locator('main').getAttribute('data-phase')==='SIGN','storage denial still starts N1');
+  await page.locator('button.next').click();
+  await page.locator('[data-choice="SILENT"]').click();
+  check(await page.locator('.stat').first().getAttribute('aria-label')==='村の信用 2 / 5','storage denial still resolves normally');
+  check(errors.length===0,'no console/page errors');
+  page.off('pageerror',onError);page.off('console',onConsole);
+  if(failures.length) throw new Error(failures.join('\n'));
+  return {checks,layout,errors,failures};
+}

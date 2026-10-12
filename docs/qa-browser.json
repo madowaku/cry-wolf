@@ -1,0 +1,243 @@
+{
+  "completedAutomatedPlays": 6,
+  "assertions": 406,
+  "results": [
+    {
+      "name": "natural",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "query": "seed=0",
+      "choices": [
+        "CRY",
+        "CRY",
+        "SILENT"
+      ],
+      "history": "N1\nオオカミだ！\n来訪あり · 信用 +1 / 親密さ 0\nN2\nオオカミだ！\n来訪あり · 信用 +1 / 親密さ 0\nN3\n何もいない\n来訪なし · 信用 0 / 親密さ 0",
+      "layout": {
+        "width": 360,
+        "height": 800,
+        "scrollWidth": 360,
+        "scrollHeight": 800,
+        "footerBottom": 786,
+        "controls": [
+          {
+            "text": "☷",
+            "x": 295,
+            "y": 20,
+            "width": 44,
+            "height": 44,
+            "bottom": 64
+          },
+          {
+            "text": "同じ3夜をもう一度›",
+            "x": 21,
+            "y": 651,
+            "width": 318,
+            "height": 54,
+            "bottom": 705
+          },
+          {
+            "text": "タイトルへ›",
+            "x": 21,
+            "y": 716,
+            "width": 318,
+            "height": 45,
+            "bottom": 761
+          }
+        ]
+      }
+    },
+    {
+      "name": "present-silent",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "query": "seed=0&visit2=1&visit3=1&sign2=TRACE&sign3=QUIET",
+      "choices": [
+        "SILENT",
+        "SILENT",
+        "SILENT"
+      ],
+      "history": "N1\n何もいない\n来訪あり · 信用 -1 / 親密さ +1\nN2\n何もいない\n来訪あり · 信用 -1 / 親密さ +1\nN3\n何もいない\n来訪あり · 信用 -1 / 親密さ +1",
+      "layout": {
+        "width": 360,
+        "height": 800,
+        "scrollWidth": 360,
+        "scrollHeight": 800,
+        "footerBottom": 786,
+        "controls": [
+          {
+            "text": "☷",
+            "x": 295,
+            "y": 20,
+            "width": 44,
+            "height": 44,
+            "bottom": 64
+          },
+          {
+            "text": "同じ3夜をもう一度›",
+            "x": 21,
+            "y": 651,
+            "width": 318,
+            "height": 54,
+            "bottom": 705
+          },
+          {
+            "text": "タイトルへ›",
+            "x": 21,
+            "y": 716,
+            "width": 318,
+            "height": 45,
+            "bottom": 761
+          }
+        ]
+      }
+    },
+    {
+      "name": "absent-cry",
+      "viewport": {
+        "width": 720,
+        "height": 1280
+      },
+      "query": "seed=0&visit2=0&visit3=0&sign2=TRACE&sign3=RUSTLE",
+      "choices": [
+        "SILENT",
+        "CRY",
+        "CRY"
+      ],
+      "history": "N1\n何もいない\n来訪あり · 信用 -1 / 親密さ +1\nN2\nオオカミだ！\n来訪なし · 信用 -1 / 親密さ +1\nN3\nオオカミだ！\n来訪なし · 信用 -1 / 親密さ 0",
+      "layout": {
+        "width": 720,
+        "height": 1280,
+        "scrollWidth": 720,
+        "scrollHeight": 1280,
+        "footerBottom": 1266,
+        "controls": [
+          {
+            "text": "☷",
+            "x": 527,
+            "y": 20,
+            "width": 44,
+            "height": 44,
+            "bottom": 64
+          },
+          {
+            "text": "同じ3夜をもう一度›",
+            "x": 149,
+            "y": 1131,
+            "width": 422,
+            "height": 54,
+            "bottom": 1185
+          },
+          {
+            "text": "タイトルへ›",
+            "x": 149,
+            "y": 1196,
+            "width": 422,
+            "height": 45,
+            "bottom": 1241
+          }
+        ]
+      }
+    },
+    {
+      "name": "absent-silent",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "query": "seed=0&visit2=0&visit3=0&sign2=RUSTLE&sign3=TRACE",
+      "choices": [
+        "CRY",
+        "SILENT",
+        "SILENT"
+      ],
+      "history": "N1\nオオカミだ！\n来訪あり · 信用 +1 / 親密さ 0\nN2\n何もいない\n来訪なし · 信用 0 / 親密さ 0\nN3\n何もいない\n来訪なし · 信用 0 / 親密さ 0",
+      "layout": {
+        "width": 1280,
+        "height": 900,
+        "scrollWidth": 1280,
+        "scrollHeight": 900,
+        "footerBottom": 886,
+        "controls": [
+          {
+            "text": "☷",
+            "x": 807,
+            "y": 20,
+            "width": 44,
+            "height": 44,
+            "bottom": 64
+          },
+          {
+            "text": "同じ3夜をもう一度›",
+            "x": 429,
+            "y": 751,
+            "width": 422,
+            "height": 54,
+            "bottom": 805
+          },
+          {
+            "text": "タイトルへ›",
+            "x": 429,
+            "y": 816,
+            "width": 422,
+            "height": 45,
+            "bottom": 861
+          }
+        ]
+      }
+    },
+    {
+      "name": "present-cry",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "query": "seed=0&visit2=1&visit3=1&sign2=QUIET&sign3=TRACE",
+      "choices": [
+        "SILENT",
+        "CRY",
+        "CRY"
+      ],
+      "history": "N1\n何もいない\n来訪あり · 信用 -1 / 親密さ +1\nN2\nオオカミだ！\n来訪あり · 信用 +1 / 親密さ -1\nN3\nオオカミだ！\n来訪あり · 信用 +1 / 親密さ 0",
+      "layout": {
+        "width": 360,
+        "height": 800,
+        "scrollWidth": 360,
+        "scrollHeight": 800,
+        "footerBottom": 786,
+        "controls": [
+          {
+            "text": "☷",
+            "x": 295,
+            "y": 20,
+            "width": 44,
+            "height": 44,
+            "bottom": 64
+          },
+          {
+            "text": "同じ3夜をもう一度›",
+            "x": 21,
+            "y": 651,
+            "width": 318,
+            "height": 54,
+            "bottom": 705
+          },
+          {
+            "text": "タイトルへ›",
+            "x": 21,
+            "y": 716,
+            "width": 318,
+            "height": 45,
+            "bottom": 761
+          }
+        ]
+      }
+    }
+  ],
+  "failures": [],
+  "errors": []
+}

@@ -1,0 +1,18 @@
+{
+  "checks": 7,
+  "choices": 3,
+  "history": "N1\nオオカミだ！\n来訪あり · 信用 +1 / 親密さ 0\nN2\nオオカミだ！\n来訪あり · 信用 +1 / 親密さ 0\nN3\n何もいない\n来訪なし · 信用 0 / 親密さ 0",
+  "layout": {
+    "width": 360,
+    "height": 800,
+    "scrollWidth": 360,
+    "scrollHeight": 800,
+    "footerBottom": 786
+  },
+  "resources": [
+    "http://127.0.0.1:5195/assets/index-DaXKjiD1.js",
+    "http://127.0.0.1:5195/assets/index-DD4NHmrb.css"
+  ],
+  "errors": [],
+  "failures": []
+}

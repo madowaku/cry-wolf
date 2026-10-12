@@ -1,0 +1,19 @@
+{
+  "checks": 11,
+  "choices": 3,
+  "chapters": 3,
+  "history": "N1\n「オオカミだ！」と知らせる\nルナは来ていた。正しい警報だった。\n村の信用 +1 / ルナとの仲 0\nN2\n「オオカミだ！」と知らせる\nルナは来ていた。正しい警報だった。\n村の信用 +1 / ルナとの仲 0\nN3\n今夜は「異常なし」と報告\nその夜、見張り道は静かだった。\n村の信用 0 / ルナとの仲 0",
+  "layout": {
+    "width": 360,
+    "height": 800,
+    "scrollWidth": 360,
+    "scrollHeight": 800,
+    "footerBottom": 788
+  },
+  "resources": [
+    "http://127.0.0.1:5196/assets/index-CcaKEfdz.js",
+    "http://127.0.0.1:5196/assets/index-CA1XT0IO.css"
+  ],
+  "errors": [],
+  "failures": []
+}

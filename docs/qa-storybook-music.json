@@ -1,0 +1,349 @@
+{
+  "date": "2026-10-12T04:20:27.507Z",
+  "audioEvidence": "actual user-provided MP3s converted to AAC; browser decode and playback state, not human listening",
+  "assertions": 60,
+  "failures": [],
+  "errors": [],
+  "mediaChecks": [
+    {
+      "role": "opening",
+      "target": "opening",
+      "muted": false,
+      "suspended": false,
+      "volume": 0.22,
+      "status": "playing",
+      "loaded": [
+        "opening"
+      ],
+      "nodes": [
+        {
+          "paused": false,
+          "time": 0.63316,
+          "duration": 79.596009,
+          "volume": 0.22,
+          "loop": true,
+          "ready": 4,
+          "error": null
+        }
+      ]
+    },
+    {
+      "role": "opening",
+      "target": "opening",
+      "muted": false,
+      "suspended": false,
+      "volume": 0.35,
+      "status": "playing",
+      "loaded": [
+        "opening"
+      ],
+      "nodes": [
+        {
+          "paused": false,
+          "time": 1.946186,
+          "duration": 79.596009,
+          "volume": 0.35,
+          "loop": true,
+          "ready": 4,
+          "error": null
+        }
+      ]
+    },
+    {
+      "role": "gameplay",
+      "target": "gameplay",
+      "muted": false,
+      "suspended": false,
+      "volume": 0.35,
+      "status": "playing",
+      "loaded": [
+        "opening",
+        "gameplay"
+      ],
+      "nodes": [
+        {
+          "paused": true,
+          "time": 0,
+          "duration": 79.596009,
+          "volume": 0,
+          "loop": true,
+          "ready": 4,
+          "error": null
+        },
+        {
+          "paused": false,
+          "time": 0.598391,
+          "duration": 161.125011,
+          "volume": 0.35,
+          "loop": true,
+          "ready": 4,
+          "error": null
+        }
+      ]
+    },
+    {
+      "role": "ending",
+      "target": "ending",
+      "muted": false,
+      "suspended": false,
+      "volume": 0.35,
+      "status": "playing",
+      "loaded": [
+        "opening",
+        "gameplay",
+        "ending"
+      ],
+      "nodes": [
+        {
+          "paused": true,
+          "time": 0,
+          "duration": 79.596009,
+          "volume": 0,
+          "loop": true,
+          "ready": 4,
+          "error": null
+        },
+        {
+          "paused": true,
+          "time": 0,
+          "duration": 161.125011,
+          "volume": 0,
+          "loop": true,
+          "ready": 4,
+          "error": null
+        },
+        {
+          "paused": false,
+          "time": 0.618447,
+          "duration": 31.347007,
+          "volume": 0.35,
+          "loop": true,
+          "ready": 4,
+          "error": null
+        }
+      ]
+    },
+    {
+      "role": "opening",
+      "target": "opening",
+      "muted": false,
+      "suspended": false,
+      "volume": 0.35,
+      "status": "playing",
+      "loaded": [
+        "opening",
+        "gameplay",
+        "ending"
+      ],
+      "nodes": [
+        {
+          "paused": false,
+          "time": 0.621125,
+          "duration": 79.596009,
+          "volume": 0.35,
+          "loop": true,
+          "ready": 4,
+          "error": null
+        },
+        {
+          "paused": true,
+          "time": 0,
+          "duration": 161.125011,
+          "volume": 0,
+          "loop": true,
+          "ready": 4,
+          "error": null
+        },
+        {
+          "paused": true,
+          "time": 0,
+          "duration": 31.347007,
+          "volume": 0,
+          "loop": true,
+          "ready": 4,
+          "error": null
+        }
+      ]
+    },
+    {
+      "role": "opening",
+      "target": "opening",
+      "muted": false,
+      "suspended": false,
+      "volume": 0.22,
+      "status": "playing",
+      "loaded": [
+        "opening"
+      ],
+      "nodes": [
+        {
+          "paused": false,
+          "time": 0.631718,
+          "duration": 79.596009,
+          "volume": 0.22,
+          "loop": true,
+          "ready": 4,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "layouts": [
+    {
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "dialog": {
+        "x": 20,
+        "y": 66.28125,
+        "w": 320,
+        "h": 667.4375,
+        "scroll": 663,
+        "client": 663
+      },
+      "controls": [
+        {
+          "w": 264,
+          "h": 61,
+          "top": 146.28125,
+          "bottom": 207.28125
+        },
+        {
+          "w": 264,
+          "h": 44,
+          "top": 293.375,
+          "bottom": 337.375
+        },
+        {
+          "w": 264,
+          "h": 44,
+          "top": 389.375,
+          "bottom": 433.375
+        },
+        {
+          "w": 264,
+          "h": 61,
+          "top": 644.71875,
+          "bottom": 705.71875
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "dialog": {
+        "x": 20,
+        "y": 88.28125,
+        "w": 350,
+        "h": 667.4375,
+        "scroll": 663,
+        "client": 663
+      },
+      "controls": [
+        {
+          "w": 294,
+          "h": 61,
+          "top": 168.28125,
+          "bottom": 229.28125
+        },
+        {
+          "w": 294,
+          "h": 44,
+          "top": 315.375,
+          "bottom": 359.375
+        },
+        {
+          "w": 294,
+          "h": 44,
+          "top": 411.375,
+          "bottom": 455.375
+        },
+        {
+          "w": 294,
+          "h": 61,
+          "top": 666.71875,
+          "bottom": 727.71875
+        }
+      ]
+    },
+    {
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "dialog": {
+        "x": 140,
+        "y": 302.28125,
+        "w": 440,
+        "h": 675.4375,
+        "scroll": 671,
+        "client": 671
+      },
+      "controls": [
+        {
+          "w": 384,
+          "h": 65,
+          "top": 382.28125,
+          "bottom": 447.28125
+        },
+        {
+          "w": 384,
+          "h": 44,
+          "top": 533.375,
+          "bottom": 577.375
+        },
+        {
+          "w": 384,
+          "h": 44,
+          "top": 629.375,
+          "bottom": 673.375
+        },
+        {
+          "w": 384,
+          "h": 65,
+          "top": 884.71875,
+          "bottom": 949.71875
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "dialog": {
+        "x": 420,
+        "y": 62.28125,
+        "w": 440,
+        "h": 675.4375,
+        "scroll": 671,
+        "client": 671
+      },
+      "controls": [
+        {
+          "w": 384,
+          "h": 65,
+          "top": 142.28125,
+          "bottom": 207.28125
+        },
+        {
+          "w": 384,
+          "h": 44,
+          "top": 293.375,
+          "bottom": 337.375
+        },
+        {
+          "w": 384,
+          "h": 44,
+          "top": 389.375,
+          "bottom": 433.375
+        },
+        {
+          "w": 384,
+          "h": 65,
+          "top": 644.71875,
+          "bottom": 709.71875
+        }
+      ]
+    }
+  ]
+}

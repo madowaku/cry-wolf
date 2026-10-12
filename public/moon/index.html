@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#19283f">
+  <meta name="description" content="村を守るベルと、森を守るルナ。月あかりの下、観察と小さな合図で物語が変わる、七夜とエピローグの絵本ゲーム。">
+  <title>CRY WOLF! — 月あかりの約束</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preload" as="image" href="assets/village.webp">
+  <script defer src="model.js"></script>
+  <script defer src="story.js"></script>
+  <script defer src="story-late.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#page">本文へ</a>
+  <main class="book" id="book">
+    <header class="bar"><a class="brand" href="#" data-ui="home" aria-label="CRY WOLF! タイトルへ">CRY WOLF!<span>月あかりの約束</span></a><div id="chapter"></div><nav aria-label="メニュー"><button data-ui="notes" aria-label="手がかり手帳">手帳</button><button data-ui="help" aria-label="遊び方">?</button><button data-ui="settings" aria-label="音と動きの設定">設定</button></nav></header>
+    <div class="spread"><section class="stage" id="stage" aria-label="絵本の舞台"></section><article class="page" id="page" tabindex="-1"></article></div>
+    <footer class="footer"><span>月はまだ、満ちる途中。</span><span id="save-status" role="status"></span></footer>
+  </main>
+  <div id="modal-host"></div>
+  <noscript>遊ぶにはブラウザのJavaScriptを有効にしてください。</noscript>
+</body>
+</html>

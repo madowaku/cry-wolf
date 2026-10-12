@@ -1,0 +1,32 @@
+/* CRY WOLF! Flat Pop Art Direction v0.1 — UI tokens */
+:root {
+  --cw-night: #19283F;
+  --cw-cream: #F4EAD9;
+  --cw-coal: #303239;
+  --cw-silver: #B8BEC8;
+  --cw-ribbon: #D54760;
+  --cw-brass: #C8954F;
+
+  --cw-ink: var(--cw-night);
+  --cw-paper: var(--cw-cream);
+  --cw-forest: #112036; /* dark variant of night, not a decorative new highlight */
+  --cw-mist: #DAD9D1;  /* muted neutral for dividing planes */
+  --cw-stroke: 2px solid var(--cw-night);
+  --cw-radius-card: 12px;
+  --cw-radius-button: 10px;
+  --cw-space-1: 4px;
+  --cw-space-2: 8px;
+  --cw-space-3: 12px;
+  --cw-space-4: 16px;
+  --cw-space-6: 24px;
+  --cw-tap-min: 48px;
+  --cw-body-font: 16px;
+  --cw-button-font: 16px;
+  --cw-heading-font: 24px;
+  --cw-font-ui: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+  --cw-font-title: Georgia, "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --cw-motion-quick: 180ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --cw-motion-quick: 0ms; }
+}

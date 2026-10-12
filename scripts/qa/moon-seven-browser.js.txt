@@ -1,0 +1,106 @@
+async (page) => {
+  page.setDefaultTimeout(12000);
+  const checks=[],errors=[],screenshots=[],routes=[];
+  const check=(ok,label)=>checks.push({label,pass:!!ok});
+  page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+  const get=()=>page.evaluate(()=>window.__cwMoon);
+  const click=async a=>{await page.waitForTimeout(245);await page.locator(`[data-act="${a}"]`).click()};
+  const shot=async name=>{await page.waitForTimeout(550);const path=`output/playwright/moon-seven/${name}.png`;await page.screenshot({path,fullPage:true});screenshots.push(path)};
+  const metrics=async label=>{
+    await page.locator('#book img').evaluateAll(imgs=>Promise.all(imgs.map(i=>i.decode())));
+    const m=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,broken:[...document.querySelectorAll('#book img')].some(i=>!i.complete||!i.naturalWidth),clipped:[...document.querySelectorAll('h1,.prose,.choice strong,.choice small')].some(e=>e.scrollWidth>e.clientWidth+1),font:parseFloat(getComputedStyle(document.querySelector('.prose')).fontSize),small:[...document.querySelectorAll('#book button')].filter(e=>getComputedStyle(e).visibility!=='hidden').some(e=>e.getBoundingClientRect().width<43.9||e.getBoundingClientRect().height<43.9),undefinedText:document.querySelector('#page').textContent.includes('undefined')}));
+    check(!m.overflow,label+' fits width');check(!m.broken,label+' images');check(!m.clipped&&!m.undefinedText,label+' complete text');check(m.font>=18,label+' readable prose');check(!m.small,label+' 44px controls');
+  };
+  const seenShots=new Set();
+  const frame=async prefix=>{
+    const s=await get();await metrics(`${prefix} ${s.stage}/${s.phase}/${s.beat}`);
+    const k=`${s.stage}-${s.phase}-${s.beat}`;
+    if(prefix==='HONEST'&&((s.stage==='night4'&&s.phase==='story'&&s.beat===0)||(s.stage==='night4'&&s.phase==='choice4')||(s.stage==='night5'&&s.phase==='answer')||(s.stage==='night6'&&s.phase==='explore6')||(s.stage==='night7'&&s.phase==='epilogue'))&&!seenShots.has(k)){seenShots.add(k);await shot(prefix+'-'+k)}
+    if(s.phase==='epilogue'&&s.beat===1)check(await page.locator('.backdrop-dawn .sky-moon').isHidden(),prefix+' dawn background hides moon');
+  };
+  const forward=async prefix=>{for(let i=0;i<80;i++){const s=await get();if(!['story','observe','result','interlude','answer','epilogue'].includes(s.phase))return;await frame(prefix);await click('next')}throw new Error('Automatic pages did not terminate')};
+  const united=['ring1','track2','signal2','silent2','forest3','speak3','signal3','proposal3'];
+  const reserved=['ring1','track2','track2','ring2','forest3','speak3','signal3','facts3'];
+  const fractured=['hide1','track2','track2','silent2','village3','speak3','signal3','false3'];
+  const plans=[
+    {id:'HONEST',w:360,h:800,road:true,actions:[...united,'thank4','want5','track5','signal5','silent5','village6','forest6','heart6','plan6','call7']},
+    {id:'SECRET_MEETING',w:390,h:844,road:false,actions:[...united,'thank4','want5','track5','signal5','silent5','wait6','wait6','wait6','hush6','silent7']},
+    {id:'GOOD_DOG',w:720,h:1280,road:true,actions:[...reserved,'pocket4','away5','track5','listen5','silent5','survey6','village6','forest6','plan6','ring7']},
+    {id:'BAD_LIAR',w:1280,h:900,road:false,actions:[...fractured,'ring4','decide5','track5','listen5','silent5','wait6','wait6','wait6','hush6','silent7']}
+  ];
+  await page.goto('http://127.0.0.1:5198/moon/index.html?qa=seven');
+  await page.evaluate(()=>localStorage.removeItem('crywolf_moon_endings_v09'));
+  for(const p of plans){
+    await page.setViewportSize({width:p.w,height:p.h});await page.emulateMedia({reducedMotion:'no-preference'});
+    await page.evaluate(()=>{localStorage.removeItem('crywolf_moon_v09');localStorage.removeItem('crywolf_moon_v08');localStorage.removeItem('crywolf_moon_preferences_v08')});await page.reload();
+    await metrics(p.id+' cover');await click('new');await forward(p.id);
+    for(const a of p.actions){
+      const s=await get();
+      if(s.phase==='choice7'){
+        const eligible=s.bond>=4&&s.trust>=2&&s.honesty>=1;
+        check(await page.locator('[data-act="call7"]').count()===(eligible?1:0),p.id+' call eligibility');
+        check(await page.locator('.sky-moon svg path').count()===0,p.id+' seventh-night full moon');
+        if(p.id==='HONEST'){
+          check(!await page.locator('[data-act="call7"]').isVisible(),'final name initially hidden during reflection');
+          await page.waitForTimeout(1650);check(await page.locator('[data-act="call7"]').isVisible(),'name appears after reflection');
+          await page.reload();await click('resume');
+          check((await get()).phase==='choice7'&&(await get()).history.length===6,'N7 save resumes before applying final result');
+          await page.emulateMedia({reducedMotion:'reduce'});
+          check(await page.locator('[data-act="call7"]').isVisible(),'reduced motion reveals name immediately');
+          check(await page.locator('#book').evaluate(e=>e.getAnimations({subtree:true}).length===0),'reduced motion stops scene and button animation');
+          await page.emulateMedia({reducedMotion:'no-preference'});
+          await page.getByRole('button',{name:'音と動きの設定',exact:true}).click();await page.locator('[data-ui="motion"]').click();await page.keyboard.press('Escape');
+          check(await page.locator('[data-act="call7"]').isVisible(),'manual motion off reveals name');
+          check(await page.locator('#book').evaluate(e=>e.getAnimations({subtree:true}).length===0),'manual motion off stops all animation');
+          await shot('HONEST-final-choice-360');
+        }
+        // The secret route chooses before the delayed option becomes visible.
+        if(p.id!=='SECRET_MEETING')await metrics(p.id+' final-choice');
+      } else await frame(p.id);
+      await click(a);
+      if(p.id==='HONEST'&&a==='want5'){
+        const before=await get();await page.reload();await click('resume');const after=await get();
+        check(before.phase===after.phase&&before.revision===after.revision&&before.trust===after.trust&&before.bond===after.bond&&after.flags.answer5==='want','N5 evening answer saved exactly once');
+      }
+      if(p.id==='HONEST'&&a==='heart6'){
+        const before=await get();await page.getByRole('button',{name:'手がかり手帳',exact:true}).click();
+        check((await get()).ticks===before.ticks,'notebook does not spend time');
+        check(!(await page.locator('.modal').innerText()).includes('undefined'),'all late notes and history have text');
+        await page.keyboard.press('Shift+Tab');check(await page.locator('.modal button').last().evaluate(e=>e===document.activeElement),'modal focus trap');
+        await page.keyboard.press('Escape');check(await page.getByRole('button',{name:'手がかり手帳',exact:true}).evaluate(e=>e===document.activeElement),'notebook restores focus');
+      }
+      if(a.endsWith('7')){
+        check((await get()).history.length===7,p.id+' one final result');
+        if(p.id==='SECRET_MEETING'){await page.waitForTimeout(1800);check((await get()).history.length===7&&await page.locator('[data-act="call7"]').count()===0,'choosing early cancels the name option without a later duplicate');}
+      }
+      await forward(p.id);
+    }
+    const end=await get();check(end.phase==='finish'&&end.ending===p.id,p.id+' expected ending');check(end.flags.road===p.road,p.id+' road resolution');
+    check(end.history.length===7,p.id+' seven history entries');await metrics(p.id+' finish');await shot(p.id+'-finish-'+p.w);
+    await click('epilogue');check(await page.locator('.modal .note').count()===3,p.id+' reread 3 epilogue pages');await page.keyboard.press('Escape');
+    await click('collection');check(await page.locator('.ending-stamp.read').count()===routes.length+1,p.id+' collection accumulates');await page.keyboard.press('Escape');
+    await page.reload();await click('resume');check((await get()).phase==='finish'&&(await get()).history.length===7,p.id+' completed bookmark restores');
+    routes.push({ending:p.id,width:p.w,height:p.h,road:p.road,trust:end.trust,bond:end.bond,honesty:end.honesty,actions:p.actions});
+  }
+  // Build a v8-shaped completed bookmark; identical v8 replay is separately checked against the frozen v8 engine.
+  const legacy=await page.evaluate(actions=>{
+    const M=window.CWModel;let s=M.transition(M.fresh(),'start');
+    const forward=()=>{while(['story','observe','result'].includes(s.phase))s=M.transition(s,'next')};forward();
+    for(const a of actions){s=M.transition(s,a);forward()}
+    return JSON.stringify({version:8,events:s.events});
+  },united);
+  await page.evaluate(raw=>{localStorage.removeItem('crywolf_moon_v09');localStorage.setItem('crywolf_moon_v08',raw)},legacy);
+  await page.reload();check((await page.locator('[data-act="resume"]').innerText()).includes('第四夜'),'legacy cover offers fourth-night continuation');
+  await click('resume');check((await get()).phase==='interlude'&&(await get()).history.length===3,'legacy completed save resumes at interlude');
+  await click('next');check((await get()).stage==='night4','legacy save continues into fourth night');
+  check(await page.evaluate(raw=>localStorage.getItem('crywolf_moon_v08')===raw,legacy),'legacy key is never overwritten');
+  check(await page.evaluate(()=>JSON.parse(localStorage.getItem('crywolf_moon_v09')).version===9),'progress saved to new version key');
+  await page.getByRole('link',{name:'CRY WOLF! タイトルへ'}).click();await click('new');
+  check((await get()).modal==='restart','unfinished bookmark needs explicit in-game restart choice');
+  await page.locator('[data-ui="close"]').first().click();await click('resume');check((await get()).stage==='night4','cancel restart preserves bookmark');
+  await page.getByRole('button',{name:'音と動きの設定',exact:true}).click();await page.locator('[data-ui="gallery"]').click();
+  await page.locator('.gallery img').evaluateAll(imgs=>Promise.all(imgs.map(i=>{i.loading='eager';return i.decode()})));
+  check(await page.locator('.gallery figure').count()===22,'character gallery retained');await page.keyboard.press('Escape');
+  check(errors.length===0,'no browser errors');
+  return {checks:checks.length,passed:checks.filter(c=>c.pass).length,failures:checks.filter(c=>!c.pass),errors,routes,screenshots,details:checks};
+}

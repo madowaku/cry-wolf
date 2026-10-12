@@ -1,0 +1,57 @@
+{
+  "midway": {
+    "version": 8,
+    "events": [
+      "start",
+      "next",
+      "next",
+      "next",
+      "next",
+      "next",
+      "next",
+      "next",
+      "hide1",
+      "next",
+      "next",
+      "next",
+      "next",
+      "signal2",
+      "next"
+    ]
+  },
+  "finished": {
+    "version": 8,
+    "events": [
+      "start",
+      "next",
+      "next",
+      "next",
+      "next",
+      "next",
+      "next",
+      "next",
+      "ring1",
+      "next",
+      "next",
+      "next",
+      "next",
+      "track2",
+      "next",
+      "signal2",
+      "next",
+      "silent2",
+      "next",
+      "next",
+      "next",
+      "next",
+      "forest3",
+      "next",
+      "speak3",
+      "next",
+      "signal3",
+      "next",
+      "proposal3",
+      "next"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-12T04:21:52.505Z",
+  "license": "https://opentracks.com/help/articles/license/",
+  "terms": "https://opentracks.com/help/articles/terms/",
+  "tracks": [
+    {
+      "key": "opening",
+      "title": "the fairy tale",
+      "author": "のる",
+      "source": "BGM/the_fairy_tale.mp3",
+      "sourceSha256": "3d49f826cd2bf652cde9eba8f6e9038873d0804faf95ef9b59a89bbb47352ee7",
+      "convertedSha256": "f3713e1578ea917047a13018279cfeb6a6659702d922f98011cd5140c7bb6c68",
+      "duration": 79.596771,
+      "convertedBytes": 1270954,
+      "page": "https://opentracks.com/bgm/detail/19133"
+    },
+    {
+      "key": "gameplay",
+      "title": "Storyteller",
+      "author": "のる",
+      "source": "BGM/Storyteller.mp3",
+      "sourceSha256": "934348051bcd21db7814ef4306aac3635b2d0312b2320e7a4f898ce71343baf5",
+      "convertedSha256": "546e65127e5f2f842699b0ae1935fd901af9441e091c4a058a128902604ddb34",
+      "duration": 161.125034,
+      "convertedBytes": 2626360,
+      "page": "https://opentracks.com/bgm/detail/21959"
+    },
+    {
+      "key": "ending",
+      "title": "月夜",
+      "author": "チョコミント",
+      "source": "BGM/月夜.mp3",
+      "sourceSha256": "f5bed01b92e87126b091417ce00aca3b5fabb51e698a16e69ba6fc096467a6ee",
+      "convertedSha256": "6fe0ea9e52108af575fad800b3c232f0c8f90a018f333019c1f6e45689f932f2",
+      "duration": 31.3232,
+      "convertedBytes": 502997,
+      "page": "https://opentracks.com/bgm/detail/6987"
+    }
+  ]
+}

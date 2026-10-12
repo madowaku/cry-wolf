@@ -1,0 +1,6885 @@
+{
+  "completedAutomatedPlays": 7,
+  "assertions": 2220,
+  "results": [
+    {
+      "name": "natural",
+      "query": "seed=0",
+      "choices": [
+        "CRY",
+        "CRY",
+        "SILENT"
+      ],
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "history": "N1\n「オオカミだ！」と知らせる\nルナは来ていた。正しい警報だった。\n村の信用 +1 / ルナとの仲 0\nN2\n「オオカミだ！」と知らせる\nルナは来ていた。正しい警報だった。\n村の信用 +1 / ルナとの仲 0\nN3\n今夜は「異常なし」と報告\nその夜、見張り道は静かだった。\n村の信用 0 / ルナとの仲 0"
+    },
+    {
+      "name": "present-silent",
+      "query": "seed=0&visit2=1&visit3=1&sign2=TRACE&sign3=QUIET",
+      "choices": [
+        "SILENT",
+        "SILENT",
+        "SILENT"
+      ],
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "history": "N1\n見逃して、少し話す\nルナは来ていた。二人で少し話した。\n村の信用 -1 / ルナとの仲 +1\nN2\n今夜は「異常なし」と報告\nルナは来ていた。二人で少し話した。\n村の信用 -1 / ルナとの仲 +1\nN3\n今夜は「異常なし」と報告\nルナは来ていた。二人で少し話した。\n村の信用 -1 / ルナとの仲 +1"
+    },
+    {
+      "name": "absent-cry",
+      "query": "seed=0&visit2=0&visit3=0&sign2=TRACE&sign3=RUSTLE",
+      "choices": [
+        "SILENT",
+        "CRY",
+        "CRY"
+      ],
+      "viewport": {
+        "width": 720,
+        "height": 1280
+      },
+      "history": "N1\n見逃して、少し話す\nルナは来ていた。二人で少し話した。\n村の信用 -1 / ルナとの仲 +1\nN2\n「オオカミだ！」と知らせる\nその夜、ルナは来ていなかった。鐘は空振り。\n村の信用 -1 / ルナとの仲 +1\nN3\n「オオカミだ！」と知らせる\nその夜、ルナは来ていなかった。鐘は空振り。\n村の信用 -1 / ルナとの仲 0"
+    },
+    {
+      "name": "absent-silent",
+      "query": "seed=0&visit2=0&visit3=0&sign2=RUSTLE&sign3=TRACE",
+      "choices": [
+        "CRY",
+        "SILENT",
+        "SILENT"
+      ],
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "history": "N1\n「オオカミだ！」と知らせる\nルナは来ていた。正しい警報だった。\n村の信用 +1 / ルナとの仲 0\nN2\n今夜は「異常なし」と報告\nその夜、見張り道は静かだった。\n村の信用 0 / ルナとの仲 0\nN3\n今夜は「異常なし」と報告\nその夜、見張り道は静かだった。\n村の信用 0 / ルナとの仲 0"
+    },
+    {
+      "name": "present-cry",
+      "query": "seed=0&visit2=1&visit3=1&sign2=QUIET&sign3=TRACE",
+      "choices": [
+        "SILENT",
+        "CRY",
+        "CRY"
+      ],
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "history": "N1\n見逃して、少し話す\nルナは来ていた。二人で少し話した。\n村の信用 -1 / ルナとの仲 +1\nN2\n「オオカミだ！」と知らせる\nルナは来ていた。正しい警報だった。\n村の信用 +1 / ルナとの仲 -1\nN3\n「オオカミだ！」と知らせる\nルナは来ていた。正しい警報だった。\n村の信用 +1 / ルナとの仲 0"
+    },
+    {
+      "name": "absent-cry-no-bonus",
+      "query": "seed=0&visit2=0&visit3=0",
+      "choices": [
+        "CRY",
+        "CRY",
+        "CRY"
+      ],
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "history": "N1\n「オオカミだ！」と知らせる\nルナは来ていた。正しい警報だった。\n村の信用 +1 / ルナとの仲 0\nN2\n「オオカミだ！」と知らせる\nその夜、ルナは来ていなかった。鐘は空振り。\n村の信用 -1 / ルナとの仲 0\nN3\n「オオカミだ！」と知らせる\nその夜、ルナは来ていなかった。鐘は空振り。\n村の信用 -1 / ルナとの仲 0"
+    }
+  ],
+  "failures": [],
+  "errors": [],
+  "layouts": [
+    {
+      "label": "title/natural",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "🔔はじめから›",
+          "width": 310,
+          "height": 62,
+          "top": 566.6875,
+          "bottom": 628.6875
+        },
+        {
+          "text": "物語とルールを見る",
+          "width": 310,
+          "height": 45,
+          "top": 638.6875,
+          "bottom": 683.6875
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "intro-1",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 685,
+          "bottom": 734
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "intro-2",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 685,
+          "bottom": 734
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "intro-3",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "夜番をはじめる›",
+          "width": 326,
+          "height": 49,
+          "top": 686.921875,
+          "bottom": 735.921875
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "鐘を鳴らす？›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "natural/choice N1",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 326,
+          "height": 65,
+          "top": 622,
+          "bottom": 687
+        },
+        {
+          "text": "🤫見逃して、少し話す今夜の報告を「異常なし」にする›",
+          "width": 326,
+          "height": 65,
+          "top": 698,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "natural/report N1",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次の夜へ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "夜を待つ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "どう伝える？›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "natural/choice N2",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 326,
+          "height": 65,
+          "top": 622,
+          "bottom": 687
+        },
+        {
+          "text": "🤫今夜は「異常なし」と報告見張り道には来ていないと判断する›",
+          "width": 326,
+          "height": 65,
+          "top": 698,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "natural/report N2",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次の夜へ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "夜を待つ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "どう伝える？›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "natural/choice N3",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 326,
+          "height": 65,
+          "top": 622,
+          "bottom": 687
+        },
+        {
+          "text": "🤫今夜は「異常なし」と報告見張り道には来ていないと判断する›",
+          "width": 326,
+          "height": 65,
+          "top": 698,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 614.171875,
+          "bottom": 663.171875
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "natural/report N3",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "3夜の振り返りへ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "natural/final",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "同じ3夜をもう一度›",
+          "width": 326,
+          "height": 54,
+          "top": 653,
+          "bottom": 707
+        },
+        {
+          "text": "タイトルへ›",
+          "width": 326,
+          "height": 45,
+          "top": 718,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "title/present-silent",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "🔔はじめから›",
+          "width": 310,
+          "height": 62,
+          "top": 566.6875,
+          "bottom": 628.6875
+        },
+        {
+          "text": "物語とルールを見る",
+          "width": 310,
+          "height": 45,
+          "top": 638.6875,
+          "bottom": 683.6875
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "鐘を鳴らす？›",
+          "width": 326,
+          "height": 49,
+          "top": 689.484375,
+          "bottom": 738.484375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "present-silent/choice N1",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 326,
+          "height": 65,
+          "top": 622,
+          "bottom": 687
+        },
+        {
+          "text": "🤫見逃して、少し話す今夜の報告を「異常なし」にする›",
+          "width": 326,
+          "height": 65,
+          "top": 698,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "present-silent/report N1",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次の夜へ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "夜を待つ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "どう伝える？›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "present-silent/choice N2",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 326,
+          "height": 65,
+          "top": 622,
+          "bottom": 687
+        },
+        {
+          "text": "🤫今夜は「異常なし」と報告見張り道には来ていないと判断する›",
+          "width": 326,
+          "height": 65,
+          "top": 698,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "present-silent/report N2",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次の夜へ›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "夜を待つ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "どう伝える？›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "present-silent/choice N3",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 326,
+          "height": 65,
+          "top": 622,
+          "bottom": 687
+        },
+        {
+          "text": "🤫今夜は「異常なし」と報告見張り道には来ていないと判断する›",
+          "width": 326,
+          "height": 65,
+          "top": 698,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "present-silent/report N3",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "3夜の振り返りへ›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "present-silent/final",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "同じ3夜をもう一度›",
+          "width": 326,
+          "height": 54,
+          "top": 653,
+          "bottom": 707
+        },
+        {
+          "text": "タイトルへ›",
+          "width": 326,
+          "height": 45,
+          "top": 718,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "title/absent-cry",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "🔔はじめから›",
+          "width": 422,
+          "height": 62,
+          "top": 1035.40625,
+          "bottom": 1097.40625
+        },
+        {
+          "text": "物語とルールを見る",
+          "width": 422,
+          "height": 45,
+          "top": 1107.40625,
+          "bottom": 1152.40625
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/SIGN",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "鐘を鳴らす？›",
+          "width": 422,
+          "height": 49,
+          "top": 695.484375,
+          "bottom": 744.484375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-cry/choice N1",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 422,
+          "height": 65,
+          "top": 696.484375,
+          "bottom": 761.484375
+        },
+        {
+          "text": "🤫見逃して、少し話す今夜の報告を「異常なし」にする›",
+          "width": 422,
+          "height": 65,
+          "top": 772.484375,
+          "bottom": 837.484375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 607,
+          "bottom": 656
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-cry/report N1",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 806.609375,
+          "bottom": 855.609375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REPORT",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次の夜へ›",
+          "width": 422,
+          "height": 49,
+          "top": 802.609375,
+          "bottom": 851.609375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 607,
+          "bottom": 656
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "夜を待つ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/SIGN",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "どう伝える？›",
+          "width": 422,
+          "height": 49,
+          "top": 803.546875,
+          "bottom": 852.546875
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-cry/choice N2",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 422,
+          "height": 65,
+          "top": 753.765625,
+          "bottom": 818.765625
+        },
+        {
+          "text": "🤫今夜は「異常なし」と報告見張り道には来ていないと判断する›",
+          "width": 422,
+          "height": 65,
+          "top": 829.765625,
+          "bottom": 894.765625
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 607,
+          "bottom": 656
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-cry/report N2",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 754.234375,
+          "bottom": 803.234375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REPORT",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 750.234375,
+          "bottom": 799.234375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REPORT",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 750.234375,
+          "bottom": 799.234375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REPORT",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次の夜へ›",
+          "width": 422,
+          "height": 49,
+          "top": 750.234375,
+          "bottom": 799.234375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 607,
+          "bottom": 656
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "夜を待つ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/SIGN",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "どう伝える？›",
+          "width": 422,
+          "height": 49,
+          "top": 752.765625,
+          "bottom": 801.765625
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-cry/choice N3",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 422,
+          "height": 65,
+          "top": 753.765625,
+          "bottom": 818.765625
+        },
+        {
+          "text": "🤫今夜は「異常なし」と報告見張り道には来ていないと判断する›",
+          "width": 422,
+          "height": 65,
+          "top": 829.765625,
+          "bottom": 894.765625
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 607,
+          "bottom": 656
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-cry/report N3",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 754.234375,
+          "bottom": 803.234375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REPORT",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 750.234375,
+          "bottom": 799.234375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REPORT",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "3夜の振り返りへ›",
+          "width": 422,
+          "height": 49,
+          "top": 750.234375,
+          "bottom": 799.234375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-cry/final",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "同じ3夜をもう一度›",
+          "width": 422,
+          "height": 54,
+          "top": 868.1875,
+          "bottom": 922.1875
+        },
+        {
+          "text": "タイトルへ›",
+          "width": 422,
+          "height": 45,
+          "top": 933.1875,
+          "bottom": 978.1875
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "title/absent-silent",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "🔔はじめから›",
+          "width": 422,
+          "height": 62,
+          "top": 655.40625,
+          "bottom": 717.40625
+        },
+        {
+          "text": "物語とルールを見る",
+          "width": 422,
+          "height": 45,
+          "top": 727.40625,
+          "bottom": 772.40625
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/SIGN",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "鐘を鳴らす？›",
+          "width": 422,
+          "height": 49,
+          "top": 695.484375,
+          "bottom": 744.484375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-silent/choice N1",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 422,
+          "height": 65,
+          "top": 696.484375,
+          "bottom": 761.484375
+        },
+        {
+          "text": "🤫見逃して、少し話す今夜の報告を「異常なし」にする›",
+          "width": 422,
+          "height": 65,
+          "top": 772.484375,
+          "bottom": 837.484375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 607,
+          "bottom": 656
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-silent/report N1",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次の夜へ›",
+          "width": 422,
+          "height": 49,
+          "top": 806.609375,
+          "bottom": 855.609375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 607,
+          "bottom": 656
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "夜を待つ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/SIGN",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "どう伝える？›",
+          "width": 422,
+          "height": 49,
+          "top": 803.546875,
+          "bottom": 852.546875
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-silent/choice N2",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 422,
+          "height": 65,
+          "top": 720,
+          "bottom": 785
+        },
+        {
+          "text": "🤫今夜は「異常なし」と報告見張り道には来ていないと判断する›",
+          "width": 422,
+          "height": 65,
+          "top": 796,
+          "bottom": 861
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 607,
+          "bottom": 656
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-silent/report N2",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 754.234375,
+          "bottom": 803.234375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REPORT",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 750.234375,
+          "bottom": 799.234375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REPORT",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次の夜へ›",
+          "width": 422,
+          "height": 49,
+          "top": 750.234375,
+          "bottom": 799.234375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 607,
+          "bottom": 656
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "夜を待つ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/SIGN",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "どう伝える？›",
+          "width": 422,
+          "height": 49,
+          "top": 752.765625,
+          "bottom": 801.765625
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-silent/choice N3",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 422,
+          "height": 65,
+          "top": 720,
+          "bottom": 785
+        },
+        {
+          "text": "🤫今夜は「異常なし」と報告見張り道には来ていないと判断する›",
+          "width": 422,
+          "height": 65,
+          "top": 796,
+          "bottom": 861
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "次へ›",
+          "width": 422,
+          "height": 49,
+          "top": 607,
+          "bottom": 656
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 422,
+          "height": 49,
+          "top": 603,
+          "bottom": 652
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-silent/report N3",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "3夜の振り返りへ›",
+          "width": 422,
+          "height": 49,
+          "top": 754.234375,
+          "bottom": 803.234375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-silent/final",
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "scrollHeight": 900,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 20,
+          "bottom": 64
+        },
+        {
+          "text": "同じ3夜をもう一度›",
+          "width": 422,
+          "height": 54,
+          "top": 751,
+          "bottom": 805
+        },
+        {
+          "text": "タイトルへ›",
+          "width": 422,
+          "height": 45,
+          "top": 816,
+          "bottom": 861
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "title/present-cry",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "🔔はじめから›",
+          "width": 310,
+          "height": 62,
+          "top": 566.6875,
+          "bottom": 628.6875
+        },
+        {
+          "text": "物語とルールを見る",
+          "width": 310,
+          "height": 45,
+          "top": 638.6875,
+          "bottom": 683.6875
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "鐘を鳴らす？›",
+          "width": 326,
+          "height": 49,
+          "top": 689.484375,
+          "bottom": 738.484375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "present-cry/choice N1",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 326,
+          "height": 65,
+          "top": 622,
+          "bottom": 687
+        },
+        {
+          "text": "🤫見逃して、少し話す今夜の報告を「異常なし」にする›",
+          "width": 326,
+          "height": 65,
+          "top": 698,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "present-cry/report N1",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次の夜へ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "夜を待つ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "どう伝える？›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "present-cry/choice N2",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 326,
+          "height": 65,
+          "top": 622,
+          "bottom": 687
+        },
+        {
+          "text": "🤫今夜は「異常なし」と報告見張り道には来ていないと判断する›",
+          "width": 326,
+          "height": 65,
+          "top": 698,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "present-cry/report N2",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次の夜へ›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "夜を待つ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "どう伝える？›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "present-cry/choice N3",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 326,
+          "height": 65,
+          "top": 622,
+          "bottom": 687
+        },
+        {
+          "text": "🤫今夜は「異常なし」と報告見張り道には来ていないと判断する›",
+          "width": 326,
+          "height": 65,
+          "top": 698,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "present-cry/report N3",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "3夜の振り返りへ›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "present-cry/final",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "同じ3夜をもう一度›",
+          "width": 326,
+          "height": 54,
+          "top": 653,
+          "bottom": 707
+        },
+        {
+          "text": "タイトルへ›",
+          "width": 326,
+          "height": 45,
+          "top": 718,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "title/absent-cry-no-bonus",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "🔔はじめから›",
+          "width": 310,
+          "height": 62,
+          "top": 566.6875,
+          "bottom": 628.6875
+        },
+        {
+          "text": "物語とルールを見る",
+          "width": 310,
+          "height": 45,
+          "top": 638.6875,
+          "bottom": 683.6875
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "鐘を鳴らす？›",
+          "width": 326,
+          "height": 49,
+          "top": 689.484375,
+          "bottom": 738.484375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-cry-no-bonus/choice N1",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 326,
+          "height": 65,
+          "top": 622,
+          "bottom": 687
+        },
+        {
+          "text": "🤫見逃して、少し話す今夜の報告を「異常なし」にする›",
+          "width": 326,
+          "height": 65,
+          "top": 698,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-cry-no-bonus/report N1",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次の夜へ›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "夜を待つ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "どう伝える？›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-cry-no-bonus/choice N2",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 326,
+          "height": 65,
+          "top": 622,
+          "bottom": 687
+        },
+        {
+          "text": "🤫今夜は「異常なし」と報告見張り道には来ていないと判断する›",
+          "width": 326,
+          "height": 65,
+          "top": 698,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-cry-no-bonus/report N2",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次の夜へ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "夜を待つ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "どう伝える？›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-cry-no-bonus/choice N3",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "🔔「オオカミだ！」と知らせる仕事を優先して村へ報告›",
+          "width": 326,
+          "height": 65,
+          "top": 622,
+          "bottom": 687
+        },
+        {
+          "text": "🤫今夜は「異常なし」と報告見張り道には来ていないと判断する›",
+          "width": 326,
+          "height": 65,
+          "top": 698,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-cry-no-bonus/report N3",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "3夜の振り返りへ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "absent-cry-no-bonus/final",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "同じ3夜をもう一度›",
+          "width": 326,
+          "height": 54,
+          "top": 653,
+          "bottom": 707
+        },
+        {
+          "text": "タイトルへ›",
+          "width": 326,
+          "height": 45,
+          "top": 718,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "鐘を鳴らす？›",
+          "width": 326,
+          "height": 49,
+          "top": 689.484375,
+          "bottom": 738.484375
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N1/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次の夜へ›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "夜を待つ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "どう伝える？›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N2/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次の夜へ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/EVENING",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "夜を待つ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/SIGN",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "どう伝える？›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 601,
+          "bottom": 650
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REVEAL",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "翌朝の報告へ›",
+          "width": 326,
+          "height": 49,
+          "top": 597,
+          "bottom": 646
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 714,
+          "bottom": 763
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "次へ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "label": "N3/REPORT",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "text": "？",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "☷",
+          "width": 44,
+          "height": 44,
+          "top": 16,
+          "bottom": 60
+        },
+        {
+          "text": "3夜の振り返りへ›",
+          "width": 326,
+          "height": 49,
+          "top": 710,
+          "bottom": 759
+        }
+      ],
+      "clippedText": []
+    }
+  ]
+}

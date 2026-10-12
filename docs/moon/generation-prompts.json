@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-12",
+  "provider": "Codex built-in Imagegen",
+  "records": [
+    {
+      "id": "environment-village-tower",
+      "prompt": "Use case: illustration-story. Asset type: game environment panorama. Create one landscape 3:2 illustrated background for CRY WOLF, a tender nonviolent fable. A small storybook village with rounded cream cottages and warm brass windows at far left, a simple wooden watchtower with a hanging lantern left of center, an unambiguous winding patrol path and white boundary stones across the lower half, a navy forest of stylized firs on the right, low eastern hills in the distance. Large uncluttered midnight navy sky in upper half, NO MOON (it is a separate game layer). Leave center foreground open for waist-up character sprites. Elegant hand-painted gouache / cut paper picture-book shapes, restrained paper grain, simple flat shapes and one shadow plane, clean readable silhouette, gentle atmospheric depth. Palette midnight navy #19283F, blue slate, moon cream #F4EAD9, muted sage, tiny brass lamps. Whimsical, wistful, inviting, not dark horror. No characters, no people, no creatures, no lettering, no logos, no UI, no watermark. Landscape aspect 3:2. Intended destination environment-village-tower.png."
+    },
+    {
+      "id": "mayor-map",
+      "prompt": "Use case: illustration-story. Asset type: transparent game character portrait. Create original village mayor for CRY WOLF, a gentle nonviolent fable. A kindly elderly anthropomorphic sheep, rounded cream wool head and short floppy sheep ears, small round brass spectacles, warm brown eyes and worried-but-listening eyebrows, charcoal muzzle, simple navy long waistcoat over cream shirt, muted brown scarf. Holding an old folded cream map with simple lines and no text, one hand open in a thoughtful welcoming gesture. Full body centered with generous transparent margin, all ears and feet visible, slight three-quarter turn left. Hand-painted picture-book gouache plus clean navy ink outlines, large simple color shapes, restrained paper grain and one shadow plane. Palette navy #19283F, moon cream #F4EAD9, taupe wool, tiny brass accents. Memorable soft silhouette. Wise ordinary community caretaker, not regal, not a villain. No weapons, no staff, no crown, no text, no watermark. Actual transparent background, no scenery and no floor shadow. Match a rabbit postman companion with sage cape in the same illustrated animal fable."
+    },
+    {
+      "id": "bell-emotions",
+      "prompt": "Use case: identity-preserve. Asset type: game expression atlas, 2 columns x 2 rows. EDIT the provided Bell four-expression sheet into FOUR NEW emotional expressions while preserving the SAME character identity, black/cream forelock pattern, viewer-left folded border collie ear, amber eyes, navy cape, cream shirt, black gloves, collar bell, brass lantern and fluffy tail. Keep exact same 2x2 layout, same scale, bust to upper thighs, each cell with transparent padding and no neighboring overlap, transparent background. TOP LEFT: startled with wide eyes, slightly open mouth, upright ear perking, lantern clasped tightly. TOP RIGHT: embarrassed apology, gaze down, shoulders a little lower, folded ear droops, mouth worried. BOTTOM LEFT: relief, small warm closed-eye smile, shoulders softened. BOTTOM RIGHT: quiet courage, facing slightly right with a warm determined smile, one hand gently lifted by chest, other holding lantern. This is still Bell, not a redesigned person. Clean navy line work, simple one-plane cel shading, very restrained illustrated-fable paper texture. Do not flip horizontally. Do not add text, labels, scenery, boxes, borders, or marks. Make the expressions visibly distinct at mobile size, innocent age-appropriate emotional acting. Preserve genuine alpha transparency.",
+      "references": [
+        "public/storybook/assets/bell-flat-expressions.png"
+      ]
+    },
+    {
+      "id": "pip-human-v2",
+      "prompt": "Use case: illustration-story, reference-driven original character. Create Pip, a HUMAN-FACED rabbit-eared young male mail courier, matching the visual-novel kemonomimi style of Bell and Luna in the two reference images. The references define the degree of anthropomorphism: normal HUMAN face, human nose and mouth, human skin and human hands/body, only animal ears and small tail. NOT a furry animal face, NOT a rabbit muzzle or paws. Pip: bright honey-brown eyes, short fluffy sandy-blond hair, two tall cream rabbit ears with one casually bent, happy curious grin, sage short cape over cream shirt and simple navy vest, brown mail satchel across chest, holding a cream envelope with a tiny red wax seal. A small friendly youthful courier of similar art proportions to Bell, age-appropriate no romance pose. One single bust-to-upper-thigh sprite centered with generous transparent margin, ears fully inside frame. Face three-quarter slightly right. Match reference clean navy outline, flat cel shading, simplified hair clumps, gently illustrated-fable warmth; do not redraw Bell or Luna. NO fur on face or hands. No scenery, text, labels, watermark, borders, or shadow background. True alpha transparency.",
+      "references": [
+        "public/storybook/assets/bell-flat-expressions.png",
+        "public/storybook/assets/luna-assertive-expressions.png"
+      ]
+    },
+    {
+      "id": "mayor-human-v2",
+      "prompt": "Use case: illustration-story, reference-driven original character. Create the mayor, an older HUMAN-FACED sheep-eared man in the SAME visual-novel kemonomimi world and clean illustrated style as Bell and Luna in the two reference images. Normal mature HUMAN face, human nose and mouth, visible human skin and HUMAN HANDS. NOT an animal face, NOT a sheep muzzle, no fur on face, no hooves. Kind middle-aged-to-elderly man, fluffy short cream-grey curly hair suggesting sheep wool, small curled ram horns emerging from hair with soft sheep ears to either side, round brass spectacles, kindly brown eyes, gentle wrinkles, short neat human moustache and small beard. Navy waistcoat, cream loose shirt, muted taupe scarf, holding a folded antique map (simple fine lines, NO lettering), free hand open to listen. One single portrait bust-to-upper-thigh, centered, ears and horns fully visible, slightly turned LEFT, warm approachable authority. Clean navy outlines, flat cel shadow, simplified elegant hair like reference, no detailed fur texture. Cream #F4EAD9, navy #19283F, brown, tiny brass. Actual transparent alpha, no scenery, no floor, no labels, no watermark. Do not draw the reference protagonists, only the new human-faced mayor.",
+      "references": [
+        "public/storybook/assets/bell-flat-expressions.png",
+        "public/storybook/assets/luna-assertive-expressions.png"
+      ]
+    },
+    {
+      "id": "luna-emotions",
+      "prompt": "Use case: identity-preserve. Asset type: game expression atlas 2 columns x 2 rows. EDIT the reference Luna expression sheet to add FOUR distinct emotional expressions of EXACTLY THE SAME Luna. Preserve human face, red eyes, silver-grey flowing simplified hair, wolf ears, small red ribbon on viewer RIGHT, navy cape, cream high-neck blouse, black gloves, silhouette and identity. Same 2x2 layout, consistent scale bust to upper thigh, actual transparent background, clean separated cells with padding so ears/hair never cross another cell. TOP LEFT: genuine surprise, slightly widened eyes, mouth tiny open, ears perk up, hand pauses near chest. TOP RIGHT: worried for friends, eyebrows knitted, gaze down to left, one hand on forearm, ears soften. BOTTOM LEFT: relief she tries to hide, looking sideways with tiny shy smile and faint blush, hands relaxed together. BOTTOM RIGHT: involuntary bright warm laugh, eyes gently closed, one hand near mouth, ears relaxed; still confident Luna, not coy generic girl. Use same clean navy outlines and flat cel shadows, illustrated-fable warmth, age-appropriate. Do not horizontally flip. NO text, captions, panel borders, scenery, hearts, sparkles or watermark. Preserve real alpha transparency.",
+      "references": [
+        "public/storybook/assets/luna-assertive-expressions.png"
+      ]
+    },
+    {
+      "id": "environment-forest-spring",
+      "prompt": "Use case: illustration-story. Asset type: game forest environment. Companion image to the reference village and watchtower picture-book scene, same restrained gouache and paper grain, same navy, slate, cream and muted sage palette. A quiet forest boundary at night, broad simple fir silhouettes on both sides framing a winding pale path leading toward a small ancient spring pool reflecting cool light, distant eastern hill visible in a gap. A simple leaning old wood waymarker with NO lettering on the left. Clear white boundary stones in the lower foreground, enough empty lower center to place separate character sprites. Upper third open midnight sky with NO MOON, no sun. Welcoming and mysterious, tender nonviolent fable, not horror. Landscape 3:2. No people, creatures, faces, silhouettes of wolves, no text, logo, watermark, no UI. Broad simplified painted shapes; do not overdecorate with detailed flowers.",
+      "references": [
+        "assets/illustrations/moon/environment-village-tower.png"
+      ]
+    },
+    {
+      "id": "alarm-bell",
+      "prompt": "Use case: illustration-story. Asset type: transparent game prop. One beautiful simple old brass alarm bell hanging from a small dark wooden crossbar by a loop, short cream rope on right, visible rounded clapper. Front view slightly three-quarter, centered with ample transparent padding. Hand-painted gouache picture-book style, clean navy outlines and broad flat shapes, one warm shadow plane, tiny paper grain. Brass #C8954F and moon cream #F4EAD9 highlights, navy #19283F. Memorable humble village watchtower bell, no ornamental letters or symbols. Separate object cutout with actual alpha transparency. No scenery, no characters, no floor, no glowing background, no UI, no text, no watermark. Entire bell, wooden bar and short rope inside frame. Square image."
+    },
+    {
+      "id": "wolf-tracks",
+      "prompt": "Use case: illustration-story. Asset type: transparent game clue illustration. One isolated pair of WOLF PAW FOOTPRINTS, alternating left and right steps ascending diagonally gently from lower left to upper right. Each print has one broad rounded central pad and FOUR clear toe pads. No feet, no animals, just marks. Draw them in warm moon-cream chalky gouache #E6D6B8 with a restrained darker ink contour and light handmade print texture, so readable on a navy forest ground. Simple bold graphic picture-book shapes, no tiny details, no mud splatters. Square centered composition with generous clear transparent margin. Actual alpha transparency, no ground patch, no scene, no text, no labels, no watermark. Intended as an atmospheric readable footprint clue sprite."
+    },
+    {
+      "id": "moon-disc",
+      "prompt": "Use case: illustration-story. Asset type: transparent game moon disk texture. One perfectly circular large FULL MOON disk, front view, centered with 12 percent empty padding on every edge. Warm ivory #F4EAD9 and very soft muted beige crater shapes, hand-painted gouache picture-book illustration, subtle paper fiber grain, broad simplified forms. Gentle tactile cut-paper feel, light uniform enough for programmatic shadow to create moon phases. CRITICAL: perfectly round disk, no face, no crescent, no stars, no halo glow, no surrounding sky, no scenery, no text or watermark. True alpha transparency everywhere outside the circle. Flat graphic 2D, not photo, no dramatic directional lighting. Square composition. Moon itself is the only object."
+    },
+    {
+      "id": "pip-child-v3",
+      "prompt": "Use case: identity-preserve. Edit this HUMAN-FACED rabbit-eared mail courier Pip to look clearly MUCH YOUNGER, a cheerful 8-to-10-year-old child, not a teenager. Keep the same short sandy blond hair, honey-brown eyes, two cream rabbit ears (one bent), sage green cape, cream shirt, navy vest, brown postal satchel, cream envelope with red wax seal, and matching Bell/Luna clean visual-novel picture-book cel-shaded art style. Change age proportions: rounder fuller cheeks, shorter chin, bigger child eyes, small nose, narrower small shoulders, shorter torso, small child hands, an oversized mailbag that looks almost too big, sleeve cuffs a little too long. Bright proud innocent open smile as if trying hard to help adults. Human face and human skin/hands remain essential; no rabbit muzzle or paws. One single character sprite from ears to upper thighs, ALL ears fully within canvas with 5 percent headroom, centered with transparent margin. Keep slight three-quarter right turn and holding envelope with both hands. No text, scenery, labels or watermarks. Actual transparent alpha. Entirely age-appropriate child design, modest clothes.",
+      "references": [
+        "assets/illustrations/moon/pip-human-v2.png"
+      ]
+    },
+    {
+      "id": "bell-reactions",
+      "prompt": "Use case: identity-preserve. EDIT Bell reference into a 2x2 FOUR EXPRESSION ATLAS for a picture-book romance game. Preserve SAME human face, amber eyes, black hair with cream-white forelock on viewer-right, viewer-left folded collie ear, navy cape, cream shirt, black gloves, brass collar bell, lantern, fluffy tail; no horizontal flipping. Each quarter has the exact same scale and framing, from full ears to upper thighs, transparent padding, no neighboring overlap. Crucial expressions requested by author: TOP LEFT WORRIED / KOMATTA: eyebrows raised at inner corners into worried inverted V, eyes searching sideways, small crooked uncertain mouth, shoulders drawn up, one hand rubbing back of head, other on lantern. TOP RIGHT FLUSTERED / TAJITAJI: embarrassed overwhelmed by teasing, stronger blush across cheeks, eyes averted and half-squinted, nervous open stammering mouth, both hands awkwardly raised at chest as if 'wait, wait', ears dropping, body slightly recoiling. BOTTOM LEFT DEEP THOUGHT / KANGAEKOMU: eyebrows furrowed in concentration not anger, gaze low and focused, lips closed, gloved hand at chin, other supporting elbow, head inclined, lantern hanging below. BOTTOM RIGHT LISTENING CONCERN: tender concerned gaze, small slightly open mouth, leaning forward a touch, hand on chest. Very distinct readable brows/eyes/mouth/ear and hand poses, no comic symbols. Same clean line, simplified flat cel shading as reference. Actual transparent alpha. No text, labels, panels, scenery or watermark.",
+      "references": [
+        "public/storybook/assets/bell-flat-expressions.png"
+      ]
+    }
+  ]
+}

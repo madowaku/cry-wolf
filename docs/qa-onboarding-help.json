@@ -1,0 +1,22 @@
+{
+  "checks": 8,
+  "layout": {
+    "height": 800,
+    "top": 137.515625,
+    "bottom": 662.484375,
+    "scrollHeight": 523,
+    "clientHeight": 523,
+    "buttons": [
+      {
+        "width": 290,
+        "height": 46
+      },
+      {
+        "width": 290,
+        "height": 46
+      }
+    ]
+  },
+  "errors": [],
+  "failures": []
+}

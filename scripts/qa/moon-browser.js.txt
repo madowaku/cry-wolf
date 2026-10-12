@@ -1,0 +1,108 @@
+async (page) => {
+  page.setDefaultTimeout(10000);
+  const failures=[], errors=[], checks=[], shots=[], lunaSeen=new Set();
+  page.on('pageerror', e=>errors.push(e.message));
+  page.on('console', m=>{if(m.type()==='error')errors.push(m.text());});
+  const check=(ok,label)=>{checks.push({label,pass:!!ok});if(!ok)failures.push(label)};
+  const get=()=>page.evaluate(()=>window.__cwMoon);
+  const click=async action=>{await page.waitForTimeout(245);await page.locator(`[data-act="${action}"]`).click();};
+  const lunaFrame=async expected=>{
+    const actor=page.locator('.actor-luna');
+    if(!await actor.count()){if(expected)check(false,'Luna expected '+expected);return;}
+    const expression=await actor.getAttribute('data-expression');
+    if(expected)check(expression===expected,'scene Luna expression '+expected);
+    if(lunaSeen.has(expression))return;
+    lunaSeen.add(expression);
+    const img=actor.locator('img');await img.evaluate(i=>i.decode());
+    const data=await img.evaluate(i=>({alt:i.alt,loaded:i.naturalWidth>0,animation:getComputedStyle(i).animationName}));
+    check(data.loaded&&data.alt.includes('ルナ'),'Luna '+expression+' image and description');
+    const reactions={proud:'luna-pride',tease:'luna-tease',mischief:'laugh',angry:'luna-firm',serious:'luna-pride',sad:'luna-settle',lonely:'luna-settle',softened:'luna-soften'};
+    if(reactions[expression])check(data.animation.includes(reactions[expression]),'Luna '+expression+' specific reaction beats generic speaker bob');
+    await shot('luna-'+expression+'-'+(await page.viewportSize()).width);
+  };
+  const forward=async()=>{for(let n=0;n<20;n++){const s=await get();if(!['story','observe','result'].includes(s.phase))return;await lunaFrame();await click('next');}throw new Error('forward bound');};
+  const metric=async label=>{
+    await page.locator('img').evaluateAll(imgs=>Promise.all(imgs.map(i=>i.decode().catch(()=>{}))));
+    const data=await page.evaluate(()=>({
+      width:innerWidth,scrollWidth:document.documentElement.scrollWidth,
+      broken:[...document.images].filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src),
+      buttons:[...document.querySelectorAll('button')].filter(e=>!e.closest('[inert]')).map(e=>({label:e.textContent.trim(),w:e.getBoundingClientRect().width,h:e.getBoundingClientRect().height})),
+      clipped:[...document.querySelectorAll('h1,.prose,.choice strong,.choice small')].filter(e=>e.scrollWidth>e.clientWidth+1).map(e=>e.textContent),
+      prose:document.querySelector('.prose')?parseFloat(getComputedStyle(document.querySelector('.prose')).fontSize):18
+    }));
+    check(data.scrollWidth<=data.width+1,label+' no horizontal overflow');
+    check(!data.broken.length,label+' images loaded');
+    check(!data.clipped.length,label+' text not clipped');
+    check(data.prose>=18,label+' prose >=18px');
+    check(data.buttons.every(b=>b.w>=43.9&&b.h>=43.9),label+' controls >=44px');
+    await lunaFrame();
+  };
+  const shot=async name=>{await page.waitForTimeout(520);const file=`output/playwright/moon/${name}.png`;await page.screenshot({path:file,fullPage:true});shots.push(file)};
+  const plans=[
+    {w:360,h:800,n1:'ring1',a:'track2',b:'signal2',r:'silent2',third:['forest3','speak3','signal3'],end:'proposal3',n2:'best'},
+    {w:390,h:844,n1:'hide1',a:'signal2',b:'listen2',r:'ring2',third:['village3','speak3','signal3'],end:'facts3',n2:'duty'},
+    {w:720,h:1280,n1:'ring1',a:'listen2',b:'signal2',r:'ring2',third:['forest3','speak3','signal3'],end:'false3',n2:'false'},
+    {w:1280,h:900,n1:'hide1',a:'track2',b:'track2',r:'silent2',third:['village3','speak3','signal3'],end:'secret3',n2:'miss'}
+  ];
+  for(const p of plans){
+    await page.setViewportSize({width:p.w,height:p.h});
+    await page.goto('http://127.0.0.1:5198/moon/index.html');
+    await page.evaluate(()=>{localStorage.removeItem('crywolf_moon_v08');localStorage.removeItem('crywolf_moon_preferences_v08')});await page.reload();
+    await metric(p.w+' title');if(p.w===1280)await shot('title-1280');
+    await click('new');await metric(p.w+' prologue');
+    await click('next');await metric(p.w+' mayor');if(p.w===360)await shot('mayor-360');
+    await click('next');await metric(p.w+' pip');if(p.w===360)await shot('pip-360');
+    await forward();await metric(p.w+' choice1');if(p.w===360)await shot('flustered-choice-360');
+    check((await get()).phase==='choice1',p.w+' first decision reached');
+    await click(p.n1);await forward();await metric(p.w+' explore2');
+    check((await get()).ticks===2,p.w+' second night has 2 ticks');
+    await click(p.a);
+    if(p.w===360){
+      const before=await get();await page.reload();check((await get()).home,'reload opens cover');
+      await click('resume');const after=await get();
+      check(before.revision===after.revision&&before.trust===after.trust&&before.ticks===after.ticks&&before.phase===after.phase,'reload restores observation exactly once');
+      await page.getByRole('button',{name:'遊び方',exact:true}).click();
+      const modalState=await get();check(modalState.modal==='help'&&modalState.ticks===after.ticks,'help pauses state');
+      await page.keyboard.press('Shift+Tab');check(await page.locator('.modal button').last().evaluate(e=>e===document.activeElement),'modal traps backwards focus');
+      await page.keyboard.press('Escape');check((await get()).modal===null,'Escape closes help');
+      check(await page.getByRole('button',{name:'遊び方',exact:true}).evaluate(e=>e===document.activeElement),'help returns focus');
+    }
+    await click('next');await click(p.b);await metric(p.w+' second clue');if(p.w===360)await shot('signal-360');
+    await click('next');await metric(p.w+' report2');
+    check((await get()).phase==='report2',p.w+' report after 2 acts');
+    await click(p.r);check((await get()).flags.n2===p.n2,p.w+' expected N2 result '+p.n2);
+    if(p.n2!=='miss')await lunaFrame({best:'laugh',duty:'proud',false:'sad'}[p.n2]);
+    await metric(p.w+' result2');if(p.w===360)await shot('luna-laugh-360');
+    await forward();await metric(p.w+' explore3');
+    check((await get()).ticks===3,p.w+' third night has 3 ticks');
+    for(const action of p.third){await click(action);if(action==='speak3')await lunaFrame('angry');if(action==='signal3'&&(await get()).flags.agreement3)await lunaFrame('softened');await click('next');}
+    await metric(p.w+' report3');
+    if(p.end==='facts3')check(await page.locator('[data-act="proposal3"]').isDisabled(),'proposal locked without common signal');
+    await click(p.end);if(p.end!=='facts3')await lunaFrame({proposal3:'softened',false3:'sad',secret3:'lonely'}[p.end]);await metric(p.w+' final result');await click('next');
+    check((await get()).phase==='finish',p.w+' reached finish');
+    check((await get()).history.length===3,p.w+' exactly 3 results');
+    await metric(p.w+' finish');await shot('finish-'+p.w);
+  }
+  await page.getByRole('button',{name:'音と動きの設定',exact:true}).click();
+  await page.locator('[data-ui="sound"]').click();check((await page.locator('[data-ui="sound"]').innerText()).includes('ON'),'sound can enable');
+  await page.locator('[data-ui="motion"]').click();await page.keyboard.press('Escape');
+  check(await page.locator('#book').evaluate(e=>e.getAnimations({subtree:true}).length===0),'manual motion OFF stops all animations');
+  await page.getByRole('button',{name:'音と動きの設定',exact:true}).click();await page.locator('[data-ui="motion"]').click();await page.keyboard.press('Escape');
+  await page.emulateMedia({reducedMotion:'reduce'});
+  check(await page.locator('#book').evaluate(e=>e.getAnimations({subtree:true}).length===0),'system reduced motion stops all animations');
+  await page.emulateMedia({reducedMotion:'no-preference'});
+  const motion1=await page.locator('.portrait').first().evaluate(e=>getComputedStyle(e).transform);
+  await page.waitForTimeout(1300);const motion2=await page.locator('.portrait').first().evaluate(e=>getComputedStyle(e).transform);
+  check(motion1!==motion2,'portrait transform changes during animation');
+  await page.waitForTimeout(3900);
+  check(await page.locator('.portrait').first().evaluate(e=>e.getAnimations().some(a=>a.playState==='running'&&a.currentTime>4800)),'breathing completes full 4.8 second loop');
+  await click('gallery');check((await get()).modal==='gallery','gallery opens');
+  check(await page.locator('.gallery figure').count()===22,'22 gallery portraits');
+  await page.locator('.gallery img').evaluateAll(imgs=>Promise.all(imgs.map(i=>{i.loading='eager';return i.decode()})));
+  await shot('gallery-1280');await page.keyboard.press('Escape');
+  await page.getByRole('link',{name:'CRY WOLF! タイトルへ'}).click();await click('new');await page.waitForTimeout(245);await page.locator('[data-act="next"]').dblclick();
+  check((await get()).beat===1,'double-click advances only one page');
+  check(['proud','tease','mischief','angry','serious','sad','lonely','softened'].every(e=>lunaSeen.has(e)),'all 8 new Luna expressions seen in actual story routes');
+  check(errors.length===0,'no browser errors');
+  return {checks:checks.length,passed:checks.filter(c=>c.pass).length,failures,errors,lunaExpressions:[...lunaSeen],screenshots:shots,viewportRuns:plans.map(p=>({width:p.w,height:p.h,night2:p.n2,night3:p.end})),details:checks};
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "cry-wolf-portraits-v1",
+  "date": "2026-10-12",
+  "assets": [
+    {
+      "id": "bell",
+      "path": "assets/bell-flat-expressions.png",
+      "width": 1145,
+      "height": 1374,
+      "format": "RGBA PNG",
+      "sha256": "862a8bb1c29f78ed0540e9c428e638542f4e4c4cb189b45fbe2a4d50bb929e49",
+      "grid": {
+        "columns": 2,
+        "expressionOrder": [
+          "neutral",
+          "think",
+          "flustered",
+          "resolve"
+        ],
+        "rows": 2
+      },
+      "render": {
+        "horizontalFlip": false,
+        "anchor": "bottom",
+        "scale": "one shared scale per character"
+      },
+      "provenance": "Built-in Imagegen generation and Flat Pop simplification"
+    },
+    {
+      "id": "luna",
+      "path": "assets/luna-assertive-expressions.png",
+      "width": 1086,
+      "height": 1448,
+      "format": "RGBA PNG",
+      "sha256": "ffcc1ff4f9bbd9c461c9495dbb44034f01c4cefb76268e9a8f096cfd138aef31",
+      "grid": {
+        "columns": 2,
+        "expressionOrder": [
+          "tease",
+          "mock-wolf",
+          "tsun",
+          "wait"
+        ],
+        "rows": 2
+      },
+      "render": {
+        "horizontalFlip": false,
+        "anchor": "bottom",
+        "scale": "one shared scale per character"
+      },
+      "provenance": "User-provided expression master; built-in Imagegen alpha extraction"
+    }
+  ],
+  "scope": "Project-local provenance record; not a game-dev canonical package or license certification"
+}

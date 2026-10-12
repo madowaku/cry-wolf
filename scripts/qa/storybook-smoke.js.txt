@@ -1,0 +1,166 @@
+async (page) => {
+  const failures = [], errors = [], routes = [], layouts = [], screenshots = [];
+  let assertions = 0;
+  const check = (value, label) => { assertions++; if (!value) failures.push(label); };
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+  const url = 'http://127.0.0.1:5193/storybook/index.html';
+  const get = () => page.evaluate(() => window.CRYWOLF_TEST.get());
+  const metrics = async label => {
+    const value = await page.evaluate(() => ({
+      width: innerWidth, height: innerHeight, scrollWidth: document.documentElement.scrollWidth,
+      scrollHeight: document.documentElement.scrollHeight,
+      buttons: [...document.querySelectorAll('button')].filter(b => !b.closest('[inert]')).map(b => {
+        const r = b.getBoundingClientRect(); return { label: b.textContent.trim() || b.getAttribute('aria-label'), width: r.width, height: r.height, top: r.top, bottom: r.bottom };
+      }),
+      clipped: [...document.querySelectorAll('.copy,.heading,.choice b,.hint,.chapter')].filter(el => el.clientWidth && el.scrollWidth > el.clientWidth + 1).map(el => el.textContent),
+      luna: document.querySelectorAll('[data-character="luna"]').length,
+    }));
+    check(value.scrollWidth <= value.width + 1, label + ': horizontal overflow');
+    check(!value.clipped.length, label + ': clipped text ' + value.clipped.join(','));
+    for (const b of value.buttons) {
+      check(b.width >= 47.9 && b.height >= 47.9, label + ': 48px target ' + b.label);
+      // Reading may scroll at enlarged text, but standard viewports must show all controls.
+      check(b.top >= -1 && b.bottom <= value.height + 1, label + ': outside viewport ' + b.label);
+    }
+    const state = await get();
+    if (state.phase === 'night' || state.phase === 'report') check(value.luna === 0, label + ': no Luna before result');
+    layouts.push({ label, ...value });
+  };
+  const shot = async name => {
+    await page.locator('.book').evaluate(el => Promise.all(el.getAnimations({ subtree: true }).map(a => a.finished)));
+    const path = 'output/playwright/storybook-' + name + '.png';
+    await page.screenshot({ path }); screenshots.push(path);
+  };
+  const click = async key => {
+    await page.waitForTimeout(255);
+    await page.locator('[data-act="' + key + '"]').click();
+  };
+  const toChoice = async capture => {
+    await page.goto(url);
+    if (capture) { await metrics('title/360'); await shot('title-360x800'); }
+    await click('start');
+    if (capture) { await metrics('evening/360'); await shot('evening-360x800'); }
+    for (let i = 0; i < 4; i++) await click('next');
+    check((await get()).slideId === 'S03_CLUE', 'intro → clue');
+    check((await get()).ticks === 2, 'intro pages do not cost time');
+    if (capture) { await metrics('clue/360'); await shot('clue-360x800'); }
+  };
+
+  await page.setViewportSize({ width: 360, height: 800 });
+  const actions = ['track', 'listen', 'signal'], reports = ['cry', 'silent'];
+  let index = 0;
+  for (const first of actions) for (const second of actions) for (const report of reports) {
+    await toChoice(index === 0);
+    await click(first);
+    check((await get()).ticks === 1 && (await get()).slideId === 'S04_OBSERVATION', 'first action applied once');
+    if (second === 'track' && report === 'cry') { await metrics(first + '/360'); await shot(first + (first === 'signal' ? '-fail' : '') + '-360x800'); }
+    await click('next');
+    check((await get()).ticks === 1, 'observation reading does not cost time');
+    if (index === 0) {
+      const before = JSON.stringify(await get());
+      await click('notes');
+      check(await page.getByRole('dialog').count() === 1, 'notes dialog opens');
+      await page.keyboard.press('Tab');
+      check(await page.locator('[data-act="close"]').evaluate(el => el === document.activeElement), 'modal focus stays inside');
+      await page.keyboard.press('Escape');
+      check(JSON.stringify(await get()) === before, 'notes close preserves state');
+      check(await page.locator('[data-act="notes"]').evaluate(el => el === document.activeElement), 'notes restores focus');
+      await click('help');
+      await shot('help-360x800');
+      await page.evaluate(() => window.CRYWOLF_TEST.click('signal'));
+      check((await get()).ticks === 1 && (await get()).modal === 'help', 'help blocks action');
+      await page.keyboard.press('Escape');
+      check(JSON.stringify(await get()) === before, 'help close preserves state');
+      await click('sound');
+      check(await page.getByRole('button', { name: '音をオフにする' }).count() === 1, 'sound enabled explicitly');
+      await click('sound');
+      check(await page.evaluate(() => window.CRYWOLF_TEST.muted()), 'sound can be muted');
+    }
+    await click(second);
+    check((await get()).ticks === 0 && (await get()).slideId === 'S04_OBSERVATION_2', 'second action read before reporting');
+    if (first === 'track' && second === 'signal' && report === 'silent') { await metrics('signal-success/360'); await shot('signal-success-360x800'); }
+    await click('next');
+    check((await get()).phase === 'report' && (await get()).ticks === 0, 'report requires two actions');
+    await metrics('report/' + index);
+    if (first === 'track' && second === 'signal' && report === 'silent') await shot('report-360x800');
+    await click(report);
+    const s = await get();
+    const ending = second === 'signal' ? (report === 'cry' ? 'false' : 'best') : (report === 'cry' ? 'duty' : 'secret');
+    const deltas = { best: [0, 1], false: [-2, 0], duty: [1, 0], secret: [-1, 1] }[ending];
+    check(s.ending === ending, 'route ' + index + ': ' + ending);
+    check(s.score.trust === deltas[0] && s.score.bond === deltas[1], 'route ' + index + ': exact stats');
+    check(s.actions.length === 2, 'route ' + index + ': exactly two actions');
+    if (first === 'track' && (second === 'track' || second === 'signal')) {
+      await metrics(ending + '/360'); await shot(ending + '-360x800');
+    }
+    await click('next');
+    check((await get()).slideId === 'S08_RECAP' && (await get()).score.trust === s.score.trust, 'reaction before recap; score unchanged');
+    if (first === 'track' && second === 'signal' && report === 'silent') { await metrics('recap/360'); await shot('recap-360x800'); }
+    if (index === 0) {
+      await click('restart');
+      const retry = await get();
+      check(retry.slideId === 'S01_EVENING_A' && retry.ticks === 2 && !retry.notes.length && !retry.ending && !retry.score, 'retry resets whole night');
+    }
+    routes.push({ first, second, report, ending: s.ending, score: s.score });
+    index++;
+  }
+
+  // Real double clicks and keyboard repeats must not skip discoveries or consume a second tick.
+  await toChoice(false);
+  await page.waitForTimeout(255);
+  await page.locator('[data-act="track"]').dblclick({ delay: 20 });
+  check((await get()).ticks === 1 && (await get()).slideId === 'S04_OBSERVATION', 'double click applies one action');
+  await page.keyboard.down('Enter');
+  await page.keyboard.down('Enter');
+  await page.keyboard.up('Enter');
+  check((await get()).slideId === 'S04_OBSERVATION', 'immediate Enter cannot skip discovery');
+  await page.waitForTimeout(255);
+  await page.keyboard.press('Space');
+  check((await get()).slideId === 'S05_DECISION' && (await get()).ticks === 1, 'Space advances one page');
+  await page.waitForTimeout(255);
+  await page.locator('[data-act="listen"]').focus();
+  await page.keyboard.press('Enter');
+  check((await get()).actions.join(',') === 'track,listen', 'Enter executes focused choice only');
+  await click('next');
+  await click('cry');
+  await page.keyboard.down('Enter'); await page.keyboard.down('Enter'); await page.keyboard.up('Enter');
+  check((await get()).slideId === 'R03_DUTY' && (await get()).score.trust === 1, 'repeat report leaves reaction and score intact');
+
+  for (const [width, height] of [[390,844],[720,1280],[1280,800]]) {
+    await page.setViewportSize({ width, height });
+    await page.goto(url); await metrics('title/' + width); await shot('title-' + width + 'x' + height);
+    await click('start'); await metrics('evening/' + width); await shot('evening-' + width + 'x' + height);
+    for (let i = 0; i < 4; i++) await click('next');
+    await metrics('clue/' + width); await shot('clue-' + width + 'x' + height);
+    await click('track'); await metrics('track/' + width); await click('next');
+    await metrics('decision/' + width); await click('signal'); await metrics('signal/' + width); await click('next');
+    await metrics('report/' + width); await shot('report-' + width + 'x' + height);
+    await click('silent'); await metrics('best/' + width); await shot('best-' + width + 'x' + height);
+    await click('next'); await metrics('recap/' + width);
+    await click('title'); check((await get()).slideId === 'S00_TITLE', 'return to title/' + width);
+  }
+  await page.setViewportSize({ width: 360, height: 800 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await toChoice(false); await click('listen'); await click('next'); await click('signal');
+  check(await page.locator('.stage').evaluate(el => el.getAnimations({ subtree: true }).length === 0), 'reduced motion removes all scene animation');
+  check((await get()).signal === 'held', 'reduced motion preserves signal information');
+  await click('next'); await click('silent'); await click('next');
+  check((await get()).ending === 'best', 'muted reduced-motion route reaches BEST');
+
+  // Larger text must remain readable with ordinary vertical scrolling.
+  await page.addStyleTag({ content: '.copy{font-size:24px!important}.choice b{font-size:24px!important}' });
+  check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'enlarged text has no horizontal overflow');
+  await page.locator('[data-act="restart"]').click();
+  check((await get()).slideId === 'S01_EVENING_A', 'enlarged text controls remain reachable by scroll');
+  await page.goto('http://127.0.0.1:5193/');
+  await page.getByRole('link', { name: /絵本のひと夜を遊ぶ/ }).click();
+  check((await get()).slideId === 'S00_TITLE', 'main game links to independent storybook');
+  check(errors.length === 0, 'no JS or console errors: ' + errors.join(','));
+  // Finish on the title, ready for the user.
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.reload();
+  const report = { date: '2026-10-12', routes, assertions, failures, errors, layouts, screenshots, viewports: [[360,800],[390,844],[720,1280],[1280,800]], humanPlaytest: false, physicalDevices: false };
+  await page.evaluate(value => { window.CRYWOLF_QA = value; }, report);
+  return { assertions, failures, errors, routes: routes.length, layouts: layouts.length, screenshots: screenshots.length };
+}

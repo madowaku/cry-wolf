@@ -1,0 +1,158 @@
+[
+  {
+    "ending": "GOOD_DOG",
+    "seed": 0,
+    "choices": [
+      "CRY",
+      "CRY",
+      "SILENT",
+      "SILENT",
+      "CRY",
+      "SILENT",
+      "CRY"
+    ],
+    "night5Answer": "DONT_COME",
+    "final": {
+      "trust": 3,
+      "affection": 0,
+      "honesty": 0
+    },
+    "visits": [
+      true,
+      true,
+      false,
+      true,
+      false,
+      false,
+      true
+    ],
+    "signs": [
+      "RUSTLE",
+      "QUIET",
+      "RUSTLE",
+      "TRACE",
+      "RUSTLE",
+      "QUIET",
+      "TRACE"
+    ],
+    "observedPhase": "ENDING",
+    "verification": "Pure engine, 7 nights. This milestone UI stops after N3."
+  },
+  {
+    "ending": "BAD_LIAR",
+    "seed": 0,
+    "choices": [
+      "SILENT",
+      "SILENT",
+      "SILENT",
+      "CRY",
+      "SILENT",
+      "SILENT",
+      "CRY"
+    ],
+    "night5Answer": "COME",
+    "final": {
+      "trust": 0,
+      "affection": 4,
+      "honesty": 2
+    },
+    "visits": [
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true
+    ],
+    "signs": [
+      "RUSTLE",
+      "QUIET",
+      "RUSTLE",
+      "TRACE",
+      "RUSTLE",
+      "QUIET",
+      "TRACE"
+    ],
+    "observedPhase": "ENDING",
+    "verification": "Pure engine, 7 nights. This milestone UI stops after N3."
+  },
+  {
+    "ending": "SECRET_MEETING",
+    "seed": 0,
+    "choices": [
+      "SILENT",
+      "CRY",
+      "SILENT",
+      "THANK",
+      "SILENT",
+      "SILENT",
+      "SILENT"
+    ],
+    "night5Answer": "COME",
+    "final": {
+      "trust": 1,
+      "affection": 5,
+      "honesty": 3
+    },
+    "visits": [
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true
+    ],
+    "signs": [
+      "RUSTLE",
+      "QUIET",
+      "RUSTLE",
+      "TRACE",
+      "RUSTLE",
+      "QUIET",
+      "TRACE"
+    ],
+    "observedPhase": "ENDING",
+    "verification": "Pure engine, 7 nights. This milestone UI stops after N3."
+  },
+  {
+    "ending": "HONEST",
+    "seed": 0,
+    "choices": [
+      "SILENT",
+      "CRY",
+      "SILENT",
+      "THANK",
+      "CRY",
+      "SILENT",
+      "CALL_LUNA"
+    ],
+    "night5Answer": "COME",
+    "final": {
+      "trust": 3,
+      "affection": 5,
+      "honesty": 4
+    },
+    "visits": [
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true
+    ],
+    "signs": [
+      "RUSTLE",
+      "QUIET",
+      "RUSTLE",
+      "TRACE",
+      "RUSTLE",
+      "QUIET",
+      "TRACE"
+    ],
+    "observedPhase": "ENDING",
+    "verification": "Pure engine, 7 nights. This milestone UI stops after N3."
+  }
+]

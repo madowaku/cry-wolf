@@ -1,0 +1,114 @@
+async (page) => {
+  page.setDefaultTimeout(10000);
+  const failures=[], errors=[], layouts=[], screenshots=[];
+  let assertions=0;
+  const check=(value,label)=>{ assertions++; if(!value) failures.push(label); };
+  page.on('pageerror',e=>errors.push(e.message));
+  page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  const baseUrl='http://127.0.0.1:5197/';
+  const url=baseUrl+'storybook/index.html';
+  const get=()=>page.evaluate(()=>window.CRYWOLF_TEST.get());
+  const step=key=>page.evaluate(key=>window.CRYWOLF_TEST.click(key),key);
+  const click=async key=>{await page.waitForTimeout(255);await page.locator('[data-act="'+key+'"]').click();};
+  const metric=async label=>{
+    const m=await page.evaluate(()=>({
+      width:innerWidth,height:innerHeight,scrollWidth:document.documentElement.scrollWidth,scrollHeight:document.documentElement.scrollHeight,
+      controls:[...document.querySelectorAll('button')].filter(b=>!b.closest('[inert]')).map(b=>{const r=b.getBoundingClientRect();return {name:b.textContent.trim()||b.getAttribute('aria-label'),w:r.width,h:r.height,top:r.top,bottom:r.bottom};}),
+      clipped:[...document.querySelectorAll('.copy,.heading,.hint,.choice b,.chapter')].filter(e=>e.clientWidth&&e.scrollWidth>e.clientWidth+1).map(e=>e.textContent),
+      luna:document.querySelectorAll('[data-character="luna"]').length,
+    }));
+    check(m.scrollWidth<=m.width+1,label+': no horizontal overflow');
+    check(!m.clipped.length,label+': text not clipped');
+    for(const b of m.controls){check(b.w>=47.9&&b.h>=47.9,label+': 48px '+b.name);check(b.top>=-1&&b.bottom<=m.height+1,label+': visible '+b.name);}
+    const s=await get(); if(['night','report'].includes(s.phase))check(!m.luna,label+': Luna hidden');
+    layouts.push({label,...m});
+  };
+  const shot=async name=>{
+    await page.locator('.book').evaluate(e=>Promise.all(e.getAnimations({subtree:true}).map(a=>a.finished)));
+    const path='output/playwright/storybook-'+name+'.png'; await page.screenshot({path});screenshots.push(path);
+  };
+  await page.goto(url);
+  // Exhaustive branch regression runs the actual in-browser model and renderer through its test hook.
+  const routes=await page.evaluate(()=>{
+    const api=window.CRYWOLF_TEST, results=[];
+    for(const first of ['track','listen','signal'])for(const second of ['track','listen','signal'])for(const report of ['cry','silent']){
+      api.click('start'); for(let i=0;i<4;i++)api.click('next');
+      api.click(first);const one=api.get();const firstDistance=document.querySelector('.distance-art')?.dataset.distance;api.click('next');const read=api.get();const decisionDistance=document.querySelector('.distance-art')?.dataset.distance;
+      api.click(second);const two=api.get();const secondDistance=document.querySelector('.distance-art')?.dataset.distance;api.click('next');const evidence=document.querySelector('.report-evidence')?.dataset.evidence;api.click(report);
+      const result=api.get();api.click('next');const recap=api.get();api.click('title');
+      results.push({first,second,report,result,one:one.ticks,read:read.ticks,two:two.ticks,observation:two.slideId,recap:recap.slideId,firstDistance,decisionDistance,secondDistance,evidence});
+    }return results;
+  });
+  for(const r of routes){
+    const ending=r.second==='signal'?(r.report==='cry'?'false':'best'):(r.report==='cry'?'duty':'secret');
+    const delta={best:[0,1],false:[-2,0],duty:[1,0],secret:[-1,1]}[ending];
+    check(r.result.ending===ending,'18 routes: '+r.first+'/'+r.second+'/'+r.report);
+    check(r.result.score.trust===delta[0]&&r.result.score.bond===delta[1],'exact deltas: '+ending);
+    check(r.one===1&&r.read===1&&r.two===0&&r.observation==='S04_OBSERVATION_2'&&r.recap==='S08_RECAP','time and reaction ordering');
+    check(r.evidence===(r.second==='signal'?'outside':'inside'),'report evidence matches actual path entry');
+    check(r.decisionDistance==='near','one action brings the cue near');
+    if(r.first!=='track')check(r.firstDistance==='far','first observation describes original far distance');
+    if(r.second!=='track')check(r.secondDistance==='near','second observation describes near distance');
+  }
+  for(const [width,height] of [[360,800],[390,844],[720,1280],[1280,800]]){
+    await page.setViewportSize({width,height});await page.goto(url);await metric('title/'+width);await shot('title-'+width+'x'+height);
+    await click('start');await metric('evening/'+width);await shot('evening-'+width+'x'+height);
+    await click('next');await metric('evening-b/'+width);if(width===360)await shot('evening-tease-360x800');
+    await click('next');await metric('rule/'+width);await click('next');await metric('night/'+width);await click('next');
+    await metric('clue/'+width);await shot('clue-'+width+'x'+height);
+    await click('track');await metric('track/'+width);if(width===360)await shot('track-360x800');
+    const before=JSON.stringify(await get());
+    await click('notes');await page.keyboard.press('Tab');
+    check(await page.locator('[data-act="close"]').evaluate(e=>e===document.activeElement),'notes traps focus/'+width);
+    await page.keyboard.press('Escape');check(JSON.stringify(await get())===before,'notes do not consume time/'+width);
+    check(await page.locator('[data-act="notes"]').evaluate(e=>e===document.activeElement),'notes restores focus/'+width);
+    await click('help');await step('signal');check((await get()).ticks===1,'help blocks actions/'+width);
+    if(width===360)await shot('help-360x800');await page.keyboard.press('Escape');
+    check(JSON.stringify(await get())===before,'help does not consume time/'+width);
+    await click('next');await metric('decision/'+width);await click('signal');await metric('signal/'+width);
+    if(width===360)await shot('signal-success-360x800');await click('next');await metric('report/'+width);await shot('report-'+width+'x'+height);
+    await click('silent');await metric('best/'+width);await shot('best-'+width+'x'+height);
+    await click('next');await metric('recap/'+width);if(width===360)await shot('recap-360x800');
+    await click('restart');const fresh=await get();check(fresh.ticks===2&&!fresh.notes.length&&!fresh.ending&&!fresh.score&&fresh.slideId==='S01_EVENING_A','retry reset/'+width);
+  }
+  await page.setViewportSize({width:360,height:800});
+  for(const [second,report,ending] of [['signal','cry','false'],['listen','cry','duty'],['listen','silent','secret']]){
+    await page.goto(url);await step('start');for(let i=0;i<4;i++)await step('next');
+    await step('track');await step('next');await step(second);await step('next');await step(report);
+    await metric(ending+'/360');await shot(ending+'-360x800');check((await get()).ending===ending,'reaction '+ending);
+  }
+  for(const action of ['listen','signal']){
+    await page.goto(url);await step('start');for(let i=0;i<4;i++)await step('next');await step(action);
+    await metric(action+'/360');await shot(action==='signal'?'signal-fail-360x800':'listen-360x800');
+  }
+  await page.goto(url);await step('start');for(let i=0;i<4;i++)await step('next');
+  await page.waitForTimeout(255);await page.locator('[data-act="track"]').dblclick({delay:20});
+  check((await get()).ticks===1&&(await get()).slideId==='S04_OBSERVATION','real double click applies once');
+  await page.waitForTimeout(255);await page.keyboard.press('Space');check((await get()).slideId==='S05_DECISION','Space advances');
+  await page.waitForTimeout(255);await page.locator('[data-act="listen"]').focus();await page.keyboard.press('Enter');
+  check((await get()).actions.join(',')==='track,listen','Enter executes focused choice');
+  const repeat=await page.evaluate(()=>{
+    const before=window.CRYWOLF_TEST.get();for(let i=0;i<8;i++)window.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',repeat:true,cancelable:true}));
+    return {before,after:window.CRYWOLF_TEST.get()};
+  });check(JSON.stringify(repeat.before)===JSON.stringify(repeat.after),'repeated keydown ignored');
+  await click('next');await click('cry');const resolved=await get();await step('cry');check(JSON.stringify(await get())===JSON.stringify(resolved),'report cannot apply twice');
+  await page.emulateMedia({reducedMotion:'reduce'});await page.goto(url);await click('sound');check(!await page.evaluate(()=>window.CRYWOLF_TEST.muted()),'sound can be enabled');
+  await click('sound');check(await page.evaluate(()=>window.CRYWOLF_TEST.muted()),'sound can be muted');
+  await step('start');for(let i=0;i<4;i++)await step('next');await step('listen');await step('next');await step('signal');
+  check((await get()).signal==='held','muted reduced motion signal is understood');
+  check(await page.locator('.stage').evaluate(e=>e.getAnimations({subtree:true}).length===0),'reduced motion removes animation');
+  await step('next');await step('silent');await step('next');await page.addStyleTag({content:'.copy,.choice b{font-size:24px!important}'});
+  check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'enlarged text no horizontal overflow');
+  await click('restart');check((await get()).slideId==='S01_EVENING_A','enlarged text scroll reaches controls');
+  await page.goto(baseUrl);await page.getByRole('link',{name:/絵本のひと夜を遊ぶ/}).click();
+  check((await get()).slideId==='S00_TITLE','main game entry works');
+  // Local file mode uses only neighboring files, with the same deterministic rules.
+  await page.goto('file:///C:/Dev/Projects/cry-wolf/public/storybook/index.html');
+  await step('start');for(let i=0;i<4;i++)await step('next');await step('signal');await step('next');await step('signal');await step('next');await step('silent');
+  check((await get()).ending==='best','file:// offline signal→signal→silent works');
+  await page.emulateMedia({reducedMotion:'no-preference'});await page.goto(url);
+  check(!errors.length,'no browser errors: '+errors.join(','));
+  const report={date:'2026-10-12',routes,assertions,failures,errors,layouts,screenshots,viewports:[[360,800],[390,844],[720,1280],[1280,800]],humanPlaytest:false,physicalDevices:false,routeMethod:'browser test hook + full mouse routes at each viewport'};
+  await page.evaluate(r=>{window.CRYWOLF_QA=r;},report);
+  return {routes:routes.length,assertions,failures,errors,layouts:layouts.length,screenshots:screenshots.length};
+}

@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-12",
+  "release": "0.8.1",
+  "provider": "Codex built-in Imagegen",
+  "records": [
+    {
+      "asset": "assets/illustrations/moon/luna-pride.png",
+      "sourceGeneratedFile": "exec-baf7e010-049e-4301-a3b0-a3684f374d87.png",
+      "referenceImages": [
+        "public/storybook/assets/luna-assertive-expressions.png"
+      ],
+      "atlasOrder": [
+        "proud",
+        "tease",
+        "mischief",
+        "angry"
+      ],
+      "prompt": "Create a production-ready transparent 2x2 expression atlas for Luna, the SAME wolf-eared young woman in the reference image. This is an edit/extension of her established game character, not a redesign. Keep her human face and hands, red eyes, long flowing silver-grey hair, large grey wolf ears, crimson hair ribbon on VIEWER RIGHT, navy cape, cream high-neck blouse, black belt and long black gloves. Same age, same anime storybook clean cel shading, precise thin navy outlines, flat restrained palette. Waist-up portraits, consistent scale and baseline across all four cells, fully contained hair/ears/arms, no cropping ears. Canvas portrait aspect 3:4 with exact equal 2x2 quadrants, 4% clear transparent gutters at every cell edge. No body or hair from one cell crosses the center axes. Transparent alpha background, no scenery, no text, no labels, no borders, no watermarks. Never horizontally flip her ribbon.\nTOP LEFT: PROUD AND COMPETITIVE. Chin confidently raised, direct half-lidded red gaze, a sharply self-assured small smile, one gloved hand on hip and other arm across waist, ears alert. A young woman sure she can win an argument. This is her strong default expression, not bashful or coy.\nTOP RIGHT: TEASING. One eyebrow raised, knowing sideways smile, playful challenging eye contact, a gloved index finger lightly near her cheek as if saying 'Can you keep up, little watchdog?' Lean slightly toward viewer. Amused self-confidence, not cruel.\nBOTTOM LEFT: MISCHIEVOUS GRIN. Distinct open grin, one little fang visible, narrowed sparkling red eyes, one hand covering the lower side of her grin as if she just thought of a harmless prank. Upright ears, a little forward tilt. Smug delighted trickster, not generic happy smile, not a claw attack.\nBOTTOM RIGHT: ANGRY. Clearly angry furrowed eyebrows, unwavering direct gaze, tightly set mouth slightly open as she speaks firmly, crossed arms, ears tilted outward. Fiercely protective of her forest and dignity, composed anger with no violence. Not crying, blushing, pouting or villainous.\nMake the four facial emotions immediately distinct even at mobile portrait size. Human relatable heroine with strong pride and backbone. Match the reference visual identity precisely."
+    },
+    {
+      "asset": "assets/illustrations/moon/luna-heart.png",
+      "sourceGeneratedFile": "exec-3b3604b3-ff90-482f-be40-b7bbb5e2c692.png",
+      "referenceImages": [
+        "public/storybook/assets/luna-assertive-expressions.png",
+        "assets/illustrations/moon/luna-emotions.png"
+      ],
+      "atlasOrder": [
+        "serious",
+        "sad",
+        "lonely",
+        "softened"
+      ],
+      "prompt": "Create a production-ready transparent 2x2 expression atlas extending Luna, the SAME wolf-eared young woman in the two reference images. Match her face, age, human anatomy, red eyes, silver-grey flowing long hair, grey wolf ears, crimson ribbon always on VIEWER RIGHT, navy cape, cream high-neck blouse, black belt and long black gloves. Clean anime storybook cel shading and navy thin outlines, same detailed but restrained colors. She is PROUD, ASSERTIVE, COMPETITIVE and independent. These emotional gaps must belong to that same strong young woman, not a timid passive girl.\nExact equal 2x2 quadrants on portrait 3:4 canvas, consistent waist-up scale; FOUR separate complete sprites, include full ears/hair/arms in each cell. Leave transparent separation along center axes and a little padding around all cells; do not let neighboring hair cross a quadrant border. Transparent alpha, no backgrounds, no text, no panel labels or borders. No mirroring.\nTOP LEFT: SERIOUS RESOLVE. Face forward, level intent red-eyed gaze, eyebrows firm but not angry, lips closed, shoulders square, one black-gloved hand held steadily against her upper chest as she makes a promise to protect the forest. Proud, controlled, dignified, no smile, no blush.\nTOP RIGHT: SAD, HURT TRUST. Three-quarter face toward viewer left, gaze slightly lowered but red eyes open and clearly visible, inner brows lifted, mouth pressed to keep composure, hand loosely holding her other wrist at waist. A single subtle tear gathered at lower eyelid, no streaming tears or sobbing. She trusted someone and is wounded, trying not to show it. Ears lowered just a little. This must clearly read sad rather than annoyed.\nBOTTOM LEFT: LONELY. Face and shoulders angled gently toward viewer left, eyes looking into empty distance, melancholy faraway gaze, mouth small and neutral, one hand holding her cape close near her collarbone, other arm at waist. Empty quiet longing, ears gently lowered. No tears. Distinguish from top-right sadness: loneliness is wistful and solitary, not freshly hurt.\nBOTTOM RIGHT: RELUCTANT WARMTH. Upright confident posture remains, head turned a little away but red eyes glancing back at viewer, barely suppressed tender crooked smile, very faint blush, one hand on hip while the other lightly touches her hair. She is pleased and touched by being understood but refuses to openly admit it; pride and warmth coexist. Not a bashful clasped-hands pose, not meek, no closed eyes.\nMake emotions clearly readable at mobile size, especially different eye, eyebrow, ear and mouth shapes. Preserve Luna's established character design exactly."
+    }
+  ]
+}

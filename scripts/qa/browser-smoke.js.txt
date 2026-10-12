@@ -1,0 +1,156 @@
+async (page) => {
+const failures = [], results = [], errors = [], layouts = [];
+let assertions = 0;
+const check = (condition, label) => { assertions++; if (!condition) failures.push(label); };
+const onError = error => errors.push(error.message);
+const onConsole = message => { if (message.type() === 'error') errors.push(message.text()); };
+page.on('pageerror', onError); page.on('console', onConsole);
+const phase = () => page.locator('main').getAttribute('data-phase');
+const night = async () => Number(await page.locator('main').getAttribute('data-night'));
+const metrics = async label => {
+  const value = await page.evaluate(() => ({
+    width: innerWidth, height: innerHeight, scrollWidth: document.documentElement.scrollWidth, scrollHeight: document.documentElement.scrollHeight,
+    controls: [...document.querySelectorAll('button')].filter(button => button.getBoundingClientRect().height > 0).map(button => {
+      const r = button.getBoundingClientRect(); return {text: button.textContent.trim(), width:r.width, height:r.height, top:r.top, bottom:r.bottom};
+    }),
+    clippedText: [...document.querySelectorAll('p, dd, dt, .choice span, .scene-caption')].filter(el => el.scrollWidth > el.clientWidth + 1 && el.clientWidth > 0).map(el => el.textContent),
+  }));
+  check(value.scrollWidth <= value.width, label + ': horizontal overflow');
+  check(value.scrollHeight <= value.height + 1, label + ': vertical overflow ' + value.scrollHeight);
+  check(value.clippedText.length === 0, label + ': clipped text ' + value.clippedText.join(','));
+  for (const button of value.controls) {
+    check(button.width >= 44 && button.height >= 44, label + ': tap size ' + button.text);
+    check(button.top >= 0 && button.bottom <= value.height + 1, label + ': button outside viewport ' + button.text);
+  }
+  layouts.push({label,...value});
+};
+const screenshot = async name => {
+  await page.locator('.story-area').evaluate(el => Promise.all(el.getAnimations({subtree:true}).map(animation => animation.finished)));
+  await page.screenshot({path:'output/playwright/hotfix-' + name + '.png'});
+};
+const advanceTo = async target => {
+  for (let i=0;i<40;i++) {
+    const current = await phase();
+    if (current === target || current === 'DEMO_COMPLETE') return;
+    if ((current === 'SIGN' || current === 'CHOICE') && await night() >= 2) {
+      check(await page.locator('.portrait.luna').count() === 0, 'H-06 no Luna before choice');
+      check(!(await page.locator('.story-area').innerText()).includes('ルナは来ていた'), 'H-06 no hidden outcome text');
+    }
+    await metrics('N'+await night()+'/'+current);
+    await page.locator('button.next').click();
+  }
+  throw new Error('could not reach ' + target);
+};
+const plans = [
+  {name:'natural',width:360,height:800,query:'seed=0',choices:['CRY','CRY','SILENT']},
+  {name:'present-silent',width:360,height:800,query:'seed=0&visit2=1&visit3=1&sign2=TRACE&sign3=QUIET',choices:['SILENT','SILENT','SILENT']},
+  {name:'absent-cry',width:720,height:1280,query:'seed=0&visit2=0&visit3=0&sign2=TRACE&sign3=RUSTLE',choices:['SILENT','CRY','CRY']},
+  {name:'absent-silent',width:1280,height:900,query:'seed=0&visit2=0&visit3=0&sign2=RUSTLE&sign3=TRACE',choices:['CRY','SILENT','SILENT']},
+  {name:'present-cry',width:360,height:800,query:'seed=0&visit2=1&visit3=1&sign2=QUIET&sign3=TRACE',choices:['SILENT','CRY','CRY']},
+  {name:'absent-cry-no-bonus',width:360,height:800,query:'seed=0&visit2=0&visit3=0',choices:['CRY','CRY','CRY']},
+];
+for (const [planIndex, plan] of plans.entries()) {
+  await page.setViewportSize({width:plan.width,height:plan.height});
+  await page.goto('http://127.0.0.1:5193/?'+plan.query);
+  if (planIndex === 0) { await page.evaluate(()=>localStorage.removeItem('cry-wolf:intro-read:v0.4')); await page.reload(); }
+  await metrics('title/' + plan.name);
+  await page.getByRole('button',{name:/はじめから/}).click();
+  if (planIndex === 0) {
+    for(let chapter=1;chapter<=3;chapter++) {
+      check(await page.locator('.intro-wrap').getAttribute('data-intro-chapter') === String(chapter),'H-01 intro chapter '+chapter);
+      check(await page.locator('.portrait.luna').count() === (chapter===3 ? 1 : 0),'H-01 Luna introduced in chapter 3');
+      await metrics('intro-'+chapter);
+      await screenshot('intro-'+chapter+'-360x800');
+      if (chapter===1) await page.keyboard.press('Enter');
+      else if (chapter===2) await page.getByRole('button',{name:'物語を進める'}).click();
+      else await page.locator('button.next').click();
+    }
+  } else {
+    check(await page.getByRole('button',{name:/既読の物語をスキップ/}).count() === 1,'H-02 read intro skip available');
+    await page.getByRole('button',{name:/既読の物語をスキップ/}).dblclick();
+    check(await phase() === 'SIGN','H-02 skip advances once to N1');
+  }
+  for(let n=1;n<=3;n++) {
+    await advanceTo('CHOICE');
+    check(await night()===n,plan.name+'/night number');
+    check(await page.locator('.portrait.luna').count() === (n===1 ? 1 : 0),'H-03/H-06 correct Luna visibility N'+n);
+    const choiceText = await page.locator('.choices').innerText();
+    check(!choiceText.includes('何もいない'),'H-03 no unnatural label');
+    if(n===1) {
+      check(choiceText.includes('見逃して、少し話す') && choiceText.includes('異常なし'),'H-03 explicit silence report');
+      check((await page.locator('.tutorial-card').innerText()).includes('ルナは今、見張り道にいる'),'H-03 public presence');
+    } else {
+      check(await page.locator('.forecast').count() === 1,'H-06 forecast recalled');
+      check(choiceText.includes('今夜は「異常なし」と報告'),'H-06 inference label');
+    }
+    await metrics(plan.name+'/choice N'+n);
+    if(planIndex===0 || n===2 && plan.name==='absent-cry') await screenshot(plan.name+'-n'+n+'-'+plan.width+'x'+plan.height);
+    if(planIndex===0 && n===2) {
+      const before=await page.locator('main').innerText();
+      await page.getByRole('button',{name:'ルールヘルプを開く'}).click();
+      check((await page.getByRole('dialog').innerText()).includes('翌朝の足跡確認'),'H-15 help explains evidence');
+      await page.getByRole('button',{name:'夜番に戻る'}).click();
+      check(await page.locator('main').innerText()===before,'H-15 help preserves game state');
+      check(await page.evaluate(()=>document.activeElement.getAttribute('aria-label'))==='ルールヘルプを開く','H-15 focus returns');
+      await page.getByRole('button',{name:'メニューを開く'}).click();
+      await page.getByRole('button',{name:'物語とルールを見る'}).click();
+      for(let i=0;i<3;i++) await page.getByRole('dialog').locator('button.next').click();
+      await page.getByRole('button',{name:'夜番に戻る'}).click();
+      check(await page.locator('main').innerText()===before,'H-15 rereading intro preserves game state');
+    }
+    const action = plan.choices[n-1];
+    const button = page.locator('[data-choice="'+action+'"]');
+    if(n===1) await button.dblclick(); else await button.click();
+    check(await phase()==='REVEAL','H-12 one resolution');
+    const expectedVisit = n===1 || (!plan.query.includes('visit'+n+'=0') && (plan.query.includes('visit'+n+'=1') || n===2));
+    check(await page.locator('.portrait.luna').count()===(expectedVisit?1:0),'absent reveal has no Luna');
+    await advanceTo('REPORT');
+    check(await page.locator('.portrait.luna').count()===0,'morning hides Luna portrait');
+    const feedback=await page.locator('.result-card').innerText();
+    check(feedback.includes('村の信用') && feedback.includes('ルナとの仲'),'H-07–10 both explanations shown');
+    if(n===1) {
+      check(feedback.includes(action==='CRY'?'正しく報告':'足跡と「異常なし」の報告が食い違った'),'H-04/05 cause');
+      check(await page.locator('.stat').first().getAttribute('aria-label') === '村の信用 '+(action==='CRY'?4:2)+' / 5','H-04/05 trust');
+      check(await page.locator('.stat').nth(1).getAttribute('aria-label') === 'ルナとの仲 '+(action==='CRY'?0:1)+' / 5','H-04/05 affection');
+    }
+    if(plan.name==='absent-cry' && n===2) check(feedback.includes('後日ルナが警報の噂'),'H-09 bonus explained as later news');
+    if(plan.name==='absent-cry-no-bonus' && n===2) check(feedback.includes('その夜はルナと話していない'),'H-09 no bonus at affection 0');
+    if(planIndex===0 || plan.name==='present-silent' && n===1) await screenshot(plan.name+'-result-n'+n+'-'+plan.width+'x'+plan.height);
+    await metrics(plan.name+'/report N'+n);
+    await page.locator('button.next').click();
+  }
+  await advanceTo('DEMO_COMPLETE');
+  check(await phase()==='DEMO_COMPLETE','three-night finish');
+  check(await page.locator('.history li').count()===3,'H-12 exactly 3 records');
+  await metrics(plan.name+'/final');
+  results.push({name:plan.name,query:plan.query,choices:plan.choices,viewport:{width:plan.width,height:plan.height},history:await page.locator('.history').innerText()});
+}
+const expected = results.at(-1).history;
+await page.getByRole('button',{name:/同じ3夜をもう一度/}).click();
+await page.getByRole('button',{name:/既読の物語をスキップ/}).click();
+for(const choice of plans.at(-1).choices) {
+  await advanceTo('CHOICE');
+  await page.locator('[data-choice="'+choice+'"]').click();
+}
+await advanceTo('DEMO_COMPLETE');
+check(await page.locator('.history').innerText()===expected,'same seed replay');
+await page.getByRole('button',{name:'メニューを開く'}).click();
+await page.keyboard.press('Escape');
+check(await page.getByRole('dialog').count()===0,'Escape closes modal');
+await page.locator('.demo-result button').last().click();
+await page.getByRole('button',{name:/物語とルールを見る/}).click();
+check(await page.getByRole('dialog').count()===1,'title reread');
+await page.keyboard.press('Escape');
+await page.getByRole('button',{name:/はじめから/}).focus();
+await page.keyboard.press('Enter');
+check(await phase()==='INTRO','keyboard start and new game always shows intro');
+await page.emulateMedia({reducedMotion:'reduce'});
+check(await page.locator('.intro-wrap').evaluate(el=>getComputedStyle(el).animationName)==='none','reduced motion');
+await page.emulateMedia({reducedMotion:'no-preference'});
+await page.reload();
+check(await page.locator('main[data-phase]').count()===0,'reload returns to title (no game saves in baseline)');
+check(errors.length===0,'console/page errors: '+JSON.stringify(errors));
+page.off('pageerror',onError); page.off('console',onConsole);
+if(failures.length) throw new Error(failures.join('\n'));
+return {completedAutomatedPlays:plans.length+1,assertions,results,failures,errors,layouts};
+}

@@ -1,0 +1,148 @@
+{
+  "method": "All legal attendance/sign outcomes and choices with future-relevant state pruning; probability weights not sampled.",
+  "historyProjection": "Any prior patrol visit for N5 dialogue. No ending guard reads full history.",
+  "layers": [
+    {
+      "night": 1,
+      "entryStates": 1,
+      "transitions": 2,
+      "nextStates": 2,
+      "branches": [
+        "present/RUSTLE/-/CRY",
+        "present/RUSTLE/-/SILENT"
+      ]
+    },
+    {
+      "night": 2,
+      "entryStates": 2,
+      "transitions": 24,
+      "nextStates": 8,
+      "branches": [
+        "absent/QUIET/-/CRY",
+        "absent/QUIET/-/SILENT",
+        "absent/RUSTLE/-/CRY",
+        "absent/RUSTLE/-/SILENT",
+        "absent/TRACE/-/CRY",
+        "absent/TRACE/-/SILENT",
+        "present/QUIET/-/CRY",
+        "present/QUIET/-/SILENT",
+        "present/RUSTLE/-/CRY",
+        "present/RUSTLE/-/SILENT",
+        "present/TRACE/-/CRY",
+        "present/TRACE/-/SILENT"
+      ]
+    },
+    {
+      "night": 3,
+      "entryStates": 8,
+      "transitions": 96,
+      "nextStates": 25,
+      "branches": [
+        "absent/QUIET/-/CRY",
+        "absent/QUIET/-/SILENT",
+        "absent/RUSTLE/-/CRY",
+        "absent/RUSTLE/-/SILENT",
+        "absent/TRACE/-/CRY",
+        "absent/TRACE/-/SILENT",
+        "present/QUIET/-/CRY",
+        "present/QUIET/-/SILENT",
+        "present/RUSTLE/-/CRY",
+        "present/RUSTLE/-/SILENT",
+        "present/TRACE/-/CRY",
+        "present/TRACE/-/SILENT"
+      ]
+    },
+    {
+      "night": 4,
+      "entryStates": 25,
+      "transitions": 75,
+      "nextStates": 52,
+      "branches": [
+        "present/TRACE/-/CRY",
+        "present/TRACE/-/SILENT",
+        "present/TRACE/-/THANK"
+      ]
+    },
+    {
+      "night": 5,
+      "entryStates": 52,
+      "transitions": 1872,
+      "nextStates": 349,
+      "branches": [
+        "absent/QUIET/COME/CRY",
+        "absent/QUIET/COME/SILENT",
+        "absent/QUIET/DONT_COME/CRY",
+        "absent/QUIET/DONT_COME/SILENT",
+        "absent/QUIET/YOU_DECIDE/CRY",
+        "absent/QUIET/YOU_DECIDE/SILENT",
+        "absent/RUSTLE/COME/CRY",
+        "absent/RUSTLE/COME/SILENT",
+        "absent/RUSTLE/DONT_COME/CRY",
+        "absent/RUSTLE/DONT_COME/SILENT",
+        "absent/RUSTLE/YOU_DECIDE/CRY",
+        "absent/RUSTLE/YOU_DECIDE/SILENT",
+        "absent/TRACE/COME/CRY",
+        "absent/TRACE/COME/SILENT",
+        "absent/TRACE/DONT_COME/CRY",
+        "absent/TRACE/DONT_COME/SILENT",
+        "absent/TRACE/YOU_DECIDE/CRY",
+        "absent/TRACE/YOU_DECIDE/SILENT",
+        "present/QUIET/COME/CRY",
+        "present/QUIET/COME/SILENT",
+        "present/QUIET/DONT_COME/CRY",
+        "present/QUIET/DONT_COME/SILENT",
+        "present/QUIET/YOU_DECIDE/CRY",
+        "present/QUIET/YOU_DECIDE/SILENT",
+        "present/RUSTLE/COME/CRY",
+        "present/RUSTLE/COME/SILENT",
+        "present/RUSTLE/DONT_COME/CRY",
+        "present/RUSTLE/DONT_COME/SILENT",
+        "present/RUSTLE/YOU_DECIDE/CRY",
+        "present/RUSTLE/YOU_DECIDE/SILENT",
+        "present/TRACE/COME/CRY",
+        "present/TRACE/COME/SILENT",
+        "present/TRACE/DONT_COME/CRY",
+        "present/TRACE/DONT_COME/SILENT",
+        "present/TRACE/YOU_DECIDE/CRY",
+        "present/TRACE/YOU_DECIDE/SILENT"
+      ]
+    },
+    {
+      "night": 6,
+      "entryStates": 349,
+      "transitions": 4188,
+      "nextStates": 650,
+      "branches": [
+        "absent/QUIET/-/CRY",
+        "absent/QUIET/-/SILENT",
+        "absent/RUSTLE/-/CRY",
+        "absent/RUSTLE/-/SILENT",
+        "absent/TRACE/-/CRY",
+        "absent/TRACE/-/SILENT",
+        "present/QUIET/-/CRY",
+        "present/QUIET/-/SILENT",
+        "present/RUSTLE/-/CRY",
+        "present/RUSTLE/-/SILENT",
+        "present/TRACE/-/CRY",
+        "present/TRACE/-/SILENT"
+      ]
+    },
+    {
+      "night": 7,
+      "entryStates": 650,
+      "transitions": 1355,
+      "nextStates": 729,
+      "branches": [
+        "present/TRACE/-/CALL_LUNA",
+        "present/TRACE/-/CRY",
+        "present/TRACE/-/SILENT"
+      ]
+    }
+  ],
+  "endings": [
+    "BAD_LIAR",
+    "GOOD_DOG",
+    "HONEST",
+    "SECRET_MEETING"
+  ]
+}

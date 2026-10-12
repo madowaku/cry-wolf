@@ -1,0 +1,2778 @@
+{
+  "date": "2026-10-12",
+  "routes": [
+    {
+      "first": "track",
+      "second": "track",
+      "report": "cry",
+      "result": {
+        "phase": "result",
+        "slideId": "R03_DUTY",
+        "ticks": 0,
+        "actions": [
+          "track",
+          "track"
+        ],
+        "signal": "none",
+        "heard": false,
+        "notes": [
+          "小さなウサギの足跡。大きなオオカミの足跡は、まだ境界の外にある。",
+          "新しいオオカミの足跡が、境界の手前まで続いている。"
+        ],
+        "ending": "duty",
+        "score": {
+          "trust": 1,
+          "bond": 0
+        },
+        "report": "cry",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "decisionDistance": "near",
+      "evidence": "inside"
+    },
+    {
+      "first": "track",
+      "second": "track",
+      "report": "silent",
+      "result": {
+        "phase": "result",
+        "slideId": "R04_SECRET",
+        "ticks": 0,
+        "actions": [
+          "track",
+          "track"
+        ],
+        "signal": "none",
+        "heard": false,
+        "notes": [
+          "小さなウサギの足跡。大きなオオカミの足跡は、まだ境界の外にある。",
+          "新しいオオカミの足跡が、境界の手前まで続いている。"
+        ],
+        "ending": "secret",
+        "score": {
+          "trust": -1,
+          "bond": 1
+        },
+        "report": "silent",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "decisionDistance": "near",
+      "evidence": "inside"
+    },
+    {
+      "first": "track",
+      "second": "listen",
+      "report": "cry",
+      "result": {
+        "phase": "result",
+        "slideId": "R03_DUTY",
+        "ticks": 0,
+        "actions": [
+          "track",
+          "listen"
+        ],
+        "signal": "none",
+        "heard": true,
+        "notes": [
+          "小さなウサギの足跡。大きなオオカミの足跡は、まだ境界の外にある。",
+          "遠吠えはすぐそば。ルナは、境界の外の木陰にいる。"
+        ],
+        "ending": "duty",
+        "score": {
+          "trust": 1,
+          "bond": 0
+        },
+        "report": "cry",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "decisionDistance": "near",
+      "secondDistance": "near",
+      "evidence": "inside"
+    },
+    {
+      "first": "track",
+      "second": "listen",
+      "report": "silent",
+      "result": {
+        "phase": "result",
+        "slideId": "R04_SECRET",
+        "ticks": 0,
+        "actions": [
+          "track",
+          "listen"
+        ],
+        "signal": "none",
+        "heard": true,
+        "notes": [
+          "小さなウサギの足跡。大きなオオカミの足跡は、まだ境界の外にある。",
+          "遠吠えはすぐそば。ルナは、境界の外の木陰にいる。"
+        ],
+        "ending": "secret",
+        "score": {
+          "trust": -1,
+          "bond": 1
+        },
+        "report": "silent",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "decisionDistance": "near",
+      "secondDistance": "near",
+      "evidence": "inside"
+    },
+    {
+      "first": "track",
+      "second": "signal",
+      "report": "cry",
+      "result": {
+        "phase": "result",
+        "slideId": "R02_FALSE",
+        "ticks": 0,
+        "actions": [
+          "track",
+          "signal"
+        ],
+        "signal": "held",
+        "heard": false,
+        "notes": [
+          "小さなウサギの足跡。大きなオオカミの足跡は、まだ境界の外にある。",
+          "ランタンを二度遮った。すぐ近くで短い返事。ルナは森側で待ってくれた。"
+        ],
+        "ending": "false",
+        "score": {
+          "trust": -2,
+          "bond": 0
+        },
+        "report": "cry",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "decisionDistance": "near",
+      "secondDistance": "near",
+      "evidence": "outside"
+    },
+    {
+      "first": "track",
+      "second": "signal",
+      "report": "silent",
+      "result": {
+        "phase": "result",
+        "slideId": "R01_BEST",
+        "ticks": 0,
+        "actions": [
+          "track",
+          "signal"
+        ],
+        "signal": "held",
+        "heard": false,
+        "notes": [
+          "小さなウサギの足跡。大きなオオカミの足跡は、まだ境界の外にある。",
+          "ランタンを二度遮った。すぐ近くで短い返事。ルナは森側で待ってくれた。"
+        ],
+        "ending": "best",
+        "score": {
+          "trust": 0,
+          "bond": 1
+        },
+        "report": "silent",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "decisionDistance": "near",
+      "secondDistance": "near",
+      "evidence": "outside"
+    },
+    {
+      "first": "listen",
+      "second": "track",
+      "report": "cry",
+      "result": {
+        "phase": "result",
+        "slideId": "R03_DUTY",
+        "ticks": 0,
+        "actions": [
+          "listen",
+          "track"
+        ],
+        "signal": "none",
+        "heard": true,
+        "notes": [
+          "長い遠吠えは森の奥から。少しずつこちらへ近づく足音も聞こえる。",
+          "新しいオオカミの足跡が、境界の手前まで続いている。"
+        ],
+        "ending": "duty",
+        "score": {
+          "trust": 1,
+          "bond": 0
+        },
+        "report": "cry",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "firstDistance": "far",
+      "decisionDistance": "near",
+      "evidence": "inside"
+    },
+    {
+      "first": "listen",
+      "second": "track",
+      "report": "silent",
+      "result": {
+        "phase": "result",
+        "slideId": "R04_SECRET",
+        "ticks": 0,
+        "actions": [
+          "listen",
+          "track"
+        ],
+        "signal": "none",
+        "heard": true,
+        "notes": [
+          "長い遠吠えは森の奥から。少しずつこちらへ近づく足音も聞こえる。",
+          "新しいオオカミの足跡が、境界の手前まで続いている。"
+        ],
+        "ending": "secret",
+        "score": {
+          "trust": -1,
+          "bond": 1
+        },
+        "report": "silent",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "firstDistance": "far",
+      "decisionDistance": "near",
+      "evidence": "inside"
+    },
+    {
+      "first": "listen",
+      "second": "listen",
+      "report": "cry",
+      "result": {
+        "phase": "result",
+        "slideId": "R03_DUTY",
+        "ticks": 0,
+        "actions": [
+          "listen",
+          "listen"
+        ],
+        "signal": "none",
+        "heard": true,
+        "notes": [
+          "長い遠吠えは森の奥から。少しずつこちらへ近づく足音も聞こえる。",
+          "遠吠えはすぐそば。ルナは、境界の外の木陰にいる。"
+        ],
+        "ending": "duty",
+        "score": {
+          "trust": 1,
+          "bond": 0
+        },
+        "report": "cry",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "firstDistance": "far",
+      "decisionDistance": "near",
+      "secondDistance": "near",
+      "evidence": "inside"
+    },
+    {
+      "first": "listen",
+      "second": "listen",
+      "report": "silent",
+      "result": {
+        "phase": "result",
+        "slideId": "R04_SECRET",
+        "ticks": 0,
+        "actions": [
+          "listen",
+          "listen"
+        ],
+        "signal": "none",
+        "heard": true,
+        "notes": [
+          "長い遠吠えは森の奥から。少しずつこちらへ近づく足音も聞こえる。",
+          "遠吠えはすぐそば。ルナは、境界の外の木陰にいる。"
+        ],
+        "ending": "secret",
+        "score": {
+          "trust": -1,
+          "bond": 1
+        },
+        "report": "silent",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "firstDistance": "far",
+      "decisionDistance": "near",
+      "secondDistance": "near",
+      "evidence": "inside"
+    },
+    {
+      "first": "listen",
+      "second": "signal",
+      "report": "cry",
+      "result": {
+        "phase": "result",
+        "slideId": "R02_FALSE",
+        "ticks": 0,
+        "actions": [
+          "listen",
+          "signal"
+        ],
+        "signal": "held",
+        "heard": true,
+        "notes": [
+          "長い遠吠えは森の奥から。少しずつこちらへ近づく足音も聞こえる。",
+          "ランタンを二度遮った。すぐ近くで短い返事。ルナは森側で待ってくれた。"
+        ],
+        "ending": "false",
+        "score": {
+          "trust": -2,
+          "bond": 0
+        },
+        "report": "cry",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "firstDistance": "far",
+      "decisionDistance": "near",
+      "secondDistance": "near",
+      "evidence": "outside"
+    },
+    {
+      "first": "listen",
+      "second": "signal",
+      "report": "silent",
+      "result": {
+        "phase": "result",
+        "slideId": "R01_BEST",
+        "ticks": 0,
+        "actions": [
+          "listen",
+          "signal"
+        ],
+        "signal": "held",
+        "heard": true,
+        "notes": [
+          "長い遠吠えは森の奥から。少しずつこちらへ近づく足音も聞こえる。",
+          "ランタンを二度遮った。すぐ近くで短い返事。ルナは森側で待ってくれた。"
+        ],
+        "ending": "best",
+        "score": {
+          "trust": 0,
+          "bond": 1
+        },
+        "report": "silent",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "firstDistance": "far",
+      "decisionDistance": "near",
+      "secondDistance": "near",
+      "evidence": "outside"
+    },
+    {
+      "first": "signal",
+      "second": "track",
+      "report": "cry",
+      "result": {
+        "phase": "result",
+        "slideId": "R03_DUTY",
+        "ticks": 0,
+        "actions": [
+          "signal",
+          "track"
+        ],
+        "signal": "miss",
+        "heard": false,
+        "notes": [
+          "光が届かなかった。ルナはまだ遠く、森の霧の向こうにいる。",
+          "新しいオオカミの足跡が、境界の手前まで続いている。"
+        ],
+        "ending": "duty",
+        "score": {
+          "trust": 1,
+          "bond": 0
+        },
+        "report": "cry",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "firstDistance": "far",
+      "decisionDistance": "near",
+      "evidence": "inside"
+    },
+    {
+      "first": "signal",
+      "second": "track",
+      "report": "silent",
+      "result": {
+        "phase": "result",
+        "slideId": "R04_SECRET",
+        "ticks": 0,
+        "actions": [
+          "signal",
+          "track"
+        ],
+        "signal": "miss",
+        "heard": false,
+        "notes": [
+          "光が届かなかった。ルナはまだ遠く、森の霧の向こうにいる。",
+          "新しいオオカミの足跡が、境界の手前まで続いている。"
+        ],
+        "ending": "secret",
+        "score": {
+          "trust": -1,
+          "bond": 1
+        },
+        "report": "silent",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "firstDistance": "far",
+      "decisionDistance": "near",
+      "evidence": "inside"
+    },
+    {
+      "first": "signal",
+      "second": "listen",
+      "report": "cry",
+      "result": {
+        "phase": "result",
+        "slideId": "R03_DUTY",
+        "ticks": 0,
+        "actions": [
+          "signal",
+          "listen"
+        ],
+        "signal": "miss",
+        "heard": true,
+        "notes": [
+          "光が届かなかった。ルナはまだ遠く、森の霧の向こうにいる。",
+          "遠吠えはすぐそば。ルナは、境界の外の木陰にいる。"
+        ],
+        "ending": "duty",
+        "score": {
+          "trust": 1,
+          "bond": 0
+        },
+        "report": "cry",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "firstDistance": "far",
+      "decisionDistance": "near",
+      "secondDistance": "near",
+      "evidence": "inside"
+    },
+    {
+      "first": "signal",
+      "second": "listen",
+      "report": "silent",
+      "result": {
+        "phase": "result",
+        "slideId": "R04_SECRET",
+        "ticks": 0,
+        "actions": [
+          "signal",
+          "listen"
+        ],
+        "signal": "miss",
+        "heard": true,
+        "notes": [
+          "光が届かなかった。ルナはまだ遠く、森の霧の向こうにいる。",
+          "遠吠えはすぐそば。ルナは、境界の外の木陰にいる。"
+        ],
+        "ending": "secret",
+        "score": {
+          "trust": -1,
+          "bond": 1
+        },
+        "report": "silent",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "firstDistance": "far",
+      "decisionDistance": "near",
+      "secondDistance": "near",
+      "evidence": "inside"
+    },
+    {
+      "first": "signal",
+      "second": "signal",
+      "report": "cry",
+      "result": {
+        "phase": "result",
+        "slideId": "R02_FALSE",
+        "ticks": 0,
+        "actions": [
+          "signal",
+          "signal"
+        ],
+        "signal": "held",
+        "heard": false,
+        "notes": [
+          "光が届かなかった。ルナはまだ遠く、森の霧の向こうにいる。",
+          "ランタンを二度遮った。すぐ近くで短い返事。ルナは森側で待ってくれた。"
+        ],
+        "ending": "false",
+        "score": {
+          "trust": -2,
+          "bond": 0
+        },
+        "report": "cry",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "firstDistance": "far",
+      "decisionDistance": "near",
+      "secondDistance": "near",
+      "evidence": "outside"
+    },
+    {
+      "first": "signal",
+      "second": "signal",
+      "report": "silent",
+      "result": {
+        "phase": "result",
+        "slideId": "R01_BEST",
+        "ticks": 0,
+        "actions": [
+          "signal",
+          "signal"
+        ],
+        "signal": "held",
+        "heard": false,
+        "notes": [
+          "光が届かなかった。ルナはまだ遠く、森の霧の向こうにいる。",
+          "ランタンを二度遮った。すぐ近くで短い返事。ルナは森側で待ってくれた。"
+        ],
+        "ending": "best",
+        "score": {
+          "trust": 0,
+          "bond": 1
+        },
+        "report": "silent",
+        "help": false,
+        "modal": null
+      },
+      "one": 1,
+      "read": 1,
+      "two": 0,
+      "observation": "S04_OBSERVATION_2",
+      "recap": "S08_RECAP",
+      "firstDistance": "far",
+      "decisionDistance": "near",
+      "secondDistance": "near",
+      "evidence": "outside"
+    }
+  ],
+  "assertions": 705,
+  "failures": [],
+  "errors": [],
+  "layouts": [
+    {
+      "label": "title/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "ひと夜を始める›",
+          "w": 305,
+          "h": 61,
+          "top": 698,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "evening/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "つぎへ›",
+          "w": 305,
+          "h": 61,
+          "top": 698,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "evening-b/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "つぎへ›",
+          "w": 305,
+          "h": 61,
+          "top": 698,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "rule/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "夜の見張りへ›",
+          "w": 305,
+          "h": 61,
+          "top": 698,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "night/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "つぎへ›",
+          "w": 305,
+          "h": 61,
+          "top": 698,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "clue/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "足跡を調べる土に残った痕跡を見る · 1刻›",
+          "w": 305,
+          "h": 68,
+          "top": 537,
+          "bottom": 605
+        },
+        {
+          "name": "耳を澄ます声の方角と距離を聞く · 1刻›",
+          "w": 305,
+          "h": 68,
+          "top": 614,
+          "bottom": 682
+        },
+        {
+          "name": "ランタンで合図する二度遮って「森側で待って」 · 1刻›",
+          "w": 305,
+          "h": 68,
+          "top": 691,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "track/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "つぎへ›",
+          "w": 305,
+          "h": 61,
+          "top": 698,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "decision/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "足跡を調べる土に残った痕跡を見る · 1刻›",
+          "w": 305,
+          "h": 68,
+          "top": 537,
+          "bottom": 605
+        },
+        {
+          "name": "耳を澄ます声の方角と距離を聞く · 1刻›",
+          "w": 305,
+          "h": 68,
+          "top": 614,
+          "bottom": 682
+        },
+        {
+          "name": "ランタンで合図する二度遮って「森側で待って」 · 1刻›",
+          "w": 305,
+          "h": 68,
+          "top": 691,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "signal/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "報告へ›",
+          "w": 305,
+          "h": 61,
+          "top": 698,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "report/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "鐘を鳴らす見張り道への立ち入りを知らせる›",
+          "w": 305,
+          "h": 68,
+          "top": 614,
+          "bottom": 682
+        },
+        {
+          "name": "異常なしと報告見張り道には入っていない›",
+          "w": 305,
+          "h": 68,
+          "top": 691,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "best/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "この夜の理由を見る›",
+          "w": 305,
+          "h": 61,
+          "top": 698,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "recap/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "別の選択で、もう一度›",
+          "w": 305,
+          "h": 61,
+          "top": 586.53125,
+          "bottom": 647.53125
+        },
+        {
+          "name": "タイトルへ戻る›",
+          "w": 305,
+          "h": 61,
+          "top": 656.53125,
+          "bottom": 717.53125
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "title/390",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 382,
+      "scrollHeight": 844,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "ひと夜を始める›",
+          "w": 335,
+          "h": 61,
+          "top": 742,
+          "bottom": 803
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "evening/390",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 382,
+      "scrollHeight": 844,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "つぎへ›",
+          "w": 335,
+          "h": 61,
+          "top": 742,
+          "bottom": 803
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "evening-b/390",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 382,
+      "scrollHeight": 844,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "つぎへ›",
+          "w": 335,
+          "h": 61,
+          "top": 742,
+          "bottom": 803
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "rule/390",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 382,
+      "scrollHeight": 844,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "夜の見張りへ›",
+          "w": 335,
+          "h": 61,
+          "top": 742,
+          "bottom": 803
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "night/390",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 382,
+      "scrollHeight": 844,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "つぎへ›",
+          "w": 335,
+          "h": 61,
+          "top": 742,
+          "bottom": 803
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "clue/390",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 382,
+      "scrollHeight": 844,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "足跡を調べる土に残った痕跡を見る · 1刻›",
+          "w": 335,
+          "h": 68,
+          "top": 581,
+          "bottom": 649
+        },
+        {
+          "name": "耳を澄ます声の方角と距離を聞く · 1刻›",
+          "w": 335,
+          "h": 68,
+          "top": 658,
+          "bottom": 726
+        },
+        {
+          "name": "ランタンで合図する二度遮って「森側で待って」 · 1刻›",
+          "w": 335,
+          "h": 68,
+          "top": 735,
+          "bottom": 803
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "track/390",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 382,
+      "scrollHeight": 844,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "つぎへ›",
+          "w": 335,
+          "h": 61,
+          "top": 742,
+          "bottom": 803
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "decision/390",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 382,
+      "scrollHeight": 844,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "足跡を調べる土に残った痕跡を見る · 1刻›",
+          "w": 335,
+          "h": 68,
+          "top": 581,
+          "bottom": 649
+        },
+        {
+          "name": "耳を澄ます声の方角と距離を聞く · 1刻›",
+          "w": 335,
+          "h": 68,
+          "top": 658,
+          "bottom": 726
+        },
+        {
+          "name": "ランタンで合図する二度遮って「森側で待って」 · 1刻›",
+          "w": 335,
+          "h": 68,
+          "top": 735,
+          "bottom": 803
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "signal/390",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 382,
+      "scrollHeight": 844,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "報告へ›",
+          "w": 335,
+          "h": 61,
+          "top": 742,
+          "bottom": 803
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "report/390",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 382,
+      "scrollHeight": 844,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "鐘を鳴らす見張り道への立ち入りを知らせる›",
+          "w": 335,
+          "h": 68,
+          "top": 658,
+          "bottom": 726
+        },
+        {
+          "name": "異常なしと報告見張り道には入っていない›",
+          "w": 335,
+          "h": 68,
+          "top": 735,
+          "bottom": 803
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "best/390",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 382,
+      "scrollHeight": 844,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "この夜の理由を見る›",
+          "w": 335,
+          "h": 61,
+          "top": 742,
+          "bottom": 803
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "recap/390",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 382,
+      "scrollHeight": 844,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "別の選択で、もう一度›",
+          "w": 335,
+          "h": 61,
+          "top": 586.53125,
+          "bottom": 647.53125
+        },
+        {
+          "name": "タイトルへ戻る›",
+          "w": 335,
+          "h": 61,
+          "top": 656.53125,
+          "bottom": 717.53125
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "title/720",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "ひと夜を始める›",
+          "w": 470,
+          "h": 65,
+          "top": 1155,
+          "bottom": 1220
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "evening/720",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "つぎへ›",
+          "w": 470,
+          "h": 65,
+          "top": 1155,
+          "bottom": 1220
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "evening-b/720",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "つぎへ›",
+          "w": 470,
+          "h": 65,
+          "top": 1155,
+          "bottom": 1220
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "rule/720",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "夜の見張りへ›",
+          "w": 470,
+          "h": 65,
+          "top": 1155,
+          "bottom": 1220
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "night/720",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "つぎへ›",
+          "w": 470,
+          "h": 65,
+          "top": 1155,
+          "bottom": 1220
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "clue/720",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "足跡を調べる土に残った痕跡を見る · 1刻›",
+          "w": 470,
+          "h": 72,
+          "top": 986,
+          "bottom": 1058
+        },
+        {
+          "name": "耳を澄ます声の方角と距離を聞く · 1刻›",
+          "w": 470,
+          "h": 72,
+          "top": 1067,
+          "bottom": 1139
+        },
+        {
+          "name": "ランタンで合図する二度遮って「森側で待って」 · 1刻›",
+          "w": 470,
+          "h": 72,
+          "top": 1148,
+          "bottom": 1220
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "track/720",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "つぎへ›",
+          "w": 470,
+          "h": 65,
+          "top": 1155,
+          "bottom": 1220
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "decision/720",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "足跡を調べる土に残った痕跡を見る · 1刻›",
+          "w": 470,
+          "h": 72,
+          "top": 986,
+          "bottom": 1058
+        },
+        {
+          "name": "耳を澄ます声の方角と距離を聞く · 1刻›",
+          "w": 470,
+          "h": 72,
+          "top": 1067,
+          "bottom": 1139
+        },
+        {
+          "name": "ランタンで合図する二度遮って「森側で待って」 · 1刻›",
+          "w": 470,
+          "h": 72,
+          "top": 1148,
+          "bottom": 1220
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "signal/720",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "報告へ›",
+          "w": 470,
+          "h": 65,
+          "top": 1155,
+          "bottom": 1220
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "report/720",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "鐘を鳴らす見張り道への立ち入りを知らせる›",
+          "w": 470,
+          "h": 72,
+          "top": 1067,
+          "bottom": 1139
+        },
+        {
+          "name": "異常なしと報告見張り道には入っていない›",
+          "w": 470,
+          "h": 72,
+          "top": 1148,
+          "bottom": 1220
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "best/720",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "この夜の理由を見る›",
+          "w": 470,
+          "h": 65,
+          "top": 1155,
+          "bottom": 1220
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "recap/720",
+      "width": 720,
+      "height": 1280,
+      "scrollWidth": 720,
+      "scrollHeight": 1280,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 29,
+          "bottom": 77
+        },
+        {
+          "name": "別の選択で、もう一度›",
+          "w": 470,
+          "h": 65,
+          "top": 608.34375,
+          "bottom": 673.34375
+        },
+        {
+          "name": "タイトルへ戻る›",
+          "w": 470,
+          "h": 65,
+          "top": 682.34375,
+          "bottom": 747.34375
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "title/1280",
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "ひと夜を始める›",
+          "w": 431.09375,
+          "h": 65,
+          "top": 496.1875,
+          "bottom": 561.1875
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "evening/1280",
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "つぎへ›",
+          "w": 431.09375,
+          "h": 65,
+          "top": 457.140625,
+          "bottom": 522.140625
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "evening-b/1280",
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "つぎへ›",
+          "w": 431.09375,
+          "h": 65,
+          "top": 497.703125,
+          "bottom": 562.703125
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "rule/1280",
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "夜の見張りへ›",
+          "w": 431.09375,
+          "h": 65,
+          "top": 476.234375,
+          "bottom": 541.234375
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "night/1280",
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "つぎへ›",
+          "w": 431.09375,
+          "h": 65,
+          "top": 467.140625,
+          "bottom": 532.140625
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "clue/1280",
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "足跡を調べる土に残った痕跡を見る · 1刻›",
+          "w": 431.09375,
+          "h": 72,
+          "top": 389.140625,
+          "bottom": 461.140625
+        },
+        {
+          "name": "耳を澄ます声の方角と距離を聞く · 1刻›",
+          "w": 431.09375,
+          "h": 72,
+          "top": 470.140625,
+          "bottom": 542.140625
+        },
+        {
+          "name": "ランタンで合図する二度遮って「森側で待って」 · 1刻›",
+          "w": 431.09375,
+          "h": 72,
+          "top": 551.140625,
+          "bottom": 623.140625
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "track/1280",
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "つぎへ›",
+          "w": 431.09375,
+          "h": 65,
+          "top": 475.140625,
+          "bottom": 540.140625
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "decision/1280",
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "足跡を調べる土に残った痕跡を見る · 1刻›",
+          "w": 431.09375,
+          "h": 72,
+          "top": 389.140625,
+          "bottom": 461.140625
+        },
+        {
+          "name": "耳を澄ます声の方角と距離を聞く · 1刻›",
+          "w": 431.09375,
+          "h": 72,
+          "top": 470.140625,
+          "bottom": 542.140625
+        },
+        {
+          "name": "ランタンで合図する二度遮って「森側で待って」 · 1刻›",
+          "w": 431.09375,
+          "h": 72,
+          "top": 551.140625,
+          "bottom": 623.140625
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "signal/1280",
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "報告へ›",
+          "w": 431.09375,
+          "h": 65,
+          "top": 475.140625,
+          "bottom": 540.140625
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "report/1280",
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "鐘を鳴らす見張り道への立ち入りを知らせる›",
+          "w": 431.09375,
+          "h": 72,
+          "top": 425.140625,
+          "bottom": 497.140625
+        },
+        {
+          "name": "異常なしと報告見張り道には入っていない›",
+          "w": 431.09375,
+          "h": 72,
+          "top": 506.140625,
+          "bottom": 578.140625
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "best/1280",
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "この夜の理由を見る›",
+          "w": 431.09375,
+          "h": 65,
+          "top": 480.140625,
+          "bottom": 545.140625
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "recap/1280",
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 42.5,
+          "bottom": 90.5
+        },
+        {
+          "name": "別の選択で、もう一度›",
+          "w": 431.09375,
+          "h": 65,
+          "top": 520.671875,
+          "bottom": 585.671875
+        },
+        {
+          "name": "タイトルへ戻る›",
+          "w": 431.09375,
+          "h": 65,
+          "top": 594.671875,
+          "bottom": 659.671875
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "false/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "この夜の理由を見る›",
+          "w": 305,
+          "h": 61,
+          "top": 698,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "duty/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "この夜の理由を見る›",
+          "w": 305,
+          "h": 61,
+          "top": 698,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "secret/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "この夜の理由を見る›",
+          "w": 305,
+          "h": 61,
+          "top": 698,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 1
+    },
+    {
+      "label": "listen/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "つぎへ›",
+          "w": 305,
+          "h": 61,
+          "top": 698,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    },
+    {
+      "label": "signal/360",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 352,
+      "scrollHeight": 800,
+      "controls": [
+        {
+          "name": "調査メモを開く",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "?",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "音をオンにする",
+          "w": 48,
+          "h": 48,
+          "top": 9,
+          "bottom": 57
+        },
+        {
+          "name": "つぎへ›",
+          "w": 305,
+          "h": 61,
+          "top": 698,
+          "bottom": 759
+        }
+      ],
+      "clipped": [],
+      "luna": 0
+    }
+  ],
+  "screenshots": [
+    "output/playwright/storybook-title-360x800.png",
+    "output/playwright/storybook-evening-360x800.png",
+    "output/playwright/storybook-evening-tease-360x800.png",
+    "output/playwright/storybook-clue-360x800.png",
+    "output/playwright/storybook-track-360x800.png",
+    "output/playwright/storybook-help-360x800.png",
+    "output/playwright/storybook-signal-success-360x800.png",
+    "output/playwright/storybook-report-360x800.png",
+    "output/playwright/storybook-best-360x800.png",
+    "output/playwright/storybook-recap-360x800.png",
+    "output/playwright/storybook-title-390x844.png",
+    "output/playwright/storybook-evening-390x844.png",
+    "output/playwright/storybook-clue-390x844.png",
+    "output/playwright/storybook-report-390x844.png",
+    "output/playwright/storybook-best-390x844.png",
+    "output/playwright/storybook-title-720x1280.png",
+    "output/playwright/storybook-evening-720x1280.png",
+    "output/playwright/storybook-clue-720x1280.png",
+    "output/playwright/storybook-report-720x1280.png",
+    "output/playwright/storybook-best-720x1280.png",
+    "output/playwright/storybook-title-1280x800.png",
+    "output/playwright/storybook-evening-1280x800.png",
+    "output/playwright/storybook-clue-1280x800.png",
+    "output/playwright/storybook-report-1280x800.png",
+    "output/playwright/storybook-best-1280x800.png",
+    "output/playwright/storybook-false-360x800.png",
+    "output/playwright/storybook-duty-360x800.png",
+    "output/playwright/storybook-secret-360x800.png",
+    "output/playwright/storybook-listen-360x800.png",
+    "output/playwright/storybook-signal-fail-360x800.png"
+  ],
+  "viewports": [
+    [
+      360,
+      800
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      720,
+      1280
+    ],
+    [
+      1280,
+      800
+    ]
+  ],
+  "humanPlaytest": false,
+  "physicalDevices": false,
+  "routeMethod": "browser test hook + full mouse routes at each viewport",
+  "inAppBrowserSmoke": {
+    "resultReasonObserved": true,
+    "humanPlaytest": false,
+    "url": "http://127.0.0.1:5197/storybook/index.html",
+    "observedEnding": "best",
+    "method": "Cua UI clicks and accessibility observations",
+    "returnedToTitle": true,
+    "bond": 1,
+    "route": [
+      "signal",
+      "signal",
+      "silent"
+    ],
+    "trust": 0
+  }
+}

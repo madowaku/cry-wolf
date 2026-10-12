@@ -1,0 +1,378 @@
+{
+  "version": 9,
+  "date": "2026-10-12",
+  "provider": "Codex built-in Imagegen",
+  "processing": "Sharp: atlas-cell extraction and WebP resizing only; alpha preserved; no horizontal flips",
+  "assets": [
+    {
+      "id": "village",
+      "path": "assets/village.webp",
+      "source": "assets/illustrations/moon/environment-village-tower.png",
+      "sourceSha256": "91850d971bb829a9f4af551110598ac4fee3f437c6cef071c2e343e3ff3ed2fd",
+      "sha256": "f239dc44a74d7325f0a858d3401acfceadcdbc55a6c5f4906f213bafe5230866",
+      "width": 1440,
+      "height": 960,
+      "alpha": false
+    },
+    {
+      "id": "forest",
+      "path": "assets/forest.webp",
+      "source": "assets/illustrations/moon/environment-forest-spring.png",
+      "sourceSha256": "5b77b258988baca2ea9a1661faee95c27b8d565b202cbcac1efc2d3700562d60",
+      "sha256": "94a3df8096c191cb72a5c6090677545bd46194e5acd877656839546f02a6c2b8",
+      "width": 1440,
+      "height": 960,
+      "alpha": false
+    },
+    {
+      "id": "dawn",
+      "path": "assets/dawn.webp",
+      "source": "assets/illustrations/moon/environment-village-dawn.png",
+      "sourceSha256": "3772c1c16634cb397278e9b5ef5d16dcbcfdee98895c85d6025ee3f2a3d7be93",
+      "sha256": "3bbcccf78f40bf9588b5853388483c22571f0210f9870af10caf32e7b2ea3ba1",
+      "width": 1440,
+      "height": 960,
+      "alpha": false
+    },
+    {
+      "id": "pip",
+      "path": "assets/pip.webp",
+      "source": "assets/illustrations/moon/pip-child-v3.png",
+      "sourceSha256": "34683a8f3a818c42aa0b692e93cf53c93803e63322feddf8628201f5bb7c4652",
+      "sha256": "5a242735f3e1b9e7d1f411a0389cb5bf4239f72af678dbfb372c95eb0c1d1e0a",
+      "width": 620,
+      "height": 775,
+      "alpha": true
+    },
+    {
+      "id": "mayor",
+      "path": "assets/mayor.webp",
+      "source": "assets/illustrations/moon/mayor-human-v2.png",
+      "sourceSha256": "be89fcb56dfe2848332e04eeee61bf079d3539735af5129acd2a945e91845df2",
+      "sha256": "902cdc4f2e406f8b37f13ac9f5fc2f18a879d0e99fb088060b1f470555a19b8a",
+      "width": 620,
+      "height": 744,
+      "alpha": true
+    },
+    {
+      "id": "bell-prop",
+      "path": "assets/bell-prop.webp",
+      "source": "assets/illustrations/moon/alarm-bell.png",
+      "sourceSha256": "b6b848ac99b3cd4672453bae0a99091246fc8371774eb4a6427775b31e4e69d9",
+      "sha256": "3ea10252a1c1bcbd59af77faf51427f1771d5db3d2f3f10cf4027710c547fc50",
+      "width": 420,
+      "height": 420,
+      "alpha": true
+    },
+    {
+      "id": "tracks",
+      "path": "assets/tracks.webp",
+      "source": "assets/illustrations/moon/wolf-tracks.png",
+      "sourceSha256": "949b467bc08c0c8250123b0914027e1356d9418fe09ea6c40236bfa9407da95c",
+      "sha256": "4d1ff7cf9610d592789de2e870cf02403f3c8d72778cc08f09cd5a4c297905b3",
+      "width": 360,
+      "height": 360,
+      "alpha": true
+    },
+    {
+      "id": "moon",
+      "path": "assets/moon.webp",
+      "source": "assets/illustrations/moon/moon-disc.png",
+      "sourceSha256": "0a8ded6da1a74b501bae256dac41b569a8dd128fb96aea3051b8080b1f0deb19",
+      "sha256": "0a6f2a3b0d3c560f858a95933041e972909a44da542f6bb2b89311173d511e25",
+      "width": 512,
+      "height": 512,
+      "alpha": true
+    },
+    {
+      "id": "charm",
+      "path": "assets/charm.webp",
+      "source": "assets/illustrations/moon/moon-charm.png",
+      "sourceSha256": "221b5f0558d2d0623cfba387fefebfd1bb13b197e9bc49724a57918a5d60c75a",
+      "sha256": "aac64026f1d3eb11dbcf25f98195fcdc3dbb35d608639843174771027e2db587",
+      "width": 480,
+      "height": 720,
+      "alpha": true
+    },
+    {
+      "id": "bell-smile",
+      "path": "assets/bell-smile.webp",
+      "source": "public/storybook/assets/bell-flat-expressions.png",
+      "sourceSha256": "862a8bb1c29f78ed0540e9c428e638542f4e4c4cb189b45fbe2a4d50bb929e49",
+      "sha256": "51722ba3d6d439f646c838c18b6bc080269f0c58afca144b6f0721a7dc40bd0e",
+      "width": 572,
+      "height": 687,
+      "alpha": true
+    },
+    {
+      "id": "bell-think",
+      "path": "assets/bell-think.webp",
+      "source": "public/storybook/assets/bell-flat-expressions.png",
+      "sourceSha256": "862a8bb1c29f78ed0540e9c428e638542f4e4c4cb189b45fbe2a4d50bb929e49",
+      "sha256": "060d2f3625d7754743f3ec7ec6f3cf522b8e8c976339e7129c2e29ed05826ad2",
+      "width": 572,
+      "height": 687,
+      "alpha": true
+    },
+    {
+      "id": "bell-shy",
+      "path": "assets/bell-shy.webp",
+      "source": "public/storybook/assets/bell-flat-expressions.png",
+      "sourceSha256": "862a8bb1c29f78ed0540e9c428e638542f4e4c4cb189b45fbe2a4d50bb929e49",
+      "sha256": "f4a2ad5b25593e2b2586e4840853bedc1a2ce5cb6d62e4b03f876932c307ce5a",
+      "width": 572,
+      "height": 687,
+      "alpha": true
+    },
+    {
+      "id": "bell-serious",
+      "path": "assets/bell-serious.webp",
+      "source": "public/storybook/assets/bell-flat-expressions.png",
+      "sourceSha256": "862a8bb1c29f78ed0540e9c428e638542f4e4c4cb189b45fbe2a4d50bb929e49",
+      "sha256": "1e624c6ce9834ad6dbfafc1d32b53ec314df1a2e733e617406659fbbe30a619a",
+      "width": 572,
+      "height": 687,
+      "alpha": true
+    },
+    {
+      "id": "luna-smirk",
+      "path": "assets/luna-smirk.webp",
+      "source": "public/storybook/assets/luna-assertive-expressions.png",
+      "sourceSha256": "ffcc1ff4f9bbd9c461c9495dbb44034f01c4cefb76268e9a8f096cfd138aef31",
+      "sha256": "2496243fc47e18564d3c7700e85aecfbb69e2e256aa124c7b187cf3d2a254e7e",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "luna-challenge",
+      "path": "assets/luna-challenge.webp",
+      "source": "public/storybook/assets/luna-assertive-expressions.png",
+      "sourceSha256": "ffcc1ff4f9bbd9c461c9495dbb44034f01c4cefb76268e9a8f096cfd138aef31",
+      "sha256": "b20fe1433227b95904d2750e0f17e585d4ee6ff52705553eb1a935b4852c533c",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "luna-guarded",
+      "path": "assets/luna-guarded.webp",
+      "source": "public/storybook/assets/luna-assertive-expressions.png",
+      "sourceSha256": "ffcc1ff4f9bbd9c461c9495dbb44034f01c4cefb76268e9a8f096cfd138aef31",
+      "sha256": "8680e2af6787fdc5ca1bba328172ea4b3e6cbf2e26bf51c962108b22d8b9afa4",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "luna-wait",
+      "path": "assets/luna-wait.webp",
+      "source": "public/storybook/assets/luna-assertive-expressions.png",
+      "sourceSha256": "ffcc1ff4f9bbd9c461c9495dbb44034f01c4cefb76268e9a8f096cfd138aef31",
+      "sha256": "8b7562ff8f99adf86c52c23797968af7c4b2cde118577fde08b4210a3809f674",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "bell-surprise",
+      "path": "assets/bell-surprise.webp",
+      "source": "assets/illustrations/moon/bell-emotions.png",
+      "sourceSha256": "adc7b2e5facd9d6551b79249397ffe12c3d0796a4d111e421bfbc4fe0388047a",
+      "sha256": "e91f6ae06dfe411701cdee01da47f2d27e6e284b0bd8833b99631a0367e36b6e",
+      "width": 572,
+      "height": 687,
+      "alpha": true
+    },
+    {
+      "id": "bell-apology",
+      "path": "assets/bell-apology.webp",
+      "source": "assets/illustrations/moon/bell-emotions.png",
+      "sourceSha256": "adc7b2e5facd9d6551b79249397ffe12c3d0796a4d111e421bfbc4fe0388047a",
+      "sha256": "845bde4c8a20ff66758bfc7c5d8bf1e63e3b3e0ee266fe8f3f3c02b312164e8a",
+      "width": 572,
+      "height": 687,
+      "alpha": true
+    },
+    {
+      "id": "bell-relief",
+      "path": "assets/bell-relief.webp",
+      "source": "assets/illustrations/moon/bell-emotions.png",
+      "sourceSha256": "adc7b2e5facd9d6551b79249397ffe12c3d0796a4d111e421bfbc4fe0388047a",
+      "sha256": "29796e461bdca6590f31cbbad310066575a7430cf212313be003502fef6d9261",
+      "width": 572,
+      "height": 687,
+      "alpha": true
+    },
+    {
+      "id": "bell-courage",
+      "path": "assets/bell-courage.webp",
+      "source": "assets/illustrations/moon/bell-emotions.png",
+      "sourceSha256": "adc7b2e5facd9d6551b79249397ffe12c3d0796a4d111e421bfbc4fe0388047a",
+      "sha256": "01a7d0bebb1376250be4d120822314152cc1a59141ca576495d27cf16ff029a3",
+      "width": 572,
+      "height": 687,
+      "alpha": true
+    },
+    {
+      "id": "bell-worried",
+      "path": "assets/bell-worried.webp",
+      "source": "assets/illustrations/moon/bell-reactions.png",
+      "sourceSha256": "aba322ab806a7204ef528046838586c2c7f0fbd8fedc2cf8d4279a823fdde5ff",
+      "sha256": "8fb62e275f863aa5eb0fc243ff9aeed28b9154fc661cb3fe2a8384cfcba17605",
+      "width": 572,
+      "height": 687,
+      "alpha": true
+    },
+    {
+      "id": "bell-flustered",
+      "path": "assets/bell-flustered.webp",
+      "source": "assets/illustrations/moon/bell-reactions.png",
+      "sourceSha256": "aba322ab806a7204ef528046838586c2c7f0fbd8fedc2cf8d4279a823fdde5ff",
+      "sha256": "4157c67f7743fabf37699d77fd405151716fdbd9ec0b448e72b40c0037eb667d",
+      "width": 572,
+      "height": 687,
+      "alpha": true
+    },
+    {
+      "id": "bell-thinking",
+      "path": "assets/bell-thinking.webp",
+      "source": "assets/illustrations/moon/bell-reactions.png",
+      "sourceSha256": "aba322ab806a7204ef528046838586c2c7f0fbd8fedc2cf8d4279a823fdde5ff",
+      "sha256": "a313de47b428d313b46204dd8c5948cf69e2db2b8db2a5aaf9065a63f7cfffe9",
+      "width": 572,
+      "height": 687,
+      "alpha": true
+    },
+    {
+      "id": "bell-concern",
+      "path": "assets/bell-concern.webp",
+      "source": "assets/illustrations/moon/bell-reactions.png",
+      "sourceSha256": "aba322ab806a7204ef528046838586c2c7f0fbd8fedc2cf8d4279a823fdde5ff",
+      "sha256": "9bfc54d6ff29760606942bf0e20fd2c402c9b5e1284a0ed170a7a6d67770277e",
+      "width": 572,
+      "height": 687,
+      "alpha": true
+    },
+    {
+      "id": "luna-surprise",
+      "path": "assets/luna-surprise.webp",
+      "source": "assets/illustrations/moon/luna-emotions.png",
+      "sourceSha256": "7567c50568bdc95495a72854abe764b4cb4080f1927162b1cf1db3dc05c101ee",
+      "sha256": "0e9dddd4b17167ad73d210d99d6e679caca9519f99d51a7c54ae6b80532daad6",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "luna-worried",
+      "path": "assets/luna-worried.webp",
+      "source": "assets/illustrations/moon/luna-emotions.png",
+      "sourceSha256": "7567c50568bdc95495a72854abe764b4cb4080f1927162b1cf1db3dc05c101ee",
+      "sha256": "cf7da6dabddc0a0764d2dec7d3f09839a8137bae93add333ca573f097a430e9a",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "luna-relief",
+      "path": "assets/luna-relief.webp",
+      "source": "assets/illustrations/moon/luna-emotions.png",
+      "sourceSha256": "7567c50568bdc95495a72854abe764b4cb4080f1927162b1cf1db3dc05c101ee",
+      "sha256": "8baa14541417e222bf137f9db97e1e9a25fbcc53876384342cd24555c45db591",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "luna-laugh",
+      "path": "assets/luna-laugh.webp",
+      "source": "assets/illustrations/moon/luna-emotions.png",
+      "sourceSha256": "7567c50568bdc95495a72854abe764b4cb4080f1927162b1cf1db3dc05c101ee",
+      "sha256": "d8757c92a9c8608ec91a7f3ab7dc8e444ffd2396699315bf5b5ca3f625225a18",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "luna-proud",
+      "path": "assets/luna-proud.webp",
+      "source": "assets/illustrations/moon/luna-pride.png",
+      "sourceSha256": "daff6f7224ddaac3a547842273a13bc4444c2bae050662551d1258eb804f0bb4",
+      "sha256": "2a000ffdbb856ebc1f204906dea03189a5cf097e3c50ee455c28f82297bba792",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "luna-tease",
+      "path": "assets/luna-tease.webp",
+      "source": "assets/illustrations/moon/luna-pride.png",
+      "sourceSha256": "daff6f7224ddaac3a547842273a13bc4444c2bae050662551d1258eb804f0bb4",
+      "sha256": "936e83fe38ee4e2e51650c230a8281810e43c59ea1cd0f71b904646e14b6d97d",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "luna-mischief",
+      "path": "assets/luna-mischief.webp",
+      "source": "assets/illustrations/moon/luna-pride.png",
+      "sourceSha256": "daff6f7224ddaac3a547842273a13bc4444c2bae050662551d1258eb804f0bb4",
+      "sha256": "d236a11c47a28b36dc3c9cfaae49fbd121f5e70b7b31a1e57e3d1e73f2db0311",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "luna-angry",
+      "path": "assets/luna-angry.webp",
+      "source": "assets/illustrations/moon/luna-pride.png",
+      "sourceSha256": "daff6f7224ddaac3a547842273a13bc4444c2bae050662551d1258eb804f0bb4",
+      "sha256": "de72a5782fab52de0a99c821bf7f021ae7a155e40f2cba3f58b880ab82f480c2",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "luna-serious",
+      "path": "assets/luna-serious.webp",
+      "source": "assets/illustrations/moon/luna-heart.png",
+      "sourceSha256": "7e97950f00cccb25c174eac155c022984f98c105e971f96effe3b1c538d3d3bd",
+      "sha256": "bc802d46616cb8e66160a9b68a3c771e7cd80b6108c77dc91eea5d346c10ddb6",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "luna-sad",
+      "path": "assets/luna-sad.webp",
+      "source": "assets/illustrations/moon/luna-heart.png",
+      "sourceSha256": "7e97950f00cccb25c174eac155c022984f98c105e971f96effe3b1c538d3d3bd",
+      "sha256": "0e1a325ad7fb6c4cd6a647876cf22cc7f468682965bcdbf49bcdc1d920d074a0",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "luna-lonely",
+      "path": "assets/luna-lonely.webp",
+      "source": "assets/illustrations/moon/luna-heart.png",
+      "sourceSha256": "7e97950f00cccb25c174eac155c022984f98c105e971f96effe3b1c538d3d3bd",
+      "sha256": "7d8557e0885b7f036457f5807051e4a07ebde840105aa4987a674def5c8e203e",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    },
+    {
+      "id": "luna-softened",
+      "path": "assets/luna-softened.webp",
+      "source": "assets/illustrations/moon/luna-heart.png",
+      "sourceSha256": "7e97950f00cccb25c174eac155c022984f98c105e971f96effe3b1c538d3d3bd",
+      "sha256": "ff655be307acd9e221e15e6fae9827db5e835052202ef74057679c59cf4df2a7",
+      "width": 525,
+      "height": 700,
+      "alpha": true
+    }
+  ]
+}

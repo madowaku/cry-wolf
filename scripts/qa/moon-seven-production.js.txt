@@ -1,0 +1,66 @@
+async (page) => {
+  page.setDefaultTimeout(12000);
+  const checks=[], errors=[], runs=[];
+  const check=(ok,label)=>checks.push({label,pass:!!ok});
+  page.on('pageerror',e=>errors.push(e.message));
+  page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+  const state=()=>page.evaluate(()=>window.__cwMoon);
+  const click=async a=>{await page.waitForTimeout(245);await page.locator(`[data-act="${a}"]`).click()};
+  const clear=async()=>{await page.evaluate(()=>{for(const k of ['crywolf_moon_v09','crywolf_moon_v08','crywolf_moon_endings_v09','crywolf_moon_preferences_v08'])localStorage.removeItem(k)});await page.reload()};
+  const epilogues=new Set();
+  const next=async label=>{
+    for(let i=0;i<70;i++){
+      const s=await state();if(!['story','observe','result','interlude','answer','epilogue'].includes(s.phase))return;
+      if(s.phase==='epilogue')epilogues.add(s.beat);
+      await page.locator('#book img').evaluateAll(imgs=>Promise.all(imgs.map(i=>i.decode())));
+      const m=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,broken:[...document.querySelectorAll('#book img')].some(i=>!i.naturalWidth)}));
+      check(!m.overflow&&!m.broken,`${label} ${s.stage}/${s.phase}/${s.beat} fits and loads`);
+      await click('next');
+    }
+    throw new Error('Automatic pages did not terminate');
+  };
+  const prefix=['ring1','track2','signal2','silent2','forest3','speak3','signal3','proposal3'];
+  const actions=[...prefix,'thank4','want5','track5','signal5','silent5','village6','forest6','heart6','hush6','call7'];
+  const play=async label=>{
+    epilogues.clear();await click('new');await next(label);
+    for(const a of actions){
+      const s=await state();
+      if(s.phase==='choice7'){
+        await page.addStyleTag({content:'.prose,.choice strong{font-size:24px!important}'});
+        check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),label+' final decision fits with 24px text');
+        check(await page.locator('[data-act="call7"]').isVisible(),label+' reduced motion shows final name');
+      }
+      await click(a);await next(label);
+    }
+    const s=await state();
+    check(s.phase==='finish'&&s.ending==='HONEST'&&s.history.length===7,label+' reaches seven-night ending');
+    check(s.trust===5&&s.bond===5&&s.honesty===4&&!s.flags.road,label+' honest ending with unresolved road');
+    check(epilogues.size===3,label+' all three epilogue pages');
+    runs.push({label,ending:s.ending,trust:s.trust,bond:s.bond,honesty:s.honesty,road:s.flags.road,history:s.history.length});
+  };
+  await page.setViewportSize({width:360,height:800});await page.emulateMedia({reducedMotion:'reduce'});
+  await page.goto('http://127.0.0.1:5199/');
+  check(await page.getByRole('link',{name:/月あかりの約束を遊ぶ/}).count()===1,'production root offers Moon game');
+  await page.getByRole('link',{name:/月あかりの約束を遊ぶ/}).click();
+  check(page.url().endsWith('/moon/index.html'),'production entry links correct build');
+  await clear();await play('production');
+  await page.screenshot({path:'output/playwright/moon-seven/production-finish-360.png',fullPage:true});
+  await page.reload();await click('resume');
+  check((await state()).phase==='finish'&&(await state()).history.length===7,'production finished bookmark reload');
+  await click('collection');check(await page.locator('.ending-stamp.read').count()===1,'production collection persists');await page.keyboard.press('Escape');
+  check(await page.evaluate(()=>performance.getEntriesByType('resource').filter(e=>/^https?:/.test(e.name)).every(e=>new URL(e.name).origin===location.origin)),'production runtime resources stay same origin');
+  await page.goto('file:///C:/Dev/Projects/cry-wolf/public/moon/index.html');
+  await clear();await play('local HTML');
+  check(await page.evaluate(()=>performance.getEntriesByType('resource').every(e=>!/^https?:/.test(e.name))),'local HTML uses no network resources');
+  await page.reload();await click('resume');
+  check((await state()).phase==='finish'&&(await state()).history.length===7,'local HTML finished bookmark reload');
+  await page.addInitScript(()=>{Object.defineProperty(window,'localStorage',{get(){throw new Error('Storage unavailable')}})});
+  await page.goto('http://127.0.0.1:5199/moon/index.html?qa=storage-denied');
+  await click('new');await next('storage denied');
+  for(const a of prefix){await click(a);await next('storage denied')}
+  check((await state()).stage==='night4'&&(await state()).phase==='choice4'&&!(await state()).storageOK,'storage denied reaches fourth night');
+  check((await page.locator('#save-status').textContent()).includes('保存できません'),'storage unavailable is communicated');
+  await click('thank4');check((await state()).phase==='result'&&(await state()).history.length===4,'storage denied accepts new fourth-night decision');
+  check(errors.length===0,'no runtime or console errors');
+  return {checks:checks.length,passed:checks.filter(c=>c.pass).length,failures:checks.filter(c=>!c.pass),errors,runs,details:checks};
+}

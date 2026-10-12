@@ -1,0 +1,91 @@
+async (page) => {
+  page.setDefaultTimeout(10000);
+  const failures=[],errors=[],mediaChecks=[],layouts=[];
+  let assertions=0;
+  const check=(value,label)=>{assertions++;if(!value)failures.push(label);};
+  page.on('pageerror',error=>errors.push(error.message));
+  page.on('console',message=>{if(message.type()==='error')errors.push(message.text());});
+  await page.addInitScript(()=>{
+    if(window.MUSIC_QA_NODES)return;
+    const NativeAudio=window.Audio;window.MUSIC_QA_NODES=[];
+    window.Audio=function(src){const node=new NativeAudio(src);window.MUSIC_QA_NODES.push(node);return node;};
+  });
+  const url='http://127.0.0.1:5197/storybook/index.html';
+  const api=()=>page.evaluate(()=>({state:window.CRYWOLF_TEST.get(),music:window.CRYWOLF_TEST.music(),nodes:window.MUSIC_QA_NODES.map(n=>({paused:n.paused,time:n.currentTime,duration:n.duration,volume:n.volume,loop:n.loop,ready:n.readyState,error:n.error?.code||null}))}));
+  const step=async key=>{await page.waitForTimeout(255);await page.locator('[data-act="'+key+'"]').click();};
+  const playing=async role=>{
+    await page.waitForFunction(role=>window.CRYWOLF_TEST.music().status==='playing'&&window.CRYWOLF_TEST.music().target===role,role);
+    await page.waitForTimeout(650);
+    const data=await api();mediaChecks.push({role,...data.music,nodes:data.nodes});
+    check(data.nodes.filter(n=>!n.paused).length===1,role+': exactly one song after fade');
+    check(data.nodes.filter(n=>!n.paused).every(n=>n.ready>=2&&n.duration>30&&!n.error&&n.time>0),role+': actual AAC decodes and advances');
+    check(data.nodes.filter(n=>!n.paused).every(n=>n.loop&&Math.abs(n.volume-data.music.volume)<.001),role+': loops at selected volume');
+    return data;
+  };
+  await page.setViewportSize({width:360,height:800});await page.goto(url);
+  check((await api()).music.status==='muted','silent initial state');
+  check((await api()).nodes.length===0,'no audio elements before user enables sound');
+  check(await page.evaluate(()=>Object.keys(window.CRYWOLF_MUSIC_PACK.tracks).length===3),'all 3 actual tracks packaged');
+  await step('sound');const opening=await playing('opening');
+  check(Math.abs(opening.nodes[0].duration-79.6)<.2,'opening duration matches imported track');
+  const before=(await api()).state;await step('audio-settings');
+  check(await page.getByRole('dialog').count()===1,'volume dialog opens');
+  check(await page.locator('.music-credits a').count()===3,'3 official music credits');
+  check(await page.locator('[data-music-status]').textContent()==='再生中','current playback status');
+  for(const size of [[360,800],[390,844],[720,1280],[1280,800]]){
+    await page.setViewportSize({width:size[0],height:size[1]});
+    const data=await page.evaluate(()=>{
+      const dialog=document.querySelector('.modal'),r=dialog.getBoundingClientRect();
+      return {width:innerWidth,height:innerHeight,scrollWidth:document.documentElement.scrollWidth,dialog:{x:r.x,y:r.y,w:r.width,h:r.height,scroll:dialog.scrollHeight,client:dialog.clientHeight},controls:[...dialog.querySelectorAll('button,input')].map(n=>{const r=n.getBoundingClientRect();return {w:r.width,h:r.height,top:r.top,bottom:r.bottom};})};
+    });layouts.push(data);
+    check(data.scrollWidth<=data.width+1,'settings/'+size[0]+': no horizontal overflow');
+    check(data.dialog.y>=0&&data.dialog.y+data.dialog.h<=data.height,'settings/'+size[0]+': modal within viewport');
+    check(data.controls.every(c=>c.h>=44&&c.top>=0&&c.bottom<=data.height),'settings/'+size[0]+': touch controls visible');
+    await page.screenshot({path:'output/playwright/storybook-music-settings-'+size[0]+'.png'});
+  }
+  await page.setViewportSize({width:360,height:800});
+  await page.locator('#bgm-volume').fill('35');await page.locator('#se-volume').fill('40');
+  check(await page.locator('#bgm-level').textContent()==='35%','BGM percentage updates');
+  check(await page.locator('#se-level').textContent()==='40%','effect percentage updates');
+  check((await api()).music.volume===.35,'BGM setting reaches controller');
+  await page.locator('.modal [data-act="sound"]').click();
+  let muted=await api();check(muted.nodes.every(n=>n.paused&&n.volume===0),'master mute stops BGM immediately');
+  check(await page.locator('#se-volume').inputValue()==='40','SE volume survives modal render');
+  await page.locator('.modal [data-act="sound"]').click();await playing('opening');
+  check(await page.locator('#bgm-volume').inputValue()==='35','BGM volume survives modal render');
+  const focusables=page.locator('.modal button,.modal input,.modal a[href]');
+  await focusables.last().focus();await page.keyboard.press('Tab');
+  check(await focusables.first().evaluate(n=>n===document.activeElement),'Tab wraps within modal');
+  await page.keyboard.press('Shift+Tab');
+  check(await focusables.last().evaluate(n=>n===document.activeElement),'Shift+Tab wraps within modal');
+  await page.keyboard.press('Escape');
+  check(await page.locator('[data-act="audio-settings"]').evaluate(n=>n===document.activeElement),'Escape restores settings focus');
+  const after=(await api()).state;check(JSON.stringify(after)===JSON.stringify(before),'audio settings do not alter game state or ticks');
+  const startTime=(await api()).nodes[0].time;
+  await step('start');await step('next');await step('next');
+  check((await api()).nodes[0].time>startTime,'opening keeps playing through evening pages');
+  check((await api()).nodes.length===1,'opening pages reuse single media element');
+  await step('next');const gameplay=await playing('gameplay');
+  check(Math.abs(gameplay.nodes[1].duration-161.1)<.3,'gameplay duration matches Storyteller');
+  await step('next');await step('signal');await step('next');await step('signal');await step('next');
+  check((await api()).music.target==='gameplay','report continues gameplay music');
+  check((await api()).nodes.length===2,'investigation/report reuse media without stacking');
+  await step('silent');const ending=await playing('ending');
+  check(Math.abs(ending.nodes[2].duration-31.32)<.2,'ending duration matches 月夜');
+  check((await api()).state.ending==='best','audio preserves BEST path');
+  await step('next');check((await api()).music.target==='ending','recap continues ending music');
+  await page.evaluate(()=>{const node=window.MUSIC_QA_NODES[2];node.currentTime=node.duration-.15;});
+  await page.waitForTimeout(650);
+  const looped=(await api()).nodes[2];check(!looped.paused&&looped.time<2,'actual ending media loops at its end');
+  await step('title');await playing('opening');
+  check((await api()).nodes.length===3,'return to title reuses existing songs');
+  await step('sound');check((await api()).nodes.every(n=>n.paused),'all cached songs mute');
+  // Networkless local delivery must load the actual external JS container too.
+  await page.goto('file:///C:/Dev/Projects/cry-wolf/public/storybook/index.html');
+  await step('sound');await playing('opening');check((await api()).music.status==='playing','local HTML plays packaged real opening');
+  await step('sound');
+  check(!errors.length,'no console or page errors');
+  const report={date:new Date().toISOString(),audioEvidence:'actual user-provided MP3s converted to AAC; browser decode and playback state, not human listening',assertions,failures,errors,mediaChecks,layouts};
+  await page.goto(url);await page.evaluate(report=>window.CRYWOLF_MUSIC_QA=report,report);
+  return {assertions,failures,errors,mediaChecks:mediaChecks.length,layoutSizes:layouts.length};
+}

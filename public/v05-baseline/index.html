@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#152641" />
+<title>CRY WOLF! | ひと夜の実験 v0.5</title>
+<style>
+:root{--navy:#172942;--night:#233d60;--ink:#25344c;--paper:#fff8e9;--cream:#fff1d3;--pale:#e6e0d6;--gold:#cda667;--red:#bc4b61;--sky:#779fb7;--mint:#74a4a3;--dark:#122238}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#101b2e;color:var(--ink);font-family:ui-rounded,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #f6ba55;outline-offset:4px}button:disabled{cursor:not-allowed;opacity:.5}#app{min-height:100svh;display:grid;place-items:center;padding:14px}.shell{width:min(100%,430px);min-height:min(840px,calc(100svh - 28px));background:var(--paper);border:5px solid #f8e9c9;border-radius:24px;overflow:hidden;box-shadow:0 26px 70px #02071280;display:flex;flex-direction:column;position:relative}.topbar{background:var(--paper);padding:14px 18px 8px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-family:Georgia,serif;font-weight:800;color:var(--navy);letter-spacing:-1.5px;font-size:25px;line-height:1}.brand small{display:block;font-size:10px;letter-spacing:2px;color:#95734d;margin-top:3px;font-family:inherit}.tiny{color:#877151;font-size:11px;letter-spacing:1.1px;font-weight:900}.iconBtn{border:1px solid #d6c8af;background:#fff7e6;border-radius:50%;color:var(--navy);min-width:37px;min-height:37px;display:grid;place-items:center;font-size:17px}.scene{min-height:263px;position:relative;overflow:hidden;background:var(--navy);color:var(--paper);flex-shrink:0}.scene svg{display:block;width:100%;height:100%;position:absolute;inset:0}.scene .sceneHeader{position:absolute;z-index:2;top:16px;left:17px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}.tag{font-size:11px;letter-spacing:.8px;display:inline-flex;gap:6px;align-items:center;background:#13253bea;color:#fff1d3;border:1px solid #ffffff30;border-radius:20px;padding:6px 10px;font-weight:800}.tag.rose{background:#80364bdf}.scene .sceneFooter{position:absolute;z-index:2;bottom:0;left:0;right:0;min-height:46px;background:linear-gradient(transparent,#0b1b33d9);padding:12px 17px 10px;color:#fff4df;font-size:12px;display:flex;align-items:end;gap:7px}.scene .sceneFooter b{color:#ffd083}.main{padding:18px 20px 20px;display:flex;flex:1;flex-direction:column;gap:13px}.eyebrow{font-size:11px;letter-spacing:2px;color:#987655;font-weight:900}.h1{font-size:clamp(23px,6vw,28px);line-height:1.3;margin:0;font-weight:950;letter-spacing:.01em;color:var(--navy)}.introTitle{font-family:Georgia,serif;font-size:27px;margin:0;color:var(--navy)}.sub{font-size:13px;line-height:1.75;color:#6e6a66;margin:0}.narrative{font-size:14px;line-height:1.83;color:var(--navy);white-space:pre-line;margin:0}.quote{padding:12px 14px 12px 16px;border-left:3px solid var(--red);background:#fff0e9;border-radius:0 12px 12px 0;font-size:14px;line-height:1.75;color:#42313e}.quote b{font-size:11px;letter-spacing:.1em;color:#a44252;display:block;margin-bottom:3px}.mutedBox{background:#eff0e9;border:1px solid #dddccc;border-radius:14px;padding:12px 14px;font-size:12px;line-height:1.7;color:#4a5967}.mutedBox strong{color:var(--navy)}.status{display:grid;grid-template-columns:1fr 1fr;gap:9px}.statusBox{padding:10px 12px;border:1px solid #e4d6bc;border-radius:14px;background:#fffaf2;min-height:65px}.statusBox .sLabel{font-size:10px;color:#8f7c5c;font-weight:800;margin-bottom:5px}.statusBox .sValue{font-weight:900;color:var(--navy);font-size:13px}.sValue b{color:#b04b5b;font-size:16px}.actionStack{display:grid;gap:9px}.action{width:100%;text-align:left;display:flex;align-items:center;gap:11px;border:1.5px solid #b2b8b7;border-radius:14px;padding:12px 13px;background:#fffef9;color:#182c43;min-height:60px;box-shadow:0 3px 0 #d7d1bc;transition:transform .13s,background .13s}.action:active{transform:translateY(2px);box-shadow:0 1px 0 #d7d1bc}.action:hover:not(:disabled){background:#f6f4e8}.action .glyph{width:34px;height:34px;border-radius:10px;background:#e4e9e9;display:grid;place-items:center;font-size:21px;flex-shrink:0}.action b{display:block;font-size:13px}.action small{font-size:11px;color:#686f77;display:block;margin-top:3px;line-height:1.4}.action.primary{background:var(--navy);color:#fff6e5;border-color:#102039;box-shadow:0 3px 0 #0a1422;justify-content:center;min-height:57px}.action.primary:hover:not(:disabled){background:#274466}.action.primary b{font-size:15px}.action.primary .glyph{background:#2f4d6d}.action.danger{border-color:#d8a4aa}.action.danger .glyph{background:#f9e5e6}.action.safe{border-color:#9fbbaa}.action.safe .glyph{background:#e0eee7}.buttons2{display:grid;gap:10px}.meter{display:flex;gap:8px;align-items:center;justify-content:space-between;background:#e9ebe3;border-radius:12px;padding:10px 12px}.meterLabel{font-size:11px;font-weight:800;color:#47576d}.ticks{display:flex;gap:6px}.tick{width:24px;height:16px;border-radius:7px;background:#c1c3bd;border:1px solid #a1a9a3}.tick.on{background:#d2a66a;border-color:#ac7c43;box-shadow:inset 0 0 0 3px #edca95}.obs{background:#faf2df;border:1px solid #e7c892;border-radius:13px;padding:11px 12px;color:#5b4426;font-size:12px;line-height:1.65}.obsTitle{font-weight:900;color:#987349;display:flex;justify-content:space-between;margin-bottom:4px}.progress{height:5px;display:flex;gap:4px}.progress span{flex:1;background:#d7d5c9;border-radius:5px}.progress span.done{background:var(--gold)}.foot{padding:14px 20px;text-align:center;color:#9a866e;font-size:10px;letter-spacing:.7px;border-top:1px solid #ece3d1}.spacer{flex:1}.badges{display:flex;gap:8px;flex-wrap:wrap}.pill{font-size:11px;display:inline-flex;align-items:center;gap:5px;padding:7px 10px;border-radius:30px;background:#e8efeb;color:#3c655c;font-weight:800}.pill.rose{background:#f5e4e3;color:#a44259}.pill.dark{background:#dce7ed;color:#45687c}.outcome{border:2px solid #d6be8e;border-radius:17px;padding:16px;background:#fff8e9}.outcome h2{font-size:23px;margin:5px 0 9px;color:var(--navy)}.outcome p{line-height:1.9;font-size:13px;margin:0;white-space:pre-line}.outcome.bad{border-color:#bb7882;background:#fff1ee}.footnote{font-size:11px;color:#6d6b68;line-height:1.7}.about{position:absolute;inset:0;z-index:10;background:#122137d8;display:flex;align-items:center;justify-content:center;padding:15px}.aboutCard{background:#fff8e9;border-radius:20px;padding:22px;max-width:360px;border:4px solid #e7d3ad;max-height:92vh;overflow:auto}.aboutCard h2{margin:0 0 15px;color:var(--navy)}.aboutCard p{line-height:1.9;font-size:13px}.ghostBtn{border:1px solid #cbbda5;border-radius:12px;background:transparent;padding:10px 14px;color:var(--navy);font-weight:900}.restart{margin-top:4px}#showtime{position:absolute;right:12px;top:16px;z-index:2;color:#e8c892;font-size:11px;font-weight:800}.titleCopy{max-width:330px;align-self:center;text-align:center}.miniTitle{font:900 39px/1.05 Georgia,serif;letter-spacing:-2.2px;color:var(--navy);margin:0}.miniTitle em{font:italic 12px Georgia,serif;letter-spacing:2px;display:block;margin-top:7px;color:#8d625d}.handwritten{font-family:Georgia,serif;font-style:italic;font-weight:700;color:var(--red);font-size:16px}.rating{display:flex;justify-content:center;gap:8px;margin:4px auto;color:#a77550;font-weight:800;font-size:11px}.anim-pulse{animation:pulse 1.2s infinite ease-in-out}@keyframes pulse{50%{opacity:.55;transform:scale(.92)}}@media(max-height:740px){#app{padding:0}.shell{min-height:100svh;border-radius:0;border:0}.topbar{padding-top:10px}.scene{min-height:225px}.main{padding:12px 18px 14px;gap:9px}.action{padding:8px 11px;min-height:51px}.foot{padding:8px}.quote{padding:8px 12px}.mutedBox{padding:9px 12px}}@media(min-width:600px){.shell{margin:28px auto}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+'use strict';
+// CRY WOLF! v0.5 independent Night 2 playtest. All outcomes are deterministic.
+const app=document.getElementById('app');
+const initial=()=>({phase:'title',ticks:2,actions:[],signal:'none',reveal:false,help:false,heard:false,notes:[],ending:null,score:null});
+let state=initial();
+let muted=false;
+function tone(freq=650,seconds=.11){if(muted)return;try{const C=window.AudioContext||window.webkitAudioContext;const ctx=new C();const o=ctx.createOscillator();const g=ctx.createGain();o.type='sine';o.frequency.setValueAtTime(freq,ctx.currentTime);g.gain.setValueAtTime(.06,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+seconds);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+seconds);o.onended=()=>ctx.close()}catch(e){}}
+const theme={title:['ふたりだけの遠吠え','今夜は来ないって、言ったのに。'],intro:['夕方の約束','長い一声は「今日は行かない」。'],night:['NIGHT 2｜見張り道','夜の合図を、信じる？'],report:['夜明け前の報告','鐘を鳴らすのは、仕事。'],result:['夜明け','ふたりの、小さな約束。']};
+function scene(variant='night'){
+ const lunaVisible=variant==='intro'||variant==='title'||variant==='result'&&state.ending==='best';
+ const moonX=variant==='title'?262:287;
+ const moonY=variant==='title'?80:81;
+ const outcomeTone=variant==='result'&&state.ending==='false'?'#7d4c5d':'#263f62';
+ const lightOn=variant==='night'&&state.signal==='held';
+ const wolfOutline=`<g transform="translate(264 143)"><path d="M-31 92 L-33 8 L-51 -23 L-18 -6 L-5 -36 L17 -9 L32 -28 L40 9 L31 98Z" fill="#b9bec6"/><path d="M-21 28 Q-20 14 -12 12 Q-4 9 5 20 Q17 16 23 23 L21 44 Q-3 54 -22 42Z" fill="#d7d3d0"/><path d="M-3 38 Q17 46 22 30" fill="none" stroke="#8c6971" stroke-width="3"/><path d="M-34 95 Q-69 80 -74 55 Q-88 94 -49 121 L-35 114" fill="#b5b5c0"/><circle cx="-11" cy="22" r="2.8" fill="#703c43"/><circle cx="16" cy="22" r="2.8" fill="#703c43"/><path d="M27 17 Q48 17 50 27 L34 38Z" fill="#bc4b61"/><path d="M39 33L52 62L33 51L28 67L23 36" fill="#bc4b61"/></g>`;
+ const bellOutline=`<g transform="translate(103 185)"><path d="M-30 0L-23 -45L-38 -67L-8 -58L7 -83L17 -47L27 5Z" fill="#252c37"/><path d="M-13 -57 L-1 -67 L12 -57 L13 -35Z" fill="#eee3d3"/><path d="M-24 -28 Q-10 -35 5 -26 L7 4L-23 4Z" fill="#f1e8db"/><path d="M-37 6L38 8L48 99L-48 99Z" fill="#1b2f4a"/><path d="M-33 6L-28 17L-10 6L4 23L23 8L35 18" fill="none" stroke="#a8abb3" stroke-width="5"/><path d="M37 32 Q48 32 56 54" stroke="#293443" stroke-width="16" fill="none"/><path d="M-18 19L5 19L0 40L-14 40Z" fill="#d0a568"/><circle cx="-7" cy="44" r="4" fill="#d9b17a"/><circle cx="-2" cy="-35" r="2.8" fill="#a77c58"/></g>`;
+ return `<div class="scene" role="img" aria-label="月夜の村。ベルの見張り台、森の境界と月明かり。">
+ <svg viewBox="0 0 430 280" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+ <rect width="430" height="280" fill="${outcomeTone}"/>
+ <circle cx="${moonX}" cy="${moonY}" r="67" fill="#fff1d8"/>
+ <circle cx="${moonX+8}" cy="${moonY-7}" r="58" fill="#ffefd1" opacity=".78"/>
+ <path d="M0 135 L24 114L32 133L51 105L61 126L87 96L98 137L117 109L127 130L150 104L161 136L188 93L198 138L219 122L225 152L252 124L265 150L295 116L315 141L332 103L350 137L377 115L385 146L410 105L430 125V280H0Z" fill="#1a3150"/>
+ <g fill="#0d223a"><path d="M0 180L20 151L39 179L47 163L74 203V280H0Z"/><path d="M295 185L309 144L322 186L334 150L354 197L377 139L388 181L410 150L430 168V280H295Z"/>
+ <path d="M155 179L172 142L189 181L198 123L222 181V235H155Z"/><rect x="169" y="177" width="44" height="61"/></g>
+ <g fill="#e8c38c"><rect x="170" y="191" width="6" height="11" rx="2"/><rect x="184" y="190" width="6" height="11" rx="2"/><rect x="201" y="191" width="6" height="11" rx="2"/><rect x="183" y="214" width="8" height="9" rx="3"/></g>
+ <path d="M0 247Q65 217 146 245Q189 269 256 244Q340 208 430 241V280H0Z" fill="#203c56"/>
+ <path d="M0 257Q75 239 139 266Q200 274 258 260Q360 231 430 257V280H0Z" fill="#294966"/>
+ <g fill="#e9cf9e"><circle cx="37" cy="40" r="2"/><circle cx="113" cy="78" r="2.3"/><circle cx="161" cy="51" r="2"/><circle cx="389" cy="56" r="2"/><circle cx="349" cy="20" r="2"/></g>
+ <path d="M16 0L58 39L34 42L64 65L37 65L20 94L0 107Z" fill="#152942"/>
+ <path d="M428 0L388 46L405 48L375 78L415 73L429 105Z" fill="#172942"/>
+ <g stroke="#cfa36c" stroke-width="3" fill="none"><path d="M35 148V235"/><path d="M35 178H67"/><path d="M58 181V221"/></g>
+ <path d="M45 188L70 188L67 215L48 215Z" fill="#d8ab68" stroke="#f4dfb1" stroke-width="2"/><path d="M51 194L63 194L60 210L52 210Z" fill="#ffebc5"/>
+ <path d="M245 198V277" stroke="#dfb384" stroke-width="3" stroke-dasharray="5 5"/><text x="255" y="253" fill="#ffecd0" font-size="9" font-weight="700">境界</text>
+ ${variant==='title'||variant==='intro'||variant==='result'?bellOutline:''}
+ ${lunaVisible?wolfOutline:''}
+ ${variant==='night'||variant==='report'?`<g opacity="${state.ticks===2?'.55':'1'}"><path d="M288 186l-12 -36 -19 22 -7 25" stroke="#c3c3c9" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M294 205q30 -18 43 15q-26 -15 -45 11" fill="#b6b4bf" opacity=".85"/></g>`:''}
+ ${lightOn?`<g fill="none" stroke="#ffe0a2" stroke-width="5"><path d="M59 198Q156 117 255 164"/><path d="M54 215Q153 144 246 183"/></g><circle cx="256" cy="164" r="9" fill="#ffe7a1"/>`:''}
+ </svg>
+ <div class="sceneHeader"><span class="tag">🌙 ${variant==='title'?'短編パズルADV':'ひと夜の実験'}</span>${variant==='night'?'<span class="tag">NIGHT 2 / 7</span>':''}</div>
+ <div class="sceneFooter">${variant==='title'?'<b>ベルとルナ。</b> 嘘より、難しい約束。':variant==='intro'?'<b>夕方の森。</b> ルナが枝の上から声をかける。':variant==='night'?'<b>夜の境界。</b> 光が届く頃を見極めよう。':variant==='report'?'<b>鐘の紐。</b> 夜番の判断が待っている。':'<b>夜明け。</b> あなたの選択が夜を変えた。'}</div>
+ </div>`;
+}
+function shell(inner,variant='night'){
+ app.innerHTML=`<main class="shell"><div class="topbar"><div class="brand">CRY WOLF!<small>ROMANTIC VARIANT</small></div><div style="display:flex;align-items:center;gap:8px"><span class="tiny">EXPERIMENT v0.5</span><button class="iconBtn" data-act="help" aria-label="遊び方を表示">?</button><button class="iconBtn" data-act="sound" aria-label="音のオンオフ">${muted?'♪̸':'♫'}</button></div></div>${scene(variant)}<div class="main">${inner}</div><div class="foot">A SMALL FAIRY-TALE PUZZLE · BELL & LUNA</div>${state.help?helpMarkup():''}</main>`;
+ bind();
+}
+function helpMarkup(){return `<div class="about"><div class="aboutCard" role="dialog" aria-modal="true" aria-label="遊び方"><h2>🌙 遊び方</h2><p><b>ベルの仕事：</b>オオカミが見張り道に入ったら、村へ正しく知らせる。</p><p><b>この夜の謎：</b>「今日は行かない」と言ったルナは、いまどこにいる？ 調査や合図にはそれぞれ1刻かかる。2刻たつと交代の報告が始まる。</p><p><b>ランタンの合図：</b>明かりを二度隠すと「森側で待って」。ただし遠すぎると光は届かない。</p><p>正しい警報なら信用は減らない。間違った警報や発覚する見逃しは信用を減らす。失敗しても何度でもやり直せるよ。</p><button class="action primary" data-act="close"><b>閉じる</b></button></div></div>`}
+function render(){
+ const st=state;
+ if(st.phase==='title')return shell(`<div class="titleCopy"><p class="eyebrow">ONE NIGHT · PLAYABLE EXPERIMENT</p><h1 class="miniTitle">CRY WOLF!<em>Romantic Variant</em></h1><p class="handwritten">「来ない」って言ったのに。</p></div><p class="sub" style="text-align:center">オオカミ少年の寓話から生まれた、<br>嘘と約束の小さなパズル。約2〜3分。</p><div class="spacer"></div><button class="action primary" data-act="start"><span class="glyph">🔔</span><b>ひと夜を始める</b></button><p class="footnote" style="text-align:center">単独で遊べる実験版です。本編のセーブは変更しません。</p>`,'title');
+ if(st.phase==='intro')return shell(`<div class="eyebrow">夕方 · 森のはずれ</div><h1 class="h1">長い遠吠えの約束</h1><div class="quote"><b>LUNA / ルナ</b>「今日は行かないわ。長い一声は『今夜は行かない』の合図。……べつに、会いたいわけじゃないし！」</div><p class="narrative">ルナの尻尾は、ぱたぱた揺れている。<br>ベルは小さくため息をついた。</p><div class="mutedBox"><strong>🔔 ベルの仕事</strong><br>オオカミが<strong>見張り道に入ったら</strong>鐘で報告する。森にいるだけなら警報は不要。<br><br><strong>🏮 二人だけの灯りの合図</strong><br>ランタンを二度隠すと「森側で待って」。ただし、<strong>遠い森には届かない</strong>。</div><div class="spacer"></div><button class="action primary" data-act="to-night"><span class="glyph">🌙</span><b>夜の見張りへ</b></button>`,'intro');
+ if(st.phase==='night'){
+ const ticks=st.ticks;
+ const isNear=ticks===1;
+ const introText=ticks===2?`長い遠吠えが一度。<br>「今日は行かない」の合図だ。<br>でも、境界のあたりに足跡が見える。`:
+ ticks===1?`森の木陰に動く影。<br>さっきより近い。<strong>ランタンの光が届きそうだ。</strong>`:
+ `交代の時刻になった。<br>鐘を鳴らすか、異常なしと報告するか。`;
+ let observation=st.notes.length?`<div class="obs"><div class="obsTitle"><span>📖 調査メモ</span><span>${st.notes.length}件</span></div>${st.notes.map(n=>`<div>• ${n}</div>`).join('')}</div>`:'';
+ let actionMarkup=ticks>0?`<div class="actionStack"><button class="action" data-act="track"><span class="glyph">🐾</span><span><b>足跡を調べる · 1刻</b><small>境界の土に残された痕跡を見る</small></span></button><button class="action" data-act="listen"><span class="glyph">〰️</span><span><b>耳を澄ます · 1刻</b><small>遠吠えの方角と距離を聞き取る</small></span></button><button class="action safe" data-act="signal"><span class="glyph">🏮</span><span><b>二度の灯りを送る · 1刻</b><small>「森側で待って」。近くにいるなら届く</small></span></button></div>`:'';
+ return shell(`<div class="eyebrow">NIGHT 2 · 夜の見張り</div><h1 class="h1">ルナは来る？ 来ない？</h1><div class="meter"><span class="meterLabel">交代までの残り時間</span><div class="ticks"><span class="tick ${ticks>=1?'on':''}"></span><span class="tick ${ticks>=2?'on':''}"></span></div><span class="meterLabel">${ticks}刻</span></div><p class="narrative">${introText}</p>${observation}${actionMarkup}<div class="spacer"></div><p class="footnote">※ 調査も合図も時間を使う。時間は戻せないけれど、最初から再挑戦できる。</p>`,'night');
+ }
+ if(st.phase==='report'){
+ const signalText=st.signal==='held'?'🌟 ランタンの合図が届いた。森の境界の外で、足音が止まった。':st.signal==='miss'?'🌫️ 最初の光は霧に消えた。その後、見張り道の内側に大きな足跡がついた。':'🐾 見張り道の内側に、大きなオオカミの足跡がついた。';
+ return shell(`<div class="eyebrow">REPORT · 夜明け前</div><h1 class="h1">見張り番の、最後の仕事</h1><p class="narrative">${signalText}<br>村長へ報告する時刻になった。</p><div class="mutedBox"><strong>村長からの教え</strong><br>見張り道にオオカミが入ったなら警報。入っていないなら「異常なし」。誤報も、見逃しも、信用に影響する。</div><div class="spacer"></div><div class="buttons2"><button class="action danger" data-act="cry"><span class="glyph">🔔</span><span><b>「オオカミだ！」と鐘を鳴らす</b><small>村人に見張り道への警報を出す</small></span></button><button class="action safe" data-act="silent"><span class="glyph">🌙</span><span><b>今夜は「異常なし」と報告</b><small>村へ警報を出さず、夜番を終える</small></span></button></div>`,'report');
+ }
+ const outcomes={
+  best:{title:'ふたりだけの、正しい約束',kind:'best',badge:'仕事も、恋も。',score:'信用 ±0 ／ きずな +1',story:'ベルは境界の外にいるルナへ、灯りで「待って」と伝えた。\nその夜、見張り道にオオカミは入らなかった。\n\n交代のあと。\n\nルナ「……遅い！ ずっと待ってたんだから」\nベル「約束、守ってくれたんですね」\nルナ「べ、別に。たまたまここにいただけ！」\n\n赤いリボンの下で、尻尾がぱたぱた揺れた。',why:'森側で待ってもらい、正しく「異常なし」と報告できた。見張りの仕事を守りながら、ルナと話せた。'},
+ false:{title:'まちがえた警報',kind:'bad',badge:'誤報',score:'信用 −2 ／ きずな +0',story:'カラン、カラン！\n村人はあわてて見張り道へ来た。けれどオオカミはいなかった。\n\n村長「ベル。今度は確かめてから鳴らそうな」\n\n森の外で待っていたルナは、遠くから気まずそうに見つめていた。',why:'ルナは灯りの合図を受け取り、森の外で待っていた。入っていないのに警報したので誤報になった。'},
+ duty:{title:'正しい鐘の音',kind:'good',badge:'仕事を守った',score:'信用 +1 ／ きずな ±0',story:'カラン、カラン！\n見張り道へ入ったルナを見つけ、ベルは正しく鐘を鳴らした。\n\nルナ「……やっぱり鳴らしたね。でも、ちゃんと見張りしてるベルは嫌いじゃないわ」\n\nそのままルナは森へ引き返していく。\n「また、明日！」',why:'ルナが境界を越えていたので、正しい警報。今夜は話せなかったけれど、仕事への誠実さが残った。'},
+ secret:{title:'甘くて、苦い秘密',kind:'mixed',badge:'秘密の会話',score:'信用 −1 ／ きずな +1',story:'ベル「……今夜は、異常なし」\n\n見張り道にいたルナは少し驚き、それから嬉しそうに笑った。\nルナ「ほんとに？ じゃあ、少しだけね」\n\nでも朝、村長が道に残ったオオカミの足跡を見つける。\n\n村長「報告と、合わないね」\nベル「……はい」',why:'ルナは見張り道へ入っていた。会話できたけれど、足跡で見逃しが発覚した。'},
+ };
+ const o=outcomes[st.ending];
+ return shell(`<div class="eyebrow">NIGHT 2 · RESULT</div><div class="outcome ${o.kind==='bad'?'bad':''}"><div class="badges"><span class="pill ${o.kind==='bad'?'rose':'dark'}">${o.badge}</span></div><h2>${o.title}</h2><p>${o.story}</p></div><div class="status"><div class="statusBox"><div class="sLabel">🔔 村の信用</div><div class="sValue">${st.ending==='best'?'維持':st.ending==='duty'?'＋1':st.ending==='false'?'−2':'−1'}</div></div><div class="statusBox"><div class="sLabel">💗 ルナとのきずな</div><div class="sValue">${['best','secret'].includes(st.ending)?'＋1':'変化なし'}</div></div></div><div class="mutedBox"><strong>どうして、この結果に？</strong><br>${o.why}</div><div class="spacer"></div><button class="action primary restart" data-act="restart"><span class="glyph">↻</span><b>別の選択で、もう一度</b></button><button class="ghostBtn" data-act="title">タイトルへ戻る</button><p class="footnote">3つ以上の違う結果を試すと、ルールの理解や駆け引きの手応えを評価しやすくなるよ。</p>`,'result');
+}
+function addNote(msg){state.notes.push(msg)}
+function act(key){
+ if(key==='help'){state.help=true;render();return}
+ if(key==='close'){state.help=false;render();return}
+ if(key==='sound'){muted=!muted;render();return}
+ if(state.help)return;
+ if(key==='start'){state.phase='intro';tone(495);render();return}
+ if(key==='to-night'){state.phase='night';tone(380);render();return}
+ if(key==='restart'){state=initial();state.phase='intro';render();return}
+ if(key==='title'){state=initial();render();return}
+ if(['track','listen','signal'].includes(key)&&state.phase==='night'&&state.ticks>0){
+  // t=2: Luna far in forest (lamp cannot reach); t=1: she is close to boundary (lamp reaches).
+  const timeBefore=state.ticks;
+  state.ticks--;
+  state.actions.push(key);
+  if(key==='track')addNote(timeBefore===2?'小さなウサギの足跡。大きなオオカミの足跡はまだ境界の外にある。':'新しいオオカミの足跡が境界の手前まで続いている。');
+  if(key==='listen'){addNote(timeBefore===2?'長い遠吠えは森の奥から。少しずつこちらへ近づく足音も聞こえる。':'遠吠えはすぐそば。ルナは、境界の外の木陰にいる。');state.heard=true;tone(450,.21)}
+  if(key==='signal'){
+   if(timeBefore===1){state.signal='held';addNote('ランタンを二度遮った。すぐ近くで短い返事。ルナは森側で待ってくれた。');tone(640);setTimeout(()=>tone(740),125)}
+   else{state.signal='miss';addNote('光が届かなかった。ルナはまだ遠く、森の霧の向こうにいる。');tone(270)}
+  }
+  if(state.ticks===0){state.phase='report';tone(390,.1)}
+  render();return;
+ }
+ if(['cry','silent'].includes(key)&&state.phase==='report'){
+  const held=state.signal==='held';
+  state.ending=held?(key==='cry'?'false':'best'):(key==='cry'?'duty':'secret');
+  state.phase='result';tone(state.ending==='best'?890:state.ending==='false'?260:670,.25);render();return;
+ }
+}
+function bind(){app.querySelectorAll('[data-act]').forEach(el=>el.addEventListener('click',()=>act(el.dataset.act)))}
+window.addEventListener('keydown',e=>{if(e.key==='Escape'&&state.help){state.help=false;render()}});
+window.CRYWOLF_TEST={get:()=>JSON.parse(JSON.stringify(state)),set:s=>{state=s;render()},click:act};
+render();
+</script>
+</body>
+</html>
