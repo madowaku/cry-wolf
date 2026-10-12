@@ -1,0 +1,3 @@
+# Preserve the byte hashes recorded for generated music containers.
+public/storybook/assets/audio/music-pack.js -text
+public/moon/assets/audio/music-pack.js -text

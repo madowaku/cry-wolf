@@ -1,0 +1,88 @@
+async(page)=>{
+  page.setDefaultTimeout(12000);
+  const checks=[],errors=[],shots=[];
+  const check=(ok,label)=>checks.push({label,pass:!!ok});
+  page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+  await page.addInitScript(()=>{if(window.MUSIC_QA_NODES)return;const Native=window.Audio;window.MUSIC_QA_NODES=[];window.Audio=function(src){const n=new Native(src);window.MUSIC_QA_NODES.push(n);return n;};});
+  const url='http://127.0.0.1:5198/moon/index.html?qa=audio-import';
+  const state=()=>page.evaluate(()=>window.__cwMoon);
+  const media=()=>page.evaluate(()=>({audio:window.__cwMoonAudio,nodes:window.MUSIC_QA_NODES.map(n=>({paused:n.paused,time:n.currentTime,volume:n.volume,ready:n.readyState,duration:n.duration,loop:n.loop,error:n.error?.code||null}))}));
+  const click=async a=>{await page.waitForTimeout(230);await page.locator(`[data-act="${a}"]`).click()};
+  const forward=async()=>{for(let i=0;i<40;i++){const s=await state();if(!['story','observe','result','interlude'].includes(s.phase))return;await click('next');}throw new Error('Forward did not finish');};
+  const song=async role=>{await page.waitForFunction(role=>window.__cwMoonAudio.target===role&&window.__cwMoonAudio.status==='playing',role);await page.waitForTimeout(650);const m=await media();check(m.nodes.filter(n=>!n.paused).length===1,role+' has one active track after fade');check(m.nodes.filter(n=>!n.paused).every(n=>n.ready>=2&&n.time>0&&!n.error&&n.loop),role+' actual music decodes, advances and loops');return m;};
+  const shot=async label=>{await page.waitForTimeout(450);const path=`output/playwright/moon-import/${label}.png`;await page.screenshot({path,fullPage:true});shots.push(path);};
+  await page.setViewportSize({width:360,height:800});await page.goto(url);
+  await page.evaluate(()=>{for(const key of ['crywolf_moon_v09','crywolf_moon_v08','crywolf_moon_preferences_v08'])localStorage.removeItem(key)});await page.reload();
+  check((await media()).audio.status==='muted'&&(await media()).nodes.length===0,'fresh start is silent without media loading');
+  await page.getByRole('button',{name:'音と動きの設定',exact:true}).click();
+  await page.locator('[data-ui="sound"]').click();const opening=await song('opening');
+  check(Math.abs(opening.nodes[0].duration-79.6)<.2,'actual the fairy tale length');
+  await page.locator('#moon-bgm').fill('30');await page.locator('#moon-effects').fill('40');
+  check(await page.locator('#moon-bgm-level').textContent()==='30%','BGM volume feedback');
+  check(await page.locator('#moon-effects-level').textContent()==='40%','SE volume feedback');
+  await page.locator('.music-credits summary').click();check(await page.locator('.music-credits a').count()===3,'official links for all 3 credits');
+  await page.locator('.modal [data-ui="close"]').last().focus();await page.keyboard.press('Tab');
+  check(await page.locator('.modal [data-ui="close"]').first().evaluate(n=>n===document.activeElement),'settings traps forward Tab');
+  await page.keyboard.press('Shift+Tab');check(await page.locator('.modal [data-ui="close"]').last().evaluate(n=>n===document.activeElement),'settings traps reverse Tab');
+  await shot('settings-360');await page.keyboard.press('Escape');
+  await click('new');check((await media()).audio.target==='opening','intro uses opening music');
+  await forward();await song('gameplay');await click('ring1');
+  const reaction=await state();
+  check(reaction.phase==='result'&&reaction.presentationStep===0,'result starts with reaction');
+  check(await page.locator('.changes,.stats').count()===0,'numbers are hidden while reading reaction');
+  await shot('reaction-first-360');await click('next');const explanation=await state();
+  check(explanation.presentationStep===1&&explanation.revision===reaction.revision&&explanation.history.length===reaction.history.length,'explanation leaves core revision and result unchanged');
+  check(await page.locator('.changes').count()===1,'explanation shows exact changes');await shot('explanation-360');
+  await page.reload();await click('resume');
+  check((await state()).phase==='result'&&(await state()).presentationStep===1&&(await state()).revision===explanation.revision,'reading bookmark resumes explanation without another score change');
+  await click('next');await click('next');await click('next');const clue=await state();
+  check(clue.stage==='night2'&&clue.beat===2&&clue.presentationStep===0,'night 2 starts separate distant-sound page');
+  check(await page.locator('#stage').getAttribute('data-presentation')==='howl','sound illustration is shown first');await shot('howl-360');
+  await click('next');const footprints=await state();
+  check(footprints.ticks===clue.ticks&&footprints.revision===clue.revision&&footprints.events.length===clue.events.length,'footprints page does not spend a tick or record an action');
+  check(await page.locator('#stage').getAttribute('data-presentation')==='tracks','footprints have their own page');await shot('footprints-360');
+  await page.reload();await click('resume');
+  check((await state()).presentationStep===1&&await page.locator('#stage').getAttribute('data-presentation')==='tracks','reading bookmark resumes second clue page');
+  await click('next');await click('signal2');
+  check(await page.locator('.clue-illustration').getAttribute('data-distance')==='far','first signal displays original far distance');
+  check(await page.locator('[data-character="luna"]').count()===0,'first investigation hides Luna');await shot('signal-far-360');
+  await click('next');check(await page.locator('.clue-illustration').getAttribute('data-distance')==='near','next decision displays current near distance');
+  await click('signal2');check(await page.locator('.signal-answer').count()===1,'second signal shows returned short answer');await shot('signal-near-360');
+  await click('next');check(await page.locator('#stage').getAttribute('data-location')==='outside','report shows observed outside boundary fact');
+  check(await page.locator('[data-character]').count()===0&&await page.locator('.prop-bell').count()===1,'report makes the bell the focal object');
+  check((await media()).audio.target==='gameplay','report continues Storyteller');await shot('report-bell-360');
+  const before=await state();await page.getByRole('button',{name:'音と動きの設定',exact:true}).click();
+  await page.locator('[data-ui="sound"]').click();check((await media()).nodes.every(n=>n.paused&&n.volume===0),'mute stops all BGM immediately');
+  await page.locator('[data-ui="sound"]').click();await song('gameplay');
+  await page.keyboard.press('Escape');check(JSON.stringify(await state())===JSON.stringify(before),'audio dialog leaves the report and bookmark intact');
+  await page.reload();check((await media()).nodes.length===0,'restored sound preference waits for user gesture');await click('resume');await song('gameplay');
+  const restored=await state();check(restored.phase==='report2'&&restored.revision===before.revision&&restored.ticks===0,'bookmark resumes at report');
+  check((await media()).audio.preferences.bgm===.30&&(await media()).audio.preferences.effects===.40,'both volumes persist after reload');
+  await click('silent2');check((await state()).flags.n2==='best','existing BEST result is preserved');
+  // Install a legitimate complete model bookmark in this isolated QA profile, then exercise its real resume UI.
+  await page.evaluate(()=>{
+    const M=CWModel;let s=M.transition(M.fresh(),'start');
+    const next=()=>{while(['story','observe','result','interlude','answer','epilogue'].includes(s.phase))s=M.transition(s,'next')};next();
+    for(const action of ['ring1','track2','signal2','silent2','forest3','speak3','signal3','proposal3','thank4','want5','track5','signal5','silent5','village6','forest6','heart6','plan6','call7']){s=M.transition(s,action);next();}
+    localStorage.setItem('crywolf_moon_v09',M.serialize(s));
+  });
+  await page.reload();await click('resume');const end=await song('ending');
+  check((await state()).phase==='finish'&&(await state()).history.length===7,'seven-night completed bookmark resumes');
+  check(Math.abs(end.nodes.find(n=>!n.paused).duration-31.35)<.2,'actual 月夜 length');
+  await page.evaluate(()=>{const n=MUSIC_QA_NODES.find(n=>!n.paused);n.currentTime=n.duration-.15});await page.waitForTimeout(650);
+  check((await media()).nodes.find(n=>!n.paused).time<2,'actual ending track loops at its end');
+  await page.getByRole('link',{name:'CRY WOLF! タイトルへ'}).click();await song('opening');
+  for(const [width,height] of [[360,800],[390,844],[720,1280],[1280,900]]){
+    await page.setViewportSize({width,height});await page.getByRole('button',{name:'音と動きの設定',exact:true}).click();
+    check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`settings ${width} no horizontal overflow`);
+    check(await page.locator('input[data-volume]').evaluateAll(nodes=>nodes.every(n=>n.getBoundingClientRect().height>=44)),`settings ${width} touch ranges`);
+    await shot(`settings-${width}`);await page.keyboard.press('Escape');
+  }
+  await page.goto('file:///C:/Dev/Projects/cry-wolf/public/moon/index.html');
+  await page.getByRole('button',{name:'音と動きの設定',exact:true}).click();
+  if(!(await media()).audio.preferences.sound)await page.locator('[data-ui="sound"]').click();
+  await song('opening');check(await page.evaluate(()=>performance.getEntriesByType('resource').every(e=>!/^https?:/.test(e.name))),'standalone audio uses no network resources');
+  await page.locator('[data-ui="sound"]').click();check((await media()).nodes.every(n=>n.paused),'standalone audio mutes');
+  check(errors.length===0,'no runtime or console errors');
+  return {checks:checks.length,passed:checks.filter(c=>c.pass).length,failures:checks.filter(c=>!c.pass),errors,screenshots:shots,details:checks,audioEvidence:'actual provided tracks decoded and advanced; no human listening or physical device test'};
+}

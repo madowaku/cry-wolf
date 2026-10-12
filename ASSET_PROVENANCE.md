@@ -78,3 +78,9 @@ v0.8.1の追加生成の正確なプロンプトと参照画像は `docs/moon/lu
 確認した公式条件: [音源利用ライセンス](https://opentracks.com/help/articles/license/)のゲーム／アプリのBGM利用と形式変換・フェード編集、[利用規約](https://opentracks.com/help/articles/terms/)の自動収集・直リンクの禁止。作者プロフィール: [のる](https://opentracks.com/creator/detail/432)、[チョコミント](https://opentracks.com/creator/detail/215)。音量設定内に曲名・作者・公式曲ページへのリンクを表示。
 
 コンテナは単純な難読化で、DRMではない。抽出を完全に防止する保証や、音源ライセンスの条件を超える権利の取得を意味しない。合成SEは従来のWeb Audioを継続。3夜版の本編には音楽を追加していない。
+
+## 七夜Moon版への取り込み v0.9.1 — 2026-10-12
+
+ユーザー指定のコミット `510626d333e5a11fdc31f748a72d31b39bdb20f2` を土台に、上記3曲とstorybook版の再生制御を `public/moon/` へ取り込み。元の変換済み音楽パックをコピーし、ハッシュは同一。曲名・作者・出典はMoonの設定画面と `public/moon/CREDITS.md`、`music-manifest.json` に記録。再取り込みは `npm run music:pack`、変換済みパックの同期だけなら `npm run music:moon`。
+
+第二夜の手がかり、ランタンの届く範囲・気配の距離、報告の鐘、結果の人物配置は、オリジナルSVG／CSS／HTMLの演出移植。追加生成・外部画像素材の採用はなし。Moonの37点のWebPと原本、独立storybook版の画像・ルールは変更していない。

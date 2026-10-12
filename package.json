@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "qa:routes": "vitest run tests/routes.test.ts --reporter=verbose",
-    "music:pack": "node scripts/pack-storybook-music.mjs",
+    "music:pack": "node scripts/pack-storybook-music.mjs && node scripts/moon/sync-storybook-audio.mjs",
+    "music:moon": "node scripts/moon/sync-storybook-audio.mjs",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1 --port 5195 --strictPort"
   },

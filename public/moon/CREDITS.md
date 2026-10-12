@@ -12,6 +12,20 @@ v0.8.1でルナに8表情を追加。誇り高い普段顔、からかい、い�
 
 初回の動物顔のピップ・村長と青年寄りのピップは不採用。今回の配布には入っていません。
 
-背景・人物・小物と、HTMLの文章・UIは別レイヤー。フォントは端末標準の明朝系／Georgiaとシステムフォント。効果音はWeb Audioの短い合成音、初期OFF。第三者音源、外部フォント、外部CDNは使用していません。
+背景・人物・小物と、HTMLの文章・UIは別レイヤー。フォントは端末標準の明朝系／Georgiaとシステムフォント。効果音はWeb Audioの短い合成音、初期OFF。外部フォント、外部CDNは使用していません。
+
+## 音楽 — v0.9.1
+
+| 使用場面 | 曲 / 作者 | 公式ページ |
+| --- | --- | --- |
+| タイトル・序章 | the fairy tale / のる | https://opentracks.com/bgm/detail/19133 |
+| 第一夜〜第七夜のプレイ | Storyteller / のる | https://opentracks.com/bgm/detail/21959 |
+| 最後の結果・エピローグ | 月夜 / チョコミント | https://opentracks.com/bgm/detail/6987 |
+
+音楽提供: OpenTracks。ユーザーが公式ページから手動で入手し、本プロジェクトに保存したMP3を使用。[音源利用ライセンス](https://opentracks.com/help/articles/license/)・[利用規約](https://opentracks.com/help/articles/terms/)を参照。原音は変更せず、AACへ形式変換してゲーム専用JSコンテナへ格納しました。原音MP3と単独M4Aはこの配布物へ含めません。実行時の外部音源取得・音声ファイルの直リンク再生も行いません。コンテナは単純な難読化で、DRMではありません。
+
+音楽のハッシュ・長さ・出典は同梱 `music-manifest.json`。ひと夜storybook版で確認した再生制御を再利用し、同じ選曲を七夜版の場面へ割り当てています。
+
+第二夜の距離・ランタン・足跡の図、鐘を中心にした報告場面、結果の反応と説明の読み分けは、先に制作したstorybook版を元にしたオリジナルSVG／CSS／HTMLの演出です。v0.9の37点の美術素材は変更・再生成していません。
 
 生成プロンプトと採用判断はプロジェクトの `docs/moon/generation-prompts.json` と `DIRECTION.md`、元画像と変換物のSHA-256は同梱 `asset-manifest.json` に記録。第三者の商用利用許諾を取得・認証したという意味ではありません。

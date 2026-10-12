@@ -1,14 +1,35 @@
 (function () {
   'use strict';
-  const M = CWModel, S = CWStory;
+  const M = CWModel, S = CWStory, P = CWPresentation;
   const KEY = 'crywolf_moon_v09', LEGACY = 'crywolf_moon_v08', CLEARS = 'crywolf_moon_endings_v09', PREFS = 'crywolf_moon_preferences_v08';
+  const READING = 'crywolf_moon_reading_v091';
   const $ = selector => document.querySelector(selector);
   const safe = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
   let state = M.fresh(), saved = null, home = true, modal = null, returnFocus = null, lastAction = -Infinity;
-  let preferences = { sound: false, motion: true }, storageOK = true, audio = null, cleared = [];
+  let preferences = { sound: false, motion: true, bgm: .22, effects: .7 }, storageOK = true, audio = null, effectBus = null, cleared = [];
+  let audioUnlocked = false, readingStep = 0, viewRevision = -1, savedView = null;
+  const volume = (value, fallback) => typeof value === 'number' && Number.isFinite(value) ? Math.max(0, Math.min(1, value)) : fallback;
   try { saved = M.restore(localStorage.getItem(KEY)) || M.restore(localStorage.getItem(LEGACY)); } catch { storageOK = false; }
-  try { const p = JSON.parse(localStorage.getItem(PREFS)); if (p) preferences = { sound: p.sound === true, motion: p.motion !== false }; } catch { /* Invalid preferences do not discard a valid bookmark. */ }
+  try { const p = JSON.parse(localStorage.getItem(PREFS)); if (p) preferences = { sound: p.sound === true, motion: p.motion !== false, bgm: volume(p.bgm, .22), effects: volume(p.effects, .7) }; } catch { /* Invalid preferences do not discard a valid bookmark. */ }
   try { const c = JSON.parse(localStorage.getItem(CLEARS)); if (Array.isArray(c)) cleared = [...new Set(c.filter(id => Object.hasOwn(S.endingNames, id)))]; } catch { /* Collection is independent of the bookmark. */ }
+  try { const v = JSON.parse(localStorage.getItem(READING)); if (v?.step === 1 && typeof v.bookmark === 'string') savedView = v; } catch { /* Reading position is optional; the core bookmark remains valid. */ }
+  const musicSources = new Map();
+  function musicSource(key) {
+    if (musicSources.has(key)) return musicSources.get(key);
+    const entry = window.CRYWOLF_MUSIC_PACK?.tracks?.[key];
+    if (!entry) return '';
+    const bytes = Uint8Array.from(atob(entry.data), c => c.charCodeAt(0) ^ 0x6d);
+    const url = URL.createObjectURL(new Blob([bytes], { type: entry.mime }));
+    musicSources.set(key, url); return url;
+  }
+  const music = CWAudio.createController({ createAudio: src => new Audio(src), sourceFor: musicSource, now: () => performance.now(), raf: callback => requestAnimationFrame(callback), caf: id => cancelAnimationFrame(id), onChange: updateMusicStatus });
+  music.setVolume(preferences.bgm);
+  function musicStatus() {
+    const status = music.get().status;
+    return ({ playing: '再生中', muted: preferences.sound && !audioUnlocked ? '操作すると音が始まります' : '音はOFF', paused: '一時停止', loading: '読み込み中', missing: 'BGMは追加待ち', blocked: '音をONにして再生してください', error: 'BGMを読み込めませんでした' })[status];
+  }
+  function updateMusicStatus() { const node = $('[data-music-status]'); if (node) node.textContent = musicStatus(); }
+  function savePreferences() { try { localStorage.setItem(PREFS, JSON.stringify(preferences)); } catch { /* Controls work without storage. */ } }
   const asset = name => `assets/${name}.webp`;
   const night = () => Number(state.stage.slice(-1)) || 1;
   const label = () => ['epilogue', 'finish'].includes(state.phase) ? 'エピローグ' : S.stageNames[state.stage];
@@ -23,10 +44,14 @@
     return `<div class="actor actor-${who} ${total === 1 ? 'solo' : index === 0 ? 'left' : 'right'} ${speaking ? 'speaking' : ''}" data-character="${who}" data-expression="${expression || 'normal'}"><div class="actor-enter"><img class="portrait emotion-${expression || 'normal'}" src="${asset(who + (expression ? '-' + expression : ''))}" alt="${safe((expressions[expression] || '') + S.names[who])}" decoding="async" draggable="false"></div></div>`;
   }
   function stage(scene) {
-    const cast = scene.cast || ['bell:thinking'];
+    const view = P.visual(state, home, readingStep);
+    if (view.kind === 'report') scene = { ...scene, caption: view.location === 'inside' ? '今夜の足跡：見張り道へ入った。' : '今夜の足跡：境界の外で止まった。' };
+    const cast = view.kind === 'report' ? [] : scene.cast || ['bell:thinking'];
     const props = { bell: ['bell-prop', '村へ知らせる真鍮の鐘'], tracks: ['tracks', '境界に残るオオカミの足跡'], charm: ['charm', '赤い糸を結んだ、手彫りの月形チャーム'] };
     const element = $('#stage');
-    element.className = `stage backdrop-${scene.backdrop || 'forest'} ${scene.effect ? 'effect-' + scene.effect : ''} ${home ? 'cover-stage' : ''}`;
+    element.className = `stage backdrop-${scene.backdrop || 'forest'} ${scene.effect ? 'effect-' + scene.effect : ''} ${home ? 'cover-stage' : ''} presentation-${view.kind} ${view.kind === 'reaction' && state.stage === 'night2' ? 'reaction-' + view.code : ''}`;
+    element.dataset.presentation = view.kind; element.dataset.location = view.location || '';
+    if (['howl', 'tracks', 'distance', 'listen', 'signal'].includes(view.kind)) { element.innerHTML = P.diagram(view); return; }
     element.innerHTML = `<img class="landscape" src="${asset(scene.backdrop === 'dawn' ? 'dawn' : scene.backdrop === 'forest' ? 'forest' : 'village')}" alt="${scene.backdrop === 'dawn' ? '朝日の差す村と見張り台、森へ続く道' : scene.backdrop === 'forest' ? '白い境界石と、古い泉へ続く森の道' : '灯りのともる村、木の見張り台、森へ向かう道'}"><div class="stage-shade"></div><div class="sky-moon">${moon('stage-moon')}</div><div class="scene-tag">${safe(home ? 'A LITTLE FABLE UNDER THE MOON' : label() + '  /  ' + (scene.backdrop === 'dawn' ? '村の朝' : scene.backdrop === 'forest' ? '森の境界' : '村の見張り道'))}</div>${scene.prop ? `<img class="prop prop-${scene.prop}" src="${asset(props[scene.prop][0])}" alt="${props[scene.prop][1]}">` : ''}${scene.effect === 'ring' && !scene.prop ? `<img class="prop prop-bell small-bell" src="${asset('bell-prop')}" alt="揺れる警報の鐘">` : ''}<div class="cast">${cast.map((c, i) => portrait(c, i, cast.length, scene.speaker)).join('')}</div>${scene.effect === 'signal' ? '<div class="signal-glow" aria-hidden="true"></div>' : ''}<div class="stage-caption">${safe(scene.caption || (home ? '叫ばない夜にも、ほんとうはある。' : ''))}</div>`;
   }
   function button(title, action, detail = '', primary = false, disabled = false) {
@@ -59,6 +84,9 @@
     stage(scene);
   }
   function render(focus = true) {
+    if (viewRevision !== state.revision) { viewRevision = state.revision; readingStep = savedView?.bookmark === M.serialize(state) && P.hasReveal(state, 0) ? 1 : 0; }
+    const role = P.musicRole(state, home);
+    music.setPhase(({ opening: 'title', gameplay: 'night', ending: 'result' })[role]);
     $('#book').classList.toggle('motion-off', !preferences.motion);
     $('#chapter').innerHTML = `<div class="moon-nav">${moon('nav-moon')}<span>${home ? '七夜の絵本' : label()}<small>${home ? '25–40 MIN' : `${night()} / 7 夜`}</small></span></div>`;
     $('.footer > span').textContent = state.phase === 'finish' && !home ? 'おしまい。次は、あなたの言葉で。' : '月あかりの下、ほんとうを探す。';
@@ -69,9 +97,12 @@
       page(scene, (resumable ? button('しおりから読む', 'resume', resumable.phase === 'interlude' ? '三夜のしおりから、第四夜へ' : resumable.phase === 'finish' ? '読み終えた結末へ' : `${S.stageNames[resumable.stage]}のつづき`, true) : '') + button('絵本をひらく', 'new', resumable ? '最初から新しく読む' : 'はじめから · タップでゆっくり進みます', !resumable), '<div class="cover-details"><span>観察する</span><i>→</i><span>気持ちを伝える</span><i>→</i><span>報告する</span></div><p class="edition">七夜とエピローグ · 4つの結末<br>いつでもしおりを挟んで、続きを読めます。</p>', 'CRY WOLF!  /  月あかりの約束');
     } else if (state.phase === 'story') {
       const scene = { ...S.readChapter(state) };
+      if (state.stage === 'night2' && state.beat === 2) {
+        Object.assign(scene, readingStep === 0 ? { title: '森の奥から、遠吠え。', text: '森の奥から、長い遠吠えがひとつ。\n姿は見えない。\nいまはまだ、遠い森の気配。', prop: undefined, hint: 'まずは、声の方角と距離を覚えておこう。' } : { title: '道の入口に、ふたつの足跡。', text: '道の入口には、大小の足跡。\n白い境界石の向こうは、森。\n\nいま、どこにいるんだろう。' });
+      }
       if (state.stage === 'night3' && state.beat === 0 && state.flags.n1 === 'ring') scene.hint = '第一夜の正しい警報を覚えていた村長が、古地図を預けてくれました。村の調査は済んでいます。';
       if (state.stage === 'night3' && state.beat === 1 && state.flags.n1 === 'hide') scene.hint = '第一夜に話を聞いたベルにだけ、ルナが打ち明けました。仲間には泉への道が必要。森の調査は済んでいます。';
-      page(scene, button(state.beat === M.counts[state.stage] - 1 ? (state.stage === 'intro' ? '第一夜へ' : state.stage === 'night1' ? '鐘の前に立つ' : '何をするか選ぶ') : 'つぎのページへ', 'next', '', true), '', `${label()}  /  ${state.beat + 1} — ${M.counts[state.stage]}`);
+      page(scene, button(state.stage === 'night2' && state.beat === 2 && readingStep === 0 ? '足跡のページへ' : state.beat === M.counts[state.stage] - 1 ? (state.stage === 'intro' ? '第一夜へ' : state.stage === 'night1' ? '鐘の前に立つ' : '何をするか選ぶ') : 'つぎのページへ', 'next', '', true), '', `${label()}  /  ${state.beat + 1} — ${M.counts[state.stage]}`);
     } else if (state.phase === 'choice1') {
       page({ title: 'その鐘を、鳴らしますか。', speaker: 'ベル', text: 'ルナは、見張り道の内側にいる。\n仕事を守るか。理由を聞くために隠すか。', cast: ['bell:flustered', 'luna:proud'], backdrop: 'forest' }, button('「オオカミだ！」と知らせる', 'ring1', '正しい警報。村の信用が上がる') + button('見逃して、理由を聞く', 'hide1', '話せるけれど、翌朝の足跡で見逃しが分かる'), boundary() + hud(), '第一夜  /  最初の決断');
     } else if (state.phase === 'explore2') {
@@ -115,7 +146,8 @@
     } else if (state.phase === 'result') {
       const scene = S.readResult(state);
       const changes = [['trust', '信用'], ['bond', 'きずな'], ['insight', '合図']].map(([key, name]) => `${name} ${state.result.before[key]} → ${state.result.after[key]}`).join('　/　');
-      page(scene, button(state.stage === 'night7' ? 'エピローグを読む' : state.stage === 'night3' ? 'ここまでを、振り返る' : '次の夜へ', 'next', '', true), `<p class="reason">${safe(scene.reason)}</p><p class="changes">${changes}</p>${hud()}`, `${label()}  /  選んだことが、残っていく`);
+      if (readingStep === 0) page(scene, button('この夜の理由を読む', 'next', '', true), '', `${label()}  /  二人に残った言葉`);
+      else page({ ...scene, title: '今夜の選択が、残したこと。', speaker: '語り手', text: scene.reason, cast: ['bell:thinking'], prop: undefined, effect: undefined }, button(state.stage === 'night7' ? 'エピローグを読む' : state.stage === 'night3' ? 'ここまでを、振り返る' : '次の夜へ', 'next', '', true), `<p class="changes">${changes}</p>${hud()}`, `${label()}  /  選んだことが、残っていく`);
     } else if (state.phase === 'interlude') {
       const ideal = state.flags.n3 === 'proposal', honest = state.flags.n3 === 'facts';
       const scene = { title: ideal ? 'まだ、閉じていない道。' : honest ? '話し合いの、はじまり。' : '遠いままの、境界。', speaker: '語り手', text: ideal ? 'ピップは手紙を、かばんへ戻した。\n「まだ、届けられるかもしれないね」\n\nルナはベルの隣に立った。\n「今度は、私から合図する。見逃したら承知しないわよ」\nそう言って、先に歩かずベルを待った。' : honest ? 'まだ、道が残る約束はない。\nそれでも村長は、調べる時間をくれた。\n\n分からない、と正直に言えたことが、\n小さなはじまりになった。' : '道を閉じる日が近づいている。\nふたりの間には、まだ境界がある。\n\n次は、どんな言葉なら届くだろう。', cast: ideal ? ['bell:relief', 'luna:softened'] : ['bell:concern', honest ? 'luna:serious' : 'luna:lonely'], backdrop: 'village' };
@@ -126,6 +158,10 @@
       const scene = { title: S.endingNames[state.ending], text: '七つの夜と、そのあとの日々。\nあなたの言葉で、この絵本はここまで届きました。', cast: ['bell:smile', state.ending === 'HONEST' ? 'luna:softened' : state.ending === 'BAD_LIAR' ? 'luna:tease' : state.ending === 'SECRET_MEETING' ? 'luna:wait' : 'luna:smirk'], backdrop: state.ending === 'GOOD_DOG' ? 'village' : 'forest' };
       page(scene, button('後日談を、読み返す', 'epilogue') + button('もう一度、別の言葉で', 'new', '新しいしおりで、第一夜から', true) + button('読んだ結末を見る', 'collection'), `<div class="bookmark"><p>おしまい</p><small>${state.flags.road ? '村と森の共同確認で、東の丘の道が開きました。' : '古道は閉じました。遠回りをしながら、道の相談は続きます。'}</small></div><details><summary>あなたが選んだ七夜</summary>${state.history.map(h => `<p>${S.stageNames[h.stage]}：${S.historyLabel(h)}</p>`).join('')}<p>第五夜の夕方：${{ want: '会いたいと伝えた', away: '距離を置いた', decide: '答えを預けた' }[state.flags.answer5]}</p></details>${hud()}`, `${S.endingTags[state.ending]}  /  THE END`);
     }
+    if (!home) {
+      savedView = { bookmark: M.serialize(state), step: readingStep };
+      try { localStorage.setItem(READING, JSON.stringify(savedView)); } catch { /* Extra reading pages also work without storage. */ }
+    }
     if (focus) { $('#page').focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: 'instant' }); }
   }
   function persist() {
@@ -134,15 +170,17 @@
     try { localStorage.setItem(KEY, M.serialize(state)); localStorage.setItem(CLEARS, JSON.stringify(cleared)); storageOK = true; } catch { storageOK = false; }
   }
   function tone(kind) {
-    if (!preferences.sound) return;
+    if (!preferences.sound || preferences.effects === 0 || document.hidden) return;
     try {
       audio ||= new (window.AudioContext || window.webkitAudioContext)();
       audio.resume().catch(() => {});
+      if (!effectBus) { effectBus = audio.createGain(); effectBus.connect(audio.destination); }
+      effectBus.gain.setValueAtTime(preferences.effects, audio.currentTime);
       for (const [i, freq] of (kind === 'ring' ? [784, 1176, 1568] : [523, 659]).entries()) {
         const osc = audio.createOscillator(), gain = audio.createGain(), at = audio.currentTime + i * .07;
         osc.type = 'sine'; osc.frequency.value = freq;
         gain.gain.setValueAtTime(0, at); gain.gain.linearRampToValueAtTime(.024, at + .012); gain.gain.exponentialRampToValueAtTime(.0001, at + (kind === 'ring' ? 1.4 : .32));
-        osc.connect(gain); gain.connect(audio.destination); osc.start(at); osc.stop(at + 1.6);
+        osc.connect(gain); gain.connect(effectBus); osc.start(at); osc.stop(at + 1.6);
       }
     } catch { /* Silent play remains fully usable. */ }
   }
@@ -155,11 +193,12 @@
     }
     if (action === 'resume') { if (state.phase === 'title' && saved) state = saved; home = false; render(); return; }
     if (home || performance.now() - lastAction < 220) return;
+    if (action === 'next' && revision === state.revision && P.hasReveal(state, readingStep)) { readingStep = 1; lastAction = performance.now(); tone('page'); render(); return; }
     const next = M.transition(state, action, revision);
     if (next === state) return;
     lastAction = performance.now(); state = next; persist(); tone(action.startsWith('ring') || action === 'false3' ? 'ring' : 'page'); render();
   }
-  function start() { state = M.transition(M.fresh(), 'start'); home = false; lastAction = performance.now(); persist(); render(); }
+  function start() { savedView = null; viewRevision = -1; state = M.transition(M.fresh(), 'start'); home = false; lastAction = performance.now(); persist(); render(); }
   function closeModal() {
     modal = null; $('#modal-host').innerHTML = ''; $('#book').inert = false; document.body.classList.remove('modal-open');
     if (returnFocus?.isConnected) returnFocus.focus({ preventScroll: true });
@@ -174,7 +213,7 @@
     } else if (kind === 'notes') {
       title = 'ベルの手がかり手帳'; body = noteMarkup(state.notes) + (state.history.length ? '<h3>これまでの夜</h3>' + state.history.map(h => `<p>${S.stageNames[h.stage]}：${S.historyLabel(h)}</p>`).join('') : '');
     } else if (kind === 'settings') {
-      title = '音と、ページの動き'; body = `<button class="choice" data-ui="sound"><span><strong>効果音：${preferences.sound ? 'ON' : 'OFF'}</strong><small>鐘とページの短い音</small></span></button><button class="choice" data-ui="motion"><span><strong>動き：${preferences.motion ? 'ON' : 'OFF'}</strong><small>端末の「視差効果を減らす」設定も優先します</small></span></button><p>この版の音は短い合成効果音です。</p><button class="choice" data-ui="gallery"><strong>登場人物と絵を見る</strong><span>↗</span></button><button class="choice" data-ui="collection"><strong>読んだ結末 ${cleared.length} / 4</strong><span>↗</span></button>`;
+      title = '音と、ページの動き'; body = `<button class="choice" data-ui="sound" aria-pressed="${preferences.sound}"><span><strong>音：${preferences.sound ? 'ON' : 'OFF'}</strong><small>BGMと、鐘・ページの効果音</small></span></button><p class="audio-state"><span data-music-status role="status">${musicStatus()}</span> · ${CWAudio.tracks[music.get().target].title}</p><div class="audio-levels"><label for="moon-bgm"><span>BGM <output id="moon-bgm-level" for="moon-bgm">${Math.round(preferences.bgm * 100)}%</output></span><input id="moon-bgm" data-volume="bgm" type="range" min="0" max="100" value="${Math.round(preferences.bgm * 100)}"></label><label for="moon-effects"><span>効果音 <output id="moon-effects-level" for="moon-effects">${Math.round(preferences.effects * 100)}%</output></span><input id="moon-effects" data-volume="effects" type="range" min="0" max="100" value="${Math.round(preferences.effects * 100)}"></label></div><button class="choice" data-ui="motion"><span><strong>動き：${preferences.motion ? 'ON' : 'OFF'}</strong><small>端末の「視差効果を減らす」設定も優先します</small></span></button><details class="music-credits"><summary>音楽のクレジット</summary><ul>${Object.values(CWAudio.tracks).map(t => `<li>${t.role}：<a href="${t.page}" target="_blank" rel="noopener noreferrer">${t.title}</a><br>${t.author} / OpenTracks</li>`).join('')}</ul></details><button class="choice" data-ui="gallery"><strong>登場人物と絵を見る</strong><span>↗</span></button><button class="choice" data-ui="collection"><strong>読んだ結末 ${cleared.length} / 4</strong><span>↗</span></button>`;
     } else if (kind === 'restart') {
       title = '新しいしおりに、替えますか？'; body = '<p>いまのしおりを置き換えて、序章から読み直します。読み終えた結末の記録は残ります。</p><button class="choice primary" data-ui="confirm-restart"><strong>最初から読む</strong></button><button class="choice" data-ui="close"><strong>今のしおりを残す</strong></button>';
     } else if (kind === 'collection') {
@@ -192,6 +231,7 @@
     $('#book').inert = true; document.body.classList.add('modal-open'); $('#modal-host [data-ui="close"]').focus();
   }
   document.addEventListener('click', event => {
+    if (event.isTrusted && !audioUnlocked) { audioUnlocked = true; music.setMuted(!preferences.sound); }
     const control = event.target.closest('button, [data-ui]'); if (!control || control.disabled) return;
     const ui = control.dataset.ui;
     if (ui) {
@@ -201,17 +241,28 @@
       else if (ui === 'confirm-restart') { closeModal(); start(); }
       else if (ui === 'sound' || ui === 'motion') {
         preferences[ui] = !preferences[ui];
-        try { localStorage.setItem(PREFS, JSON.stringify(preferences)); } catch { /* Preferences remain in memory. */ }
+        savePreferences();
+        if (ui === 'sound') { music.setMuted(!preferences.sound || !audioUnlocked); if (effectBus) effectBus.gain.setValueAtTime(preferences.sound ? preferences.effects : 0, audio.currentTime); }
         $('#book').classList.toggle('motion-off', !preferences.motion);
         openModal('settings'); $(`[data-ui="${ui}"]`).focus(); if (ui === 'sound') tone('page');
       } else openModal(ui);
     } else if (control.dataset.act) act(control.dataset.act, Number(control.dataset.revision));
   });
+  document.addEventListener('input', event => {
+    const node = event.target;
+    if (!node.matches('input[data-volume]')) return;
+    const key = node.dataset.volume;
+    preferences[key] = volume(Number(node.value) / 100, preferences[key]);
+    if (key === 'bgm') music.setVolume(preferences.bgm);
+    else if (effectBus) effectBus.gain.setValueAtTime(preferences.sound ? preferences.effects : 0, audio.currentTime);
+    $(`#moon-${key}-level`).textContent = Math.round(preferences[key] * 100) + '%'; savePreferences();
+  });
   document.addEventListener('keydown', event => {
+    if (event.isTrusted && ['Enter', ' '].includes(event.key) && !audioUnlocked) { audioUnlocked = true; music.setMuted(!preferences.sound); }
     if (modal) {
       if (event.key === 'Escape') { event.preventDefault(); closeModal(); }
       if (event.key === 'Tab') {
-        const items = [...$('#modal-host').querySelectorAll('button:not(:disabled),a[href]')];
+        const items = [...$('#modal-host').querySelectorAll('button:not(:disabled),input,summary,a[href]')].filter(node => node.getClientRects().length);
         const first = items[0], last = items.at(-1);
         if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
         else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
@@ -222,6 +273,11 @@
       event.preventDefault(); act('next', state.revision);
     }
   });
-  Object.defineProperty(window, '__cwMoon', { get: () => JSON.parse(JSON.stringify({ ...state, home, modal, storageOK })) });
+  window.addEventListener('crywolf-music-ready', () => music.refresh());
+  document.addEventListener('visibilitychange', () => { music.setSuspended(document.hidden); if (document.hidden) audio?.suspend(); });
+  window.addEventListener('pagehide', event => { music.setSuspended(true); audio?.suspend(); if (!event.persisted) { music.dispose(); for (const url of musicSources.values()) URL.revokeObjectURL(url); } });
+  window.addEventListener('pageshow', () => music.setSuspended(document.hidden));
+  Object.defineProperty(window, '__cwMoon', { get: () => JSON.parse(JSON.stringify({ ...state, home, modal, storageOK, presentationStep: readingStep })) });
+  Object.defineProperty(window, '__cwMoonAudio', { get: () => ({ ...music.get(), preferences: { ...preferences } }) });
   render(false);
 })();

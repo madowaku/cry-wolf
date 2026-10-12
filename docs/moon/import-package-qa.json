@@ -1,0 +1,11 @@
+{
+  "files": 50,
+  "images": 37,
+  "musicTracks": 3,
+  "zipBytes": 7358329,
+  "allFileContentsMatch": true,
+  "imageHashesMatch": true,
+  "musicContainerHashMatches": true,
+  "storybookMusicCopiedExactly": true,
+  "rawAudioAndPngAbsent": true
+}
