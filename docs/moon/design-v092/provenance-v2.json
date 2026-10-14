@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-15",
+  "tool": "Codex built-in image_gen",
+  "kind": "Edit of composition reference only",
+  "prompt": "Edit the FIRST image, the existing CRY WOLF title-screen visual reference, preserving its open-book layout, typography, paper, village landscape, Bell, palette, and all UI copy. The SECOND image is the exact existing Luna sprite reference for the desired expression/pose: use her sly side glance, slightly narrowed confident eyes and a SMALL asymmetrical teasing smile, proud and a little mischievous, never a loving or affectionate smile. Preserve her silver hair, red eyes, wolf ears, red ribbon on the viewer's right, navy cape, cream tunic, human face/hands. On the cover she stands independently on the right; Bell on the left; give their bodies and shoulders a clear slight gap, no leaning together, no touching, no shared intimate posture. Crucial: replace the FULL MOON with a precisely HALF-ILLUMINATED MOON (right half lit, left half dark; NOT a gibbous, NOT full), keeping its size and position. This is the beginning of their seven nights, not their romantic ending. Avoid blush, tender smiles, closeness, new props, new text or other layout changes. Visual mock only; game uses existing separate assets and HTML text/buttons.",
+  "references": [
+    "docs/moon/design-v092/title-reference.png",
+    "public/moon/assets/luna-smirk.webp"
+  ],
+  "output": "docs/moon/design-v092/title-reference-v2.png",
+  "sha256": "fb3617e9c418656b821f6cf724c031f914a31d7628ad737d8a7801620a60a35a",
+  "adoption": "Reference corrected to half moon and sly, independent Luna. Actual game reuses original luna-smirk on opening and luna-softened only on HONEST completed cover; all existing source and game assets unchanged."
+}

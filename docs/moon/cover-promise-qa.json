@@ -1,0 +1,238 @@
+{
+  "checks": 55,
+  "passed": 55,
+  "failures": [],
+  "errors": [],
+  "screenshots": [
+    "docs/moon/screenshots/cover-promise/opening-360.png",
+    "docs/moon/screenshots/cover-promise/honest-360.png",
+    "docs/moon/screenshots/cover-promise/opening-390.png",
+    "docs/moon/screenshots/cover-promise/honest-390.png",
+    "docs/moon/screenshots/cover-promise/opening-720.png",
+    "docs/moon/screenshots/cover-promise/honest-720.png",
+    "docs/moon/screenshots/cover-promise/opening-1440.png",
+    "docs/moon/screenshots/cover-promise/honest-1440.png"
+  ],
+  "details": [
+    {
+      "label": "home 360 readable and 44px controls",
+      "pass": true
+    },
+    {
+      "label": "home sly Luna 360",
+      "pass": true
+    },
+    {
+      "label": "home half moon 360",
+      "pass": true
+    },
+    {
+      "label": "HONEST 360 readable and 44px controls",
+      "pass": true
+    },
+    {
+      "label": "HONEST restores changed cover 360",
+      "pass": true
+    },
+    {
+      "label": "HONEST full moon 360",
+      "pass": true
+    },
+    {
+      "label": "HONEST gentle Luna 360",
+      "pass": true
+    },
+    {
+      "label": "same village composition 360",
+      "pass": true
+    },
+    {
+      "label": "ending music retained 360",
+      "pass": true
+    },
+    {
+      "label": "home returns to half even after HONEST 360",
+      "pass": true
+    },
+    {
+      "label": "cover return never changes progress 360",
+      "pass": true
+    },
+    {
+      "label": "reread preserves final cover 360",
+      "pass": true
+    },
+    {
+      "label": "home 390 readable and 44px controls",
+      "pass": true
+    },
+    {
+      "label": "home sly Luna 390",
+      "pass": true
+    },
+    {
+      "label": "home half moon 390",
+      "pass": true
+    },
+    {
+      "label": "HONEST 390 readable and 44px controls",
+      "pass": true
+    },
+    {
+      "label": "HONEST restores changed cover 390",
+      "pass": true
+    },
+    {
+      "label": "HONEST full moon 390",
+      "pass": true
+    },
+    {
+      "label": "HONEST gentle Luna 390",
+      "pass": true
+    },
+    {
+      "label": "same village composition 390",
+      "pass": true
+    },
+    {
+      "label": "ending music retained 390",
+      "pass": true
+    },
+    {
+      "label": "home returns to half even after HONEST 390",
+      "pass": true
+    },
+    {
+      "label": "cover return never changes progress 390",
+      "pass": true
+    },
+    {
+      "label": "reread preserves final cover 390",
+      "pass": true
+    },
+    {
+      "label": "home 720 readable and 44px controls",
+      "pass": true
+    },
+    {
+      "label": "home sly Luna 720",
+      "pass": true
+    },
+    {
+      "label": "home half moon 720",
+      "pass": true
+    },
+    {
+      "label": "HONEST 720 readable and 44px controls",
+      "pass": true
+    },
+    {
+      "label": "HONEST restores changed cover 720",
+      "pass": true
+    },
+    {
+      "label": "HONEST full moon 720",
+      "pass": true
+    },
+    {
+      "label": "HONEST gentle Luna 720",
+      "pass": true
+    },
+    {
+      "label": "same village composition 720",
+      "pass": true
+    },
+    {
+      "label": "ending music retained 720",
+      "pass": true
+    },
+    {
+      "label": "home returns to half even after HONEST 720",
+      "pass": true
+    },
+    {
+      "label": "cover return never changes progress 720",
+      "pass": true
+    },
+    {
+      "label": "reread preserves final cover 720",
+      "pass": true
+    },
+    {
+      "label": "home 1440 readable and 44px controls",
+      "pass": true
+    },
+    {
+      "label": "home sly Luna 1440",
+      "pass": true
+    },
+    {
+      "label": "home half moon 1440",
+      "pass": true
+    },
+    {
+      "label": "HONEST 1440 readable and 44px controls",
+      "pass": true
+    },
+    {
+      "label": "HONEST restores changed cover 1440",
+      "pass": true
+    },
+    {
+      "label": "HONEST full moon 1440",
+      "pass": true
+    },
+    {
+      "label": "HONEST gentle Luna 1440",
+      "pass": true
+    },
+    {
+      "label": "same village composition 1440",
+      "pass": true
+    },
+    {
+      "label": "ending music retained 1440",
+      "pass": true
+    },
+    {
+      "label": "home returns to half even after HONEST 1440",
+      "pass": true
+    },
+    {
+      "label": "cover return never changes progress 1440",
+      "pass": true
+    },
+    {
+      "label": "reread preserves final cover 1440",
+      "pass": true
+    },
+    {
+      "label": "GOOD_DOG retains its own finish",
+      "pass": true
+    },
+    {
+      "label": "GOOD_DOG ending unchanged",
+      "pass": true
+    },
+    {
+      "label": "SECRET_MEETING retains its own finish",
+      "pass": true
+    },
+    {
+      "label": "SECRET_MEETING ending unchanged",
+      "pass": true
+    },
+    {
+      "label": "BAD_LIAR retains its own finish",
+      "pass": true
+    },
+    {
+      "label": "BAD_LIAR ending unchanged",
+      "pass": true
+    },
+    {
+      "label": "no console/page errors",
+      "pass": true
+    }
+  ]
+}

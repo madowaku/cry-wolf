@@ -177,4 +177,5 @@
   S.readChapter = s => resolve(S.chapters[s.stage][s.beat], s);
   S.readResult = s => resolve(S.results[s.stage][s.result.code], s);
   S.readEpilogue = s => resolve(S.epilogues[s.ending][s.beat], s);
+  S.promiseCover = { ...S.cover, text: '七つの夜と、そのあとの日々。\nあなたの言葉で、この絵本はここまで届きました。', cast: ['bell:smile','luna:softened'], caption: '満ちた月の下で、今度は隣に。' };
 })(globalThis);

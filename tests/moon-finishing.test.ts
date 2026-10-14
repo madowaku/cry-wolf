@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 type State = { stage: string; phase: string; result: {code: string; before: Record<string,number>; after: Record<string,number>}; flags: Record<string,unknown> };
 const context: Record<string, unknown> = {};
 for (const file of ['model.js','story.js','story-late.js','presentation.js']) runInNewContext(readFileSync('public/moon/'+file,'utf8'),context);
-const P = context.CWPresentation as { resultChanges(s:State): {key:string; before:number; after:number; delta:number}[]; visual(s:State,home:boolean,step:number): {kind:string;location?:string} };
+const P = context.CWPresentation as { resultChanges(s:State): {key:string; before:number; after:number; delta:number}[]; visual(s:State,home:boolean,step:number): {kind:string;location?:string}; isPromiseCover(s:{phase:string;ending:string|null},home:boolean):boolean };
 const S = context.CWStory as { changeReason(s:State,key:string):string };
 const state = (before:Record<string,number>,after:Record<string,number>):State => ({stage:'night1',phase:'result',flags:{},result:{code:'ring',before,after}});
 describe('Moon finishing: actual result differences and concealed location', () => {
@@ -32,5 +32,11 @@ describe('Moon finishing: actual result differences and concealed location', () 
   it('focuses the bell on first-night decision without ringing it', () => {
     const s=state({},{});s.phase='choice1';
     expect(P.visual(s,false,0).kind).toBe('decision');
+  });
+  it('reserves the close full-moon cover for completed HONEST, not home or earlier epilogue', () => {
+    expect(P.isPromiseCover({phase:'finish',ending:'HONEST'},false)).toBe(true);
+    expect(P.isPromiseCover({phase:'finish',ending:'HONEST'},true)).toBe(false);
+    expect(P.isPromiseCover({phase:'epilogue',ending:'HONEST'},false)).toBe(false);
+    for(const ending of ['GOOD_DOG','SECRET_MEETING','BAD_LIAR',null]) expect(P.isPromiseCover({phase:'finish',ending},false)).toBe(false);
   });
 });

@@ -2,6 +2,7 @@
   'use strict';
   const scene = (title, speaker, text, cast, backdrop = 'village', extra = {}) => ({ title, speaker, text, cast, backdrop, ...extra });
   root.CWStory = {
+    cover: { title: 'CRY WOLF!', text: '村を守る犬、森を守る狼。\n七夜で、ふたりの答えを探す。', cast: ['bell:serious', 'luna:smirk'], backdrop: 'village', prop: 'bell', caption: '村と森のあいだに、まだ距離がある。' },
     chapters: {
       intro: [
         scene('むかし、ひとつの嘘がありました。', '語り手', '何度も「オオカミだ！」と嘘をついた少年は、\nほんとうに助けが必要な夜、誰にも信じてもらえませんでした。\n\nこれは、そのお話の、少しとなり。', [], 'village', { prop: 'bell' }),

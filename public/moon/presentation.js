@@ -9,8 +9,12 @@
   function hasReveal(state,step){
     return step===0&&(state.phase==='result'||(state.stage==='night2'&&state.phase==='story'&&state.beat===2));
   }
+  function isPromiseCover(state,home){
+    return !home && state.phase==='finish' && state.ending==='HONEST';
+  }
   function visual(state,home,step){
     if(home)return {kind:'cover'};
+    if(isPromiseCover(state,home))return {kind:'promise-cover'};
     if(state.phase==='result')return {kind:step===0?'reaction':'explanation',code:state.result.code};
     if(state.phase==='choice1')return {kind:'decision',location:'inside'};
     if(state.phase==='report5')return {kind:'report',location:CWModel.location5(state)};
@@ -36,5 +40,5 @@
   function resultChanges(state){
     return ['trust','bond','insight'].map(key=>({key,before:state.result.before[key],after:state.result.after[key],delta:state.result.after[key]-state.result.before[key]}));
   }
-  root.CWPresentation={musicRole,hasReveal,visual,diagram,resultChanges};
+  root.CWPresentation={musicRole,hasReveal,visual,diagram,resultChanges,isPromiseCover};
 })(typeof window!=='undefined'?window:globalThis);

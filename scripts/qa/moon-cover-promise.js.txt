@@ -1,0 +1,31 @@
+async(page)=>{
+  const checks=[],errors=[],screenshots=[];const check=(ok,label)=>checks.push({label,pass:!!ok});
+  page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+  await page.goto('http://127.0.0.1:5198/moon/index.html?qa=cover-promise');
+  const saves=await page.evaluate(()=>{
+    const united=['ring1','track2','signal2','silent2','forest3','speak3','signal3','proposal3'];
+    const reserved=['ring1','track2','track2','ring2','forest3','speak3','signal3','facts3'];
+    const fractured=['hide1','track2','track2','silent2','village3','speak3','signal3','false3'];
+    const plans={HONEST:[...united,'thank4','want5','track5','signal5','silent5','village6','forest6','heart6','plan6','call7'],SECRET_MEETING:[...united,'thank4','want5','track5','signal5','silent5','wait6','wait6','wait6','hush6','silent7'],GOOD_DOG:[...reserved,'pocket4','away5','track5','listen5','silent5','survey6','village6','forest6','plan6','ring7'],BAD_LIAR:[...fractured,'ring4','decide5','track5','listen5','silent5','wait6','wait6','wait6','hush6','silent7']};
+    const forward=s=>{while(['story','observe','result','interlude','answer','epilogue'].includes(s.phase))s=CWModel.transition(s,'next');return s;};
+    return Object.fromEntries(Object.entries(plans).map(([end,actions])=>{let s=forward(CWModel.transition(CWModel.fresh(),'start'));for(const action of actions)s=forward(CWModel.transition(s,action));if(s.ending!==end)throw Error('Invalid QA route');return[end,CWModel.serialize(s)];}));
+  });
+  const metrics=async label=>{
+    await page.locator('#stage img').evaluateAll(imgs=>Promise.all(imgs.map(i=>i.decode())));
+    const m=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,clipped:[...document.querySelectorAll('h1,.choice strong,.choice small')].some(e=>e.scrollWidth>e.clientWidth+1),small:[...document.querySelectorAll('#book button')].filter(e=>e.getClientRects().length).some(e=>e.getBoundingClientRect().width<44||e.getBoundingClientRect().height<44)}));
+    check(!m.overflow&&!m.clipped&&!m.small,label+' readable and 44px controls');
+  };
+  const shot=async name=>{const path='docs/moon/screenshots/cover-promise/'+name+'.png';await page.screenshot({path,fullPage:true});screenshots.push(path);};
+  for(const [w,h] of [[360,800],[390,844],[720,1280],[1440,900]]){
+    await page.setViewportSize({width:w,height:h});
+    await page.evaluate(()=>{localStorage.clear();localStorage.setItem('crywolf_moon_preferences_v08',JSON.stringify({motion:false,sound:false}));});await page.reload();await page.locator('[data-act="new"]').waitFor({state:'visible'});
+    await metrics('home '+w);check(await page.locator('[data-character="luna"]').getAttribute('data-expression')==='smirk','home sly Luna '+w);check(await page.locator('.sky-moon svg path').count()===1,'home half moon '+w);await shot('opening-'+w);
+    await page.evaluate(raw=>localStorage.setItem('crywolf_moon_v09',raw),saves.HONEST);await page.reload();await page.locator('[data-act="resume"]').click();
+    await metrics('HONEST '+w);check(await page.locator('.promise-cover').count()===1,'HONEST restores changed cover '+w);check(await page.locator('.sky-moon svg path').count()===0,'HONEST full moon '+w);check(await page.locator('[data-character="luna"]').getAttribute('data-expression')==='softened','HONEST gentle Luna '+w);check(await page.locator('.backdrop-village').count()===1,'same village composition '+w);check(await page.evaluate(()=>window.__cwMoonAudio.target==='ending'),'ending music retained '+w);await shot('honest-'+w);
+    const core=await page.evaluate(()=>JSON.stringify({events:__cwMoon.events,revision:__cwMoon.revision,history:__cwMoon.history}));
+    await page.getByRole('link',{name:'CRY WOLF! タイトルへ'}).click();check(await page.locator('.sky-moon svg path').count()===1,'home returns to half even after HONEST '+w);check(await page.evaluate(()=>JSON.stringify({events:__cwMoon.events,revision:__cwMoon.revision,history:__cwMoon.history}))===core,'cover return never changes progress '+w);
+    await page.locator('[data-act="resume"]').click();await page.locator('[data-act="epilogue"]').click();await page.keyboard.press('Escape');check(await page.locator('.promise-cover').count()===1,'reread preserves final cover '+w);
+  }
+  for(const end of ['GOOD_DOG','SECRET_MEETING','BAD_LIAR']){await page.evaluate(raw=>localStorage.setItem('crywolf_moon_v09',raw),saves[end]);await page.reload();await page.locator('[data-act="resume"]').click();check(await page.locator('.promise-cover').count()===0,end+' retains its own finish');check(await page.evaluate(end=>__cwMoon.ending===end,end),end+' ending unchanged');}
+  check(errors.length===0,'no console/page errors');return{checks:checks.length,passed:checks.filter(c=>c.pass).length,failures:checks.filter(c=>!c.pass),errors,screenshots,details:checks};
+}

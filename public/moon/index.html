@@ -42,7 +42,7 @@
         }); message();
       }, css() { cssReady = true; check(); }, fail(kind) { failure = kind; message(); } };
       const timeout = setTimeout(() => { failure = appReady && cssReady ? 'images' : 'scripts'; message(); }, 8000);
-      const essentials = ['village','bell-serious','luna-proud','moon','bell-prop'];
+      const essentials = ['village','bell-serious','luna-smirk','moon','bell-prop'];
       Promise.all(essentials.map(name => new Promise(resolve => {
         const img = new Image();
         img.onload = () => img.decode().then(() => resolve(true), () => resolve(false)); img.onerror = () => resolve(false); img.src = 'assets/' + name + '.webp';

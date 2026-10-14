@@ -2,6 +2,8 @@
 
 ## 七夜版の表紙仕上げ v0.9.2 — 2026-10-14
 
+2026-10-15の追加指定: 表紙のルナは既存 `luna-smirk.webp` へ切り替え、二人の距離を広げる。HONEST読了時は既存 `bell-smile.webp` / `luna-softened.webp` を同じ背景の満月構図で近づける。原本・配布画像は変更しない。初回の構図見本もImagegenで半月・からかう表情へ参照編集し、`docs/moon/design-v092/title-reference-v2.png` に保存。正確なプロンプト、参照、ハッシュは `provenance-v2.json`。見本は配布へ追加しない。
+
 Codex built-in Imagegenで、既存ベル・ルナ・村背景・月を参照した表紙の構図見本を1点生成。原本コピーは `docs/moon/design-v092/title-reference.png`、正確なプロンプト・参照・SHA-256・採用判断は `docs/moon/design-v092/provenance.json`。見本は比較用で、ゲーム配布へ追加しない。構図と文字階層をHTML/CSSへ反映し、37点の既存画像は変更・再生成していない。見本の満月は仕様に合わせて半月とし、描き直されたポーズや装飾は採用しない。
 
 ## 七夜とエピローグ v0.9 — 2026-10-12
