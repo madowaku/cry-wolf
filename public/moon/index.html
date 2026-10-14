@@ -7,19 +7,76 @@
   <meta name="description" content="村を守るベルと、森を守るルナ。月あかりの下、観察と小さな合図で物語が変わる、七夜とエピローグの絵本ゲーム。">
   <title>CRY WOLF! — 月あかりの約束</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    .boot-actions[hidden],.boot-actions button[hidden]{display:none}
+    body{margin:0;background:#19283f}.boot-screen{position:fixed;inset:0;z-index:100;display:grid;place-content:center;justify-items:center;gap:18px;padding:28px;background:#19283f;color:#f4ead9;text-align:center;font-family:Georgia,"Yu Mincho",serif}.boot-screen[hidden]{display:none}.boot-screen h1{font-size:clamp(32px,7vw,52px);letter-spacing:.08em;margin:0}.boot-screen p{font-size:16px;line-height:1.8;margin:0;max-width:32em}.boot-art{display:flex;align-items:end;gap:22px;height:112px}.boot-moon{width:100px;height:100px;object-fit:contain;clip-path:inset(0 0 0 50%)}.boot-bell{width:40px;height:50px;object-fit:contain;filter:brightness(0) invert(92%);opacity:.65;animation:boot-breathe 2s ease-in-out infinite}.boot-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}.boot-actions button{font:15px/1.6 system-ui,sans-serif;min-height:48px;padding:10px 18px;border:1px solid #d6b783;background:#f4ead9;color:#19283f;border-radius:4px;cursor:pointer}.boot-actions button:focus-visible{outline:3px solid #e9bb77;outline-offset:4px}#book[hidden]{display:none}@keyframes boot-breathe{50%{opacity:.9;translate:0 -2px}}@media(prefers-reduced-motion:reduce){.boot-bell{animation:none}}html.boot-motion-off .boot-bell{animation:none}
+  </style>
+  <script>
+    /* This bootstrap is self-contained so recovery exists even if app.js fails. */
+    (function () {
+      let appReady = false, cssReady = false, imagesReady = false, domImagesReady = false, failure = '', finished = false;
+      try { if (JSON.parse(localStorage.getItem('crywolf_moon_preferences_v08'))?.motion === false) document.documentElement.classList.add('boot-motion-off'); } catch {}
+      function message() {
+        if (finished || !document.getElementById('boot-message')) return;
+        document.getElementById('boot-message').textContent = failure === 'images' ? '表紙の絵を読み込めませんでした。画像なしでも物語を読めます。' : failure ? '絵本の画面を読み込めませんでした。通信を確かめて、もう一度お試しください。' : '月あかりの絵本をひらいています…';
+        document.getElementById('boot-actions').hidden = !failure;
+        document.getElementById('boot-continue').hidden = !(failure && appReady && cssReady);
+      }
+      function finish(withoutImages) {
+        if (finished || !appReady || !cssReady) return;
+        finished = true; clearTimeout(timeout);
+        const book = document.getElementById('book');
+        if (withoutImages) book.classList.add('images-off');
+        book.hidden = false; book.inert = false;
+        const focused = document.getElementById('boot').contains(document.activeElement);
+        document.getElementById('boot').hidden = true;
+        if (focused) document.getElementById('page').focus();
+      }
+      function check() { if (appReady && cssReady && imagesReady && domImagesReady) finish(false); else message(); }
+      window.CWBoot = { ready() {
+        appReady = true;
+        Promise.all([...document.querySelectorAll('#stage img')].map(img => img.decode().then(() => true, () => false))).then(results => {
+          domImagesReady = results.every(Boolean);
+          if (!results.every(Boolean)) { failure = 'images'; imagesReady = false; }
+          check();
+        }); message();
+      }, css() { cssReady = true; check(); }, fail(kind) { failure = kind; message(); } };
+      const timeout = setTimeout(() => { failure = appReady && cssReady ? 'images' : 'scripts'; message(); }, 8000);
+      const essentials = ['village','bell-serious','luna-proud','moon','bell-prop'];
+      Promise.all(essentials.map(name => new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => img.decode().then(() => resolve(true), () => resolve(false)); img.onerror = () => resolve(false); img.src = 'assets/' + name + '.webp';
+      }))).then(results => {
+        imagesReady = results.every(Boolean); if (!imagesReady) failure = 'images'; check();
+      });
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('boot-retry').addEventListener('click', () => location.reload());
+        document.getElementById('boot-continue').addEventListener('click', () => finish(true)); check();
+      });
+      window.addEventListener('error', e => { if (e.filename && !appReady) { failure = 'scripts'; message(); } });
+      window.addEventListener('pageshow', check);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css" media="print" onload="this.media='all';CWBoot.css()" onerror="CWBoot.fail('styles')">
   <link rel="preload" as="image" href="assets/village.webp">
-  <script defer src="model.js"></script>
-  <script defer src="story.js"></script>
-  <script defer src="story-late.js"></script>
-  <script defer src="presentation.js"></script>
-  <script defer src="assets/audio/music-pack.js"></script>
-  <script defer src="audio.js"></script>
-  <script defer src="app.js"></script>
+  <script defer src="model.js" onerror="CWBoot.fail('scripts')"></script>
+  <script defer src="story.js" onerror="CWBoot.fail('scripts')"></script>
+  <script defer src="story-late.js" onerror="CWBoot.fail('scripts')"></script>
+  <script defer src="presentation.js" onerror="CWBoot.fail('scripts')"></script>
+  <script async src="assets/audio/music-pack.js"></script>
+  <script defer src="audio.js" onerror="CWBoot.fail('scripts')"></script>
+  <script defer src="app.js" onerror="CWBoot.fail('scripts')"></script>
 </head>
 <body>
-  <a class="skip" href="#page">本文へ</a>
-  <main class="book" id="book">
+  <section id="boot" class="boot-screen" aria-label="絵本の読み込み">
+    <div class="boot-art" aria-hidden="true"><img class="boot-moon" src="assets/moon.webp" alt=""><img class="boot-bell" src="assets/bell-prop.webp" alt=""></div>
+    <h1>CRY WOLF!</h1>
+    <p id="boot-message" role="status" aria-live="polite">月あかりの絵本をひらいています…</p>
+    <div class="boot-actions" id="boot-actions" hidden><button id="boot-retry">再試行</button><button id="boot-continue" hidden>画像なしで続ける</button></div>
+    <noscript><p>JavaScriptを有効にして、絵本をひらいてください。</p></noscript>
+  </section>
+  <main class="book" id="book" hidden inert>
+    <a class="skip" href="#page">本文へ</a>
     <header class="bar"><a class="brand" href="#" data-ui="home" aria-label="CRY WOLF! タイトルへ">CRY WOLF!<span>月あかりの約束</span></a><div id="chapter"></div><nav aria-label="メニュー"><button data-ui="notes" aria-label="手がかり手帳">手帳</button><button data-ui="help" aria-label="遊び方">?</button><button data-ui="settings" aria-label="音と動きの設定">設定</button></nav></header>
     <div class="spread"><section class="stage" id="stage" aria-label="絵本の舞台"></section><article class="page" id="page" tabindex="-1"></article></div>
     <footer class="footer"><span>月はまだ、満ちる途中。</span><span id="save-status" role="status"></span></footer>

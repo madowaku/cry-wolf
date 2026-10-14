@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-14",
+  "tool": "Codex built-in image_gen",
+  "use": "Title composition reference only; not shipped in public/moon or used as a rasterized UI",
+  "prompt": "Use case: ui-mockup. Asset type: visual reference only for the existing CRY WOLF seven-night storybook's official title screen, desktop 1440x900. Input images: 1 existing Bell portrait, 2 existing Luna proud portrait, 3 existing village/forest background, 4 existing moon texture. Preserve these exact character identities, costumes and existing illustration style; do not redesign. Compose a polished open-storybook spread: slim cream header with CRY WOLF brand and small settings/help controls; left page about 50% wide with the supplied village landscape and a LARGE HALF MOON overhead, dutiful Bell left and proud provocative Luna right with a clear quiet gap between them. Bell has his original lantern; a small brass alarm bell is near Bell, still and silent. Right page warm cream paper, generous whitespace. Large elegant serif editable UI text 'CRY WOLF!', Japanese subtitle '月あかりの約束', short Japanese copy '村を守る犬、森を守る狼。七夜で、ふたりの答えを探す。', and navy primary button '絵本をひらく'. Below, quiet text '七夜とエピローグ' and '読んだ結末 0 / 4'. Palette existing navy #19283F, cream #F4EAD9, muted brass. Calm literary picture book, strong hierarchy, subtle edges, no ornate new decorations, no extra characters. This is a screenshot-style DESIGN REFERENCE; implementation will retain individual original assets and render all text/buttons as HTML, never use screenshot as webpage.",
+  "referenceImages": [
+    "public/moon/assets/bell-serious.webp",
+    "public/moon/assets/luna-proud.webp",
+    "public/moon/assets/village.webp",
+    "public/moon/assets/moon.webp"
+  ],
+  "output": "docs/moon/design-v092/title-reference.png",
+  "sha256": "26a7d43761e58e57558b4dd8f1c1c32dcabec0bf165adc73149d579f4518c121",
+  "adoption": "Open-book hierarchy, serif title, navy CTA and generous paper spacing; original game portraits/backgrounds remain separate. Generated full moon corrected to required half moon in code. Generated decorative textures and changed poses not adopted."
+}

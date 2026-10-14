@@ -1,0 +1,39 @@
+async (page) => {
+  const folder = 'output/playwright/moon-v092';
+  const prefix = 'after';
+  const url = 'http://127.0.0.1:5198/moon/index.html?qa=v092-captures';
+  await page.goto(url);
+  const states = await page.evaluate(() => {
+    const M = CWModel, all = {};
+    let s = M.transition(M.fresh(), 'start');
+    s = M.transition(M.transition(s,'next'),'next'); all.prologue = M.serialize(s);
+    while(s.phase !== 'choice1') s = M.transition(s,'next');
+    s = M.transition(s,'ring1'); all['night1-result'] = M.serialize(s);
+    const actions = ['track2','signal2','silent2','forest3','speak3','signal3','proposal3','thank4','want5','track5','signal5','silent5','village6','forest6','heart6','plan6'];
+    for(const action of actions) {
+      while(['story','observe','result','interlude','answer'].includes(s.phase)) s=M.transition(s,'next');
+      if(s.phase==='report2') all['night2-boundary'] = M.serialize(s);
+      s=M.transition(s,action);
+    }
+    while(s.phase!=='choice7') s=M.transition(s,'next');
+    all['night7-final'] = M.serialize(s); return all;
+  });
+  for(const [w,h] of [[360,800],[390,844],[720,1280],[1440,900]]) {
+    await page.setViewportSize({width:w,height:h});
+    await page.evaluate(() => {localStorage.clear();localStorage.setItem('crywolf_moon_preferences_v08',JSON.stringify({motion:false,sound:false}));});
+    await page.reload(); await page.locator('[data-act="new"]').waitFor({state:'visible'});
+    await page.locator('#stage img').evaluateAll(imgs=>Promise.all(imgs.map(img=>img.decode())));
+    await page.screenshot({path:`${folder}/${prefix}-title-${w}.png`,fullPage:true});
+    for(const [name,save] of Object.entries(states)) {
+      await page.evaluate(({name,save})=>{
+        localStorage.setItem('crywolf_moon_v09',save);
+        if(name==='night1-result') localStorage.setItem('crywolf_moon_reading_v091',JSON.stringify({bookmark:save,step:1}));
+        else localStorage.removeItem('crywolf_moon_reading_v091');
+      },{name,save});
+      await page.reload(); await page.locator('[data-act="resume"]').click();
+      await page.locator('#stage img').evaluateAll(imgs=>Promise.all(imgs.map(img=>img.decode())));
+      await page.screenshot({path:`${folder}/${prefix}-${name}-${w}.png`,fullPage:true});
+    }
+  }
+  console.log(JSON.stringify({screenshots:20,folder,prefix,method:'Canonical model bookmarks resumed through real UI, motion OFF'}));
+}

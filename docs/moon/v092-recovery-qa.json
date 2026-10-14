@@ -1,0 +1,128 @@
+{
+  "checks": 30,
+  "passed": 30,
+  "failures": [],
+  "errors": [],
+  "details": [
+    {
+      "label": "successful loader dismisses",
+      "pass": true
+    },
+    {
+      "label": "title is half moon",
+      "pass": true
+    },
+    {
+      "label": "title does not advance game",
+      "pass": true
+    },
+    {
+      "label": "遊び方 leaves title progression unchanged",
+      "pass": true
+    },
+    {
+      "label": "音と動きの設定 leaves title progression unchanged",
+      "pass": true
+    },
+    {
+      "label": "return to title does not advance events or ticks",
+      "pass": true
+    },
+    {
+      "label": "bookmark is primary",
+      "pass": true
+    },
+    {
+      "label": "restart confirmation shown",
+      "pass": true
+    },
+    {
+      "label": "cancel restart preserves bookmark",
+      "pass": true
+    },
+    {
+      "label": "reload restores unchanged intro bookmark",
+      "pass": true
+    },
+    {
+      "label": "loader remains while required images pending",
+      "pass": true
+    },
+    {
+      "label": "loader has live status",
+      "pass": true
+    },
+    {
+      "label": "Tab never reaches hidden book or skip link during loading",
+      "pass": true
+    },
+    {
+      "label": "title appears as soon as images resolve",
+      "pass": true
+    },
+    {
+      "label": "skip link becomes visibly keyboard reachable after loading",
+      "pass": true
+    },
+    {
+      "label": "asset failure explains recovery",
+      "pass": true
+    },
+    {
+      "label": "image-free continuation dismisses loader",
+      "pass": true
+    },
+    {
+      "label": "image-free layout applied",
+      "pass": true
+    },
+    {
+      "label": "image-free bookmark is playable",
+      "pass": true
+    },
+    {
+      "label": "script failure offers retry without unusable continuation",
+      "pass": true
+    },
+    {
+      "label": "retry recovers missing app and preserves bookmark",
+      "pass": true
+    },
+    {
+      "label": "title usable before music data arrives",
+      "pass": true
+    },
+    {
+      "label": "loader completion creates no audio node",
+      "pass": true
+    },
+    {
+      "label": "late music readiness stays silent before gesture",
+      "pass": true
+    },
+    {
+      "label": "saved motion OFF applies before loading",
+      "pass": true
+    },
+    {
+      "label": "saved motion OFF retained in app",
+      "pass": true
+    },
+    {
+      "label": "completed bookmark also requires restart confirmation",
+      "pass": true
+    },
+    {
+      "label": "cancel completed restart retains save and ending history",
+      "pass": true
+    },
+    {
+      "label": "completed bookmark resumes its ending after canceled restart",
+      "pass": true
+    },
+    {
+      "label": "no unexpected JavaScript errors (resource failures are intentional)",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+async(page)=>{
+  page.setDefaultTimeout(12000);
+  const checks=[], errors=[];
+  const check=(ok,label)=>checks.push({label,pass:!!ok});
+  const url='http://127.0.0.1:5198/moon/index.html?qa=v092-recovery';
+  const fresh=async()=>{await page.goto(url);await page.evaluate(()=>localStorage.clear());await page.reload();await page.locator('[data-act="new"]').waitFor({state:'visible'});};
+  const core=()=>page.evaluate(()=>({events:window.__cwMoon.events,revision:window.__cwMoon.revision,ticks:window.__cwMoon.ticks}));
+  page.on('pageerror',e=>errors.push(e.message));
+  await page.setViewportSize({width:360,height:800});await fresh();
+  check(await page.locator('#boot').isHidden(),'successful loader dismisses');
+  check(await page.locator('.sky-moon svg path').count()===1,'title is half moon');
+  check((await core()).revision===0,'title does not advance game');
+  for(const name of ['遊び方','音と動きの設定']){
+    await page.getByRole('button',{name,exact:true}).click();await page.keyboard.press('Escape');
+    check((await core()).revision===0,name+' leaves title progression unchanged');
+  }
+  const start=page.locator('[data-act="new"]');await start.focus();await page.keyboard.press('Enter');
+  const before=await core();await page.getByRole('link',{name:'CRY WOLF! タイトルへ'}).click();
+  check(JSON.stringify(await core())===JSON.stringify(before),'return to title does not advance events or ticks');
+  check(await page.locator('.actions .choice').first().getAttribute('data-act')==='resume','bookmark is primary');
+  await page.locator('[data-act="new"]').click();check(await page.locator('[role="dialog"]').isVisible(),'restart confirmation shown');
+  await page.keyboard.press('Escape');check(JSON.stringify(await core())===JSON.stringify(before),'cancel restart preserves bookmark');
+  await page.reload();await page.locator('[data-act="resume"]').click();
+  check(JSON.stringify(await core())===JSON.stringify(before),'reload restores unchanged intro bookmark');
+
+  // Deliberately hold only cover assets. Observe the real initial loading state.
+  let held=[];
+  await page.route('**/assets/*.webp',route=>new Promise(resolve=>{held.push(async()=>{await route.continue();resolve();});}));
+  await page.goto(url,{waitUntil:'domcontentloaded'});
+  check(await page.locator('#boot').isVisible(),'loader remains while required images pending');
+  check(await page.locator('#boot-message').getAttribute('role')==='status','loader has live status');
+  await page.keyboard.press('Tab');
+  check(await page.evaluate(()=>!document.querySelector('#book').contains(document.activeElement)),'Tab never reaches hidden book or skip link during loading');
+  await page.screenshot({path:'output/playwright/moon-v092/loading-360.png'});
+  for(const release of held)await release();await page.unroute('**/assets/*.webp');
+  await page.locator('#boot').waitFor({state:'hidden'});
+  check(await page.locator('[data-act="resume"]').isVisible(),'title appears as soon as images resolve');
+  await page.locator('.skip').focus();
+  check(await page.locator('.skip').evaluate(n=>n===document.activeElement&&n.getBoundingClientRect().top>=0),'skip link becomes visibly keyboard reachable after loading');
+
+  await page.route('**/assets/bell-serious.webp',route=>route.abort());
+  await page.goto(url,{waitUntil:'domcontentloaded'});
+  await page.locator('#boot-continue').waitFor({state:'visible'});
+  check(await page.locator('#boot-message').textContent().then(t=>t.includes('読み込めません')),'asset failure explains recovery');
+  await page.screenshot({path:'output/playwright/moon-v092/loading-failure-360.png'});
+  await page.locator('#boot-continue').click();
+  check(await page.locator('#boot').isHidden(),'image-free continuation dismisses loader');
+  check(await page.locator('#book').evaluate(n=>n.classList.contains('images-off')),'image-free layout applied');
+  await page.locator('[data-act="resume"]').click();
+  check((await page.evaluate(()=>window.__cwMoon)).phase==='story','image-free bookmark is playable');
+  await page.unroute('**/assets/bell-serious.webp');
+
+  await page.route('**/app.js',route=>route.abort());
+  await page.goto(url,{waitUntil:'domcontentloaded'});await page.locator('#boot-retry').waitFor({state:'visible'});
+  check(await page.locator('#boot-continue').isHidden(),'script failure offers retry without unusable continuation');
+  await page.unroute('**/app.js');await page.locator('#boot-retry').click();
+  await page.locator('#boot').waitFor({state:'hidden'});check(await page.locator('[data-act="resume"]').isVisible(),'retry recovers missing app and preserves bookmark');
+
+  // The multi-megabyte music container must not gate the title or initialize media.
+  let musicRoute;
+  await page.route('**/assets/audio/music-pack.js',route=>new Promise(resolve=>{musicRoute=async()=>{await route.continue();resolve();};}));
+  await page.goto(url,{waitUntil:'domcontentloaded'});await page.locator('#boot').waitFor({state:'hidden'});
+  check(await page.evaluate(()=>!window.CRYWOLF_MUSIC_PACK),'title usable before music data arrives');
+  check(await page.evaluate(()=>window.__cwMoonAudio.loaded.length===0),'loader completion creates no audio node');
+  await musicRoute();await page.unroute('**/assets/audio/music-pack.js');
+  await page.waitForFunction(()=>!!window.CRYWOLF_MUSIC_PACK);
+  check(await page.evaluate(()=>window.__cwMoonAudio.loaded.length===0),'late music readiness stays silent before gesture');
+
+  await page.evaluate(()=>localStorage.setItem('crywolf_moon_preferences_v08',JSON.stringify({motion:false,sound:false})));await page.reload();
+  check(await page.locator('html').evaluate(n=>n.classList.contains('boot-motion-off')),'saved motion OFF applies before loading');
+  check(await page.locator('#book').evaluate(n=>n.classList.contains('motion-off')),'saved motion OFF retained in app');
+  const finished = await page.evaluate(() => {
+    let s = CWModel.fresh();
+    for(let i=0;i<120&&s.phase!=='finish';i++) s=CWModel.transition(s,CWModel.legal(s)[0]);
+    if(s.phase!=='finish') throw new Error('Canonical completed bookmark did not finish');
+    const bookmark=CWModel.serialize(s), collection=JSON.stringify([s.ending]);
+    localStorage.setItem('crywolf_moon_v09',bookmark);localStorage.setItem('crywolf_moon_endings_v09',collection);
+    return {bookmark,collection};
+  });
+  await page.reload();await page.locator('[data-act="new"]').click();
+  check(await page.locator('[role="dialog"]').isVisible(),'completed bookmark also requires restart confirmation');
+  await page.keyboard.press('Escape');
+  check(await page.evaluate(f=>localStorage.getItem('crywolf_moon_v09')===f.bookmark&&localStorage.getItem('crywolf_moon_endings_v09')===f.collection,finished),'cancel completed restart retains save and ending history');
+  await page.locator('[data-act="resume"]').click();
+  check((await page.evaluate(()=>window.__cwMoon)).phase==='finish','completed bookmark resumes its ending after canceled restart');
+  check(errors.length===0,'no unexpected JavaScript errors (resource failures are intentional)');
+  return {checks:checks.length,passed:checks.filter(c=>c.pass).length,failures:checks.filter(c=>!c.pass),errors,details:checks};
+}

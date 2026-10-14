@@ -34,7 +34,7 @@
   const night = () => Number(state.stage.slice(-1)) || 1;
   const label = () => ['epilogue', 'finish'].includes(state.phase) ? 'エピローグ' : S.stageNames[state.stage];
   function moon(id) {
-    const k = ((home ? 1 : M.moon(state.stage)) - .5) * 2;
+    const k = (M.moon(home ? 'night1' : state.stage) - .5) * 2;
     return `<svg viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="${id}"><circle cx="50" cy="50" r="42"/></clipPath></defs><image href="${asset('moon')}" width="100" height="100" clip-path="url(#${id})"/>${k >= 1 ? '' : `<path d="M50 8 A42 42 0 0 0 50 92 Q${50 - 84 * k} 50 50 8Z" fill="#23344b" opacity=".96"/>`}</svg>`;
   }
   const expressions = { smile: '微笑む', think: '考える', shy: '照れる', serious: '真剣な', surprise: '驚く', apology: '気まずそうな', relief: 'ほっとする', courage: '勇気を出す', worried: '困った', flustered: 'たじたじになる', thinking: '深く考え込む', concern: '気づかう', smirk: 'からかう', challenge: '強気な', guarded: '強がる', wait: '待っていた', laugh: '思わず笑う', proud: '誇り高く勝ち気な', tease: 'からかう', mischief: 'いたずらっぽく笑う', angry: '怒った', sad: '悲しみをこらえる', lonely: 'さみしげな', softened: '素直になりかけた' };
@@ -45,20 +45,24 @@
   }
   function stage(scene) {
     const view = P.visual(state, home, readingStep);
-    if (view.kind === 'report') scene = { ...scene, caption: view.location === 'inside' ? '今夜の足跡：見張り道へ入った。' : '今夜の足跡：境界の外で止まった。' };
+    if (view.kind === 'report') scene = { ...scene, caption: view.location === 'inside' ? '今夜の足跡：見張り道へ入った。' : view.location === 'absent' ? '今夜の足跡：新しい狼の足跡はない。' : '今夜の足跡：境界の外で止まった。' };
+    if (view.kind === 'decision') scene = { ...scene, prop: 'bell', caption: 'まだ鳴らしていない鐘。決めるのは、ベル。' };
     const cast = view.kind === 'report' ? [] : scene.cast || ['bell:thinking'];
     const props = { bell: ['bell-prop', '村へ知らせる真鍮の鐘'], tracks: ['tracks', '境界に残るオオカミの足跡'], charm: ['charm', '赤い糸を結んだ、手彫りの月形チャーム'] };
     const element = $('#stage');
     element.className = `stage backdrop-${scene.backdrop || 'forest'} ${scene.effect ? 'effect-' + scene.effect : ''} ${home ? 'cover-stage' : ''} presentation-${view.kind} ${view.kind === 'reaction' && state.stage === 'night2' ? 'reaction-' + view.code : ''}`;
     element.dataset.presentation = view.kind; element.dataset.location = view.location || '';
-    if (['howl', 'tracks', 'distance', 'listen', 'signal'].includes(view.kind)) { element.innerHTML = P.diagram(view); return; }
+    if (['howl', 'tracks', 'distance', 'listen', 'signal'].includes(view.kind)) { element.innerHTML = P.diagram(view) + `<div class="sky-moon clue-moon">${moon('stage-moon')}</div>`; return; }
     element.innerHTML = `<img class="landscape" src="${asset(scene.backdrop === 'dawn' ? 'dawn' : scene.backdrop === 'forest' ? 'forest' : 'village')}" alt="${scene.backdrop === 'dawn' ? '朝日の差す村と見張り台、森へ続く道' : scene.backdrop === 'forest' ? '白い境界石と、古い泉へ続く森の道' : '灯りのともる村、木の見張り台、森へ向かう道'}"><div class="stage-shade"></div><div class="sky-moon">${moon('stage-moon')}</div><div class="scene-tag">${safe(home ? 'A LITTLE FABLE UNDER THE MOON' : label() + '  /  ' + (scene.backdrop === 'dawn' ? '村の朝' : scene.backdrop === 'forest' ? '森の境界' : '村の見張り道'))}</div>${scene.prop ? `<img class="prop prop-${scene.prop}" src="${asset(props[scene.prop][0])}" alt="${props[scene.prop][1]}">` : ''}${scene.effect === 'ring' && !scene.prop ? `<img class="prop prop-bell small-bell" src="${asset('bell-prop')}" alt="揺れる警報の鐘">` : ''}<div class="cast">${cast.map((c, i) => portrait(c, i, cast.length, scene.speaker)).join('')}</div>${scene.effect === 'signal' ? '<div class="signal-glow" aria-hidden="true"></div>' : ''}<div class="stage-caption">${safe(scene.caption || (home ? '叫ばない夜にも、ほんとうはある。' : ''))}</div>`;
   }
   function button(title, action, detail = '', primary = false, disabled = false) {
     return `<button class="choice ${primary ? 'primary' : ''}" data-act="${action}" data-revision="${state.revision}" ${disabled ? 'disabled' : ''}><span><strong>${safe(title)}</strong>${detail ? `<small>${safe(detail)}</small>` : ''}</span><span class="arrow" aria-hidden="true">${disabled ? '—' : '↗'}</span></button>`;
   }
   function hud() {
-    return `<div class="stats" aria-label="今の関係">${[['trust', '村の信用', '村が報告を信じる度合い', 5], ['bond', '二人のきずな', 'ルナとの親しさと信頼', 5], ['insight', '合図の理解', '気持ちや意図の通じやすさ', 3]].map(([key, name, meaning, max]) => `<div class="stat ${key}"><div><span>${name}</span><b>${state[key]}<i> / ${max}</i></b></div><span class="stat-track" role="meter" aria-label="${name}" aria-valuemin="0" aria-valuemax="${max}" aria-valuenow="${state[key]}"><span style="width:${state[key] / max * 100}%"></span></span><small>${meaning}</small></div>`).join('')}</div>`;
+    return `<div class="stats" aria-label="今の関係">${Object.entries(S.statuses).map(([key, {name, meaning, max}]) => `<div class="stat ${key}"><div><span>${name}</span><b>${state[key]}<i> / ${max}</i></b></div><span class="stat-track" role="meter" aria-label="${name}" aria-valuemin="0" aria-valuemax="${max}" aria-valuenow="${state[key]}"><span style="width:${state[key] / max * 100}%"></span></span><small>${meaning}</small></div>`).join('')}</div>`;
+  }
+  function changesMarkup() {
+    return `<div class="changes" aria-label="今夜の関係の変化">${P.resultChanges(state).map(({key,before,after,delta}) => `<section class="change ${key}"><div><h2>${S.statuses[key].name}</h2><strong>${before} → ${after} <span>${delta === 0 ? '変化なし' : `（${delta > 0 ? '+' : '−'}${Math.abs(delta)}）`}</span></strong></div><p>${safe(S.changeReason(state,key))}</p><small>${S.statuses[key].meaning}</small></section>`).join('')}</div>`;
   }
   function clock() {
     const max = ['night2', 'night5'].includes(state.stage) ? 2 : 3;
@@ -73,7 +77,7 @@
     const known = ['report2', 'choice1', 'choice4', 'report5', 'choice7'].includes(state.phase);
     const inside = state.phase === 'choice1' || (state.phase === 'report2' && !state.flags.held2) || (state.phase === 'report5' && M.location5(state) === 'inside');
     const absent = state.phase === 'report5' && M.location5(state) === 'absent';
-    return `<div class="boundary" aria-label="見張り道と森の境界"><span class="side">村・見張り道${known && inside ? '<b>ルナが入った</b>' : known ? '<b>侵入なし</b>' : '<small>入ったら鐘で報告</small>'}</span><span class="boundary-stone">境界石</span><span class="side">森${absent ? '<b>今夜は来ていない</b>' : known && !inside ? '<b>ルナは境界の外</b>' : '<small>森にいるだけなら鳴らさない</small>'}</span></div>`;
+    return `<div class="boundary" aria-label="見張り道と森の境界" data-known="${known}"><span class="side village-side">村側・見張り道${known && inside ? '<b>ルナが入った</b>' : known ? '<b>侵入なし</b>' : '<small>入ったら、鐘で報告</small>'}</span><span class="boundary-stone">白い<br>境界石</span><span class="side forest-side">森側・境界の外${absent ? '<b>今夜は来ていない</b>' : known && !inside ? '<b>ルナはここで待つ</b>' : '<small>森にいるだけなら鳴らさない</small>'}</span></div>`;
   }
   function noteMarkup(notes) {
     if (!notes.length) return '<p>手がかりは、見つけるとここに残ります。</p>';
@@ -87,14 +91,16 @@
     if (viewRevision !== state.revision) { viewRevision = state.revision; readingStep = savedView?.bookmark === M.serialize(state) && P.hasReveal(state, 0) ? 1 : 0; }
     const role = P.musicRole(state, home);
     music.setPhase(({ opening: 'title', gameplay: 'night', ending: 'result' })[role]);
+    $('#book').classList.toggle('is-cover', home);
     $('#book').classList.toggle('motion-off', !preferences.motion);
     $('#chapter').innerHTML = `<div class="moon-nav">${moon('nav-moon')}<span>${home ? '七夜の絵本' : label()}<small>${home ? '25–40 MIN' : `${night()} / 7 夜`}</small></span></div>`;
     $('.footer > span').textContent = state.phase === 'finish' && !home ? 'おしまい。次は、あなたの言葉で。' : '月あかりの下、ほんとうを探す。';
     $('#save-status').textContent = storageOK ? (state.phase === 'title' ? '音は設定でONにできます' : 'しおりを保存しました') : 'この環境では保存できません · このまま遊べます';
     if (home) {
       const resumable = state.phase !== 'title' ? state : saved;
-      const scene = { title: '嘘つきの夜に、\nほんとうの気持ち。', text: '村を守る、まじめな番犬ベル。\n森を守る、誇り高く勝ち気なオオカミ娘ルナ。\n\n鐘を鳴らすか。彼女の言葉を聞くか。\n満月までの七夜を、あなたの選択で。', cast: ['bell:worried', 'luna:proud'], backdrop: 'village' };
-      page(scene, (resumable ? button('しおりから読む', 'resume', resumable.phase === 'interlude' ? '三夜のしおりから、第四夜へ' : resumable.phase === 'finish' ? '読み終えた結末へ' : `${S.stageNames[resumable.stage]}のつづき`, true) : '') + button('絵本をひらく', 'new', resumable ? '最初から新しく読む' : 'はじめから · タップでゆっくり進みます', !resumable), '<div class="cover-details"><span>観察する</span><i>→</i><span>気持ちを伝える</span><i>→</i><span>報告する</span></div><p class="edition">七夜とエピローグ · 4つの結末<br>いつでもしおりを挟んで、続きを読めます。</p>', 'CRY WOLF!  /  月あかりの約束');
+      const scene = { title: 'CRY WOLF!', text: '村を守る犬、森を守る狼。\n七夜で、ふたりの答えを探す。', cast: ['bell:serious', 'luna:proud'], backdrop: 'village', prop: 'bell', caption: '村と森のあいだに、まだ距離がある。' };
+      page(scene, (resumable ? button('しおりから読む', 'resume', resumable.phase === 'interlude' ? '三夜のしおりから、第四夜へ' : resumable.phase === 'finish' ? '読み終えた結末へ' : `${S.stageNames[resumable.stage]}のつづき`, true) : '') + button(resumable ? '最初から読む' : '絵本をひらく', 'new', resumable ? 'いまのしおりを替えて読み直す' : 'タップで、ゆっくりページをめくります', !resumable), `<p class="edition">七夜とエピローグ<br>いつでもしおりを挟んで、続きを読めます。</p><p class="cover-collection">読んだ結末 ${cleared.length} / 4</p>`, '七夜の絵本');
+      $('#page h1').insertAdjacentHTML('afterend', '<p class="cover-subtitle">月あかりの約束</p>');
     } else if (state.phase === 'story') {
       const scene = { ...S.readChapter(state) };
       if (state.stage === 'night2' && state.beat === 2) {
@@ -145,9 +151,8 @@
       page({ title: 'いま、誰を呼びたい。', speaker: 'ベル', text: '指先に、冷たい鐘。\n森の向こうには、七夜を過ごした相手。\n僕の口から出るのは、どんな言葉だろう。', cast: ['bell:thinking', 'luna:wait'], backdrop: 'forest', caption: '満月の下で、あなたの最後の言葉。' }, button('「オオカミだ！」', 'ring7', '侵入はない。警報で彼女を呼んでしまう') + button('「見張り道には、誰もいない」', 'silent7', '正しい報告。気持ちの名前はまだ呼ばない') + (eligible ? `<div class="final-word">${button('「……ルナ」', 'call7', '鐘を下ろして、会いたかったと伝える', true)}</div>` : ''), boundary(), '第七夜  /  CRY WOLF', eligible ? '伝え合った言葉を思い出す。急がなくて大丈夫。' : '村への信用、二人のきずな、素直に話した経験。積み重ねたものが、最後の言葉を変えます。');
     } else if (state.phase === 'result') {
       const scene = S.readResult(state);
-      const changes = [['trust', '信用'], ['bond', 'きずな'], ['insight', '合図']].map(([key, name]) => `${name} ${state.result.before[key]} → ${state.result.after[key]}`).join('　/　');
       if (readingStep === 0) page(scene, button('この夜の理由を読む', 'next', '', true), '', `${label()}  /  二人に残った言葉`);
-      else page({ ...scene, title: '今夜の選択が、残したこと。', speaker: '語り手', text: scene.reason, cast: ['bell:thinking'], prop: undefined, effect: undefined }, button(state.stage === 'night7' ? 'エピローグを読む' : state.stage === 'night3' ? 'ここまでを、振り返る' : '次の夜へ', 'next', '', true), `<p class="changes">${changes}</p>${hud()}`, `${label()}  /  選んだことが、残っていく`);
+      else page({ ...scene, title: '今夜の選択が、残したこと。', speaker: '語り手', text: scene.reason, cast: ['bell:thinking'], prop: undefined, effect: undefined }, button(state.stage === 'night7' ? 'エピローグを読む' : state.stage === 'night3' ? 'ここまでを、振り返る' : '次の夜へ', 'next', '', true), changesMarkup(), `${label()}  /  選んだことが、残っていく`);
     } else if (state.phase === 'interlude') {
       const ideal = state.flags.n3 === 'proposal', honest = state.flags.n3 === 'facts';
       const scene = { title: ideal ? 'まだ、閉じていない道。' : honest ? '話し合いの、はじまり。' : '遠いままの、境界。', speaker: '語り手', text: ideal ? 'ピップは手紙を、かばんへ戻した。\n「まだ、届けられるかもしれないね」\n\nルナはベルの隣に立った。\n「今度は、私から合図する。見逃したら承知しないわよ」\nそう言って、先に歩かずベルを待った。' : honest ? 'まだ、道が残る約束はない。\nそれでも村長は、調べる時間をくれた。\n\n分からない、と正直に言えたことが、\n小さなはじまりになった。' : '道を閉じる日が近づいている。\nふたりの間には、まだ境界がある。\n\n次は、どんな言葉なら届くだろう。', cast: ideal ? ['bell:relief', 'luna:softened'] : ['bell:concern', honest ? 'luna:serious' : 'luna:lonely'], backdrop: 'village' };
@@ -188,7 +193,7 @@
     if (modal) return;
     if (['gallery', 'collection'].includes(action) || (action === 'epilogue' && state.phase === 'finish')) { openModal(action); return; }
     if (action === 'new') {
-      if ((state.phase !== 'title' && state.phase !== 'finish') || (home && saved && saved.phase !== 'finish')) { openModal('restart'); return; }
+      if (state.phase !== 'title' || (home && saved)) { openModal('restart'); return; }
       start(); return;
     }
     if (action === 'resume') { if (state.phase === 'title' && saved) state = saved; home = false; render(); return; }
@@ -211,7 +216,7 @@
       title = '夜番の、小さな心得';
       body = '<p>あなたは夜番のベル。読む → 観察する → 報告する、の順に進みます。読む時間に制限はありません。</p><h3>鐘を鳴らすのは、どんなとき？</h3><p>オオカミが見張り道の内側に入ったとき。森にいるだけなら鳴らしません。翌朝の足跡で、報告と合っているか分かります。第四夜の贈り物、第七夜のルナは境界の外です。</p><h3>第二夜：距離を知って、合図する</h3><p>行動は2刻。最初は遠く、次の刻には近づきます。ランタンの合図は届く距離でだけ伝わります。</p><h3>第三夜：どちらの事情も聞く</h3><p>村・森・ルナの同意がそろうと、新しい道を提案できます。分かった事実だけを正直に伝える道もあります。</p><h3>第四夜・第五夜：本音と仕事</h3><p>贈り物には、お礼を言うこともできます。第五夜の夕方の返事だけでは村の信用は変わりません。「境界の外で会いたい」と頼めば外で待ち、「来ない方がいい」と伝えれば来ません。答えを預けた場合は、合図がなければ最後の刻に見張り道へ入ります。今夜の合図は最初から届きます。</p><h3>第六夜：明日の道をつくる</h3><p>道筋・村の同意・森の同意が必要です。第三夜に提案した地図は引き継ぎます。残り3刻で、自分から話しに行きましょう。本音を伝える一刻も選べます。</p><h3>第七夜：最後の呼びかけ</h3><p>村への信用、二人のきずな、素直に話した経験がそろうと、もうひとつの言葉が浮かびます。待たずに別の言葉を選んでも大丈夫。選んだあとは、結末ごとに3ページの後日談があります。</p>' + hud() + '<p>信用ときずなは0〜5、合図の理解は0〜3。信用0でも物語は続き、正直な報告で積み直せます。通り道の決着と二人の関係は、それぞれ後日談に反映されます。</p><h3>月と、しおり</h3><p>半月から第七夜の満月へ。月は得点ではなく時間の印です。ページと選択を自動保存し、読み終えた結末も別に記録します。三夜版v0.8のしおりからも続けられます。</p><p>Tabで選ぶ、Enter / Spaceで決定、読む画面ではEnterで次へ。Escapeでこの窓を閉じます。</p>';
     } else if (kind === 'notes') {
-      title = 'ベルの手がかり手帳'; body = noteMarkup(state.notes) + (state.history.length ? '<h3>これまでの夜</h3>' + state.history.map(h => `<p>${S.stageNames[h.stage]}：${S.historyLabel(h)}</p>`).join('') : '');
+      title = 'ベルの手がかり手帳'; body = hud() + noteMarkup(state.notes) + (state.history.length ? '<h3>これまでの夜</h3>' + state.history.map(h => `<p>${S.stageNames[h.stage]}：${S.historyLabel(h)}</p>`).join('') : '');
     } else if (kind === 'settings') {
       title = '音と、ページの動き'; body = `<button class="choice" data-ui="sound" aria-pressed="${preferences.sound}"><span><strong>音：${preferences.sound ? 'ON' : 'OFF'}</strong><small>BGMと、鐘・ページの効果音</small></span></button><p class="audio-state"><span data-music-status role="status">${musicStatus()}</span> · ${CWAudio.tracks[music.get().target].title}</p><div class="audio-levels"><label for="moon-bgm"><span>BGM <output id="moon-bgm-level" for="moon-bgm">${Math.round(preferences.bgm * 100)}%</output></span><input id="moon-bgm" data-volume="bgm" type="range" min="0" max="100" value="${Math.round(preferences.bgm * 100)}"></label><label for="moon-effects"><span>効果音 <output id="moon-effects-level" for="moon-effects">${Math.round(preferences.effects * 100)}%</output></span><input id="moon-effects" data-volume="effects" type="range" min="0" max="100" value="${Math.round(preferences.effects * 100)}"></label></div><button class="choice" data-ui="motion"><span><strong>動き：${preferences.motion ? 'ON' : 'OFF'}</strong><small>端末の「視差効果を減らす」設定も優先します</small></span></button><details class="music-credits"><summary>音楽のクレジット</summary><ul>${Object.values(CWAudio.tracks).map(t => `<li>${t.role}：<a href="${t.page}" target="_blank" rel="noopener noreferrer">${t.title}</a><br>${t.author} / OpenTracks</li>`).join('')}</ul></details><button class="choice" data-ui="gallery"><strong>登場人物と絵を見る</strong><span>↗</span></button><button class="choice" data-ui="collection"><strong>読んだ結末 ${cleared.length} / 4</strong><span>↗</span></button>`;
     } else if (kind === 'restart') {
@@ -280,4 +285,11 @@
   Object.defineProperty(window, '__cwMoon', { get: () => JSON.parse(JSON.stringify({ ...state, home, modal, storageOK, presentationStep: readingStep })) });
   Object.defineProperty(window, '__cwMoonAudio', { get: () => ({ ...music.get(), preferences: { ...preferences } }) });
   render(false);
+  window.CWBoot?.ready();
+  document.addEventListener('error', event => {
+    if (event.target instanceof HTMLImageElement && event.target.closest('#book')) {
+      const img = event.target; img.classList.add('image-missing');
+      if (img.classList.contains('portrait')) img.parentElement.dataset.fallback = img.alt;
+    }
+  }, true);
 })();
