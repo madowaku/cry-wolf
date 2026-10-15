@@ -1,0 +1,77 @@
+async (page) => {
+  const url = 'http://127.0.0.1:5198/moon/index.html?qa=embed-edges';
+  const checks = [], errors = [], routes = [], sizes = [];
+  const check = (pass, label) => checks.push({pass:!!pass,label});
+  page.setDefaultTimeout(12000);
+  page.on('pageerror', e => errors.push(e.message));
+  await page.unroute('**/assets/bell-serious.webp');
+  await page.setViewportSize({width:1500,height:1400});
+  await page.goto(url);
+  await page.locator('#book:not([hidden])').waitFor();
+  await page.setContent('<style>body{margin:0;background:#26252b;padding:20px}iframe{border:0;display:block}</style><iframe title="fixed embed"></iframe>');
+  const iframe = page.locator('iframe');
+  await iframe.evaluate((el, url) => { el.src=url; }, url);
+  const frame = await iframe.elementHandle().then(el => el.contentFrame());
+  await frame.locator('#book:not([hidden])').waitFor();
+  const bookmark = await frame.evaluate(() => {
+    let s=CWModel.transition(CWModel.fresh(),'start');
+    const forward=()=>{while(['story','observe','result','interlude','answer','epilogue'].includes(s.phase))s=CWModel.transition(s,'next');};
+    forward();
+    for(const a of ['ring1','track2','signal2','silent2','forest3','speak3','signal3','proposal3','thank4','want5','track5','signal5','silent5']){s=CWModel.transition(s,a);forward();}
+    return CWModel.serialize(s);
+  });
+  for(const [width,height] of [[760,640],[759,640],[661,600],[660,600],[430,500],[960,360],[1440,900],[720,1280]]) {
+    await iframe.evaluate((el,size)=>{el.width=size.width;el.height=size.height;},{width,height});
+    await frame.evaluate(raw=>{localStorage.clear();localStorage.setItem('crywolf_moon_v09',raw);localStorage.setItem('crywolf_moon_preferences_v08',JSON.stringify({sound:false,motion:false}));},bookmark);
+    await frame.goto(url); await frame.locator('[data-act="resume"]').click();
+    const metrics=await frame.evaluate(()=>({width:innerWidth,height:innerHeight,documentHeight:document.documentElement.scrollHeight,stageHeight:document.querySelector('#stage').clientHeight,overflow:document.documentElement.scrollWidth>innerWidth+1,font:parseFloat(getComputedStyle(document.querySelector('.prose')).fontSize)}));
+    sizes.push(metrics);check(!metrics.overflow&&metrics.font>=18,`${width}x${height}: width and prose`);
+    const controls=frame.locator('.actions'), box=await controls.boundingBox();
+    if(width>=760&&height>440){
+      check(metrics.documentHeight<=height+1,`${width}x${height}: book fits`);
+      await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.wheel(0,4000);await frame.waitForTimeout(100);
+    }else{
+      await frame.locator('#page').focus();await page.keyboard.press('Control+End');
+      await page.mouse.move(200,Math.min(height,400));await page.mouse.wheel(0,4000);await frame.waitForTimeout(100);
+    }
+    await frame.locator('[data-act="wait6"]').focus();
+    check(await frame.locator('[data-act="wait6"]').evaluate(el=>{const r=el.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight+1&&document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest('button')===el;}),`${width}x${height}: final choice reached`);
+    await page.keyboard.press('Enter');check(await frame.evaluate(()=>__cwMoon.ticks===2),`${width}x${height}: keyboard choice applied`);
+    await frame.addStyleTag({content:'.prose,.choice strong{font-size:24px!important}'});
+    check(await frame.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${width}x${height}: 24px text fits`);
+    await frame.locator('.actions button:not(:disabled)').last().focus();
+    check(await frame.locator('.actions button:not(:disabled)').last().evaluate(el=>{const r=el.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight+1;}),`${width}x${height}: enlarged controls reachable`);
+    await iframe.screenshot({path:`output/playwright/moon-embed/edge-${width}x${height}.png`});
+  }
+  // Read the entire seven nights using real UI inside both requested desktop embeds.
+  for(const [width,height] of [[960,640],[900,600]]) {
+    await iframe.evaluate((el,size)=>{el.width=size.width;el.height=size.height;},{width,height});
+    await frame.evaluate(()=>{localStorage.clear();localStorage.setItem('crywolf_moon_preferences_v08',JSON.stringify({motion:false,sound:false}));});
+    await frame.goto(url);await frame.locator('[data-act="new"]').click();
+    let pages=0;
+    const state=()=>frame.evaluate(()=>__cwMoon);
+    const click=async action=>{await frame.waitForTimeout(245);await frame.locator(`[data-act="${action}"]`).click();};
+    const forward=async()=>{
+      for(let i=0;i<80;i++){
+        const s=await state();if(!['story','observe','result','interlude','answer','epilogue'].includes(s.phase))return;
+        check(await frame.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1&&document.documentElement.scrollWidth<=innerWidth+1),`${width}: page ${++pages} stays inside embed`);
+        check(await frame.locator('.page-reading').evaluate(el=>el.scrollTop===0),`${width}: page ${pages} resets reading position`);
+        if(pages===1){await frame.locator('#page').focus();await frame.waitForTimeout(245);await page.keyboard.press('Enter');}else await click('next');
+      }
+      throw new Error('Seven-night pages did not finish');
+    };
+    await forward();
+    for(const action of ['ring1','track2','signal2','silent2','forest3','speak3','signal3','proposal3','thank4','want5','track5','signal5','silent5','village6','forest6','heart6','plan6','call7']){await click(action);await forward();}
+    const end=await state();check(end.phase==='finish'&&end.ending==='HONEST'&&end.flags.road&&end.history.length===7,`${width}: seven-night TRUE END, road and epilogue complete`);
+    routes.push({width,height,pages,ending:end.ending,road:end.flags.road,history:end.history.length});
+  }
+  const runtimeErrors=[...errors];
+  await page.route('**/assets/bell-serious.webp',route=>route.abort());
+  await frame.evaluate(()=>localStorage.clear());await frame.goto(url);
+  await frame.getByRole('button',{name:'画像なしで続ける',exact:true}).click();
+  await frame.locator('[data-act="new"]').click();
+  check(await frame.evaluate(()=>document.querySelector('#book').classList.contains('images-off')&&!__cwMoon.home),'failed portrait: playable recovery');
+  await page.unroute('**/assets/bell-serious.webp');
+  check(runtimeErrors.length===0,'no unexpected browser exceptions');
+  return {checks:checks.length,passed:checks.filter(c=>c.pass).length,failures:checks.filter(c=>!c.pass),errors:runtimeErrors,sizes,routes,details:checks};
+}

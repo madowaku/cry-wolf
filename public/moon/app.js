@@ -84,7 +84,7 @@
     return notes.map(n => `<section class="note"><small>${S.stageNames[n.stage]}</small><h3>${safe(S.observations[n.id].title)}</h3><p>${safe(S.observations[n.id].text)}${n.crossed ? '\n最後の刻、ルナは見張り道へ入りました。' : ''}</p></section>`).join('');
   }
   function page(scene, buttons, body = '', eyebrow = '', hint = '') {
-    $('#page').innerHTML = `<div class="page-inner"><div class="eyebrow">${safe(eyebrow || label())}</div><h1>${safe(scene.title)}</h1>${scene.speaker ? `<div class="speaker ${scene.speaker === 'ルナ' ? 'luna' : ''}"><span></span>${safe(scene.speaker)}</div>` : ''}${scene.text ? `<div class="prose">${safe(scene.text)}</div>` : ''}${hint || scene.hint ? `<p class="hint">${safe(hint || scene.hint)}</p>` : ''}${body}<div class="actions">${buttons}</div></div>`;
+    $('#page').innerHTML = `<div class="page-inner"><div class="page-reading" tabindex="0" role="region" aria-label="物語と手がかり"><div class="eyebrow">${safe(eyebrow || label())}</div><h1>${safe(scene.title)}</h1>${scene.speaker ? `<div class="speaker ${scene.speaker === 'ルナ' ? 'luna' : ''}"><span></span>${safe(scene.speaker)}</div>` : ''}${scene.text ? `<div class="prose">${safe(scene.text)}</div>` : ''}${hint || scene.hint ? `<p class="hint">${safe(hint || scene.hint)}</p>` : ''}${body}</div><div class="actions" role="group" aria-label="このページの操作">${buttons}</div></div>`;
     stage(scene);
   }
   function render(focus = true) {
@@ -170,7 +170,11 @@
       savedView = { bookmark: M.serialize(state), step: readingStep };
       try { localStorage.setItem(READING, JSON.stringify(savedView)); } catch { /* Extra reading pages also work without storage. */ }
     }
-    if (focus) { $('#page').focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: 'instant' }); }
+    if (focus) {
+      $('#page').scrollTop = 0;
+      $('#page').focus({ preventScroll: true });
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
   }
   function persist() {
     if (state.phase === 'finish' && state.ending && !cleared.includes(state.ending)) cleared.push(state.ending);

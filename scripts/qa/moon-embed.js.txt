@@ -1,0 +1,136 @@
+async (page) => {
+  const mode = page.url().includes('capture=before') ? 'before' : 'after';
+  const folder = 'output/playwright/moon-embed';
+  const url = 'http://127.0.0.1:5198/moon/index.html?qa=embed';
+  const checks = [], errors = [], scenes = [], screenshots = [];
+  const check = (pass, label, detail) => checks.push({ pass: !!pass, label, ...(detail ? { detail } : {}) });
+  page.setDefaultTimeout(12000);
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
+  await page.setViewportSize({ width: 1400, height: 1050 });
+  await page.goto(url);
+  await page.locator('#book:not([hidden])').waitFor();
+  const saves = await page.evaluate(() => {
+    const M = CWModel, saves = {};
+    let state = M.transition(M.fresh(), 'start');
+    const put = name => { saves[name] = M.serialize(state); };
+    state = M.transition(M.transition(state, 'next'), 'next'); put('prologue');
+    const forward = () => {
+      while (['story', 'observe', 'result', 'interlude', 'answer', 'epilogue'].includes(state.phase)) {
+        if (state.phase === 'interlude') put('long-scene');
+        if (state.phase === 'epilogue' && state.beat === 1) put('epilogue');
+        state = M.transition(state, 'next');
+      }
+    };
+    forward();
+    const actions = ['ring1','track2','signal2','silent2','forest3','speak3','signal3','proposal3','thank4','want5','track5','signal5','silent5','village6','forest6','heart6','plan6','call7'];
+    for (const action of actions) {
+      if (state.phase === 'explore6' && state.ticks === 3) put('multiple-choices');
+      state = M.transition(state, action);
+      if (action === 'ring1') put('result');
+      forward();
+    }
+    put('true-end');
+    return saves;
+  });
+  // A desktop host around a fixed iframe, rather than resizing the top-level game.
+  await page.setContent('<!doctype html><html><head><style>body{margin:0;background:#26252b;display:grid;place-items:start center;padding:35px}iframe{border:0;display:block;background:#19283f}</style></head><body><iframe title="CRY WOLF! itch.io fixed-size embed" src="about:blank"></iframe></body></html>');
+  const iframe = page.locator('iframe');
+  for (const [width, height] of [[960,640],[900,600],[430,800],[390,844],[360,800]]) {
+    await iframe.evaluate((el, size) => { el.width = size.width; el.height = size.height; }, { width, height });
+    await iframe.evaluate((el, src) => { el.src = src; }, url);
+    let frame = await iframe.elementHandle().then(el => el.contentFrame());
+    await frame.locator('#book:not([hidden])').waitFor();
+    await frame.evaluate(() => { localStorage.clear(); localStorage.setItem('crywolf_moon_preferences_v08', JSON.stringify({ motion:false, sound:false })); });
+    for (const name of ['title', ...Object.keys(saves)]) {
+      await frame.evaluate(({ save, name }) => {
+        localStorage.removeItem('crywolf_moon_v08');
+        if (save) localStorage.setItem('crywolf_moon_v09', save); else localStorage.removeItem('crywolf_moon_v09');
+        if (name === 'result') localStorage.setItem('crywolf_moon_reading_v091', JSON.stringify({ bookmark:save, step:1 }));
+        else localStorage.removeItem('crywolf_moon_reading_v091');
+      }, { save:saves[name], name });
+      await frame.goto(url);
+      await frame.locator('#book:not([hidden])').waitFor();
+      if (name !== 'title') await frame.locator('[data-act="resume"]').click();
+      await frame.locator('#stage img').evaluateAll(imgs => Promise.all(imgs.map(img => img.decode())));
+      await frame.waitForTimeout(50);
+      const path = `${folder}/${mode}-${name}-${width}x${height}.png`;
+      await iframe.screenshot({ path }); screenshots.push(path);
+      const metrics = await frame.evaluate(() => {
+        const rect = selector => { const r = document.querySelector(selector).getBoundingClientRect(); return { top:r.top,bottom:r.bottom,height:r.height }; };
+        return {
+          viewport:[innerWidth,innerHeight], documentHeight:document.documentElement.scrollHeight,
+          horizontalOverflow:document.documentElement.scrollWidth > innerWidth + 1,
+          clippedText:[...document.querySelectorAll('h1,.prose,.choice strong,.choice small')].filter(el => el.scrollWidth > el.clientWidth + 1).map(el => el.textContent),
+          smallControls:[...document.querySelectorAll('#book button')].filter(el => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden').filter(el => el.getBoundingClientRect().width < 43.9 || el.getBoundingClientRect().height < 43.9).length,
+          proseSize:parseFloat(getComputedStyle(document.querySelector('.prose')).fontSize),
+          stage:rect('#stage'), page:rect('#page'), footer:rect('.footer'),
+          pageScroll:document.querySelector('#page').scrollTop,
+          readingScroll:document.querySelector('.page-reading')?.scrollTop || 0,
+          actionScroll:document.querySelector('.actions').scrollTop,
+          visibleActions:[...document.querySelectorAll('.actions button')].filter(el => { const r = el.getBoundingClientRect(); return r.top >= 0 && r.bottom <= innerHeight && document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2)?.closest('button') === el; }).length,
+          brokenImages:[...document.querySelectorAll('#stage img')].filter(img => !img.naturalWidth).length
+        };
+      });
+      scenes.push({ width,height,name,...metrics });
+      check(!metrics.horizontalOverflow, `${width} ${name}: no horizontal overflow`);
+      check(metrics.clippedText.length === 0, `${width} ${name}: complete text`, metrics.clippedText);
+      check(metrics.proseSize >= 18, `${width} ${name}: readable prose`);
+      check(metrics.smallControls === 0, `${width} ${name}: 44px controls`);
+      check(metrics.brokenImages === 0, `${width} ${name}: original art loaded`);
+      if (mode !== 'before' && width >= 760) {
+        check(metrics.documentHeight <= height + 1, `${width} ${name}: spread fits iframe`, metrics);
+        check(metrics.pageScroll === 0, `${width} ${name}: new page starts at top`);
+        check(metrics.readingScroll === 0 && metrics.actionScroll === 0, `${width} ${name}: reading and choices start at top`);
+        check(metrics.visibleActions > 0, `${width} ${name}: controls visible immediately`);
+      }
+      // Real wheel scrolling on both the story and the actions, followed by Tab navigation.
+      const content = frame.locator('#page');
+      const point = await content.boundingBox();
+      await page.mouse.move(point.x + point.width / 2, point.y + Math.min(point.height / 2, 150));
+      await page.mouse.wheel(0, 2200);
+      await frame.waitForTimeout(100);
+      if (mode !== 'before' && width >= 760 && ['title','true-end'].includes(name)) {
+        check(await content.evaluate(el => el.scrollTop + el.clientHeight >= el.scrollHeight - 2), `${width} ${name}: cover content bottom reached with wheel`);
+        const endPath = `${folder}/${mode}-${name}-content-bottom-${width}x${height}.png`;
+        await iframe.screenshot({path:endPath}); screenshots.push(endPath);
+      }
+      if (mode !== 'before' && width >= 760 && !['title','true-end'].includes(name)) {
+        const reading = frame.locator('.page-reading');
+        const box = await reading.boundingBox();
+        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+        await page.mouse.wheel(0, 4000); await frame.waitForTimeout(100);
+        check(await reading.evaluate(el => el.scrollTop + el.clientHeight >= el.scrollHeight - 2), `${width} ${name}: prose bottom reached with wheel`);
+        const controls = frame.locator('.actions'), controlsBox = await controls.boundingBox();
+        await page.mouse.move(controlsBox.x + controlsBox.width / 2, controlsBox.y + controlsBox.height / 2);
+        await page.mouse.wheel(0, 4000); await frame.waitForTimeout(100);
+        check(await controls.evaluate(el => el.scrollTop + el.clientHeight >= el.scrollHeight - 2), `${width} ${name}: choices bottom reached with wheel`);
+        const endPath = `${folder}/${mode}-${name}-scrolled-${width}x${height}.png`;
+        await iframe.screenshot({path:endPath}); screenshots.push(endPath);
+      }
+      const reachable = await frame.evaluate(() => {
+        const target = document.querySelector('.actions button:last-child');
+        target.focus();
+        const r = target.getBoundingClientRect();
+        return r.top >= 0 && r.bottom <= innerHeight + 1 && document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2)?.closest('button') === target;
+      });
+      check(reachable, `${width} ${name}: last choice reachable by scrolling and focus`);
+      await page.keyboard.press('Tab');
+      if (mode !== 'before') {
+        const bottom = await frame.evaluate(() => { window.scrollTo(0, document.documentElement.scrollHeight); const r = document.querySelector('.footer').getBoundingClientRect(); return r.bottom <= innerHeight + 1; });
+        check(bottom, `${width} ${name}: footer bottom reachable`);
+        const bottomPath = `${folder}/${mode}-${name}-bottom-${width}x${height}.png`;
+        await iframe.screenshot({path:bottomPath}); screenshots.push(bottomPath);
+        // Activate a real control, including the ending collection modal.
+        await frame.waitForTimeout(245);
+        if (name === 'multiple-choices') await frame.locator('[data-act="wait6"]').click();
+        else if (name === 'true-end') { await frame.locator('[data-act="collection"]').click(); await page.keyboard.press('Escape'); }
+        else await frame.locator(`.actions button[data-act="${name === 'title' ? 'new' : 'next'}"]`).click();
+        check(await frame.evaluate(() => !__cwMoon.home && (__cwMoon.phase !== 'title')), `${width} ${name}: control works`);
+        if (name !== 'true-end' && width >= 760) check(await frame.locator('#page').evaluate(el => el.scrollTop === 0), `${width} ${name}: scroll reset after activation`);
+      }
+    }
+  }
+  check(errors.length === 0, 'no browser exceptions or console errors', errors);
+  return { mode, checks:checks.length, passed:checks.filter(c => c.pass).length, failures:checks.filter(c => !c.pass), errors, scenes, screenshots };
+}

@@ -1,0 +1,3032 @@
+{
+  "date": "2026-10-15",
+  "branch": "codex/moon-v092-finishing",
+  "baseline": "34a7f628092a75d0222c429469594b49b6f04877",
+  "method": "Chromium with a desktop host and a fixed-size iframe; real wheel, keyboard, clicks and canonical model bookmarks. All four endings also played through existing browser QA.",
+  "recommendedItchEmbed": {
+    "width": 960,
+    "height": 640
+  },
+  "commands": {
+    "unit": "npm test -- --reporter=dot",
+    "unitPassed": 239,
+    "typecheck": "npm run typecheck",
+    "typecheckPassed": true,
+    "build": "npm run build",
+    "buildPassed": true
+  },
+  "comparison": [
+    {
+      "width": 960,
+      "height": 640,
+      "scene": "title",
+      "beforeDocumentHeight": 841,
+      "afterDocumentHeight": 640,
+      "beforeImageHeight": 650,
+      "afterImageHeight": 507
+    },
+    {
+      "width": 960,
+      "height": 640,
+      "scene": "prologue",
+      "beforeDocumentHeight": 889,
+      "afterDocumentHeight": 640,
+      "beforeImageHeight": 600,
+      "afterImageHeight": 507
+    },
+    {
+      "width": 960,
+      "height": 640,
+      "scene": "result",
+      "beforeDocumentHeight": 998,
+      "afterDocumentHeight": 640,
+      "beforeImageHeight": 600,
+      "afterImageHeight": 507
+    },
+    {
+      "width": 960,
+      "height": 640,
+      "scene": "long-scene",
+      "beforeDocumentHeight": 1234,
+      "afterDocumentHeight": 640,
+      "beforeImageHeight": 600,
+      "afterImageHeight": 507
+    },
+    {
+      "width": 960,
+      "height": 640,
+      "scene": "multiple-choices",
+      "beforeDocumentHeight": 1207,
+      "afterDocumentHeight": 640,
+      "beforeImageHeight": 600,
+      "afterImageHeight": 507
+    },
+    {
+      "width": 960,
+      "height": 640,
+      "scene": "epilogue",
+      "beforeDocumentHeight": 854,
+      "afterDocumentHeight": 640,
+      "beforeImageHeight": 600,
+      "afterImageHeight": 507
+    },
+    {
+      "width": 960,
+      "height": 640,
+      "scene": "true-end",
+      "beforeDocumentHeight": 1447,
+      "afterDocumentHeight": 640,
+      "beforeImageHeight": 650,
+      "afterImageHeight": 507
+    },
+    {
+      "width": 900,
+      "height": 600,
+      "scene": "title",
+      "beforeDocumentHeight": 1170,
+      "afterDocumentHeight": 600,
+      "beforeImageHeight": 400,
+      "afterImageHeight": 467
+    },
+    {
+      "width": 900,
+      "height": 600,
+      "scene": "prologue",
+      "beforeDocumentHeight": 831,
+      "afterDocumentHeight": 600,
+      "beforeImageHeight": 640,
+      "afterImageHeight": 467
+    },
+    {
+      "width": 900,
+      "height": 600,
+      "scene": "result",
+      "beforeDocumentHeight": 940,
+      "afterDocumentHeight": 600,
+      "beforeImageHeight": 640,
+      "afterImageHeight": 467
+    },
+    {
+      "width": 900,
+      "height": 600,
+      "scene": "long-scene",
+      "beforeDocumentHeight": 1176,
+      "afterDocumentHeight": 600,
+      "beforeImageHeight": 640,
+      "afterImageHeight": 467
+    },
+    {
+      "width": 900,
+      "height": 600,
+      "scene": "multiple-choices",
+      "beforeDocumentHeight": 1125,
+      "afterDocumentHeight": 600,
+      "beforeImageHeight": 640,
+      "afterImageHeight": 467
+    },
+    {
+      "width": 900,
+      "height": 600,
+      "scene": "epilogue",
+      "beforeDocumentHeight": 805,
+      "afterDocumentHeight": 600,
+      "beforeImageHeight": 640,
+      "afterImageHeight": 467
+    },
+    {
+      "width": 900,
+      "height": 600,
+      "scene": "true-end",
+      "beforeDocumentHeight": 1701,
+      "afterDocumentHeight": 600,
+      "beforeImageHeight": 400,
+      "afterImageHeight": 467
+    },
+    {
+      "width": 430,
+      "height": 800,
+      "scene": "title",
+      "beforeDocumentHeight": 865,
+      "afterDocumentHeight": 846,
+      "beforeImageHeight": 275,
+      "afterImageHeight": 256
+    },
+    {
+      "width": 430,
+      "height": 800,
+      "scene": "prologue",
+      "beforeDocumentHeight": 1092,
+      "afterDocumentHeight": 1060,
+      "beforeImageHeight": 320,
+      "afterImageHeight": 288
+    },
+    {
+      "width": 430,
+      "height": 800,
+      "scene": "result",
+      "beforeDocumentHeight": 1206,
+      "afterDocumentHeight": 1174,
+      "beforeImageHeight": 320,
+      "afterImageHeight": 288
+    },
+    {
+      "width": 430,
+      "height": 800,
+      "scene": "long-scene",
+      "beforeDocumentHeight": 1413,
+      "afterDocumentHeight": 1381,
+      "beforeImageHeight": 320,
+      "afterImageHeight": 288
+    },
+    {
+      "width": 430,
+      "height": 800,
+      "scene": "multiple-choices",
+      "beforeDocumentHeight": 1397,
+      "afterDocumentHeight": 1365,
+      "beforeImageHeight": 320,
+      "afterImageHeight": 288
+    },
+    {
+      "width": 430,
+      "height": 800,
+      "scene": "epilogue",
+      "beforeDocumentHeight": 1058,
+      "afterDocumentHeight": 1026,
+      "beforeImageHeight": 320,
+      "afterImageHeight": 288
+    },
+    {
+      "width": 430,
+      "height": 800,
+      "scene": "true-end",
+      "beforeDocumentHeight": 1483,
+      "afterDocumentHeight": 1464,
+      "beforeImageHeight": 275,
+      "afterImageHeight": 256
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scene": "title",
+      "beforeDocumentHeight": 865,
+      "afterDocumentHeight": 860,
+      "beforeImageHeight": 275,
+      "afterImageHeight": 270.078125
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scene": "prologue",
+      "beforeDocumentHeight": 1168,
+      "afterDocumentHeight": 1152,
+      "beforeImageHeight": 320,
+      "afterImageHeight": 303.828125
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scene": "result",
+      "beforeDocumentHeight": 1248,
+      "afterDocumentHeight": 1231,
+      "beforeImageHeight": 320,
+      "afterImageHeight": 303.828125
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scene": "long-scene",
+      "beforeDocumentHeight": 1435,
+      "afterDocumentHeight": 1419,
+      "beforeImageHeight": 320,
+      "afterImageHeight": 303.828125
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scene": "multiple-choices",
+      "beforeDocumentHeight": 1397,
+      "afterDocumentHeight": 1381,
+      "beforeImageHeight": 320,
+      "afterImageHeight": 303.828125
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scene": "epilogue",
+      "beforeDocumentHeight": 1058,
+      "afterDocumentHeight": 1042,
+      "beforeImageHeight": 320,
+      "afterImageHeight": 303.828125
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scene": "true-end",
+      "beforeDocumentHeight": 1505,
+      "afterDocumentHeight": 1500,
+      "beforeImageHeight": 275,
+      "afterImageHeight": 270.078125
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "scene": "title",
+      "beforeDocumentHeight": 825,
+      "afterDocumentHeight": 831,
+      "beforeImageHeight": 250,
+      "afterImageHeight": 256
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "scene": "prologue",
+      "beforeDocumentHeight": 1120,
+      "afterDocumentHeight": 1123,
+      "beforeImageHeight": 285,
+      "afterImageHeight": 288
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "scene": "result",
+      "beforeDocumentHeight": 1199,
+      "afterDocumentHeight": 1202,
+      "beforeImageHeight": 285,
+      "afterImageHeight": 288
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "scene": "long-scene",
+      "beforeDocumentHeight": 1424,
+      "afterDocumentHeight": 1427,
+      "beforeImageHeight": 285,
+      "afterImageHeight": 288
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "scene": "multiple-choices",
+      "beforeDocumentHeight": 1387,
+      "afterDocumentHeight": 1390,
+      "beforeImageHeight": 285,
+      "afterImageHeight": 288
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "scene": "epilogue",
+      "beforeDocumentHeight": 1013,
+      "afterDocumentHeight": 1016,
+      "beforeImageHeight": 285,
+      "afterImageHeight": 288
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "scene": "true-end",
+      "beforeDocumentHeight": 1465,
+      "afterDocumentHeight": 1471,
+      "beforeImageHeight": 250,
+      "afterImageHeight": 256
+    }
+  ],
+  "reports": {
+    "before": {
+      "mode": "before",
+      "checks": 211,
+      "passed": 211,
+      "failures": [],
+      "errors": [],
+      "scenes": [
+        {
+          "width": 960,
+          "height": 640,
+          "name": "title",
+          "viewport": [
+            960,
+            640
+          ],
+          "documentHeight": 841,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 19,
+          "stage": {
+            "top": 113,
+            "bottom": 763,
+            "height": 650
+          },
+          "page": {
+            "top": 113,
+            "bottom": 763,
+            "height": 650
+          },
+          "footer": {
+            "top": 763,
+            "bottom": 810,
+            "height": 47
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "name": "prologue",
+          "viewport": [
+            960,
+            640
+          ],
+          "documentHeight": 889,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 113,
+            "bottom": 713,
+            "height": 600
+          },
+          "page": {
+            "top": 113,
+            "bottom": 811.03125,
+            "height": 698.03125
+          },
+          "footer": {
+            "top": 811.03125,
+            "bottom": 858.03125,
+            "height": 47
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "name": "result",
+          "viewport": [
+            960,
+            640
+          ],
+          "documentHeight": 998,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 113,
+            "bottom": 713,
+            "height": 600
+          },
+          "page": {
+            "top": 113,
+            "bottom": 920.25,
+            "height": 807.25
+          },
+          "footer": {
+            "top": 920.25,
+            "bottom": 967.25,
+            "height": 47
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "name": "long-scene",
+          "viewport": [
+            960,
+            640
+          ],
+          "documentHeight": 1234,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 113,
+            "bottom": 713,
+            "height": 600
+          },
+          "page": {
+            "top": 113,
+            "bottom": 1156.1875,
+            "height": 1043.1875
+          },
+          "footer": {
+            "top": 1156.1875,
+            "bottom": 1203.1875,
+            "height": 47
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "name": "multiple-choices",
+          "viewport": [
+            960,
+            640
+          ],
+          "documentHeight": 1207,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 113,
+            "bottom": 713,
+            "height": 600
+          },
+          "page": {
+            "top": 113,
+            "bottom": 1128.953125,
+            "height": 1015.953125
+          },
+          "footer": {
+            "top": 1128.953125,
+            "bottom": 1175.953125,
+            "height": 47
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "name": "epilogue",
+          "viewport": [
+            960,
+            640
+          ],
+          "documentHeight": 854,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 113,
+            "bottom": 713,
+            "height": 600
+          },
+          "page": {
+            "top": 113,
+            "bottom": 775.9375,
+            "height": 662.9375
+          },
+          "footer": {
+            "top": 775.9375,
+            "bottom": 822.9375,
+            "height": 47
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "name": "true-end",
+          "viewport": [
+            960,
+            640
+          ],
+          "documentHeight": 1447,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 19,
+          "stage": {
+            "top": 113,
+            "bottom": 763,
+            "height": 650
+          },
+          "page": {
+            "top": 113,
+            "bottom": 1369.15625,
+            "height": 1256.15625
+          },
+          "footer": {
+            "top": 1369.15625,
+            "bottom": 1416.15625,
+            "height": 47
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "name": "title",
+          "viewport": [
+            900,
+            600
+          ],
+          "documentHeight": 1170,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 19,
+          "stage": {
+            "top": 103,
+            "bottom": 503,
+            "height": 400
+          },
+          "page": {
+            "top": 503,
+            "bottom": 1107.984375,
+            "height": 604.984375
+          },
+          "footer": {
+            "top": 1107.984375,
+            "bottom": 1154.984375,
+            "height": 47
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "name": "prologue",
+          "viewport": [
+            900,
+            600
+          ],
+          "documentHeight": 831,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 103,
+            "bottom": 743,
+            "height": 640
+          },
+          "page": {
+            "top": 103,
+            "bottom": 769.03125,
+            "height": 666.03125
+          },
+          "footer": {
+            "top": 769.03125,
+            "bottom": 816.03125,
+            "height": 47
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "name": "result",
+          "viewport": [
+            900,
+            600
+          ],
+          "documentHeight": 940,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 103,
+            "bottom": 743,
+            "height": 640
+          },
+          "page": {
+            "top": 103,
+            "bottom": 878.25,
+            "height": 775.25
+          },
+          "footer": {
+            "top": 878.25,
+            "bottom": 925.25,
+            "height": 47
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "name": "long-scene",
+          "viewport": [
+            900,
+            600
+          ],
+          "documentHeight": 1176,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 103,
+            "bottom": 743,
+            "height": 640
+          },
+          "page": {
+            "top": 103,
+            "bottom": 1114.1875,
+            "height": 1011.1875
+          },
+          "footer": {
+            "top": 1114.1875,
+            "bottom": 1161.1875,
+            "height": 47
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "name": "multiple-choices",
+          "viewport": [
+            900,
+            600
+          ],
+          "documentHeight": 1125,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 103,
+            "bottom": 743,
+            "height": 640
+          },
+          "page": {
+            "top": 103,
+            "bottom": 1062.953125,
+            "height": 959.953125
+          },
+          "footer": {
+            "top": 1062.953125,
+            "bottom": 1109.953125,
+            "height": 47
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "name": "epilogue",
+          "viewport": [
+            900,
+            600
+          ],
+          "documentHeight": 805,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 103,
+            "bottom": 743,
+            "height": 640
+          },
+          "page": {
+            "top": 103,
+            "bottom": 733.9375,
+            "height": 630.9375
+          },
+          "footer": {
+            "top": 743,
+            "bottom": 790,
+            "height": 47
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "name": "true-end",
+          "viewport": [
+            900,
+            600
+          ],
+          "documentHeight": 1701,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 19,
+          "stage": {
+            "top": 103,
+            "bottom": 503,
+            "height": 400
+          },
+          "page": {
+            "top": 503,
+            "bottom": 1639.078125,
+            "height": 1136.078125
+          },
+          "footer": {
+            "top": 1639.078125,
+            "bottom": 1686.078125,
+            "height": 47
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 430,
+          "height": 800,
+          "name": "title",
+          "viewport": [
+            430,
+            800
+          ],
+          "documentHeight": 865,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 347,
+            "height": 275
+          },
+          "page": {
+            "top": 347,
+            "bottom": 811.78125,
+            "height": 464.78125
+          },
+          "footer": {
+            "top": 811.78125,
+            "bottom": 853.171875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 430,
+          "height": 800,
+          "name": "prologue",
+          "viewport": [
+            430,
+            800
+          ],
+          "documentHeight": 1092,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 392,
+            "height": 320
+          },
+          "page": {
+            "top": 392,
+            "bottom": 1038.90625,
+            "height": 646.90625
+          },
+          "footer": {
+            "top": 1038.90625,
+            "bottom": 1080.296875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 430,
+          "height": 800,
+          "name": "result",
+          "viewport": [
+            430,
+            800
+          ],
+          "documentHeight": 1206,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 392,
+            "height": 320
+          },
+          "page": {
+            "top": 392,
+            "bottom": 1152.28125,
+            "height": 760.28125
+          },
+          "footer": {
+            "top": 1152.28125,
+            "bottom": 1193.671875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 430,
+          "height": 800,
+          "name": "long-scene",
+          "viewport": [
+            430,
+            800
+          ],
+          "documentHeight": 1413,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 392,
+            "height": 320
+          },
+          "page": {
+            "top": 392,
+            "bottom": 1359.59375,
+            "height": 967.59375
+          },
+          "footer": {
+            "top": 1359.59375,
+            "bottom": 1400.984375,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 430,
+          "height": 800,
+          "name": "multiple-choices",
+          "viewport": [
+            430,
+            800
+          ],
+          "documentHeight": 1397,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 392,
+            "height": 320
+          },
+          "page": {
+            "top": 392,
+            "bottom": 1344.078125,
+            "height": 952.078125
+          },
+          "footer": {
+            "top": 1344.078125,
+            "bottom": 1385.46875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 430,
+          "height": 800,
+          "name": "epilogue",
+          "viewport": [
+            430,
+            800
+          ],
+          "documentHeight": 1058,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 392,
+            "height": 320
+          },
+          "page": {
+            "top": 392,
+            "bottom": 1004.71875,
+            "height": 612.71875
+          },
+          "footer": {
+            "top": 1004.71875,
+            "bottom": 1046.109375,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 430,
+          "height": 800,
+          "name": "true-end",
+          "viewport": [
+            430,
+            800
+          ],
+          "documentHeight": 1483,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 347,
+            "height": 275
+          },
+          "page": {
+            "top": 347,
+            "bottom": 1429.65625,
+            "height": 1082.65625
+          },
+          "footer": {
+            "top": 1429.65625,
+            "bottom": 1471.046875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "name": "title",
+          "viewport": [
+            390,
+            844
+          ],
+          "documentHeight": 865,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 347,
+            "height": 275
+          },
+          "page": {
+            "top": 347,
+            "bottom": 811.78125,
+            "height": 464.78125
+          },
+          "footer": {
+            "top": 811.78125,
+            "bottom": 853.171875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "name": "prologue",
+          "viewport": [
+            390,
+            844
+          ],
+          "documentHeight": 1168,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 392,
+            "height": 320
+          },
+          "page": {
+            "top": 392,
+            "bottom": 1114.9375,
+            "height": 722.9375
+          },
+          "footer": {
+            "top": 1114.9375,
+            "bottom": 1156.328125,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "name": "result",
+          "viewport": [
+            390,
+            844
+          ],
+          "documentHeight": 1248,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 392,
+            "height": 320
+          },
+          "page": {
+            "top": 392,
+            "bottom": 1194.125,
+            "height": 802.125
+          },
+          "footer": {
+            "top": 1194.125,
+            "bottom": 1235.515625,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "name": "long-scene",
+          "viewport": [
+            390,
+            844
+          ],
+          "documentHeight": 1435,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 392,
+            "height": 320
+          },
+          "page": {
+            "top": 392,
+            "bottom": 1381.6875,
+            "height": 989.6875
+          },
+          "footer": {
+            "top": 1381.6875,
+            "bottom": 1423.078125,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "name": "multiple-choices",
+          "viewport": [
+            390,
+            844
+          ],
+          "documentHeight": 1397,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 392,
+            "height": 320
+          },
+          "page": {
+            "top": 392,
+            "bottom": 1344.078125,
+            "height": 952.078125
+          },
+          "footer": {
+            "top": 1344.078125,
+            "bottom": 1385.46875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "name": "epilogue",
+          "viewport": [
+            390,
+            844
+          ],
+          "documentHeight": 1058,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 392,
+            "height": 320
+          },
+          "page": {
+            "top": 392,
+            "bottom": 1004.71875,
+            "height": 612.71875
+          },
+          "footer": {
+            "top": 1004.71875,
+            "bottom": 1046.109375,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "name": "true-end",
+          "viewport": [
+            390,
+            844
+          ],
+          "documentHeight": 1505,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 347,
+            "height": 275
+          },
+          "page": {
+            "top": 347,
+            "bottom": 1451.75,
+            "height": 1104.75
+          },
+          "footer": {
+            "top": 1451.75,
+            "bottom": 1493.140625,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "name": "title",
+          "viewport": [
+            360,
+            800
+          ],
+          "documentHeight": 825,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 322,
+            "height": 250
+          },
+          "page": {
+            "top": 322,
+            "bottom": 771.1875,
+            "height": 449.1875
+          },
+          "footer": {
+            "top": 771.1875,
+            "bottom": 812.578125,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "name": "prologue",
+          "viewport": [
+            360,
+            800
+          ],
+          "documentHeight": 1120,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 357,
+            "height": 285
+          },
+          "page": {
+            "top": 357,
+            "bottom": 1066.75,
+            "height": 709.75
+          },
+          "footer": {
+            "top": 1066.75,
+            "bottom": 1108.140625,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "name": "result",
+          "viewport": [
+            360,
+            800
+          ],
+          "documentHeight": 1199,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 357,
+            "height": 285
+          },
+          "page": {
+            "top": 357,
+            "bottom": 1145.9375,
+            "height": 788.9375
+          },
+          "footer": {
+            "top": 1145.9375,
+            "bottom": 1187.328125,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "name": "long-scene",
+          "viewport": [
+            360,
+            800
+          ],
+          "documentHeight": 1424,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 357,
+            "height": 285
+          },
+          "page": {
+            "top": 357,
+            "bottom": 1370.78125,
+            "height": 1013.78125
+          },
+          "footer": {
+            "top": 1370.78125,
+            "bottom": 1412.171875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "name": "multiple-choices",
+          "viewport": [
+            360,
+            800
+          ],
+          "documentHeight": 1387,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 357,
+            "height": 285
+          },
+          "page": {
+            "top": 357,
+            "bottom": 1333.171875,
+            "height": 976.171875
+          },
+          "footer": {
+            "top": 1333.171875,
+            "bottom": 1374.5625,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "name": "epilogue",
+          "viewport": [
+            360,
+            800
+          ],
+          "documentHeight": 1013,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 357,
+            "height": 285
+          },
+          "page": {
+            "top": 357,
+            "bottom": 959.625,
+            "height": 602.625
+          },
+          "footer": {
+            "top": 959.625,
+            "bottom": 1001.015625,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "name": "true-end",
+          "viewport": [
+            360,
+            800
+          ],
+          "documentHeight": 1465,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 322,
+            "height": 250
+          },
+          "page": {
+            "top": 322,
+            "bottom": 1411.15625,
+            "height": 1089.15625
+          },
+          "footer": {
+            "top": 1411.15625,
+            "bottom": 1452.546875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "brokenImages": 0
+        }
+      ],
+      "screenshots": [
+        "output/playwright/moon-embed/before-title-960x640.png",
+        "output/playwright/moon-embed/before-prologue-960x640.png",
+        "output/playwright/moon-embed/before-result-960x640.png",
+        "output/playwright/moon-embed/before-long-scene-960x640.png",
+        "output/playwright/moon-embed/before-multiple-choices-960x640.png",
+        "output/playwright/moon-embed/before-epilogue-960x640.png",
+        "output/playwright/moon-embed/before-true-end-960x640.png",
+        "output/playwright/moon-embed/before-title-900x600.png",
+        "output/playwright/moon-embed/before-prologue-900x600.png",
+        "output/playwright/moon-embed/before-result-900x600.png",
+        "output/playwright/moon-embed/before-long-scene-900x600.png",
+        "output/playwright/moon-embed/before-multiple-choices-900x600.png",
+        "output/playwright/moon-embed/before-epilogue-900x600.png",
+        "output/playwright/moon-embed/before-true-end-900x600.png",
+        "output/playwright/moon-embed/before-title-430x800.png",
+        "output/playwright/moon-embed/before-prologue-430x800.png",
+        "output/playwright/moon-embed/before-result-430x800.png",
+        "output/playwright/moon-embed/before-long-scene-430x800.png",
+        "output/playwright/moon-embed/before-multiple-choices-430x800.png",
+        "output/playwright/moon-embed/before-epilogue-430x800.png",
+        "output/playwright/moon-embed/before-true-end-430x800.png",
+        "output/playwright/moon-embed/before-title-390x844.png",
+        "output/playwright/moon-embed/before-prologue-390x844.png",
+        "output/playwright/moon-embed/before-result-390x844.png",
+        "output/playwright/moon-embed/before-long-scene-390x844.png",
+        "output/playwright/moon-embed/before-multiple-choices-390x844.png",
+        "output/playwright/moon-embed/before-epilogue-390x844.png",
+        "output/playwright/moon-embed/before-true-end-390x844.png",
+        "output/playwright/moon-embed/before-title-360x800.png",
+        "output/playwright/moon-embed/before-prologue-360x800.png",
+        "output/playwright/moon-embed/before-result-360x800.png",
+        "output/playwright/moon-embed/before-long-scene-360x800.png",
+        "output/playwright/moon-embed/before-multiple-choices-360x800.png",
+        "output/playwright/moon-embed/before-epilogue-360x800.png",
+        "output/playwright/moon-embed/before-true-end-360x800.png"
+      ]
+    },
+    "after": {
+      "mode": "after",
+      "checks": 373,
+      "passed": 373,
+      "failures": [],
+      "errors": [],
+      "scenes": [
+        {
+          "width": 960,
+          "height": 640,
+          "name": "title",
+          "viewport": [
+            960,
+            640
+          ],
+          "documentHeight": 640,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 85,
+            "bottom": 592,
+            "height": 507
+          },
+          "page": {
+            "top": 85,
+            "bottom": 592,
+            "height": 507
+          },
+          "footer": {
+            "top": 592,
+            "bottom": 627,
+            "height": 35
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "name": "prologue",
+          "viewport": [
+            960,
+            640
+          ],
+          "documentHeight": 640,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 85,
+            "bottom": 592,
+            "height": 507
+          },
+          "page": {
+            "top": 85,
+            "bottom": 592,
+            "height": 507
+          },
+          "footer": {
+            "top": 592,
+            "bottom": 627,
+            "height": 35
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "name": "result",
+          "viewport": [
+            960,
+            640
+          ],
+          "documentHeight": 640,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 85,
+            "bottom": 592,
+            "height": 507
+          },
+          "page": {
+            "top": 85,
+            "bottom": 592,
+            "height": 507
+          },
+          "footer": {
+            "top": 592,
+            "bottom": 627,
+            "height": 35
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "name": "long-scene",
+          "viewport": [
+            960,
+            640
+          ],
+          "documentHeight": 640,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 85,
+            "bottom": 592,
+            "height": 507
+          },
+          "page": {
+            "top": 85,
+            "bottom": 592,
+            "height": 507
+          },
+          "footer": {
+            "top": 592,
+            "bottom": 627,
+            "height": 35
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "name": "multiple-choices",
+          "viewport": [
+            960,
+            640
+          ],
+          "documentHeight": 640,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 85,
+            "bottom": 592,
+            "height": 507
+          },
+          "page": {
+            "top": 85,
+            "bottom": 592,
+            "height": 507
+          },
+          "footer": {
+            "top": 592,
+            "bottom": 627,
+            "height": 35
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 3,
+          "brokenImages": 0
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "name": "epilogue",
+          "viewport": [
+            960,
+            640
+          ],
+          "documentHeight": 640,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 85,
+            "bottom": 592,
+            "height": 507
+          },
+          "page": {
+            "top": 85,
+            "bottom": 592,
+            "height": 507
+          },
+          "footer": {
+            "top": 592,
+            "bottom": 627,
+            "height": 35
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "name": "true-end",
+          "viewport": [
+            960,
+            640
+          ],
+          "documentHeight": 640,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 85,
+            "bottom": 592,
+            "height": 507
+          },
+          "page": {
+            "top": 85,
+            "bottom": 592,
+            "height": 507
+          },
+          "footer": {
+            "top": 592,
+            "bottom": 627,
+            "height": 35
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 2,
+          "brokenImages": 0
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "name": "title",
+          "viewport": [
+            900,
+            600
+          ],
+          "documentHeight": 600,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 85,
+            "bottom": 552,
+            "height": 467
+          },
+          "page": {
+            "top": 85,
+            "bottom": 552,
+            "height": 467
+          },
+          "footer": {
+            "top": 552,
+            "bottom": 587,
+            "height": 35
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "name": "prologue",
+          "viewport": [
+            900,
+            600
+          ],
+          "documentHeight": 600,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 85,
+            "bottom": 552,
+            "height": 467
+          },
+          "page": {
+            "top": 85,
+            "bottom": 552,
+            "height": 467
+          },
+          "footer": {
+            "top": 552,
+            "bottom": 587,
+            "height": 35
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "name": "result",
+          "viewport": [
+            900,
+            600
+          ],
+          "documentHeight": 600,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 85,
+            "bottom": 552,
+            "height": 467
+          },
+          "page": {
+            "top": 85,
+            "bottom": 552,
+            "height": 467
+          },
+          "footer": {
+            "top": 552,
+            "bottom": 587,
+            "height": 35
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "name": "long-scene",
+          "viewport": [
+            900,
+            600
+          ],
+          "documentHeight": 600,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 85,
+            "bottom": 552,
+            "height": 467
+          },
+          "page": {
+            "top": 85,
+            "bottom": 552,
+            "height": 467
+          },
+          "footer": {
+            "top": 552,
+            "bottom": 587,
+            "height": 35
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "name": "multiple-choices",
+          "viewport": [
+            900,
+            600
+          ],
+          "documentHeight": 600,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 85,
+            "bottom": 552,
+            "height": 467
+          },
+          "page": {
+            "top": 85,
+            "bottom": 552,
+            "height": 467
+          },
+          "footer": {
+            "top": 552,
+            "bottom": 587,
+            "height": 35
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 3,
+          "brokenImages": 0
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "name": "epilogue",
+          "viewport": [
+            900,
+            600
+          ],
+          "documentHeight": 600,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 85,
+            "bottom": 552,
+            "height": 467
+          },
+          "page": {
+            "top": 85,
+            "bottom": 552,
+            "height": 467
+          },
+          "footer": {
+            "top": 552,
+            "bottom": 587,
+            "height": 35
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "name": "true-end",
+          "viewport": [
+            900,
+            600
+          ],
+          "documentHeight": 600,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 85,
+            "bottom": 552,
+            "height": 467
+          },
+          "page": {
+            "top": 85,
+            "bottom": 552,
+            "height": 467
+          },
+          "footer": {
+            "top": 552,
+            "bottom": 587,
+            "height": 35
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 2,
+          "brokenImages": 0
+        },
+        {
+          "width": 430,
+          "height": 800,
+          "name": "title",
+          "viewport": [
+            430,
+            800
+          ],
+          "documentHeight": 846,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 328,
+            "height": 256
+          },
+          "page": {
+            "top": 328,
+            "bottom": 792.78125,
+            "height": 464.78125
+          },
+          "footer": {
+            "top": 792.78125,
+            "bottom": 834.171875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        },
+        {
+          "width": 430,
+          "height": 800,
+          "name": "prologue",
+          "viewport": [
+            430,
+            800
+          ],
+          "documentHeight": 1060,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 360,
+            "height": 288
+          },
+          "page": {
+            "top": 360,
+            "bottom": 1006.90625,
+            "height": 646.90625
+          },
+          "footer": {
+            "top": 1006.90625,
+            "bottom": 1048.296875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 430,
+          "height": 800,
+          "name": "result",
+          "viewport": [
+            430,
+            800
+          ],
+          "documentHeight": 1174,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 360,
+            "height": 288
+          },
+          "page": {
+            "top": 360,
+            "bottom": 1120.28125,
+            "height": 760.28125
+          },
+          "footer": {
+            "top": 1120.28125,
+            "bottom": 1161.671875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 430,
+          "height": 800,
+          "name": "long-scene",
+          "viewport": [
+            430,
+            800
+          ],
+          "documentHeight": 1381,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 360,
+            "height": 288
+          },
+          "page": {
+            "top": 360,
+            "bottom": 1327.59375,
+            "height": 967.59375
+          },
+          "footer": {
+            "top": 1327.59375,
+            "bottom": 1368.984375,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 430,
+          "height": 800,
+          "name": "multiple-choices",
+          "viewport": [
+            430,
+            800
+          ],
+          "documentHeight": 1365,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 360,
+            "height": 288
+          },
+          "page": {
+            "top": 360,
+            "bottom": 1312.078125,
+            "height": 952.078125
+          },
+          "footer": {
+            "top": 1312.078125,
+            "bottom": 1353.46875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 430,
+          "height": 800,
+          "name": "epilogue",
+          "viewport": [
+            430,
+            800
+          ],
+          "documentHeight": 1026,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 360,
+            "height": 288
+          },
+          "page": {
+            "top": 360,
+            "bottom": 972.71875,
+            "height": 612.71875
+          },
+          "footer": {
+            "top": 972.71875,
+            "bottom": 1014.109375,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 430,
+          "height": 800,
+          "name": "true-end",
+          "viewport": [
+            430,
+            800
+          ],
+          "documentHeight": 1464,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 328,
+            "height": 256
+          },
+          "page": {
+            "top": 328,
+            "bottom": 1410.65625,
+            "height": 1082.65625
+          },
+          "footer": {
+            "top": 1410.65625,
+            "bottom": 1452.046875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "name": "title",
+          "viewport": [
+            390,
+            844
+          ],
+          "documentHeight": 860,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 342.078125,
+            "height": 270.078125
+          },
+          "page": {
+            "top": 342.078125,
+            "bottom": 806.859375,
+            "height": 464.78125
+          },
+          "footer": {
+            "top": 806.859375,
+            "bottom": 848.25,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "name": "prologue",
+          "viewport": [
+            390,
+            844
+          ],
+          "documentHeight": 1152,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 375.828125,
+            "height": 303.828125
+          },
+          "page": {
+            "top": 375.828125,
+            "bottom": 1098.765625,
+            "height": 722.9375
+          },
+          "footer": {
+            "top": 1098.765625,
+            "bottom": 1140.15625,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "name": "result",
+          "viewport": [
+            390,
+            844
+          ],
+          "documentHeight": 1231,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 375.828125,
+            "height": 303.828125
+          },
+          "page": {
+            "top": 375.828125,
+            "bottom": 1177.953125,
+            "height": 802.125
+          },
+          "footer": {
+            "top": 1177.953125,
+            "bottom": 1219.34375,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "name": "long-scene",
+          "viewport": [
+            390,
+            844
+          ],
+          "documentHeight": 1419,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 375.828125,
+            "height": 303.828125
+          },
+          "page": {
+            "top": 375.828125,
+            "bottom": 1365.515625,
+            "height": 989.6875
+          },
+          "footer": {
+            "top": 1365.515625,
+            "bottom": 1406.90625,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "name": "multiple-choices",
+          "viewport": [
+            390,
+            844
+          ],
+          "documentHeight": 1381,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 375.828125,
+            "height": 303.828125
+          },
+          "page": {
+            "top": 375.828125,
+            "bottom": 1327.90625,
+            "height": 952.078125
+          },
+          "footer": {
+            "top": 1327.90625,
+            "bottom": 1369.296875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "name": "epilogue",
+          "viewport": [
+            390,
+            844
+          ],
+          "documentHeight": 1042,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 375.828125,
+            "height": 303.828125
+          },
+          "page": {
+            "top": 375.828125,
+            "bottom": 988.546875,
+            "height": 612.71875
+          },
+          "footer": {
+            "top": 988.546875,
+            "bottom": 1029.9375,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "name": "true-end",
+          "viewport": [
+            390,
+            844
+          ],
+          "documentHeight": 1500,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 342.078125,
+            "height": 270.078125
+          },
+          "page": {
+            "top": 342.078125,
+            "bottom": 1446.828125,
+            "height": 1104.75
+          },
+          "footer": {
+            "top": 1446.828125,
+            "bottom": 1488.21875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 2,
+          "brokenImages": 0
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "name": "title",
+          "viewport": [
+            360,
+            800
+          ],
+          "documentHeight": 831,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 328,
+            "height": 256
+          },
+          "page": {
+            "top": 328,
+            "bottom": 777.1875,
+            "height": 449.1875
+          },
+          "footer": {
+            "top": 777.1875,
+            "bottom": 818.578125,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "name": "prologue",
+          "viewport": [
+            360,
+            800
+          ],
+          "documentHeight": 1123,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 360,
+            "height": 288
+          },
+          "page": {
+            "top": 360,
+            "bottom": 1069.75,
+            "height": 709.75
+          },
+          "footer": {
+            "top": 1069.75,
+            "bottom": 1111.140625,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "name": "result",
+          "viewport": [
+            360,
+            800
+          ],
+          "documentHeight": 1202,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 360,
+            "height": 288
+          },
+          "page": {
+            "top": 360,
+            "bottom": 1148.9375,
+            "height": 788.9375
+          },
+          "footer": {
+            "top": 1148.9375,
+            "bottom": 1190.328125,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "name": "long-scene",
+          "viewport": [
+            360,
+            800
+          ],
+          "documentHeight": 1427,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 360,
+            "height": 288
+          },
+          "page": {
+            "top": 360,
+            "bottom": 1373.78125,
+            "height": 1013.78125
+          },
+          "footer": {
+            "top": 1373.78125,
+            "bottom": 1415.171875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "name": "multiple-choices",
+          "viewport": [
+            360,
+            800
+          ],
+          "documentHeight": 1390,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 360,
+            "height": 288
+          },
+          "page": {
+            "top": 360,
+            "bottom": 1336.171875,
+            "height": 976.171875
+          },
+          "footer": {
+            "top": 1336.171875,
+            "bottom": 1377.5625,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "name": "epilogue",
+          "viewport": [
+            360,
+            800
+          ],
+          "documentHeight": 1016,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 360,
+            "height": 288
+          },
+          "page": {
+            "top": 360,
+            "bottom": 962.625,
+            "height": 602.625
+          },
+          "footer": {
+            "top": 962.625,
+            "bottom": 1004.015625,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 0,
+          "brokenImages": 0
+        },
+        {
+          "width": 360,
+          "height": 800,
+          "name": "true-end",
+          "viewport": [
+            360,
+            800
+          ],
+          "documentHeight": 1471,
+          "horizontalOverflow": false,
+          "clippedText": [],
+          "smallControls": 0,
+          "proseSize": 18,
+          "stage": {
+            "top": 72,
+            "bottom": 328,
+            "height": 256
+          },
+          "page": {
+            "top": 328,
+            "bottom": 1417.15625,
+            "height": 1089.15625
+          },
+          "footer": {
+            "top": 1417.15625,
+            "bottom": 1458.546875,
+            "height": 41.390625
+          },
+          "pageScroll": 0,
+          "readingScroll": 0,
+          "actionScroll": 0,
+          "visibleActions": 1,
+          "brokenImages": 0
+        }
+      ],
+      "screenshots": [
+        "output/playwright/moon-embed/after-title-960x640.png",
+        "output/playwright/moon-embed/after-title-content-bottom-960x640.png",
+        "output/playwright/moon-embed/after-title-bottom-960x640.png",
+        "output/playwright/moon-embed/after-prologue-960x640.png",
+        "output/playwright/moon-embed/after-prologue-scrolled-960x640.png",
+        "output/playwright/moon-embed/after-prologue-bottom-960x640.png",
+        "output/playwright/moon-embed/after-result-960x640.png",
+        "output/playwright/moon-embed/after-result-scrolled-960x640.png",
+        "output/playwright/moon-embed/after-result-bottom-960x640.png",
+        "output/playwright/moon-embed/after-long-scene-960x640.png",
+        "output/playwright/moon-embed/after-long-scene-scrolled-960x640.png",
+        "output/playwright/moon-embed/after-long-scene-bottom-960x640.png",
+        "output/playwright/moon-embed/after-multiple-choices-960x640.png",
+        "output/playwright/moon-embed/after-multiple-choices-scrolled-960x640.png",
+        "output/playwright/moon-embed/after-multiple-choices-bottom-960x640.png",
+        "output/playwright/moon-embed/after-epilogue-960x640.png",
+        "output/playwright/moon-embed/after-epilogue-scrolled-960x640.png",
+        "output/playwright/moon-embed/after-epilogue-bottom-960x640.png",
+        "output/playwright/moon-embed/after-true-end-960x640.png",
+        "output/playwright/moon-embed/after-true-end-content-bottom-960x640.png",
+        "output/playwright/moon-embed/after-true-end-bottom-960x640.png",
+        "output/playwright/moon-embed/after-title-900x600.png",
+        "output/playwright/moon-embed/after-title-content-bottom-900x600.png",
+        "output/playwright/moon-embed/after-title-bottom-900x600.png",
+        "output/playwright/moon-embed/after-prologue-900x600.png",
+        "output/playwright/moon-embed/after-prologue-scrolled-900x600.png",
+        "output/playwright/moon-embed/after-prologue-bottom-900x600.png",
+        "output/playwright/moon-embed/after-result-900x600.png",
+        "output/playwright/moon-embed/after-result-scrolled-900x600.png",
+        "output/playwright/moon-embed/after-result-bottom-900x600.png",
+        "output/playwright/moon-embed/after-long-scene-900x600.png",
+        "output/playwright/moon-embed/after-long-scene-scrolled-900x600.png",
+        "output/playwright/moon-embed/after-long-scene-bottom-900x600.png",
+        "output/playwright/moon-embed/after-multiple-choices-900x600.png",
+        "output/playwright/moon-embed/after-multiple-choices-scrolled-900x600.png",
+        "output/playwright/moon-embed/after-multiple-choices-bottom-900x600.png",
+        "output/playwright/moon-embed/after-epilogue-900x600.png",
+        "output/playwright/moon-embed/after-epilogue-scrolled-900x600.png",
+        "output/playwright/moon-embed/after-epilogue-bottom-900x600.png",
+        "output/playwright/moon-embed/after-true-end-900x600.png",
+        "output/playwright/moon-embed/after-true-end-content-bottom-900x600.png",
+        "output/playwright/moon-embed/after-true-end-bottom-900x600.png",
+        "output/playwright/moon-embed/after-title-430x800.png",
+        "output/playwright/moon-embed/after-title-bottom-430x800.png",
+        "output/playwright/moon-embed/after-prologue-430x800.png",
+        "output/playwright/moon-embed/after-prologue-bottom-430x800.png",
+        "output/playwright/moon-embed/after-result-430x800.png",
+        "output/playwright/moon-embed/after-result-bottom-430x800.png",
+        "output/playwright/moon-embed/after-long-scene-430x800.png",
+        "output/playwright/moon-embed/after-long-scene-bottom-430x800.png",
+        "output/playwright/moon-embed/after-multiple-choices-430x800.png",
+        "output/playwright/moon-embed/after-multiple-choices-bottom-430x800.png",
+        "output/playwright/moon-embed/after-epilogue-430x800.png",
+        "output/playwright/moon-embed/after-epilogue-bottom-430x800.png",
+        "output/playwright/moon-embed/after-true-end-430x800.png",
+        "output/playwright/moon-embed/after-true-end-bottom-430x800.png",
+        "output/playwright/moon-embed/after-title-390x844.png",
+        "output/playwright/moon-embed/after-title-bottom-390x844.png",
+        "output/playwright/moon-embed/after-prologue-390x844.png",
+        "output/playwright/moon-embed/after-prologue-bottom-390x844.png",
+        "output/playwright/moon-embed/after-result-390x844.png",
+        "output/playwright/moon-embed/after-result-bottom-390x844.png",
+        "output/playwright/moon-embed/after-long-scene-390x844.png",
+        "output/playwright/moon-embed/after-long-scene-bottom-390x844.png",
+        "output/playwright/moon-embed/after-multiple-choices-390x844.png",
+        "output/playwright/moon-embed/after-multiple-choices-bottom-390x844.png",
+        "output/playwright/moon-embed/after-epilogue-390x844.png",
+        "output/playwright/moon-embed/after-epilogue-bottom-390x844.png",
+        "output/playwright/moon-embed/after-true-end-390x844.png",
+        "output/playwright/moon-embed/after-true-end-bottom-390x844.png",
+        "output/playwright/moon-embed/after-title-360x800.png",
+        "output/playwright/moon-embed/after-title-bottom-360x800.png",
+        "output/playwright/moon-embed/after-prologue-360x800.png",
+        "output/playwright/moon-embed/after-prologue-bottom-360x800.png",
+        "output/playwright/moon-embed/after-result-360x800.png",
+        "output/playwright/moon-embed/after-result-bottom-360x800.png",
+        "output/playwright/moon-embed/after-long-scene-360x800.png",
+        "output/playwright/moon-embed/after-long-scene-bottom-360x800.png",
+        "output/playwright/moon-embed/after-multiple-choices-360x800.png",
+        "output/playwright/moon-embed/after-multiple-choices-bottom-360x800.png",
+        "output/playwright/moon-embed/after-epilogue-360x800.png",
+        "output/playwright/moon-embed/after-epilogue-bottom-360x800.png",
+        "output/playwright/moon-embed/after-true-end-360x800.png",
+        "output/playwright/moon-embed/after-true-end-bottom-360x800.png"
+      ]
+    },
+    "edges": {
+      "checks": 258,
+      "passed": 258,
+      "failures": [],
+      "errors": [],
+      "sizes": [
+        {
+          "width": 760,
+          "height": 640,
+          "documentHeight": 640,
+          "stageHeight": 507,
+          "overflow": false,
+          "font": 18
+        },
+        {
+          "width": 759,
+          "height": 640,
+          "documentHeight": 1320,
+          "stageHeight": 230,
+          "overflow": false,
+          "font": 18
+        },
+        {
+          "width": 661,
+          "height": 600,
+          "documentHeight": 1306,
+          "stageHeight": 216,
+          "overflow": false,
+          "font": 18
+        },
+        {
+          "width": 660,
+          "height": 600,
+          "documentHeight": 1259,
+          "stageHeight": 216,
+          "overflow": false,
+          "font": 18
+        },
+        {
+          "width": 430,
+          "height": 500,
+          "documentHeight": 1257,
+          "stageHeight": 180,
+          "overflow": false,
+          "font": 18
+        },
+        {
+          "width": 960,
+          "height": 360,
+          "documentHeight": 1079,
+          "stageHeight": 264,
+          "overflow": false,
+          "font": 18
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "documentHeight": 900,
+          "stageHeight": 767,
+          "overflow": false,
+          "font": 18
+        },
+        {
+          "width": 720,
+          "height": 1280,
+          "documentHeight": 1410,
+          "stageHeight": 320,
+          "overflow": false,
+          "font": 18
+        }
+      ],
+      "routes": [
+        {
+          "width": 960,
+          "height": 640,
+          "pages": 53,
+          "ending": "HONEST",
+          "road": true,
+          "history": 7
+        },
+        {
+          "width": 900,
+          "height": 600,
+          "pages": 53,
+          "ending": "HONEST",
+          "road": true,
+          "history": 7
+        }
+      ]
+    },
+    "routes": {
+      "checks": 1517,
+      "passed": 1517,
+      "failures": [],
+      "errors": [],
+      "routes": [
+        {
+          "ending": "HONEST",
+          "width": 360,
+          "height": 800,
+          "road": true,
+          "trust": 5,
+          "bond": 5,
+          "honesty": 4,
+          "actions": [
+            "ring1",
+            "track2",
+            "signal2",
+            "silent2",
+            "forest3",
+            "speak3",
+            "signal3",
+            "proposal3",
+            "thank4",
+            "want5",
+            "track5",
+            "signal5",
+            "silent5",
+            "village6",
+            "forest6",
+            "heart6",
+            "plan6",
+            "call7"
+          ]
+        },
+        {
+          "ending": "SECRET_MEETING",
+          "width": 390,
+          "height": 844,
+          "road": false,
+          "trust": 5,
+          "bond": 5,
+          "honesty": 2,
+          "actions": [
+            "ring1",
+            "track2",
+            "signal2",
+            "silent2",
+            "forest3",
+            "speak3",
+            "signal3",
+            "proposal3",
+            "thank4",
+            "want5",
+            "track5",
+            "signal5",
+            "silent5",
+            "wait6",
+            "wait6",
+            "wait6",
+            "hush6",
+            "silent7"
+          ]
+        },
+        {
+          "ending": "GOOD_DOG",
+          "width": 720,
+          "height": 1280,
+          "road": true,
+          "trust": 4,
+          "bond": 0,
+          "honesty": 0,
+          "actions": [
+            "ring1",
+            "track2",
+            "track2",
+            "ring2",
+            "forest3",
+            "speak3",
+            "signal3",
+            "facts3",
+            "pocket4",
+            "away5",
+            "track5",
+            "listen5",
+            "silent5",
+            "survey6",
+            "village6",
+            "forest6",
+            "plan6",
+            "ring7"
+          ]
+        },
+        {
+          "ending": "BAD_LIAR",
+          "width": 1280,
+          "height": 900,
+          "road": false,
+          "trust": 0,
+          "bond": 2,
+          "honesty": 0,
+          "actions": [
+            "hide1",
+            "track2",
+            "track2",
+            "silent2",
+            "village3",
+            "speak3",
+            "signal3",
+            "false3",
+            "ring4",
+            "decide5",
+            "track5",
+            "listen5",
+            "silent5",
+            "wait6",
+            "wait6",
+            "wait6",
+            "hush6",
+            "silent7"
+          ]
+        }
+      ],
+      "screenshots": [
+        "output/playwright/moon-seven/HONEST-night4-story-0.png",
+        "output/playwright/moon-seven/HONEST-night4-choice4-1.png",
+        "output/playwright/moon-seven/HONEST-night5-answer-1.png",
+        "output/playwright/moon-seven/HONEST-night6-explore6-2.png",
+        "output/playwright/moon-seven/HONEST-final-choice-360.png",
+        "output/playwright/moon-seven/HONEST-night7-epilogue-0.png",
+        "output/playwright/moon-seven/HONEST-night7-epilogue-1.png",
+        "output/playwright/moon-seven/HONEST-night7-epilogue-2.png",
+        "output/playwright/moon-seven/HONEST-finish-360.png",
+        "output/playwright/moon-seven/SECRET_MEETING-finish-390.png",
+        "output/playwright/moon-seven/GOOD_DOG-finish-720.png",
+        "output/playwright/moon-seven/BAD_LIAR-finish-1280.png"
+      ]
+    },
+    "production": {
+      "checks": 155,
+      "passed": 155,
+      "failures": [],
+      "errors": [],
+      "runs": [
+        {
+          "label": "production",
+          "ending": "HONEST",
+          "trust": 5,
+          "bond": 5,
+          "honesty": 4,
+          "road": false,
+          "history": 7
+        },
+        {
+          "label": "local HTML",
+          "ending": "HONEST",
+          "trust": 5,
+          "bond": 5,
+          "honesty": 4,
+          "road": false,
+          "history": 7
+        }
+      ]
+    },
+    "audio": {
+      "checks": 59,
+      "passed": 59,
+      "failures": [],
+      "errors": [],
+      "screenshots": [
+        "output/playwright/moon-import/settings-360.png",
+        "output/playwright/moon-import/reaction-first-360.png",
+        "output/playwright/moon-import/explanation-360.png",
+        "output/playwright/moon-import/howl-360.png",
+        "output/playwright/moon-import/footprints-360.png",
+        "output/playwright/moon-import/signal-far-360.png",
+        "output/playwright/moon-import/signal-near-360.png",
+        "output/playwright/moon-import/report-bell-360.png",
+        "output/playwright/moon-import/settings-360.png",
+        "output/playwright/moon-import/settings-390.png",
+        "output/playwright/moon-import/settings-720.png",
+        "output/playwright/moon-import/settings-1280.png"
+      ],
+      "audioEvidence": "actual provided tracks decoded and advanced; no human listening or physical device test"
+    }
+  },
+  "limitations": [
+    "itch.io account settings and live hosted iframe were not changed or tested.",
+    "Physical Android/iOS, Safari/Firefox and human comfort/fun are not verified."
+  ]
+}
